@@ -1155,4 +1155,23 @@ public class AndroidUtils {
         return true;
     }
 
+    /**
+     * 根据文件路径安装APK
+     * @param context
+     * @param filePath 文件路径
+     */
+    public static void install(Context context, String filePath) {
+        install(context, new File(filePath));
+    }
+
+    /**
+     * 根据文件安装APK
+     */
+    public static void install(Context context, File file) {
+        // 核心是下面几句代码
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        context.startActivity(intent);
+    }
+
 }
