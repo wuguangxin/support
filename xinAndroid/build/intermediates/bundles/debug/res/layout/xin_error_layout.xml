@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/actionbar_layout"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/white"
+    android:clickable="true"
+    android:contentDescription="界面数据第一次加载失败时显示的界面"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="20dip"
+    android:visibility="visible">
+
+    <ImageView
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_marginTop="50dip"
+        android:contentDescription="异常图标"
+        android:src="@drawable/icon_common_warn"
+        android:visibility="visible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:text="   出错了！"
+        android:textColor="#A80000"
+        android:textSize="@dimen/font_L"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:gravity="center"
+        android:text="网络异常，请稍后再试"
+        android:textColor="#666666"
+        android:textSize="@dimen/font_S"/>
+
+    <TextView
+        android:id="@+id/body_load_error_cause_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:textColor="#666666"
+        android:textSize="@dimen/font_S"/>
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="red">#ff0000</color>
+    <color name="green">#00ff00</color>
+    <color name="blue">#0000ff</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#999999</color>
+    <color name="ltgray">#cccccc</color>
+    <color name="yellow">#ffff00</color>
+
+    <!-- 基本颜色 -->
+    <color name="x000000">#000000</color>
+    <color name="x111111">#111111</color>
+    <color name="x222222">#222222</color>
+    <color name="x333333">#333333</color>
+    <color name="x444444">#444444</color>
+    <color name="x555555">#555555</color>
+    <color name="x666666">#666666</color>
+    <color name="x777777">#777777</color>
+    <color name="x888888">#888888</color>
+    <color name="x999999">#999999</color>
+    <color name="xaaaaaa">#aaaaaa</color>
+    <color name="xbbbbbb">#bbbbbb</color>
+    <color name="xcccccc">#cccccc</color>
+    <color name="xdddddd">#dddddd</color>
+    <color name="xeeeeee">#eeeeee</color>
+    <color name="xffffff">#ffffff</color>
+    
+    <!-- （对话框）顶部设置按钮背景颜色 -->
+    <color name="xin_dialog_setting_color_normal">#00000000</color>
+    <color name="xin_dialog_setting_color_pressed">#22000000</color>
+    <color name="xin_selector_default_normal">#ffffff</color>
+    <color name="xin_selector_default_pressed">#cccccc</color>
+
+    <!-- listView相关的默认颜色 -->
+    <color name="xin_item_default_color">#F2F3F5</color> <!-- #85D3EF -->
+    <color name="xin_listview_divider_color">#d1d1d1</color>
+    
+    <!-- 常用背景状态颜色 -->
+    <color name="xin_sclector_bg_color_normal">#00000000</color>
+    <color name="xin_sclector_bg_color_pressed">#f2f2f2</color>
+    
+    <!-- 常用文本框边框样式 -->
+    <color name="xin_text_view_border_color_normal">#cccccc</color> <!-- 正常 #cccccc -->
+    <color name="xin_text_view_border_color_pressed">#0099ff</color> <!-- 按下 #68B0EC -->
+    <color name="xin_text_view_border_color_focused">#0099ff</color>	<!-- 焦点 -->
+    <color name="xin_text_view_border_color_disabled">#cccccc</color> <!-- 禁用  -->
+
+    <!-- 按钮状态选择器颜色 -->
+    <!-- 通用文字颜色状态 -->
+	<color name="xin_button_font_color_normal">#ffffff</color> <!-- 正常 -->
+	<color name="xin_button_font_color_pressed">#ffffff</color> <!-- 按下 -->
+	<color name="xin_button_font_color_disable">#ffffff</color> <!-- 禁用 -->
+    <!-- 橘色按钮 -->
+	<color name="xin_button_orange_bg_color_normal">#FF6600</color>
+	<color name="xin_button_orange_bg_color_pressed">#cc5302</color>
+	<color name="xin_button_orange_bg_color_disable">#cecece</color>
+	<!-- 红色按钮 -->
+	<color name="xin_button_red_bg_color_normal">#EC1F29</color>
+	<color name="xin_button_red_bg_color_pressed">#CE1F29</color>
+	<color name="xin_button_red_bg_color_disable">#cecece</color>
+	<!-- 绿色按钮 -->
+	<color name="xin_button_green_bg_color_normal">#06A84B</color>
+	<color name="xin_button_green_bg_color_pressed">#05853c</color>
+	<color name="xin_button_green_bg_color_disable">#cecece</color>
+    <!-- 蓝色按钮 -->
+	<color name="xin_button_blue_bg_color_normal">#079fff</color>
+	<color name="xin_button_blue_bg_color_pressed">#128cf3</color>
+	<color name="xin_button_blue_bg_color_disable">#cecece</color>
+    <!-- 灰色按钮 -->
+	<color name="xin_button_gray_bg_color_normal">#e8e8e8</color>
+	<color name="xin_button_gray_bg_color_pressed">#d0d0d0</color>
+	<color name="xin_button_gray_bg_color_disable">#cecece</color>
+	
+	<!-- Menu -->
+	<color name="xin_menu_font_color_normal">#202020</color> <!-- Tab Menu 文字颜色 正常/未选中 -->
+	<color name="xin_menu_font_color_pressed">#ee2f3a</color> <!-- Tab Menu 文字颜色 按下/已选中 -->
+	<color name="xin_menu_font_color_disable">#cccccc</color> <!-- Tab Menu 文字颜色 禁用 -->
+	
+</resources>

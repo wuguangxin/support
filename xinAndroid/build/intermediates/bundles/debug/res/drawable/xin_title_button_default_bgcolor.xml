@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 顶部设置按钮状态选择器 -->
+    <item android:drawable="@color/xin_dialog_setting_color_normal" android:state_pressed="false"/>
+    <item android:drawable="@color/xin_dialog_setting_color_pressed" android:state_pressed="true"/>
+
+</selector>

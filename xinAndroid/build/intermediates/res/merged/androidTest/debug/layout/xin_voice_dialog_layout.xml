@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="150dip"
+    android:layout_height="100dip"
+    android:layout_gravity="center"
+    android:background="@drawable/xin_voice_dialog_bg"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/voice_amplitude"
+        android:layout_width="150dip"
+        android:layout_height="100dip"
+        android:background="@drawable/voice_mic"
+        android:src="@drawable/voice_mic_1"
+        android:visibility="visible"
+        tools:ignore="ContentDescription" />
+
+    <Chronometer
+        android:id="@+id/voice_chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dip"
+        android:textColor="#cccccc"
+        android:textSize="@dimen/font_14"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/voice_move_msg"
+        android:layout_width="150dip"
+        android:layout_height="100dip"
+        android:background="@color/transparent"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/voice_move_msg"
+        android:textColor="#cccccc"
+        android:textSize="@dimen/font_12"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/voice_cancel_msg"
+        android:layout_width="150dip"
+        android:layout_height="100dip"
+        android:background="@drawable/xin_voice_dialog_bg"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/voice_cancel_msg"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/font_12"
+        android:visibility="gone" />
+
+</RelativeLayout>

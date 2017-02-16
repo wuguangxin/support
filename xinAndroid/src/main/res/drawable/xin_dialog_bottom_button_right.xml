@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 对话框底部按钮 right -->
+    <item android:drawable="@drawable/xin_dialog_bottom_button_right_pressed" android:state_enabled="true" android:state_pressed="true"/>
+    <item android:drawable="@drawable/xin_dialog_bottom_button_right_normal" android:state_enabled="true" android:state_pressed="false"/>
+    <item android:drawable="@drawable/xin_dialog_bottom_button_right_normal" android:state_enabled="false" android:state_pressed="true"/>
+    <item android:drawable="@drawable/xin_dialog_bottom_button_right_normal" android:state_enabled="false" android:state_pressed="false"/>
+
+</selector>

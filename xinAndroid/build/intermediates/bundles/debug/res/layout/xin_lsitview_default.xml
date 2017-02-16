@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.handmark.pulltorefresh.library.PullToRefreshListView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="0dip"
+    android:layout_weight="1"
+    android:paddingTop="10dip"
+    android:divider="@color/transparent"
+    android:dividerHeight="1dip"
+    android:fadingEdge="none"
+    android:fastScrollEnabled="false"
+    android:footerDividersEnabled="true"
+    android:headerDividersEnabled="true"
+    android:listSelector="@color/transparent"
+    android:smoothScrollbar="true" />

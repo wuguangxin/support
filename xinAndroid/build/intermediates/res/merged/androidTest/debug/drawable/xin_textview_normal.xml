@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- TextView 正常时 -->
+    <solid android:color="#ffffff" />
+
+    <corners android:radius="2dip" />
+
+    <stroke
+        android:width="@dimen/xin_text_view_border_size_normal"
+        android:color="@color/xin_text_view_border_color_normal" />
+
+</shape>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TabHost.item文字颜色选择器 -->
+    <item android:state_selected="true" android:color="#ee2f3a"/>
+    <item android:state_selected="false" android:color="#797979"/>
+    <item android:state_pressed="true" android:color="#ee2f3a"/>
+    <item android:color="#797979"/>
+
+</selector>

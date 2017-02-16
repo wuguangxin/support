@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <!-- 对话框 底部按钮 right 正常 -->
+    <corners android:bottomRightRadius="@dimen/xin_dialog_button_bottom_right_corner_size" />
+
+    <solid android:color="#ffffff" />
+
+</shape>

@@ -1,0 +1,97 @@
+<resources>
+    <!-- 字体大小 -->
+    <dimen name="font_1">1dip</dimen>
+    <dimen name="font_2">2dip</dimen>
+    <dimen name="font_3">3dip</dimen>
+    <dimen name="font_4">4dip</dimen>
+    <dimen name="font_5">5dip</dimen>
+    <dimen name="font_6">6dip</dimen>
+    <dimen name="font_7">7dip</dimen>
+    <dimen name="font_8">8dip</dimen>
+    <dimen name="font_9">9dip</dimen>
+    <dimen name="font_10">10dip</dimen>
+    <dimen name="font_11">11dip</dimen>
+    <dimen name="font_12">12dip</dimen>
+    <dimen name="font_13">13dip</dimen>
+    <dimen name="font_14">14dip</dimen>
+    <dimen name="font_15">15dip</dimen>
+    <dimen name="font_16">16dip</dimen>
+    <dimen name="font_17">17dip</dimen>
+    <dimen name="font_18">18dip</dimen>
+    <dimen name="font_19">19dip</dimen>
+    <dimen name="font_20">20dip</dimen>
+    <dimen name="font_21">21dip</dimen>
+    <dimen name="font_22">22dip</dimen>
+    <dimen name="font_23">23dip</dimen>
+    <dimen name="font_24">24dip</dimen>
+    <dimen name="font_25">25dip</dimen>
+    <dimen name="font_26">26dip</dimen>
+    <dimen name="font_27">27dip</dimen>
+    <dimen name="font_28">28dip</dimen>
+    <dimen name="font_29">29dip</dimen>
+    <dimen name="font_30">30dip</dimen>
+    <dimen name="font_31">31dip</dimen>
+    <dimen name="font_32">32dip</dimen>
+    <dimen name="font_33">33dip</dimen>
+    <dimen name="font_34">34dip</dimen>
+    <dimen name="font_35">35dip</dimen>
+    <dimen name="font_36">36dip</dimen>
+    <dimen name="font_37">37dip</dimen>
+    <dimen name="font_38">38dip</dimen>
+    <dimen name="font_39">39dip</dimen>
+    <dimen name="font_40">40dip</dimen>
+    <dimen name="font_41">41dip</dimen>
+    <dimen name="font_42">42dip</dimen>
+    <dimen name="font_43">43dip</dimen>
+    <dimen name="font_44">44dip</dimen>
+    <dimen name="font_45">45dip</dimen>
+    <dimen name="font_46">46dip</dimen>
+    <dimen name="font_47">47dip</dimen>
+    <dimen name="font_48">48dip</dimen>
+    <dimen name="font_49">49dip</dimen>
+    <dimen name="font_50">50dip</dimen>
+    <dimen name="font_100">100dip</dimen>
+    <dimen name="font_130">130dip</dimen>
+    <dimen name="font_S">@dimen/font_12</dimen> <!-- 小号 -->
+    <dimen name="font_M">@dimen/font_14</dimen> <!-- 中号 -->
+    <dimen name="font_L">@dimen/font_16</dimen> <!-- 大号 -->
+    <dimen name="font_LL">@dimen/font_18</dimen> <!-- 加大+1 -->
+    <dimen name="font_LLL">@dimen/font_20</dimen> <!-- 加大+2 -->
+
+	<!-- 标题栏高度 -->
+    <dimen name="xin_actionbar_height">50dp</dimen>
+    
+	<!-- 表格配置 -->
+	<dimen name="xin_border_size">0.5dip</dimen> <!-- 表格中Item按下边框大小 -->
+	<dimen name="xin_table_border_size">0.5dip</dimen> <!-- 表格中Item按下边框大小 -->
+	<dimen name="xin_table_item_vertical_space">0.5dip</dimen> <!-- 表格中item与item的垂直方向的间隔距离 -->
+	<dimen name="xin_table_item_corners_radius">1.0dip</dimen> <!-- 圆角半径 -->
+	<dimen name="xin_table_item_border_size_normal">0dip</dimen> <!-- 表格中Item正常边框大小 -->
+	<dimen name="xin_table_item_border_size_pressed">0dip</dimen> <!-- 表格中Item按下边框大小 -->
+	
+	<!-- EditText输入框样式 -->
+    <dimen name="xin_text_view_border_size_normal">0.5dip<!-- 正常 --></dimen>
+	<dimen name="xin_text_view_border_size_pressed">0.5dip<!-- 按下 --></dimen> 
+	<dimen name="xin_text_view_border_size_focused">1.0dip<!-- 焦点 --></dimen>
+	<dimen name="xin_text_view_border_size_disabled">0.5dip<!-- 禁用 --></dimen>
+	
+	<!-- 语音对话框配置 -->
+    <dimen name="xin_dialog_netprogress_bg_width">150dip<!-- 对话框宽度 --></dimen>
+    <dimen name="xin_dialog_netprogress_width">50dip<!-- 进度条宽 --></dimen>
+    <dimen name="xin_dialog_netprogress_height">50dip<!-- 进度条高 --></dimen>
+    <dimen name="xin_dialog_netprogress_padding_top">10dip<!-- 进度条边距 --></dimen>
+    <dimen name="xin_dialog_netprogress_padding_top_simple">5dip</dimen>
+    <dimen name="xin_dialog_netprogress_padding_bottom">10dip</dimen>
+    
+    <!-- 按钮配置 -->
+    <dimen name="xin_button_radius_size">3dip</dimen>
+
+    <dimen name="xin_history_score_tb">10dp</dimen>
+
+    <!--对话MyDialog框配置-->
+    <dimen name="xin_dialog_button_top_left_corner_size">2dip</dimen>
+    <dimen name="xin_dialog_button_top_right_corner_size">2dip</dimen>
+    <dimen name="xin_dialog_button_bottom_left_corner_size">2dip</dimen>
+    <dimen name="xin_dialog_button_bottom_right_corner_size">2dip</dimen>
+
+</resources>

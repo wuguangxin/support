@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/xin_empty_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="visible" >
+
+    <ImageView
+        android:id="@+id/xin_empty_layout_image"
+        android:layout_width="68dip"
+        android:layout_height="65dip"
+        android:layout_marginTop="-100dip"
+        android:src="@drawable/img_empty_data"
+        android:visibility="visible"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/xin_empty_layout_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:gravity="center"
+        android:hint="@string/empty_layout_message_default"
+        android:padding="5dip"
+        android:textColor="#9e9e9e"
+        android:textSize="@dimen/font_L" />
+
+    <TextView
+        android:id="@+id/xin_empty_layout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/xin_button_gray"
+        android:clickable="true"
+        android:gravity="center"
+        android:hint="@string/empty_layout_button_default"
+        android:paddingLeft="30dip"
+        android:paddingRight="30dip"
+        android:textSize="@dimen/font_17"
+        android:visibility="gone" />
+
+</LinearLayout>

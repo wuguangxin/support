@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按钮文字颜色选择器 蓝色按钮使用 -->
+    <item android:state_selected="true" android:color="@color/xin_button_font_color_pressed"/>
+    <item android:state_focused="true" android:color="@color/xin_button_font_color_normal"/>
+    <item android:state_pressed="true" android:color="@color/xin_button_font_color_pressed"/>
+    <item android:state_enabled="true" android:color="@color/xin_button_font_color_normal"/>
+    <item android:state_enabled="false" android:color="@color/xin_button_font_color_disable"/>
+    <item android:state_window_focused="false" android:color="@color/xin_button_font_color_disable"/>
+    <item android:color="@color/xin_button_font_color_disable"/>
+
+</selector>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false" >
+
+    <!-- close时进入的动画 不做动画会感觉很好 -->
+
+    <!-- 左移入 -->
+    <translate
+        android:duration="400"
+        android:fromXDelta="-30%"
+        android:toXDelta="0" />
+
+    <!-- 淡入 -->
+<!--     <scale -->
+<!--         android:duration="300" -->
+<!--         android:fromXScale="0.5" -->
+<!--         android:fromYScale="0.5" -->
+<!--         android:pivotX="50%" -->
+<!--         android:pivotY="50%" -->
+<!--         android:repeatCount="0" -->
+<!--         android:toXScale="1" -->
+<!--         android:toYScale="1" /> -->
+    
+    <alpha 
+	    android:duration="500"
+	    android:fromAlpha="0.5"
+	    android:toAlpha="1" />
+
+    <!-- 放大 -->
+<!--     <scale -->
+<!--         android:duration="400" -->
+<!--         android:fromXScale="0.7" -->
+<!--         android:fromYScale="0.7" -->
+<!--         android:pivotX="100%" -->
+<!--         android:pivotY="50%" -->
+<!--         android:repeatCount="0" -->
+<!--         android:toXScale="1" -->
+<!--         android:toYScale="1" /> -->
+
+</set>

@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="45dip"
+    android:background="@color/transparent" >
+
+    <!-- 左边区域 -->
+
+    <TextView
+        android:id="@+id/dialog_top_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="5dip"
+        android:layout_margin="5dip"
+        android:background="@drawable/xin_title_button_default_bgcolor"
+        android:gravity="center"
+        android:text="@string/dialog_top_left_text_default"
+        android:textColor="#1b82de"
+        android:textSize="@dimen/font_M"
+        android:visibility="gone" />
+
+    <!-- 中间区域 -->
+
+    <TextView
+        android:id="@+id/dialog_top_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:paddingTop="2dip"
+        android:text="@string/dialog_top_title_text_default"
+        android:textColor="@color/x333333"
+        android:textSize="@dimen/font_LL"
+        android:visibility="visible" />
+    
+    <ImageView
+        android:id="@+id/dialog_top_animimg"
+        android:layout_width="18dip"
+        android:layout_height="18dip"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dip"
+        android:layout_toLeftOf="@+id/dialog_top_title"
+        android:src="@drawable/xin_loading_01"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+
+    <!-- 右边区域 -->
+
+    <TextView
+        android:id="@+id/dialog_top_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:padding="5dip"
+        android:layout_margin="5dip"
+        android:background="@drawable/xin_title_button_default_bgcolor"
+        android:gravity="center"
+        android:text="@string/dialog_top_right_text_default"
+        android:textColor="#1b82de"
+        android:textSize="@dimen/font_M"
+        android:visibility="gone" />
+    
+    <View
+        android:id="@+id/dialog_top_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/xcccccc"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+    <!-- #2aacff -->
+
+</RelativeLayout>

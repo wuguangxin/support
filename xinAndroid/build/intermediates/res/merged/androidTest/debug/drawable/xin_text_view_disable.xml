@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- TextView 被禁用时 -->
+    <solid android:color="#f0f0f0" />
+
+    <corners android:radius="1dip" />
+
+    <stroke
+        android:width="@dimen/xin_text_view_border_size_disabled"
+        android:color="@color/xin_text_view_border_color_disabled" />
+
+</shape>

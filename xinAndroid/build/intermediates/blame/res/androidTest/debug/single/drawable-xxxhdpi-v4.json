@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/xin_title_back_black.png",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/xin_title_back_black.png"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/xin_text_del.png",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/xin_text_del.png"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/img_empty_data.png",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/img_empty_data.png"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/xin_title_back_white.png",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/xin_title_back_white.png"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-xxxhdpi-v4/xin_function_enter.png",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-xxxhdpi-v4/xin_function_enter.png"
+    }
+]

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- item 背景选择器，适合每个item之间只有一条分割线的布局 -->
+    <item android:drawable="@color/white" android:state_pressed="false"/>
+    <item android:drawable="@color/xeeeeee" android:state_pressed="true"/>
+
+</selector>
