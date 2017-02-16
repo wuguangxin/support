@@ -1,5 +1,6 @@
 package com.wuguangxin.utils;
 
+import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -1080,6 +1081,78 @@ public class AndroidUtils {
         return fingerprintManager.hasEnrolledFingerprints();
     }
 
+    /**
+     * 检测辅助功能是否开启<br>
+     * @param mContext
+     * @param serviceClass extends AccessibilityService
+     * @return boolean
+     */
+    public static boolean isAccessibilitySettingsOn(Context mContext, Class<? extends AccessibilityService> serviceClass) {
+        int accessibilityEnabled = 0;
+        // TestService为对应的服务
+        final String service = getPackageName(mContext) + "/" + serviceClass.getCanonicalName();
+        try {
+            accessibilityEnabled = Settings.Secure.getInt(mContext.getApplicationContext().getContentResolver(),
+                    android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+        TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
+        if (accessibilityEnabled == 1) {
+            String settingValue = Settings.Secure.getString(mContext.getApplicationContext().getContentResolver(),
+                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            if (settingValue != null) {
+                mStringColonSplitter.setString(settingValue);
+                while (mStringColonSplitter.hasNext()) {
+                    String accessibilityService = mStringColonSplitter.next();
+                    if (accessibilityService.equalsIgnoreCase(service)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
+
+    /**
+     * 判断服务是否启动,context上下文对象 ，className服务的name
+     * @param context
+     * @param serviceClass 服务类名
+     * @return
+     */
+    public static boolean isServiceRunning(Context context, Class<? extends AccessibilityService> serviceClass) {
+        if(context != null && serviceClass != null){
+            ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            List<ActivityManager.RunningServiceInfo> serviceList = am.getRunningServices(200);
+            if (!serviceList.isEmpty()) {
+                String serviceClassName = serviceClass.getSimpleName();
+                for (int i = 0; i < serviceList.size(); i++) {
+                    if (serviceList.get(i).service.getClassName().equals(serviceClassName)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 判断是否已经获取该权限
+     * @param context
+     * @param permission 权限数组
+     * @return
+     */
+    public static boolean isGetPermission(Context context, String... permission) {
+        if (permission == null) return true;
+        String packageName = context.getPackageName();
+        PackageManager packageManager = context.getPackageManager();
+        for (int i = 0; i < permission.length; i++) {
+            if (PackageManager.PERMISSION_GRANTED != packageManager.checkPermission(permission[i], packageName)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
