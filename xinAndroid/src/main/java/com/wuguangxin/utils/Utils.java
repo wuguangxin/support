@@ -128,6 +128,42 @@ public class Utils{
 	}
 
 	/**
+	 * mm转换为px(X轴)
+	 * @param value
+	 * @return
+	 */
+	public static float mm2pxX(Context context, float value){
+		return value * context.getResources().getDisplayMetrics().xdpi * (1.0f/25.4f);
+	}
+
+	/**
+	 * mm转换为px(Y轴)
+	 * @param value
+	 * @return
+	 */
+	public static float mm2pxY(Context context, float value){
+		return value * context.getResources().getDisplayMetrics().ydpi * (1.0f/25.4f);
+	}
+
+	/**
+	 * px转换为mm(X轴)
+	 * @param value
+	 * @return
+	 */
+	public static float px2mmX(Context context, float value){
+		return value * (1 / mm2pxX(context, 1));
+	}
+
+	/**
+	 * px转换为mm(Y轴)
+	 * @param value
+	 * @return
+	 */
+	public static float px2mmY(Context context, float value){
+		return value * (1 / mm2pxY(context, 1));
+	}
+
+	/**
 	 * 定位光标位置到EditText文本的末尾
 	 * 
 	 * @param mEditText EditText
