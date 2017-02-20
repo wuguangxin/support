@@ -3,16 +3,17 @@ package com.wuguangxin.utils;
 import android.text.TextUtils;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class MoneyUtils{
 	private static DecimalFormat decimalFormat = new DecimalFormat();
 
 	/**
-	 * 格式化金额 保留两位小数点，如 1,234.56
+	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
 	 * @param moneyString String类型数据
 	 * @return
-     */
+	 */
 	public static String format(String moneyString){
 		if (TextUtils.isEmpty(moneyString) || moneyString.split("\\.").length > 2) {
 			return "0.00";
@@ -21,39 +22,26 @@ public class MoneyUtils{
 	}
 
 	/**
-	 * 格式化金额 保留两位小数点，如 1,234.56
-	 * @param moneyBigDecimal BigDecimal类型
-	 * @return
-     */
-	public static String format(BigDecimal moneyBigDecimal){
-		if (moneyBigDecimal == null || moneyBigDecimal.doubleValue() == 0) {
-			return "0.00";
-		}
-		return format(moneyBigDecimal.doubleValue());
-	}
-
-	/**
-	 * 格式化金额 保留两位小数点，如 1,234.56
-	 * @param num
+	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
+	 * @param number
 	 * @return
 	 */
-	public static String format(Number num){
-		return format(num, "");
+	public static String format(Number number){
+		return format(number, "");
 	}
 
 	/**
-	 * 格式化金额 保留两位小数点，如 1,234.56
-	 * @param num
+	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
+	 * @param number
 	 * @param unit 附加文字，比如"元"
 	 * @return
-     */
-	public static String format(Number num, String unit){
-		if (num == null || num.doubleValue() == 0) {
-//			return "0.00";
-			num = 0;
+	 */
+	public static String format(Number number, String unit){
+		if (number == null) {
+			number = 0;
 		}
 		decimalFormat.applyPattern(String.format("##,###.00%s", unit));
-		String formatMoney = decimalFormat.format(num.doubleValue());
+		String formatMoney = decimalFormat.format(number.doubleValue());
 		if (formatMoney.startsWith(".")) {
 			return "0" + formatMoney;
 		}
@@ -61,7 +49,31 @@ public class MoneyUtils{
 	}
 
 	/**
-	 * 格式化金额，只保留两位小数点，不用千分位格式化（如123456.78）
+	 * 格式化数值（如 千分位123,456.78）
+	 * @param number 数值
+	 * @param bit 保留的小数位数
+	 * @param roundingMode 舍入模式 RoundingMode
+	 */
+	public static String format(Number number, int bit, RoundingMode roundingMode){
+		if (number == null) {
+			number = 0.0d;
+		}
+		if(decimalFormat == null){
+			decimalFormat = new DecimalFormat();
+		}
+		decimalFormat.applyPattern(getReg(bit));
+		if(roundingMode != null){
+			decimalFormat.setRoundingMode(roundingMode);
+		}
+		String formatMoney = decimalFormat.format(number);
+		if (formatMoney.startsWith(".")) {
+			return "0" + formatMoney;
+		}
+		return formatMoney;
+	}
+
+	/**
+	 * 格式化金额，只保留两位小数点，四舍五入，不用千分位格式化（如123456.78）
 	 * @param moneyString String类型数据
 	 */
 	public static String format2bit(String moneyString){
@@ -72,7 +84,7 @@ public class MoneyUtils{
 	}
 
 	/**
-	 * 格式化金额，只保留两位小数点，不用千分位格式化（如123456.78）
+	 * 格式化金额，只保留两位小数点，四舍五入，不用千分位格式化（如123456.78）
 	 * @param moneyLong long类型
 	 */
 	public static String format2bit(long moneyLong){
@@ -88,7 +100,7 @@ public class MoneyUtils{
 	}
 
 	/**
-	 * 格式化金额，只保留两位小数点，不用千分位格式化（如123456.78）
+	 * 格式化金额，只保留两位小数点，四舍五入，不用千分位格式化（如123456.78）
 	 * @param moneyDouble double类型
 	 */
 	public static String format2bit(double moneyDouble){
@@ -161,8 +173,15 @@ public class MoneyUtils{
 	public static String format(long money, int bit){
 		return getDecimalFormat(bit).format(money);
 	}
-	
+
+	/**
+	 * 获取DecimalFormat 实例，并设置保留的小数位数
+	 * @param bit 保留的小数位数
+	 */
 	private static DecimalFormat getDecimalFormat(int bit){
+		if(decimalFormat == null){
+			decimalFormat = new DecimalFormat();
+		}
 		decimalFormat.applyPattern(getReg(bit));
 		return decimalFormat;
 	}
@@ -201,26 +220,26 @@ public class MoneyUtils{
 	}
 
 	/*
-	 * BigDecimal bd = new BigDecimal(123456789);
-		System.out.println(format(",###,###", bd)); //out: 123,456,789                         
-		System.out.println(format("##,####,###", bd)); //out: 123,456,789
-		System.out.println(format("######,###", bd)); //out: 123,456,789
-		System.out.println(format("#,##,###,###", bd)); //out: 123,456,789
-		System.out.println(format(",###,###.00", bd)); //out: 123,456,789.00
-		System.out.println(format(",###,##0.00", bd)); //out: 123,456,789.00
-		BigDecimal bd1 = new BigDecimal(0);
-		System.out.println(format(",###,###", bd1)); //out: 0
-		System.out.println(format(",###,###.00", bd1)); //out: .00
-		System.out.println(format(",###,##0.00", bd1)); //out: 0.00
-	 */
+	BigDecimal bd = new BigDecimal(123456789);
+	System.out.println(format(",###,###", bd)); 	//out: 123,456,789
+	System.out.println(format("##,####,###", bd));	//out: 123,456,789
+	System.out.println(format("######,###", bd));	//out: 123,456,789
+	System.out.println(format("#,##,###,###", bd)); //out: 123,456,789
+	System.out.println(format(",###,###.00", bd));	//out: 123,456,789.00
+	System.out.println(format(",###,##0.00", bd));	//out: 123,456,789.00
+	BigDecimal bd1 = new BigDecimal(0);
+	System.out.println(format(",###,###", bd1)); 	//out: 0
+	System.out.println(format(",###,###.00", bd1)); //out: .00
+	System.out.println(format(",###,##0.00", bd1)); //out: 0.00
+	*/
 	private static String getReg(int bit){
 		switch (bit) {
-			case 0: return ",###,##0";
-			case 1: return ",###,##0.0";
-			case 2: return ",###,##0.00";
-			case 3: return ",###,##0.000";
-			case 4: return ",###,##0.0000";
-			default: return ",###,##0.00";
+		case 0: return ",###,##0";
+		case 1: return ",###,##0.0";
+		case 2: return ",###,##0.00";
+		case 3: return ",###,##0.000";
+		case 4: return ",###,##0.0000";
+		default: return ",###,##0.00";
 		}
 	}
 }

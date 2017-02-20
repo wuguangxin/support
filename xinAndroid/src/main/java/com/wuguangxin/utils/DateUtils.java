@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * 日期时间工具类
- * 
+ *
  * @author wuguangxin
  * @date: 2015-3-31 下午3:27:11
  */
@@ -20,7 +20,7 @@ public class DateUtils{
 	private static final String DEFAULT_URL = "http://www.baidu.com"; // 默认时间来源
 	private static final SimpleDateFormat formatLongDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static final SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-	private static final SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss"); 
+	private static final SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss");
 	private static final long nd = 1000 * 60 * 60 * 24;		//一天的毫秒数
 	private static final long nh = 1000 * 60 * 60;			//一小时的毫秒数
 	private static final long nm = 1000 * 60;				//一分钟的毫秒数
@@ -34,7 +34,7 @@ public class DateUtils{
 	public static Date getDate(){
 		return new Date(System.currentTimeMillis());
 	}
-	
+
 	/**
 	 * 根据时间戳转换为长日期
 	 * @param timestamp 时间戳
@@ -106,7 +106,7 @@ public class DateUtils{
 		}
 		return formatLongDate.format(new Date(Long.parseLong(timestamp)));
 	}
-	
+
 	/**
 	 * 格式化为长日期加时间_不带秒
 	 * @param timestamp long类型时间戳
@@ -283,7 +283,7 @@ public class DateUtils{
 	/**
 	 * 获取两个日期的间隔天数
 	 * @param startTime 开始时间
-	 * @param endTime 结束时间
+	 * @param endTime 结束时间（用当前时间）
 	 */
 	public static int dateDiff(long startTime, long endTime){
 		long diff = new Date(endTime).getTime() - new Date(startTime).getTime();
@@ -293,7 +293,7 @@ public class DateUtils{
 	/**
 	 * 获取两个日期的间隔(天时分秒)
 	 * @param startTime 开始时间 时间戳
-	 * @param endTime 结束时间 时间戳
+	 * @param endTime 结束时间 时间戳（用当前时间）
 	 * @param isFormat 如果为true, 返回 00天11时22分33秒，如果为false，则为00:11:22:33
 	 * @return 返回如: 01天22时33分51秒 或 01:22:33:51
 	 */
@@ -508,7 +508,7 @@ public class DateUtils{
 	/**
 	 * 根据字符串日期获年份
 	 * @param date 长日期 如2015-01-01 10:20:30 返回2015
-	 * @return 
+	 * @return
 	 */
 	public static int getYear(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -519,11 +519,11 @@ public class DateUtils{
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 根据字符串日期获取当前第几月（已经-1）
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 1
-	 * @return 
+	 * @return
 	 */
 	public static int getMonth(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -534,70 +534,70 @@ public class DateUtils{
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 根据字符串日期获取当前月的第几日
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 2
-	 * @return 
+	 * @return
 	 */
 	public static int getDay(String date){
 		if(!TextUtils.isEmpty(date)) {
 			date = date.replaceAll("-", "").replaceAll(" ", "").replaceAll(":", ""); // 20150102102030
-			if(!TextUtils.isEmpty(date) && date.length() == 14) { 
+			if(!TextUtils.isEmpty(date) && date.length() == 14) {
 				return Integer.parseInt(date.subSequence(6, 8).toString());
 			}
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 根据字符串日期获取当前小时
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 10
-	 * @return 
+	 * @return
 	 */
 	public static int getHours(String date){
 		if(!TextUtils.isEmpty(date)) {
 			date = date.replaceAll("-", "").replaceAll(" ", "").replaceAll(":", ""); // 20150102102030
-			if(!TextUtils.isEmpty(date) && date.length() == 14) { 
+			if(!TextUtils.isEmpty(date) && date.length() == 14) {
 				return Integer.parseInt(date.subSequence(8, 10).toString());
 			}
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 根据字符串日期获取当前分钟
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 20
-	 * @return 
+	 * @return
 	 */
 	public static int getMinute(String date){
 		if(!TextUtils.isEmpty(date)) {
 			date = date.replaceAll("-", "").replaceAll(" ", "").replaceAll(":", ""); // 20150102102030
-			if(!TextUtils.isEmpty(date) && date.length() == 14) { 
+			if(!TextUtils.isEmpty(date) && date.length() == 14) {
 				return Integer.parseInt(date.subSequence(10, 12).toString());
 			}
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 根据字符串日期获取当前秒
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 30
-	 * @return 
+	 * @return
 	 */
 	public static int getSecond(String date){
 		if(!TextUtils.isEmpty(date)) {
 			date = date.replaceAll("-", "").replaceAll(" ", "").replaceAll(":", ""); // 20150102102030
-			if(!TextUtils.isEmpty(date) && date.length() == 14) { 
+			if(!TextUtils.isEmpty(date) && date.length() == 14) {
 				return Integer.parseInt(date.subSequence(12, 14).toString());
 			}
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 获取当前秒（2位，不足补0）
-	 * @return 
+	 * @return
 	 */
 	public static String getSecond(){
 //	    System.out.println("========= 年：" + String.format("%ty%n", date)); // 当前年份（2位，不足补0）

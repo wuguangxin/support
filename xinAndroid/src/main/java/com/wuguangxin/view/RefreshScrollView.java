@@ -36,17 +36,17 @@ public class RefreshScrollView extends ScrollView {
 	private boolean canPullUp = false;
 	// 在手指滑动的过程中记录是否移动了布局
 	private boolean isMoved = false;
-	
+
 	/**
 	 * 默认刷新模式（下拉）
 	 */
 	private Mode mode = Mode.PULL_FROM_START;
-	
+
 	/**
 	 * 是否正在刷新
 	 */
 	private boolean isRefreshing = false;
-	
+
 	/**
 	 * 刷新回调监听器
 	 */
@@ -78,7 +78,7 @@ public class RefreshScrollView extends ScrollView {
 	}
 
 	/**
-	 * 
+	 *
 	 * 在触摸事件中, 处理上拉和下拉的逻辑
 	 */
 	@Override
@@ -95,50 +95,50 @@ public class RefreshScrollView extends ScrollView {
 		}
 		int action = ev.getAction();
 		switch (action) {
-			case MotionEvent.ACTION_DOWN:
-				// 判断是否可以上拉和下拉
-				canPullDown = isCanPullDown();
-				canPullUp = isCanPullUp();
-				// 记录按下时的Y值
-				downY = ev.getY();
-				break;
+		case MotionEvent.ACTION_DOWN:
+			// 判断是否可以上拉和下拉
+			canPullDown = isCanPullDown();
+			canPullUp = isCanPullUp();
+			// 记录按下时的Y值
+			downY = ev.getY();
+			break;
 
-			case MotionEvent.ACTION_MOVE:
-				moveY = ev.getY();
-				// 禁止下拉
+		case MotionEvent.ACTION_MOVE:
+			moveY = ev.getY();
+			// 禁止下拉
 //				if(mode == Mode.PULL_FROM_END && downY < moveY){
 //					break;
 //				}
-				// 禁止上拉
+			// 禁止上拉
 //				if(mode == Mode.PULL_FROM_START && downY > moveY){
 //					break;
 //				}
-				// 在移动的过程中， 既没有滚动到可以上拉的程度， 也没有滚动到可以下拉的程度
-				if (!canPullDown && !canPullUp) {
-					downY = ev.getY();
-					canPullDown = isCanPullDown();
-					canPullUp = isCanPullUp();
-					break;
-				}
-				int deltaY = (int) (moveY - downY);
-				// 是否应该移动布局
-				boolean shouldMove = (canPullDown && deltaY > 0) // 可以下拉， 并且手指向下移动
+			// 在移动的过程中， 既没有滚动到可以上拉的程度， 也没有滚动到可以下拉的程度
+			if (!canPullDown && !canPullUp) {
+				downY = ev.getY();
+				canPullDown = isCanPullDown();
+				canPullUp = isCanPullUp();
+				break;
+			}
+			int deltaY = (int) (moveY - downY);
+			// 是否应该移动布局
+			boolean shouldMove = (canPullDown && deltaY > 0) // 可以下拉， 并且手指向下移动
 					|| (canPullUp && deltaY < 0) // 可以上拉， 并且手指向上移动
 					|| (canPullUp && canPullDown); // 既可以上拉也可以下拉（这种情况出现在ScrollView包裹的控件比ScrollView还小）
-				if (shouldMove) {
-					// 计算偏移量
-					int offset = (int) (deltaY * MOVE_FACTOR);
-					// 随着手指的移动而移动布局
-					contentView.layout(originalRect.left, originalRect.top + offset, originalRect.right, originalRect.bottom + offset);
-					isMoved = true; // 记录移动了布局
-				}
-				break;
+			if (shouldMove) {
+				// 计算偏移量
+				int offset = (int) (deltaY * MOVE_FACTOR);
+				// 随着手指的移动而移动布局
+				contentView.layout(originalRect.left, originalRect.top + offset, originalRect.right, originalRect.bottom + offset);
+				isMoved = true; // 记录移动了布局
+			}
+			break;
 
-			case MotionEvent.ACTION_UP:
-				upY = ev.getY();
-				setOnRefresh();
-				boundBack();
-				break;
+		case MotionEvent.ACTION_UP:
+			upY = ev.getY();
+			setOnRefresh();
+			boundBack();
+			break;
 		}
 		return super.dispatchTouchEvent(ev);
 	}
@@ -167,7 +167,7 @@ public class RefreshScrollView extends ScrollView {
 			return; // 如果没有移动布局， 则跳过执行
 		// 开启动画
 		TranslateAnimation anim = new TranslateAnimation(0, 0, contentView.getTop(), originalRect.top);
-		
+
 //		AccelerateDecelerateInterpolator    在动画开始与结束的地方速率改变比较慢，在中间的时侯加速
 //		AccelerateInterpolator        		在动画开始的地方速率改变比较慢，然后开始加速
 //		DecelerateInterpolator        		在动画开始的地方速率改变比较慢，然后开始减速
@@ -222,7 +222,7 @@ public class RefreshScrollView extends ScrollView {
 	public interface OnRefreshListener{
 		void onRefresh(RefreshScrollView refreshScrollView);
 	}
-	
+
 	/**
 	 * 获取当前刷新模式
 	 */
@@ -237,7 +237,7 @@ public class RefreshScrollView extends ScrollView {
 	public void setMode(Mode mode){
 		this.mode = mode;
 	}
-	
+
 	/**
 	 * 刷新模式
 	 * @author wuguangxin
@@ -267,7 +267,7 @@ public class RefreshScrollView extends ScrollView {
 		Mode(int modeInt) {
 			value = modeInt;
 		}
-		
+
 		private int value;
 
 		public int getValue(){
