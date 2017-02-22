@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
  * @author wuguangxin
  */
 public class MoneyUtils{
-	private static DecimalFormat decimalFormat = new DecimalFormat();
+//	private static DecimalFormat decimalFormat = new DecimalFormat();
 
 	/**
 	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
@@ -45,6 +45,7 @@ public class MoneyUtils{
 		if (number == null) {
 			number = 0;
 		}
+		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern(String.format("##,###.00%s", unit));
 		String formatMoney = decimalFormat.format(number.doubleValue());
 		if (formatMoney.startsWith(".")) {
@@ -63,9 +64,7 @@ public class MoneyUtils{
 		if (number == null) {
 			number = 0.0d;
 		}
-		if(decimalFormat == null){
-			decimalFormat = new DecimalFormat();
-		}
+		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern(getReg(bit));
 		if(roundingMode != null){
 			decimalFormat.setRoundingMode(roundingMode);
@@ -96,6 +95,7 @@ public class MoneyUtils{
 		if (moneyLong == 0) {
 			return "0.00";
 		}
+		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.00");
 		String moneyString = decimalFormat.format(moneyLong);
 		if (moneyString.startsWith(".")) {
@@ -112,6 +112,7 @@ public class MoneyUtils{
 		if (moneyDouble == 0) {
 			return "0.00";
 		}
+		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.00");
 		String moneyString = decimalFormat.format(moneyDouble);
 		if (moneyString.startsWith(".")) {
@@ -128,6 +129,7 @@ public class MoneyUtils{
 		if (moneyBigDecimal == null || moneyBigDecimal.doubleValue() == 0) {
 			return "0.00";
 		}
+		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.00");
 		String formatMoney = decimalFormat.format(moneyBigDecimal.doubleValue());
 		if (formatMoney.startsWith(".")) {
@@ -144,6 +146,7 @@ public class MoneyUtils{
 		if (moneyDouble == 0) {
 			return "0";
 		}
+		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.0");
 		String moneyString = decimalFormat.format(moneyDouble);
 		if (moneyString.startsWith(".")) {
@@ -184,9 +187,7 @@ public class MoneyUtils{
 	 * @param bit 保留的小数位数
 	 */
 	private static DecimalFormat getDecimalFormat(int bit){
-		if(decimalFormat == null){
-			decimalFormat = new DecimalFormat();
-		}
+		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern(getReg(bit));
 		return decimalFormat;
 	}
