@@ -44,12 +44,12 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_tabhost_item_layout.xml"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/xin_toast_warn_layout.xml",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_toast_warn_layout.xml"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/xin_menu_layout.xml",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/xin_toast_warn_layout.xml",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_toast_warn_layout.xml"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/pull_to_refresh_header_horizontal.xml",

@@ -6,6 +6,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+/**
+ * 金额格式化工具类
+ * 
+ * @author wuguangxin
+ */
 public class MoneyUtils{
 	private static DecimalFormat decimalFormat = new DecimalFormat();
 
