@@ -102,6 +102,17 @@ public class MyDialog extends Dialog implements DialogInterface{
 	}
 
 	/**
+	 * 构造一个MyDialog对话框
+	 * @param context Activity上下文
+	 * @param themeResId 主题ID,如 AlertDialog.THEME_HOLO_LIGHT
+	 */
+	public MyDialog(Context context, int themeResId) {
+		super(context, themeResId);
+		this.context = context;
+		initView();
+	}
+
+	/**
 	 * 初始化对话框
 	 */
 	@SuppressLint("InflateParams")

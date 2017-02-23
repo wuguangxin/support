@@ -17,14 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
+    allprojects {
+        repositories {
+            jcenter()
 
-allprojects {
-    repositories {
-        jcenter()
-
-        maven { url 'https://jitpack.io' }
+            maven { url 'https://jitpack.io' }
+        }
     }
 }
 
@@ -36,8 +35,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     testCompile 'junit:junit:4.12'
-//    compile project(':xinAndroid')
+    compile project(':xinAndroid')
 
     // 框架支持库
-    compile 'com.github.wuguangxin:XinAndroid:1.0.0'
+//    compile 'com.github.wuguangxin:XinAndroid:1.0.9'
 }
