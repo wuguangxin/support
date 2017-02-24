@@ -13,8 +13,9 @@
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
         android:layout_marginTop="15dip"
-        android:background="@drawable/xin_dialog_bg"
+        android:background="@color/transparent"
         android:orientation="vertical">
+        <!--android:background="@drawable/xin_dialog_bg"-->
 
         <!-- 标题区 -->
 
