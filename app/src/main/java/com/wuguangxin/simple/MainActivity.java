@@ -1,9 +1,7 @@
 package com.wuguangxin.simple;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.wuguangxin.dialog.MyDialog;
 
@@ -16,18 +14,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textView = new TextView(this);
-        textView.setText("TEST");
-        textView.setBackgroundColor(getResources().getColor(R.color.red));
-
         if (mDialog != null) {
             mDialog.dismiss();
         }
-        mDialog = new MyDialog(this, AlertDialog.THEME_HOLO_LIGHT);
-        mDialog.setCanceledOnTouchOutside(false);
-        mDialog.setCancelable(false);
-//        mDialog.setContentView(textView);
-        mDialog.setView(textView);
+        mDialog = new MyDialog(this);
+        mDialog.setTitle("提示");
+        mDialog.setMessage("你好");
+        mDialog.setPositiveButton("确认", null);
+        mDialog.setNegativeButton("取消", null);
         mDialog.show();
     }
 }
