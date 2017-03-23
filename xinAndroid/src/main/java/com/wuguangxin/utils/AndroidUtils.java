@@ -368,8 +368,13 @@ public class AndroidUtils {
      * @return
      */
     public static String getDeviceId(Context context) {
-        mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        return mTelephonyManager.getDeviceId();
+        try {
+            mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            return mTelephonyManager.getDeviceId();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -382,8 +387,9 @@ public class AndroidUtils {
             PackageInfo packInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return packInfo.versionName;
         } catch (NameNotFoundException e) {
-            return null;
+            e.printStackTrace();
         }
+        return null;
     }
 
     /**
@@ -397,8 +403,9 @@ public class AndroidUtils {
             PackageInfo mPackageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return mPackageInfo.versionCode;
         } catch (NameNotFoundException e) {
-            return 0;
+            e.printStackTrace();
         }
+        return 0;
     }
 
     /**
@@ -423,9 +430,10 @@ public class AndroidUtils {
                 return false;
             }
             return !((Build.MODEL.equals("sdk")) || (Build.MODEL.equals("google_sdk")));
-        } catch (Exception ioe) {
-            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return true;
     }
 
     /**
@@ -436,9 +444,14 @@ public class AndroidUtils {
      */
     public static String getMac(Context context) {
         String result = null;
-        wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        result = wifiInfo.getMacAddress();
+        try {
+            result = null;
+            wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+            result = wifiInfo.getMacAddress();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return result;
     }
 
