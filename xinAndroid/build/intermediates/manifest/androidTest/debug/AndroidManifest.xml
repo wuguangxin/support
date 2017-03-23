@@ -13,6 +13,7 @@
         android:label="Tests for com.wuguangxin.test"
         android:targetPackage="com.wuguangxin.test" />
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
