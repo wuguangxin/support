@@ -94,7 +94,6 @@ public class DateUtils{
 	}
 
 
-
 	/**
 	 * 格式化为长日期
 	 * @param timestamp String类型时间戳
@@ -281,13 +280,15 @@ public class DateUtils{
 	}
 
 	/**
-	 * 获取两个日期的间隔天数
-	 * @param startTime 开始时间
-	 * @param endTime 结束时间（用当前时间）
+	 * 获取两个日期的间隔天数（精确到天，会把传入的两个时间戳去掉时分秒）
+	 * @param startTime 开始日期
+	 * @param endTime 结束日期
 	 */
-	public static int dateDiff(long startTime, long endTime){
-		long diff = new Date(endTime).getTime() - new Date(startTime).getTime();
-		return (int) (diff / (1000 * 60 * 60 * 24)); // 除一天的毫秒数
+	public static int dateDiff(long startTime, long endTime) {
+		String endStr = formatDateShortLine(endTime); // 把时分秒抹去
+		String startStr = formatDateShortLine(startTime); // 把时分秒抹去
+		long dayDiff = formatTimestamp(endStr) - formatTimestamp(startStr); // 时间差
+		return (int)(dayDiff / 86400000L); // 除一天的毫秒数
 	}
 
 	/**
