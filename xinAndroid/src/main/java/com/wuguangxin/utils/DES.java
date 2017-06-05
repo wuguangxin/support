@@ -1,27 +1,24 @@
-package com.wuguangxin.utils;
-
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * DEX加密解密工具类（自行通过DES.setEncryption()来设置你的加密秘钥）
- * 
- * @author wuguangxin
+ * DEX加密解密工具类
+ *
+ * Created by wuguangxin on 16/10/11
  */
 public class DES {
-	
+
 	private static final byte decodeMap[] = initDecodeMap();
 	private static final char encodeMap[] = initEncodeMap();
-
 	/** 默认秘钥 */
-	public static final String DEF_ENCRYPTION = "com.xin.wu@201701010000";
+	private static final String DEF_ENCRYPTION = "com.xin.wu@201701010000";
 
 	private static String ENCRYPTION = DEF_ENCRYPTION;
 
 	/**
-	 * 设置加密秘钥
-	 * @param encryption 长度为24字节的字符串
+	 * 设置秘钥
+	 * @param encryption
 	 */
 	public static void setEncryption(String encryption) {
 		DES.ENCRYPTION = encryption;

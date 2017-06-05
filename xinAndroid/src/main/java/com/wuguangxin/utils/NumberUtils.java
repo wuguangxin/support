@@ -1,6 +1,7 @@
 package com.wuguangxin.utils;
 
 import android.annotation.SuppressLint;
+import android.text.TextUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -14,6 +15,25 @@ import java.text.NumberFormat;
  */
 public class NumberUtils {
     private static DecimalFormat format = new DecimalFormat();
+
+    /**
+     * 去小数后面的.00 或 .0
+     * @param number
+     * @return
+     */
+    public static String replaceZero(Number number) {
+        if(number == null) {
+            return "0";
+        }
+        String s = number.toString();
+        if(TextUtils.isEmpty(s)) {
+            return "0";
+        }
+        if(s.startsWith(".")) s = "0" + s;
+        if(s.endsWith(".00")) s = s.replace(".00", "");
+        if(s.endsWith(".0")) s = s.replace(".0", "");
+        return s;
+    }
 
     /**
      * 格式化数字（不千分位，如 1234567.89）
@@ -112,16 +132,6 @@ public class NumberUtils {
     public static String getNumberId(int number, int bit) {
         String reg = "%0" +bit+ "d%n";
         return String.format(reg, number);
-    }
-
-    /**
-     * 获取编号
-     * @param id 当前编号
-     * @param bit 编号位数
-     * @return 如id=2，bit=5，则返回00002
-     */
-    public static String getNumberId1(int id, int bit) {
-        return String.format("%06d%n", id);
     }
 
     // #########################################################

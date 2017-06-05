@@ -17,8 +17,8 @@ import com.wuguangxin.utils.Utils;
  * @date 16/12/28 下午4:29
  */
 public class ItemRelativeLayout extends RelativeLayout {
-	private static int DEF_DIVIDER_COLOR = 0xffd1d1d1;
-	private static float DEF_DIVIDER_SIZE = 0.5F;
+	private static final int DEF_DIVIDER_COLOR = 0xffd1d1d1;
+	private static final float DEF_DIVIDER_SIZE = 0.5F;
 	private float lineSize = DEF_DIVIDER_SIZE;
 	private float topPaddingLeft;
 	private float topPaddingRight;

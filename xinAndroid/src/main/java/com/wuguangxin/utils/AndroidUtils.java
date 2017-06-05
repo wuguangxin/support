@@ -53,8 +53,10 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.NetworkInterface;
 import java.net.URL;
 import java.nio.channels.FileChannel;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -437,7 +439,7 @@ public class AndroidUtils {
     }
 
     /**
-     * 获取手机的MAC地址
+     * 根据WifiManager获取MAC地址
      *
      * @param context
      * @return
@@ -452,7 +454,40 @@ public class AndroidUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return result;
+    }
+
+    /**
+     * 通过网络接口取
+     * @return
+     */
+    public static String getMac() {
+        try {
+            List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
+            for (NetworkInterface nif : all) {
+                if (!nif.getName().equalsIgnoreCase("wlan0"))
+                    continue;
+
+                byte[] macBytes = nif.getHardwareAddress();
+                if (macBytes == null) {
+                    return null;
+                }
+
+                StringBuilder res1 = new StringBuilder();
+                for (byte b : macBytes) {
+                    res1.append(String.format("%02X:", b));
+                }
+
+                if (res1.length() > 0) {
+                    res1.deleteCharAt(res1.length() - 1);
+                }
+                return res1.toString();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -1181,10 +1216,52 @@ public class AndroidUtils {
      * 根据文件安装APK
      */
     public static void install(Context context, File file) {
-        // 核心是下面几句代码
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         context.startActivity(intent);
     }
+
+    /**
+     * 获取屏幕密度DPI（如 120 / 160 / 240）
+     * @param context
+     * @return 默认返回0
+     */
+    public static int getScreenDensityDpi(Context context) {
+        try {
+            return context.getResources().getDisplayMetrics().densityDpi;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * 获取屏幕密度（如1.0、1.5, 2.0）
+     * @param context
+     * @return 默认返回0.0
+     */
+    public static float getScreenDensity(Context context) {
+        try {
+            return context.getResources().getDisplayMetrics().density;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0.0f;
+    }
+
+    /**
+     * 字体缩放比例
+     * @param context
+     * @return 默认返回0.0
+     */
+    public static float getScaledDensity(Context context) {
+        try {
+            return context.getResources().getDisplayMetrics().scaledDensity;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0.0f;
+    }
+
 
 }
