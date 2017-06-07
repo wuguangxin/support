@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         }
         mDialog = new MyDialog(this);
         mDialog.setTitle("提示");
-        mDialog.setMessage("你好");
+        mDialog.setMessage("欢迎使用XinAndroid");
         mDialog.setPositiveButton("确认", null);
         mDialog.setNegativeButton("取消", null);
         mDialog.show();
