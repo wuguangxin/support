@@ -244,7 +244,6 @@
     <string name="UMUpdateSize">Update size: </string>
     <string name="UMUpdateTitle">New version found</string>
     <string name="actionbar_search_edittext_hint">输入搜索关键字</string>
-    <string name="app_name">okHttpUtils</string>
     <string name="dialog_button_negative_text_default">取消</string>
     <string name="dialog_button_positive_text_default">确认</string>
     <string name="dialog_loading_message_default">处理中…</string>

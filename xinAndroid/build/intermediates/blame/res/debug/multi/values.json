@@ -3167,27 +3167,8 @@
                     "startLine": 246,
                     "startColumn": 4,
                     "startOffset": 17779,
-                    "endColumn": 48,
-                    "endOffset": 17823
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/.android/build-cache/754ac6b43c7928c9307d0970b4f52ae33bc4fc36/output/res/values/values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 190,
-                        "endColumn": 48,
-                        "endOffset": 234
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 247,
-                    "startColumn": 4,
-                    "startOffset": 17828,
                     "endColumn": 66,
-                    "endOffset": 17890
+                    "endOffset": 17841
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3202,11 +3183,11 @@
             },
             {
                 "to": {
-                    "startLine": 248,
+                    "startLine": 247,
                     "startColumn": 4,
-                    "startOffset": 17895,
+                    "startOffset": 17846,
                     "endColumn": 66,
-                    "endOffset": 17957
+                    "endOffset": 17908
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3221,11 +3202,11 @@
             },
             {
                 "to": {
-                    "startLine": 249,
+                    "startLine": 248,
                     "startColumn": 4,
-                    "startOffset": 17962,
+                    "startOffset": 17913,
                     "endColumn": 63,
-                    "endOffset": 18021
+                    "endOffset": 17972
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3240,11 +3221,11 @@
             },
             {
                 "to": {
-                    "startLine": 250,
+                    "startLine": 249,
                     "startColumn": 4,
-                    "startOffset": 18026,
+                    "startOffset": 17977,
                     "endColumn": 59,
-                    "endOffset": 18081
+                    "endOffset": 18032
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3259,11 +3240,11 @@
             },
             {
                 "to": {
-                    "startLine": 251,
+                    "startLine": 250,
                     "startColumn": 4,
-                    "startOffset": 18086,
+                    "startOffset": 18037,
                     "endColumn": 60,
-                    "endOffset": 18142
+                    "endOffset": 18093
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3278,11 +3259,11 @@
             },
             {
                 "to": {
-                    "startLine": 252,
+                    "startLine": 251,
                     "startColumn": 4,
-                    "startOffset": 18147,
+                    "startOffset": 18098,
                     "endColumn": 60,
-                    "endOffset": 18203
+                    "endOffset": 18154
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3297,11 +3278,11 @@
             },
             {
                 "to": {
-                    "startLine": 253,
+                    "startLine": 252,
                     "startColumn": 4,
-                    "startOffset": 18208,
+                    "startOffset": 18159,
                     "endColumn": 58,
-                    "endOffset": 18262
+                    "endOffset": 18213
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3316,11 +3297,11 @@
             },
             {
                 "to": {
-                    "startLine": 254,
+                    "startLine": 253,
                     "startColumn": 4,
-                    "startOffset": 18267,
+                    "startOffset": 18218,
                     "endColumn": 63,
-                    "endOffset": 18326
+                    "endOffset": 18277
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3335,11 +3316,11 @@
             },
             {
                 "to": {
-                    "startLine": 255,
+                    "startLine": 254,
                     "startColumn": 4,
-                    "startOffset": 18331,
+                    "startOffset": 18282,
                     "endColumn": 53,
-                    "endOffset": 18380
+                    "endOffset": 18331
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3354,11 +3335,11 @@
             },
             {
                 "to": {
-                    "startLine": 256,
+                    "startLine": 255,
                     "startColumn": 4,
-                    "startOffset": 18385,
+                    "startOffset": 18336,
                     "endColumn": 63,
-                    "endOffset": 18444
+                    "endOffset": 18395
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3373,11 +3354,11 @@
             },
             {
                 "to": {
-                    "startLine": 257,
+                    "startLine": 256,
                     "startColumn": 4,
-                    "startOffset": 18449,
+                    "startOffset": 18400,
                     "endColumn": 73,
-                    "endOffset": 18518
+                    "endOffset": 18469
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3392,11 +3373,11 @@
             },
             {
                 "to": {
-                    "startLine": 258,
+                    "startLine": 257,
                     "startColumn": 4,
-                    "startOffset": 18523,
+                    "startOffset": 18474,
                     "endColumn": 80,
-                    "endOffset": 18599
+                    "endOffset": 18550
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3411,11 +3392,11 @@
             },
             {
                 "to": {
-                    "startLine": 259,
+                    "startLine": 258,
                     "startColumn": 4,
-                    "startOffset": 18604,
+                    "startOffset": 18555,
                     "endColumn": 74,
-                    "endOffset": 18674
+                    "endOffset": 18625
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3430,11 +3411,11 @@
             },
             {
                 "to": {
-                    "startLine": 260,
+                    "startLine": 259,
                     "startColumn": 4,
-                    "startOffset": 18679,
+                    "startOffset": 18630,
                     "endColumn": 59,
-                    "endOffset": 18734
+                    "endOffset": 18685
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3449,11 +3430,11 @@
             },
             {
                 "to": {
-                    "startLine": 261,
+                    "startLine": 260,
                     "startColumn": 4,
-                    "startOffset": 18739,
+                    "startOffset": 18690,
                     "endColumn": 68,
-                    "endOffset": 18803
+                    "endOffset": 18754
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3468,11 +3449,11 @@
             },
             {
                 "to": {
-                    "startLine": 262,
+                    "startLine": 261,
                     "startColumn": 4,
-                    "startOffset": 18808,
+                    "startOffset": 18759,
                     "endColumn": 62,
-                    "endOffset": 18866
+                    "endOffset": 18817
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3487,11 +3468,11 @@
             },
             {
                 "to": {
-                    "startLine": 263,
+                    "startLine": 262,
                     "startColumn": 4,
-                    "startOffset": 18871,
+                    "startOffset": 18822,
                     "endColumn": 54,
-                    "endOffset": 18921
+                    "endOffset": 18872
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3506,11 +3487,11 @@
             },
             {
                 "to": {
-                    "startLine": 264,
+                    "startLine": 263,
                     "startColumn": 4,
-                    "startOffset": 18926,
+                    "startOffset": 18877,
                     "endColumn": 54,
-                    "endOffset": 18976
+                    "endOffset": 18927
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3525,11 +3506,11 @@
             },
             {
                 "to": {
-                    "startLine": 265,
+                    "startLine": 264,
                     "startColumn": 4,
-                    "startOffset": 18981,
+                    "startOffset": 18932,
                     "endColumn": 50,
-                    "endOffset": 19027
+                    "endOffset": 18978
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3544,11 +3525,11 @@
             },
             {
                 "to": {
-                    "startLine": 266,
+                    "startLine": 265,
                     "startColumn": 4,
-                    "startOffset": 19032,
+                    "startOffset": 18983,
                     "endColumn": 55,
-                    "endOffset": 19083
+                    "endOffset": 19034
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3563,11 +3544,11 @@
             },
             {
                 "to": {
-                    "startLine": 267,
+                    "startLine": 266,
                     "startColumn": 4,
-                    "startOffset": 19088,
+                    "startOffset": 19039,
                     "endColumn": 55,
-                    "endOffset": 19139
+                    "endOffset": 19090
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3582,11 +3563,11 @@
             },
             {
                 "to": {
-                    "startLine": 268,
+                    "startLine": 267,
                     "startColumn": 4,
-                    "startOffset": 19144,
+                    "startOffset": 19095,
                     "endColumn": 54,
-                    "endOffset": 19194
+                    "endOffset": 19145
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3601,11 +3582,11 @@
             },
             {
                 "to": {
-                    "startLine": 269,
+                    "startLine": 268,
                     "startColumn": 4,
-                    "startOffset": 19199,
+                    "startOffset": 19150,
                     "endColumn": 61,
-                    "endOffset": 19256
+                    "endOffset": 19207
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3620,11 +3601,11 @@
             },
             {
                 "to": {
-                    "startLine": 270,
+                    "startLine": 269,
                     "startColumn": 4,
-                    "startOffset": 19261,
+                    "startOffset": 19212,
                     "endColumn": 65,
-                    "endOffset": 19322
+                    "endOffset": 19273
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3639,11 +3620,11 @@
             },
             {
                 "to": {
-                    "startLine": 271,
+                    "startLine": 270,
                     "startColumn": 4,
-                    "startOffset": 19327,
+                    "startOffset": 19278,
                     "endColumn": 98,
-                    "endOffset": 19421
+                    "endOffset": 19372
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3658,11 +3639,11 @@
             },
             {
                 "to": {
-                    "startLine": 272,
+                    "startLine": 271,
                     "startColumn": 4,
-                    "startOffset": 19426,
+                    "startOffset": 19377,
                     "endColumn": 59,
-                    "endOffset": 19481
+                    "endOffset": 19432
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3677,11 +3658,11 @@
             },
             {
                 "to": {
-                    "startLine": 273,
+                    "startLine": 272,
                     "startColumn": 4,
-                    "startOffset": 19486,
+                    "startOffset": 19437,
                     "endColumn": 74,
-                    "endOffset": 19556
+                    "endOffset": 19507
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3696,11 +3677,11 @@
             },
             {
                 "to": {
-                    "startLine": 274,
+                    "startLine": 273,
                     "startColumn": 4,
-                    "startOffset": 19561,
+                    "startOffset": 19512,
                     "endColumn": 95,
-                    "endOffset": 19652
+                    "endOffset": 19603
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3715,11 +3696,11 @@
             },
             {
                 "to": {
-                    "startLine": 275,
+                    "startLine": 274,
                     "startColumn": 4,
-                    "startOffset": 19657,
+                    "startOffset": 19608,
                     "endColumn": 83,
-                    "endOffset": 19736
+                    "endOffset": 19687
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3734,11 +3715,11 @@
             },
             {
                 "to": {
-                    "startLine": 276,
+                    "startLine": 275,
                     "startColumn": 4,
-                    "startOffset": 19741,
+                    "startOffset": 19692,
                     "endColumn": 50,
-                    "endOffset": 19787
+                    "endOffset": 19738
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3753,11 +3734,11 @@
             },
             {
                 "to": {
-                    "startLine": 277,
+                    "startLine": 276,
                     "startColumn": 4,
-                    "startOffset": 19792,
+                    "startOffset": 19743,
                     "endColumn": 76,
-                    "endOffset": 19864
+                    "endOffset": 19815
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3772,11 +3753,11 @@
             },
             {
                 "to": {
-                    "startLine": 278,
+                    "startLine": 277,
                     "startColumn": 4,
-                    "startOffset": 19869,
+                    "startOffset": 19820,
                     "endColumn": 124,
-                    "endOffset": 19989
+                    "endOffset": 19940
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3791,11 +3772,11 @@
             },
             {
                 "to": {
-                    "startLine": 279,
+                    "startLine": 278,
                     "startColumn": 4,
-                    "startOffset": 19994,
+                    "startOffset": 19945,
                     "endColumn": 89,
-                    "endOffset": 20079
+                    "endOffset": 20030
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3810,11 +3791,11 @@
             },
             {
                 "to": {
-                    "startLine": 280,
+                    "startLine": 279,
                     "startColumn": 4,
-                    "startOffset": 20084,
+                    "startOffset": 20035,
                     "endColumn": 74,
-                    "endOffset": 20154
+                    "endOffset": 20105
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3829,11 +3810,11 @@
             },
             {
                 "to": {
-                    "startLine": 281,
+                    "startLine": 280,
                     "startColumn": 4,
-                    "startOffset": 20159,
+                    "startOffset": 20110,
                     "endColumn": 105,
-                    "endOffset": 20260
+                    "endOffset": 20211
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3848,11 +3829,11 @@
             },
             {
                 "to": {
-                    "startLine": 282,
+                    "startLine": 281,
                     "startColumn": 4,
-                    "startOffset": 20265,
+                    "startOffset": 20216,
                     "endColumn": 84,
-                    "endOffset": 20345
+                    "endOffset": 20296
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3867,11 +3848,11 @@
             },
             {
                 "to": {
-                    "startLine": 283,
+                    "startLine": 282,
                     "startColumn": 4,
-                    "startOffset": 20350,
+                    "startOffset": 20301,
                     "endColumn": 78,
-                    "endOffset": 20424
+                    "endOffset": 20375
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/umeng_common_strings.xml",
@@ -3886,11 +3867,11 @@
             },
             {
                 "to": {
-                    "startLine": 284,
+                    "startLine": 283,
                     "startColumn": 4,
-                    "startOffset": 20429,
+                    "startOffset": 20380,
                     "endColumn": 54,
-                    "endOffset": 20479
+                    "endOffset": 20430
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3905,11 +3886,11 @@
             },
             {
                 "to": {
-                    "startLine": 285,
+                    "startLine": 284,
                     "startColumn": 4,
-                    "startOffset": 20484,
+                    "startOffset": 20435,
                     "endColumn": 57,
-                    "endOffset": 20537
+                    "endOffset": 20488
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3924,11 +3905,11 @@
             },
             {
                 "to": {
-                    "startLine": 286,
+                    "startLine": 285,
                     "startColumn": 4,
-                    "startOffset": 20542,
+                    "startOffset": 20493,
                     "endColumn": 54,
-                    "endOffset": 20592
+                    "endOffset": 20543
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3943,11 +3924,11 @@
             },
             {
                 "to": {
-                    "startLine": 287,
+                    "startLine": 286,
                     "startColumn": 4,
-                    "startOffset": 20597,
+                    "startOffset": 20548,
                     "endColumn": 56,
-                    "endOffset": 20649
+                    "endOffset": 20600
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3962,11 +3943,11 @@
             },
             {
                 "to": {
-                    "startLine": 288,
+                    "startLine": 287,
                     "startColumn": 4,
-                    "startOffset": 20654,
+                    "startOffset": 20605,
                     "endColumn": 51,
-                    "endOffset": 20701
+                    "endOffset": 20652
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -3981,11 +3962,11 @@
             },
             {
                 "to": {
-                    "startLine": 289,
+                    "startLine": 288,
                     "startColumn": 4,
-                    "startOffset": 20706,
+                    "startOffset": 20657,
                     "endColumn": 49,
-                    "endOffset": 20751
+                    "endOffset": 20702
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4000,11 +3981,11 @@
             },
             {
                 "to": {
-                    "startLine": 290,
+                    "startLine": 289,
                     "startColumn": 4,
-                    "startOffset": 20756,
+                    "startOffset": 20707,
                     "endColumn": 53,
-                    "endOffset": 20805
+                    "endOffset": 20756
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4019,11 +4000,11 @@
             },
             {
                 "to": {
-                    "startLine": 291,
+                    "startLine": 290,
                     "startColumn": 4,
-                    "startOffset": 20810,
+                    "startOffset": 20761,
                     "endColumn": 82,
-                    "endOffset": 20888
+                    "endOffset": 20839
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4038,11 +4019,11 @@
             },
             {
                 "to": {
-                    "startLine": 292,
+                    "startLine": 291,
                     "startColumn": 4,
-                    "startOffset": 20893,
+                    "startOffset": 20844,
                     "endColumn": 82,
-                    "endOffset": 20971
+                    "endOffset": 20922
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4057,11 +4038,11 @@
             },
             {
                 "to": {
-                    "startLine": 293,
+                    "startLine": 292,
                     "startColumn": 4,
-                    "startOffset": 20976,
+                    "startOffset": 20927,
                     "endColumn": 111,
-                    "endOffset": 21083
+                    "endOffset": 21034
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4076,11 +4057,11 @@
             },
             {
                 "to": {
-                    "startLine": 294,
+                    "startLine": 293,
                     "startColumn": 4,
-                    "startOffset": 21088,
+                    "startOffset": 21039,
                     "endColumn": 123,
-                    "endOffset": 21207
+                    "endOffset": 21158
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4095,11 +4076,11 @@
             },
             {
                 "to": {
-                    "startLine": 295,
+                    "startLine": 294,
                     "startColumn": 4,
-                    "startOffset": 21212,
+                    "startOffset": 21163,
                     "endColumn": 69,
-                    "endOffset": 21277
+                    "endOffset": 21228
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4114,11 +4095,11 @@
             },
             {
                 "to": {
-                    "startLine": 296,
+                    "startLine": 295,
                     "startColumn": 4,
-                    "startOffset": 21282,
+                    "startOffset": 21233,
                     "endColumn": 69,
-                    "endOffset": 21347
+                    "endOffset": 21298
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4133,11 +4114,11 @@
             },
             {
                 "to": {
-                    "startLine": 297,
+                    "startLine": 296,
                     "startColumn": 4,
-                    "startOffset": 21352,
+                    "startOffset": 21303,
                     "endColumn": 98,
-                    "endOffset": 21446
+                    "endOffset": 21397
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4152,11 +4133,11 @@
             },
             {
                 "to": {
-                    "startLine": 298,
+                    "startLine": 297,
                     "startColumn": 4,
-                    "startOffset": 21451,
+                    "startOffset": 21402,
                     "endColumn": 87,
-                    "endOffset": 21534
+                    "endOffset": 21485
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4171,11 +4152,11 @@
             },
             {
                 "to": {
-                    "startLine": 299,
+                    "startLine": 298,
                     "startColumn": 4,
-                    "startOffset": 21539,
+                    "startOffset": 21490,
                     "endColumn": 56,
-                    "endOffset": 21591
+                    "endOffset": 21542
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4190,11 +4171,11 @@
             },
             {
                 "to": {
-                    "startLine": 300,
+                    "startLine": 299,
                     "startColumn": 4,
-                    "startOffset": 21596,
+                    "startOffset": 21547,
                     "endColumn": 51,
-                    "endOffset": 21643
+                    "endOffset": 21594
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_strings.xml",
@@ -4209,12 +4190,12 @@
             },
             {
                 "to": {
-                    "startLine": 301,
+                    "startLine": 300,
                     "startColumn": 4,
-                    "startOffset": 21648,
-                    "endLine": 306,
+                    "startOffset": 21599,
+                    "endLine": 305,
                     "endColumn": 12,
-                    "endOffset": 22137
+                    "endOffset": 22088
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4230,12 +4211,12 @@
             },
             {
                 "to": {
-                    "startLine": 307,
+                    "startLine": 306,
                     "startColumn": 4,
-                    "startOffset": 22142,
-                    "endLine": 314,
+                    "startOffset": 22093,
+                    "endLine": 313,
                     "endColumn": 12,
-                    "endOffset": 22523
+                    "endOffset": 22474
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4251,12 +4232,12 @@
             },
             {
                 "to": {
-                    "startLine": 315,
+                    "startLine": 314,
                     "startColumn": 4,
-                    "startOffset": 22528,
-                    "endLine": 318,
+                    "startOffset": 22479,
+                    "endLine": 317,
                     "endColumn": 12,
-                    "endOffset": 22747
+                    "endOffset": 22698
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4272,12 +4253,12 @@
             },
             {
                 "to": {
-                    "startLine": 319,
+                    "startLine": 318,
                     "startColumn": 4,
-                    "startOffset": 22752,
-                    "endLine": 322,
+                    "startOffset": 22703,
+                    "endLine": 321,
                     "endColumn": 12,
-                    "endOffset": 22971
+                    "endOffset": 22922
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4293,12 +4274,12 @@
             },
             {
                 "to": {
-                    "startLine": 323,
+                    "startLine": 322,
                     "startColumn": 4,
-                    "startOffset": 22976,
-                    "endLine": 326,
+                    "startOffset": 22927,
+                    "endLine": 325,
                     "endColumn": 12,
-                    "endOffset": 23198
+                    "endOffset": 23149
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4314,12 +4295,12 @@
             },
             {
                 "to": {
-                    "startLine": 327,
+                    "startLine": 326,
                     "startColumn": 4,
-                    "startOffset": 23203,
-                    "endLine": 330,
+                    "startOffset": 23154,
+                    "endLine": 329,
                     "endColumn": 12,
-                    "endOffset": 23428
+                    "endOffset": 23379
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4335,12 +4316,12 @@
             },
             {
                 "to": {
-                    "startLine": 331,
+                    "startLine": 330,
                     "startColumn": 4,
-                    "startOffset": 23433,
-                    "endLine": 334,
+                    "startOffset": 23384,
+                    "endLine": 333,
                     "endColumn": 12,
-                    "endOffset": 23649
+                    "endOffset": 23600
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4356,12 +4337,12 @@
             },
             {
                 "to": {
-                    "startLine": 335,
+                    "startLine": 334,
                     "startColumn": 4,
-                    "startOffset": 23654,
-                    "endLine": 343,
+                    "startOffset": 23605,
+                    "endLine": 342,
                     "endColumn": 12,
-                    "endOffset": 24114
+                    "endOffset": 24065
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4377,12 +4358,12 @@
             },
             {
                 "to": {
-                    "startLine": 344,
+                    "startLine": 343,
                     "startColumn": 4,
-                    "startOffset": 24119,
-                    "endLine": 351,
+                    "startOffset": 24070,
+                    "endLine": 350,
                     "endColumn": 12,
-                    "endOffset": 24506
+                    "endOffset": 24457
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4398,12 +4379,12 @@
             },
             {
                 "to": {
-                    "startLine": 352,
+                    "startLine": 351,
                     "startColumn": 4,
-                    "startOffset": 24511,
-                    "endLine": 365,
+                    "startOffset": 24462,
+                    "endLine": 364,
                     "endColumn": 12,
-                    "endOffset": 25237
+                    "endOffset": 25188
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4419,12 +4400,12 @@
             },
             {
                 "to": {
-                    "startLine": 366,
+                    "startLine": 365,
                     "startColumn": 4,
-                    "startOffset": 25242,
-                    "endLine": 377,
+                    "startOffset": 25193,
+                    "endLine": 376,
                     "endColumn": 12,
-                    "endOffset": 25847
+                    "endOffset": 25798
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4440,12 +4421,12 @@
             },
             {
                 "to": {
-                    "startLine": 378,
+                    "startLine": 377,
                     "startColumn": 4,
-                    "startOffset": 25852,
-                    "endLine": 381,
+                    "startOffset": 25803,
+                    "endLine": 380,
                     "endColumn": 12,
-                    "endOffset": 26102
+                    "endOffset": 26053
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4461,12 +4442,12 @@
             },
             {
                 "to": {
-                    "startLine": 382,
+                    "startLine": 381,
                     "startColumn": 4,
-                    "startOffset": 26107,
-                    "endLine": 384,
+                    "startOffset": 26058,
+                    "endLine": 383,
                     "endColumn": 12,
-                    "endOffset": 26262
+                    "endOffset": 26213
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4482,12 +4463,12 @@
             },
             {
                 "to": {
-                    "startLine": 385,
+                    "startLine": 384,
                     "startColumn": 4,
-                    "startOffset": 26267,
-                    "endLine": 390,
+                    "startOffset": 26218,
+                    "endLine": 389,
                     "endColumn": 12,
-                    "endOffset": 26557
+                    "endOffset": 26508
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4503,12 +4484,12 @@
             },
             {
                 "to": {
-                    "startLine": 391,
+                    "startLine": 390,
                     "startColumn": 4,
-                    "startOffset": 26562,
-                    "endLine": 397,
+                    "startOffset": 26513,
+                    "endLine": 396,
                     "endColumn": 12,
-                    "endOffset": 26962
+                    "endOffset": 26913
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4524,12 +4505,12 @@
             },
             {
                 "to": {
-                    "startLine": 398,
+                    "startLine": 397,
                     "startColumn": 4,
-                    "startOffset": 26967,
-                    "endLine": 404,
+                    "startOffset": 26918,
+                    "endLine": 403,
                     "endColumn": 12,
-                    "endOffset": 27330
+                    "endOffset": 27281
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4545,12 +4526,12 @@
             },
             {
                 "to": {
-                    "startLine": 405,
+                    "startLine": 404,
                     "startColumn": 4,
-                    "startOffset": 27335,
-                    "endLine": 409,
+                    "startOffset": 27286,
+                    "endLine": 408,
                     "endColumn": 12,
-                    "endOffset": 27571
+                    "endOffset": 27522
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4566,12 +4547,12 @@
             },
             {
                 "to": {
-                    "startLine": 410,
+                    "startLine": 409,
                     "startColumn": 4,
-                    "startOffset": 27576,
-                    "endLine": 414,
+                    "startOffset": 27527,
+                    "endLine": 413,
                     "endColumn": 12,
-                    "endOffset": 27804
+                    "endOffset": 27755
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4587,12 +4568,12 @@
             },
             {
                 "to": {
-                    "startLine": 415,
+                    "startLine": 414,
                     "startColumn": 4,
-                    "startOffset": 27809,
-                    "endLine": 418,
+                    "startOffset": 27760,
+                    "endLine": 417,
                     "endColumn": 12,
-                    "endOffset": 27985
+                    "endOffset": 27936
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4608,12 +4589,12 @@
             },
             {
                 "to": {
-                    "startLine": 419,
+                    "startLine": 418,
                     "startColumn": 4,
-                    "startOffset": 27990,
-                    "endLine": 423,
+                    "startOffset": 27941,
+                    "endLine": 422,
                     "endColumn": 12,
-                    "endOffset": 28224
+                    "endOffset": 28175
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4629,12 +4610,12 @@
             },
             {
                 "to": {
-                    "startLine": 424,
+                    "startLine": 423,
                     "startColumn": 4,
-                    "startOffset": 28229,
-                    "endLine": 429,
+                    "startOffset": 28180,
+                    "endLine": 428,
                     "endColumn": 12,
-                    "endOffset": 28473
+                    "endOffset": 28424
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4650,12 +4631,12 @@
             },
             {
                 "to": {
-                    "startLine": 430,
+                    "startLine": 429,
                     "startColumn": 4,
-                    "startOffset": 28478,
-                    "endLine": 435,
+                    "startOffset": 28429,
+                    "endLine": 434,
                     "endColumn": 12,
-                    "endOffset": 28766
+                    "endOffset": 28717
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4671,12 +4652,12 @@
             },
             {
                 "to": {
-                    "startLine": 436,
+                    "startLine": 435,
                     "startColumn": 4,
-                    "startOffset": 28771,
-                    "endLine": 440,
+                    "startOffset": 28722,
+                    "endLine": 439,
                     "endColumn": 12,
-                    "endOffset": 28992
+                    "endOffset": 28943
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4692,12 +4673,12 @@
             },
             {
                 "to": {
-                    "startLine": 441,
+                    "startLine": 440,
                     "startColumn": 4,
-                    "startOffset": 28997,
-                    "endLine": 445,
+                    "startOffset": 28948,
+                    "endLine": 444,
                     "endColumn": 12,
-                    "endOffset": 29236
+                    "endOffset": 29187
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4713,12 +4694,12 @@
             },
             {
                 "to": {
-                    "startLine": 446,
+                    "startLine": 445,
                     "startColumn": 4,
-                    "startOffset": 29241,
-                    "endLine": 450,
+                    "startOffset": 29192,
+                    "endLine": 449,
                     "endColumn": 12,
-                    "endOffset": 29460
+                    "endOffset": 29411
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4734,12 +4715,12 @@
             },
             {
                 "to": {
-                    "startLine": 451,
+                    "startLine": 450,
                     "startColumn": 4,
-                    "startOffset": 29465,
-                    "endLine": 455,
+                    "startOffset": 29416,
+                    "endLine": 454,
                     "endColumn": 12,
-                    "endOffset": 29704
+                    "endOffset": 29655
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4755,12 +4736,12 @@
             },
             {
                 "to": {
-                    "startLine": 456,
+                    "startLine": 455,
                     "startColumn": 4,
-                    "startOffset": 29709,
-                    "endLine": 462,
+                    "startOffset": 29660,
+                    "endLine": 461,
                     "endColumn": 12,
-                    "endOffset": 30094
+                    "endOffset": 30045
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4776,12 +4757,12 @@
             },
             {
                 "to": {
-                    "startLine": 463,
+                    "startLine": 462,
                     "startColumn": 4,
-                    "startOffset": 30099,
-                    "endLine": 473,
+                    "startOffset": 30050,
+                    "endLine": 472,
                     "endColumn": 12,
-                    "endOffset": 30676
+                    "endOffset": 30627
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4797,12 +4778,12 @@
             },
             {
                 "to": {
-                    "startLine": 474,
+                    "startLine": 473,
                     "startColumn": 4,
-                    "startOffset": 30681,
-                    "endLine": 479,
+                    "startOffset": 30632,
+                    "endLine": 478,
                     "endColumn": 12,
-                    "endOffset": 30957
+                    "endOffset": 30908
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4818,12 +4799,12 @@
             },
             {
                 "to": {
-                    "startLine": 480,
+                    "startLine": 479,
                     "startColumn": 4,
-                    "startOffset": 30962,
-                    "endLine": 485,
+                    "startOffset": 30913,
+                    "endLine": 484,
                     "endColumn": 9,
-                    "endOffset": 31381
+                    "endOffset": 31332
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4839,12 +4820,12 @@
             },
             {
                 "to": {
-                    "startLine": 486,
+                    "startLine": 485,
                     "startColumn": 4,
-                    "startOffset": 31386,
-                    "endLine": 490,
+                    "startOffset": 31337,
+                    "endLine": 489,
                     "endColumn": 12,
-                    "endOffset": 31597
+                    "endOffset": 31548
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4860,12 +4841,12 @@
             },
             {
                 "to": {
-                    "startLine": 491,
+                    "startLine": 490,
                     "startColumn": 4,
-                    "startOffset": 31602,
-                    "endLine": 496,
+                    "startOffset": 31553,
+                    "endLine": 495,
                     "endColumn": 12,
-                    "endOffset": 31892
+                    "endOffset": 31843
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",
@@ -4881,12 +4862,12 @@
             },
             {
                 "to": {
-                    "startLine": 497,
+                    "startLine": 496,
                     "startColumn": 4,
-                    "startOffset": 31897,
-                    "endLine": 504,
+                    "startOffset": 31848,
+                    "endLine": 503,
                     "endColumn": 12,
-                    "endOffset": 32287
+                    "endOffset": 32238
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/values/xin_styles.xml",

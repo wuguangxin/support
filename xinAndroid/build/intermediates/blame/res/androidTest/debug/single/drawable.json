@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/xin_buttom_style.xml",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/xin_buttom_style.xml"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/xin_line_border_blue.xml",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/xin_line_border_blue.xml"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/xin_buttom_style.xml",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/xin_buttom_style.xml"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/xin_dialog_button_font_color.xml",
@@ -52,12 +52,12 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/xin_button_blue_normal.xml"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/sinkingview_charming.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/sinkingview_charming.png"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/sinkingview_wave8.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/sinkingview_wave8.png"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/sinkingview_charming.png",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/sinkingview_charming.png"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/xin_dialog_bottom_button_single.xml",
@@ -108,12 +108,12 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/umeng_update_button_close_bg_selector.xml"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/indicator_bg_top.xml",
-        "source": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/drawable/indicator_bg_top.xml"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/xin_banner_empty_radio_button_style.xml",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable/xin_banner_empty_radio_button_style.xml"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/indicator_bg_top.xml",
+        "source": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/drawable/indicator_bg_top.xml"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable/xin_sclector_bg_color.xml",

@@ -712,7 +712,6 @@ public final class R {
         public static final int UMUpdateSize = 0x7f06000b;
         public static final int UMUpdateTitle = 0x7f06000c;
         public static final int actionbar_search_edittext_hint = 0x7f06001c;
-        public static final int app_name = 0x7f06001d;
         public static final int dialog_button_negative_text_default = 0x7f06001e;
         public static final int dialog_button_positive_text_default = 0x7f06001f;
         public static final int dialog_loading_message_default = 0x7f060020;

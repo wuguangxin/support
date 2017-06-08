@@ -72,12 +72,12 @@ public final class R {
         public static int pull_to_refresh_header_vertical = 0x7f030002;
     }
     public static final class string {
-        public static int pull_to_refresh_from_bottom_pull_label = 0x7f060028;
-        public static int pull_to_refresh_from_bottom_refreshing_label = 0x7f060029;
-        public static int pull_to_refresh_from_bottom_release_label = 0x7f06002a;
-        public static int pull_to_refresh_pull_label = 0x7f06002b;
-        public static int pull_to_refresh_refreshing_label = 0x7f06002c;
-        public static int pull_to_refresh_release_label = 0x7f06002d;
+        public static int pull_to_refresh_from_bottom_pull_label = 0x7f060027;
+        public static int pull_to_refresh_from_bottom_refreshing_label = 0x7f060028;
+        public static int pull_to_refresh_from_bottom_release_label = 0x7f060029;
+        public static int pull_to_refresh_pull_label = 0x7f06002a;
+        public static int pull_to_refresh_refreshing_label = 0x7f06002b;
+        public static int pull_to_refresh_release_label = 0x7f06002c;
     }
     public static final class styleable {
         public static int[] PullToRefresh = { 0x7f010047, 0x7f010048, 0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e, 0x7f01004f, 0x7f010050, 0x7f010051, 0x7f010052, 0x7f010053, 0x7f010054, 0x7f010055, 0x7f010056, 0x7f010057, 0x7f010058, 0x7f010059 };
