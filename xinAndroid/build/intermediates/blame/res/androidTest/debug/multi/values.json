@@ -2882,8 +2882,8 @@
                     "startLine": 231,
                     "startColumn": 4,
                     "startOffset": 16826,
-                    "endColumn": 52,
-                    "endOffset": 16874
+                    "endColumn": 66,
+                    "endOffset": 16888
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
@@ -2891,8 +2891,8 @@
                         "startLine": 210,
                         "startColumn": 4,
                         "startOffset": 14807,
-                        "endColumn": 52,
-                        "endOffset": 14855
+                        "endColumn": 66,
+                        "endOffset": 14869
                     }
                 }
             },
@@ -2900,18 +2900,18 @@
                 "to": {
                     "startLine": 232,
                     "startColumn": 4,
-                    "startOffset": 16879,
-                    "endColumn": 104,
-                    "endOffset": 16979
+                    "startOffset": 16893,
+                    "endColumn": 66,
+                    "endOffset": 16955
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 211,
                         "startColumn": 4,
-                        "startOffset": 14860,
-                        "endColumn": 104,
-                        "endOffset": 14960
+                        "startOffset": 14874,
+                        "endColumn": 66,
+                        "endOffset": 14936
                     }
                 }
             },
@@ -2919,18 +2919,18 @@
                 "to": {
                     "startLine": 233,
                     "startColumn": 4,
-                    "startOffset": 16984,
-                    "endColumn": 102,
-                    "endOffset": 17082
+                    "startOffset": 16960,
+                    "endColumn": 66,
+                    "endOffset": 17022
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 212,
                         "startColumn": 4,
-                        "startOffset": 14965,
-                        "endColumn": 102,
-                        "endOffset": 15063
+                        "startOffset": 14941,
+                        "endColumn": 66,
+                        "endOffset": 15003
                     }
                 }
             },
@@ -2938,18 +2938,18 @@
                 "to": {
                     "startLine": 234,
                     "startColumn": 4,
-                    "startOffset": 17087,
-                    "endColumn": 73,
-                    "endOffset": 17156
+                    "startOffset": 17027,
+                    "endColumn": 63,
+                    "endOffset": 17086
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 213,
                         "startColumn": 4,
-                        "startOffset": 15068,
-                        "endColumn": 73,
-                        "endOffset": 15137
+                        "startOffset": 15008,
+                        "endColumn": 63,
+                        "endOffset": 15067
                     }
                 }
             },
@@ -2957,18 +2957,18 @@
                 "to": {
                     "startLine": 235,
                     "startColumn": 4,
-                    "startOffset": 17161,
-                    "endColumn": 48,
-                    "endOffset": 17205
+                    "startOffset": 17091,
+                    "endColumn": 59,
+                    "endOffset": 17146
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 214,
                         "startColumn": 4,
-                        "startOffset": 15142,
-                        "endColumn": 48,
-                        "endOffset": 15186
+                        "startOffset": 15072,
+                        "endColumn": 59,
+                        "endOffset": 15127
                     }
                 }
             },
@@ -2976,18 +2976,18 @@
                 "to": {
                     "startLine": 236,
                     "startColumn": 4,
-                    "startOffset": 17210,
-                    "endColumn": 57,
-                    "endOffset": 17263
+                    "startOffset": 17151,
+                    "endColumn": 60,
+                    "endOffset": 17207
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 215,
                         "startColumn": 4,
-                        "startOffset": 15191,
-                        "endColumn": 57,
-                        "endOffset": 15244
+                        "startOffset": 15132,
+                        "endColumn": 60,
+                        "endOffset": 15188
                     }
                 }
             },
@@ -2995,18 +2995,18 @@
                 "to": {
                     "startLine": 237,
                     "startColumn": 4,
-                    "startOffset": 17268,
-                    "endColumn": 44,
-                    "endOffset": 17308
+                    "startOffset": 17212,
+                    "endColumn": 60,
+                    "endOffset": 17268
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 216,
                         "startColumn": 4,
-                        "startOffset": 15249,
-                        "endColumn": 44,
-                        "endOffset": 15289
+                        "startOffset": 15193,
+                        "endColumn": 60,
+                        "endOffset": 15249
                     }
                 }
             },
@@ -3014,18 +3014,18 @@
                 "to": {
                     "startLine": 238,
                     "startColumn": 4,
-                    "startOffset": 17313,
-                    "endColumn": 54,
-                    "endOffset": 17363
+                    "startOffset": 17273,
+                    "endColumn": 58,
+                    "endOffset": 17327
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 217,
                         "startColumn": 4,
-                        "startOffset": 15294,
-                        "endColumn": 54,
-                        "endOffset": 15344
+                        "startOffset": 15254,
+                        "endColumn": 58,
+                        "endOffset": 15308
                     }
                 }
             },
@@ -3033,18 +3033,18 @@
                 "to": {
                     "startLine": 239,
                     "startColumn": 4,
-                    "startOffset": 17368,
-                    "endColumn": 59,
-                    "endOffset": 17423
+                    "startOffset": 17332,
+                    "endColumn": 63,
+                    "endOffset": 17391
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 218,
                         "startColumn": 4,
-                        "startOffset": 15349,
-                        "endColumn": 59,
-                        "endOffset": 15404
+                        "startOffset": 15313,
+                        "endColumn": 63,
+                        "endOffset": 15372
                     }
                 }
             },
@@ -3052,18 +3052,18 @@
                 "to": {
                     "startLine": 240,
                     "startColumn": 4,
-                    "startOffset": 17428,
-                    "endColumn": 58,
-                    "endOffset": 17482
+                    "startOffset": 17396,
+                    "endColumn": 53,
+                    "endOffset": 17445
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 219,
                         "startColumn": 4,
-                        "startOffset": 15409,
-                        "endColumn": 58,
-                        "endOffset": 15463
+                        "startOffset": 15377,
+                        "endColumn": 53,
+                        "endOffset": 15426
                     }
                 }
             },
@@ -3071,18 +3071,18 @@
                 "to": {
                     "startLine": 241,
                     "startColumn": 4,
-                    "startOffset": 17487,
-                    "endColumn": 58,
-                    "endOffset": 17541
+                    "startOffset": 17450,
+                    "endColumn": 63,
+                    "endOffset": 17509
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 220,
                         "startColumn": 4,
-                        "startOffset": 15468,
-                        "endColumn": 58,
-                        "endOffset": 15522
+                        "startOffset": 15431,
+                        "endColumn": 63,
+                        "endOffset": 15490
                     }
                 }
             },
@@ -3090,294 +3090,9 @@
                 "to": {
                     "startLine": 242,
                     "startColumn": 4,
-                    "startOffset": 17546,
-                    "endColumn": 50,
-                    "endOffset": 17592
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 221,
-                        "startColumn": 4,
-                        "startOffset": 15527,
-                        "endColumn": 50,
-                        "endOffset": 15573
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 243,
-                    "startColumn": 4,
-                    "startOffset": 17597,
-                    "endColumn": 54,
-                    "endOffset": 17647
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 222,
-                        "startColumn": 4,
-                        "startOffset": 15578,
-                        "endColumn": 54,
-                        "endOffset": 15628
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 244,
-                    "startColumn": 4,
-                    "startOffset": 17652,
-                    "endColumn": 59,
-                    "endOffset": 17707
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 223,
-                        "startColumn": 4,
-                        "startOffset": 15633,
-                        "endColumn": 59,
-                        "endOffset": 15688
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 245,
-                    "startColumn": 4,
-                    "startOffset": 17712,
-                    "endColumn": 66,
-                    "endOffset": 17774
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 224,
-                        "startColumn": 4,
-                        "startOffset": 15693,
-                        "endColumn": 66,
-                        "endOffset": 15755
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 246,
-                    "startColumn": 4,
-                    "startOffset": 17779,
-                    "endColumn": 45,
-                    "endOffset": 17820
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/.android/build-cache/9da0145cae15cc37fb206e0f107d009e0e4de65a/output/res/values/values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 229,
-                        "endColumn": 45,
-                        "endOffset": 270
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 247,
-                    "startColumn": 4,
-                    "startOffset": 17825,
-                    "endColumn": 66,
-                    "endOffset": 17887
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 225,
-                        "startColumn": 4,
-                        "startOffset": 15760,
-                        "endColumn": 66,
-                        "endOffset": 15822
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 248,
-                    "startColumn": 4,
-                    "startOffset": 17892,
-                    "endColumn": 66,
-                    "endOffset": 17954
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 226,
-                        "startColumn": 4,
-                        "startOffset": 15827,
-                        "endColumn": 66,
-                        "endOffset": 15889
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 249,
-                    "startColumn": 4,
-                    "startOffset": 17959,
-                    "endColumn": 63,
-                    "endOffset": 18018
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 227,
-                        "startColumn": 4,
-                        "startOffset": 15894,
-                        "endColumn": 63,
-                        "endOffset": 15953
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 250,
-                    "startColumn": 4,
-                    "startOffset": 18023,
-                    "endColumn": 59,
-                    "endOffset": 18078
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 228,
-                        "startColumn": 4,
-                        "startOffset": 15958,
-                        "endColumn": 59,
-                        "endOffset": 16013
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 251,
-                    "startColumn": 4,
-                    "startOffset": 18083,
-                    "endColumn": 60,
-                    "endOffset": 18139
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 229,
-                        "startColumn": 4,
-                        "startOffset": 16018,
-                        "endColumn": 60,
-                        "endOffset": 16074
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 252,
-                    "startColumn": 4,
-                    "startOffset": 18144,
-                    "endColumn": 60,
-                    "endOffset": 18200
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 230,
-                        "startColumn": 4,
-                        "startOffset": 16079,
-                        "endColumn": 60,
-                        "endOffset": 16135
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 253,
-                    "startColumn": 4,
-                    "startOffset": 18205,
-                    "endColumn": 58,
-                    "endOffset": 18259
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 231,
-                        "startColumn": 4,
-                        "startOffset": 16140,
-                        "endColumn": 58,
-                        "endOffset": 16194
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 254,
-                    "startColumn": 4,
-                    "startOffset": 18264,
-                    "endColumn": 63,
-                    "endOffset": 18323
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 232,
-                        "startColumn": 4,
-                        "startOffset": 16199,
-                        "endColumn": 63,
-                        "endOffset": 16258
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 255,
-                    "startColumn": 4,
-                    "startOffset": 18328,
-                    "endColumn": 53,
-                    "endOffset": 18377
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 233,
-                        "startColumn": 4,
-                        "startOffset": 16263,
-                        "endColumn": 53,
-                        "endOffset": 16312
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 256,
-                    "startColumn": 4,
-                    "startOffset": 18382,
-                    "endColumn": 63,
-                    "endOffset": 18441
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 234,
-                        "startColumn": 4,
-                        "startOffset": 16317,
-                        "endColumn": 63,
-                        "endOffset": 16376
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 257,
-                    "startColumn": 4,
-                    "startOffset": 18446,
+                    "startOffset": 17514,
                     "endColumn": 73,
-                    "endOffset": 18515
+                    "endOffset": 17583
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3392,11 +3107,11 @@
             },
             {
                 "to": {
-                    "startLine": 258,
+                    "startLine": 243,
                     "startColumn": 4,
-                    "startOffset": 18520,
+                    "startOffset": 17588,
                     "endColumn": 80,
-                    "endOffset": 18596
+                    "endOffset": 17664
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3411,11 +3126,11 @@
             },
             {
                 "to": {
-                    "startLine": 259,
+                    "startLine": 244,
                     "startColumn": 4,
-                    "startOffset": 18601,
+                    "startOffset": 17669,
                     "endColumn": 74,
-                    "endOffset": 18671
+                    "endOffset": 17739
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3430,11 +3145,11 @@
             },
             {
                 "to": {
-                    "startLine": 260,
+                    "startLine": 245,
                     "startColumn": 4,
-                    "startOffset": 18676,
+                    "startOffset": 17744,
                     "endColumn": 59,
-                    "endOffset": 18731
+                    "endOffset": 17799
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3449,11 +3164,11 @@
             },
             {
                 "to": {
-                    "startLine": 261,
+                    "startLine": 246,
                     "startColumn": 4,
-                    "startOffset": 18736,
+                    "startOffset": 17804,
                     "endColumn": 68,
-                    "endOffset": 18800
+                    "endOffset": 17868
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3468,11 +3183,11 @@
             },
             {
                 "to": {
-                    "startLine": 262,
+                    "startLine": 247,
                     "startColumn": 4,
-                    "startOffset": 18805,
+                    "startOffset": 17873,
                     "endColumn": 62,
-                    "endOffset": 18863
+                    "endOffset": 17931
                 },
                 "from": {
                     "file": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/values/values.xml",
@@ -3487,20 +3202,305 @@
             },
             {
                 "to": {
-                    "startLine": 263,
+                    "startLine": 248,
                     "startColumn": 4,
-                    "startOffset": 18868,
+                    "startOffset": 17936,
                     "endColumn": 54,
-                    "endOffset": 18918
+                    "endOffset": 17986
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 221,
+                        "startColumn": 4,
+                        "startOffset": 15495,
+                        "endColumn": 54,
+                        "endOffset": 15545
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 249,
+                    "startColumn": 4,
+                    "startOffset": 17991,
+                    "endColumn": 54,
+                    "endOffset": 18041
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 222,
+                        "startColumn": 4,
+                        "startOffset": 15550,
+                        "endColumn": 54,
+                        "endOffset": 15600
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 250,
+                    "startColumn": 4,
+                    "startOffset": 18046,
+                    "endColumn": 50,
+                    "endOffset": 18092
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 223,
+                        "startColumn": 4,
+                        "startOffset": 15605,
+                        "endColumn": 50,
+                        "endOffset": 15651
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 251,
+                    "startColumn": 4,
+                    "startOffset": 18097,
+                    "endColumn": 55,
+                    "endOffset": 18148
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 224,
+                        "startColumn": 4,
+                        "startOffset": 15656,
+                        "endColumn": 55,
+                        "endOffset": 15707
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 252,
+                    "startColumn": 4,
+                    "startOffset": 18153,
+                    "endColumn": 55,
+                    "endOffset": 18204
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 225,
+                        "startColumn": 4,
+                        "startOffset": 15712,
+                        "endColumn": 55,
+                        "endOffset": 15763
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 253,
+                    "startColumn": 4,
+                    "startOffset": 18209,
+                    "endColumn": 54,
+                    "endOffset": 18259
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 226,
+                        "startColumn": 4,
+                        "startOffset": 15768,
+                        "endColumn": 54,
+                        "endOffset": 15818
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 254,
+                    "startColumn": 4,
+                    "startOffset": 18264,
+                    "endColumn": 54,
+                    "endOffset": 18314
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 227,
+                        "startColumn": 4,
+                        "startOffset": 15823,
+                        "endColumn": 54,
+                        "endOffset": 15873
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 255,
+                    "startColumn": 4,
+                    "startOffset": 18319,
+                    "endColumn": 57,
+                    "endOffset": 18372
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 228,
+                        "startColumn": 4,
+                        "startOffset": 15878,
+                        "endColumn": 57,
+                        "endOffset": 15931
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 256,
+                    "startColumn": 4,
+                    "startOffset": 18377,
+                    "endColumn": 54,
+                    "endOffset": 18427
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 229,
+                        "startColumn": 4,
+                        "startOffset": 15936,
+                        "endColumn": 54,
+                        "endOffset": 15986
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 257,
+                    "startColumn": 4,
+                    "startOffset": 18432,
+                    "endColumn": 56,
+                    "endOffset": 18484
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 230,
+                        "startColumn": 4,
+                        "startOffset": 15991,
+                        "endColumn": 56,
+                        "endOffset": 16043
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 258,
+                    "startColumn": 4,
+                    "startOffset": 18489,
+                    "endColumn": 51,
+                    "endOffset": 18536
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 231,
+                        "startColumn": 4,
+                        "startOffset": 16048,
+                        "endColumn": 51,
+                        "endOffset": 16095
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 259,
+                    "startColumn": 4,
+                    "startOffset": 18541,
+                    "endColumn": 49,
+                    "endOffset": 18586
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 232,
+                        "startColumn": 4,
+                        "startOffset": 16100,
+                        "endColumn": 49,
+                        "endOffset": 16145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 260,
+                    "startColumn": 4,
+                    "startOffset": 18591,
+                    "endColumn": 53,
+                    "endOffset": 18640
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 233,
+                        "startColumn": 4,
+                        "startOffset": 16150,
+                        "endColumn": 53,
+                        "endOffset": 16199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 261,
+                    "startColumn": 4,
+                    "startOffset": 18645,
+                    "endColumn": 82,
+                    "endOffset": 18723
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 234,
+                        "startColumn": 4,
+                        "startOffset": 16204,
+                        "endColumn": 82,
+                        "endOffset": 16282
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 262,
+                    "startColumn": 4,
+                    "startOffset": 18728,
+                    "endColumn": 82,
+                    "endOffset": 18806
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 235,
                         "startColumn": 4,
-                        "startOffset": 16381,
-                        "endColumn": 54,
-                        "endOffset": 16431
+                        "startOffset": 16287,
+                        "endColumn": 82,
+                        "endOffset": 16365
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 263,
+                    "startColumn": 4,
+                    "startOffset": 18811,
+                    "endColumn": 111,
+                    "endOffset": 18918
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 236,
+                        "startColumn": 4,
+                        "startOffset": 16370,
+                        "endColumn": 111,
+                        "endOffset": 16477
                     }
                 }
             },
@@ -3509,17 +3509,17 @@
                     "startLine": 264,
                     "startColumn": 4,
                     "startOffset": 18923,
-                    "endColumn": 54,
-                    "endOffset": 18973
+                    "endColumn": 123,
+                    "endOffset": 19042
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 236,
+                        "startLine": 237,
                         "startColumn": 4,
-                        "startOffset": 16436,
-                        "endColumn": 54,
-                        "endOffset": 16486
+                        "startOffset": 16482,
+                        "endColumn": 123,
+                        "endOffset": 16601
                     }
                 }
             },
@@ -3527,18 +3527,18 @@
                 "to": {
                     "startLine": 265,
                     "startColumn": 4,
-                    "startOffset": 18978,
-                    "endColumn": 50,
-                    "endOffset": 19024
+                    "startOffset": 19047,
+                    "endColumn": 69,
+                    "endOffset": 19112
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 237,
+                        "startLine": 238,
                         "startColumn": 4,
-                        "startOffset": 16491,
-                        "endColumn": 50,
-                        "endOffset": 16537
+                        "startOffset": 16606,
+                        "endColumn": 69,
+                        "endOffset": 16671
                     }
                 }
             },
@@ -3546,18 +3546,18 @@
                 "to": {
                     "startLine": 266,
                     "startColumn": 4,
-                    "startOffset": 19029,
-                    "endColumn": 55,
-                    "endOffset": 19080
+                    "startOffset": 19117,
+                    "endColumn": 69,
+                    "endOffset": 19182
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 238,
+                        "startLine": 239,
                         "startColumn": 4,
-                        "startOffset": 16542,
-                        "endColumn": 55,
-                        "endOffset": 16593
+                        "startOffset": 16676,
+                        "endColumn": 69,
+                        "endOffset": 16741
                     }
                 }
             },
@@ -3565,18 +3565,18 @@
                 "to": {
                     "startLine": 267,
                     "startColumn": 4,
-                    "startOffset": 19085,
-                    "endColumn": 55,
-                    "endOffset": 19136
+                    "startOffset": 19187,
+                    "endColumn": 98,
+                    "endOffset": 19281
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 239,
+                        "startLine": 240,
                         "startColumn": 4,
-                        "startOffset": 16598,
-                        "endColumn": 55,
-                        "endOffset": 16649
+                        "startOffset": 16746,
+                        "endColumn": 98,
+                        "endOffset": 16840
                     }
                 }
             },
@@ -3584,18 +3584,18 @@
                 "to": {
                     "startLine": 268,
                     "startColumn": 4,
-                    "startOffset": 19141,
-                    "endColumn": 54,
-                    "endOffset": 19191
+                    "startOffset": 19286,
+                    "endColumn": 87,
+                    "endOffset": 19369
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 240,
+                        "startLine": 241,
                         "startColumn": 4,
-                        "startOffset": 16654,
-                        "endColumn": 54,
-                        "endOffset": 16704
+                        "startOffset": 16845,
+                        "endColumn": 87,
+                        "endOffset": 16928
                     }
                 }
             },
@@ -3603,18 +3603,18 @@
                 "to": {
                     "startLine": 269,
                     "startColumn": 4,
-                    "startOffset": 19196,
-                    "endColumn": 61,
-                    "endOffset": 19253
+                    "startOffset": 19374,
+                    "endColumn": 56,
+                    "endOffset": 19426
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 241,
+                        "startLine": 242,
                         "startColumn": 4,
-                        "startOffset": 16709,
-                        "endColumn": 61,
-                        "endOffset": 16766
+                        "startOffset": 16933,
+                        "endColumn": 56,
+                        "endOffset": 16985
                     }
                 }
             },
@@ -3622,18 +3622,18 @@
                 "to": {
                     "startLine": 270,
                     "startColumn": 4,
-                    "startOffset": 19258,
-                    "endColumn": 65,
-                    "endOffset": 19319
+                    "startOffset": 19431,
+                    "endColumn": 51,
+                    "endOffset": 19478
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 242,
+                        "startLine": 243,
                         "startColumn": 4,
-                        "startOffset": 16771,
-                        "endColumn": 65,
-                        "endOffset": 16832
+                        "startOffset": 16990,
+                        "endColumn": 51,
+                        "endOffset": 17037
                     }
                 }
             },
@@ -3641,113 +3641,20 @@
                 "to": {
                     "startLine": 271,
                     "startColumn": 4,
-                    "startOffset": 19324,
-                    "endColumn": 98,
-                    "endOffset": 19418
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 243,
-                        "startColumn": 4,
-                        "startOffset": 16837,
-                        "endColumn": 98,
-                        "endOffset": 16931
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 272,
-                    "startColumn": 4,
-                    "startOffset": 19423,
-                    "endColumn": 59,
-                    "endOffset": 19478
+                    "startOffset": 19483,
+                    "endLine": 276,
+                    "endColumn": 12,
+                    "endOffset": 19972
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 244,
                         "startColumn": 4,
-                        "startOffset": 16936,
-                        "endColumn": 59,
-                        "endOffset": 16991
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 273,
-                    "startColumn": 4,
-                    "startOffset": 19483,
-                    "endColumn": 74,
-                    "endOffset": 19553
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 245,
-                        "startColumn": 4,
-                        "startOffset": 16996,
-                        "endColumn": 74,
-                        "endOffset": 17066
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 274,
-                    "startColumn": 4,
-                    "startOffset": 19558,
-                    "endColumn": 95,
-                    "endOffset": 19649
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 246,
-                        "startColumn": 4,
-                        "startOffset": 17071,
-                        "endColumn": 95,
-                        "endOffset": 17162
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 275,
-                    "startColumn": 4,
-                    "startOffset": 19654,
-                    "endColumn": 83,
-                    "endOffset": 19733
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 247,
-                        "startColumn": 4,
-                        "startOffset": 17167,
-                        "endColumn": 83,
-                        "endOffset": 17246
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 276,
-                    "startColumn": 4,
-                    "startOffset": 19738,
-                    "endColumn": 50,
-                    "endOffset": 19784
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 248,
-                        "startColumn": 4,
-                        "startOffset": 17251,
-                        "endColumn": 50,
-                        "endOffset": 17297
+                        "startOffset": 17042,
+                        "endLine": 249,
+                        "endColumn": 12,
+                        "endOffset": 17531
                     }
                 }
             },
@@ -3755,151 +3662,20 @@
                 "to": {
                     "startLine": 277,
                     "startColumn": 4,
-                    "startOffset": 19789,
-                    "endColumn": 76,
-                    "endOffset": 19861
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 249,
-                        "startColumn": 4,
-                        "startOffset": 17302,
-                        "endColumn": 76,
-                        "endOffset": 17374
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 278,
-                    "startColumn": 4,
-                    "startOffset": 19866,
-                    "endColumn": 124,
-                    "endOffset": 19986
+                    "startOffset": 19977,
+                    "endLine": 284,
+                    "endColumn": 12,
+                    "endOffset": 20358
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 250,
                         "startColumn": 4,
-                        "startOffset": 17379,
-                        "endColumn": 124,
-                        "endOffset": 17499
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 279,
-                    "startColumn": 4,
-                    "startOffset": 19991,
-                    "endColumn": 89,
-                    "endOffset": 20076
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 251,
-                        "startColumn": 4,
-                        "startOffset": 17504,
-                        "endColumn": 89,
-                        "endOffset": 17589
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 280,
-                    "startColumn": 4,
-                    "startOffset": 20081,
-                    "endColumn": 74,
-                    "endOffset": 20151
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 252,
-                        "startColumn": 4,
-                        "startOffset": 17594,
-                        "endColumn": 74,
-                        "endOffset": 17664
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 281,
-                    "startColumn": 4,
-                    "startOffset": 20156,
-                    "endColumn": 105,
-                    "endOffset": 20257
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 253,
-                        "startColumn": 4,
-                        "startOffset": 17669,
-                        "endColumn": 105,
-                        "endOffset": 17770
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 282,
-                    "startColumn": 4,
-                    "startOffset": 20262,
-                    "endColumn": 84,
-                    "endOffset": 20342
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 254,
-                        "startColumn": 4,
-                        "startOffset": 17775,
-                        "endColumn": 84,
-                        "endOffset": 17855
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 283,
-                    "startColumn": 4,
-                    "startOffset": 20347,
-                    "endColumn": 78,
-                    "endOffset": 20421
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 255,
-                        "startColumn": 4,
-                        "startOffset": 17860,
-                        "endColumn": 78,
-                        "endOffset": 17934
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 284,
-                    "startColumn": 4,
-                    "startOffset": 20426,
-                    "endColumn": 54,
-                    "endOffset": 20476
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 256,
-                        "startColumn": 4,
-                        "startOffset": 17939,
-                        "endColumn": 54,
-                        "endOffset": 17989
+                        "startOffset": 17536,
+                        "endLine": 257,
+                        "endColumn": 12,
+                        "endOffset": 17917
                     }
                 }
             },
@@ -3907,75 +3683,20 @@
                 "to": {
                     "startLine": 285,
                     "startColumn": 4,
-                    "startOffset": 20481,
-                    "endColumn": 57,
-                    "endOffset": 20534
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 257,
-                        "startColumn": 4,
-                        "startOffset": 17994,
-                        "endColumn": 57,
-                        "endOffset": 18047
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 286,
-                    "startColumn": 4,
-                    "startOffset": 20539,
-                    "endColumn": 54,
-                    "endOffset": 20589
+                    "startOffset": 20363,
+                    "endLine": 288,
+                    "endColumn": 12,
+                    "endOffset": 20582
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 258,
                         "startColumn": 4,
-                        "startOffset": 18052,
-                        "endColumn": 54,
-                        "endOffset": 18102
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 287,
-                    "startColumn": 4,
-                    "startOffset": 20594,
-                    "endColumn": 56,
-                    "endOffset": 20646
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 259,
-                        "startColumn": 4,
-                        "startOffset": 18107,
-                        "endColumn": 56,
-                        "endOffset": 18159
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 288,
-                    "startColumn": 4,
-                    "startOffset": 20651,
-                    "endColumn": 51,
-                    "endOffset": 20698
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 260,
-                        "startColumn": 4,
-                        "startOffset": 18164,
-                        "endColumn": 51,
-                        "endOffset": 18211
+                        "startOffset": 17922,
+                        "endLine": 261,
+                        "endColumn": 12,
+                        "endOffset": 18141
                     }
                 }
             },
@@ -3983,75 +3704,20 @@
                 "to": {
                     "startLine": 289,
                     "startColumn": 4,
-                    "startOffset": 20703,
-                    "endColumn": 49,
-                    "endOffset": 20748
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 261,
-                        "startColumn": 4,
-                        "startOffset": 18216,
-                        "endColumn": 49,
-                        "endOffset": 18261
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 290,
-                    "startColumn": 4,
-                    "startOffset": 20753,
-                    "endColumn": 53,
-                    "endOffset": 20802
+                    "startOffset": 20587,
+                    "endLine": 292,
+                    "endColumn": 12,
+                    "endOffset": 20806
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 262,
                         "startColumn": 4,
-                        "startOffset": 18266,
-                        "endColumn": 53,
-                        "endOffset": 18315
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 291,
-                    "startColumn": 4,
-                    "startOffset": 20807,
-                    "endColumn": 82,
-                    "endOffset": 20885
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 263,
-                        "startColumn": 4,
-                        "startOffset": 18320,
-                        "endColumn": 82,
-                        "endOffset": 18398
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 292,
-                    "startColumn": 4,
-                    "startOffset": 20890,
-                    "endColumn": 82,
-                    "endOffset": 20968
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 264,
-                        "startColumn": 4,
-                        "startOffset": 18403,
-                        "endColumn": 82,
-                        "endOffset": 18481
+                        "startOffset": 18146,
+                        "endLine": 265,
+                        "endColumn": 12,
+                        "endOffset": 18365
                     }
                 }
             },
@@ -4059,75 +3725,20 @@
                 "to": {
                     "startLine": 293,
                     "startColumn": 4,
-                    "startOffset": 20973,
-                    "endColumn": 111,
-                    "endOffset": 21080
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 265,
-                        "startColumn": 4,
-                        "startOffset": 18486,
-                        "endColumn": 111,
-                        "endOffset": 18593
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 294,
-                    "startColumn": 4,
-                    "startOffset": 21085,
-                    "endColumn": 123,
-                    "endOffset": 21204
+                    "startOffset": 20811,
+                    "endLine": 296,
+                    "endColumn": 12,
+                    "endOffset": 21033
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 266,
                         "startColumn": 4,
-                        "startOffset": 18598,
-                        "endColumn": 123,
-                        "endOffset": 18717
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 295,
-                    "startColumn": 4,
-                    "startOffset": 21209,
-                    "endColumn": 69,
-                    "endOffset": 21274
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 267,
-                        "startColumn": 4,
-                        "startOffset": 18722,
-                        "endColumn": 69,
-                        "endOffset": 18787
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 296,
-                    "startColumn": 4,
-                    "startOffset": 21279,
-                    "endColumn": 69,
-                    "endOffset": 21344
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 268,
-                        "startColumn": 4,
-                        "startOffset": 18792,
-                        "endColumn": 69,
-                        "endOffset": 18857
+                        "startOffset": 18370,
+                        "endLine": 269,
+                        "endColumn": 12,
+                        "endOffset": 18592
                     }
                 }
             },
@@ -4135,75 +3746,20 @@
                 "to": {
                     "startLine": 297,
                     "startColumn": 4,
-                    "startOffset": 21349,
-                    "endColumn": 98,
-                    "endOffset": 21443
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 269,
-                        "startColumn": 4,
-                        "startOffset": 18862,
-                        "endColumn": 98,
-                        "endOffset": 18956
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 298,
-                    "startColumn": 4,
-                    "startOffset": 21448,
-                    "endColumn": 87,
-                    "endOffset": 21531
+                    "startOffset": 21038,
+                    "endLine": 300,
+                    "endColumn": 12,
+                    "endOffset": 21263
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 270,
                         "startColumn": 4,
-                        "startOffset": 18961,
-                        "endColumn": 87,
-                        "endOffset": 19044
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 299,
-                    "startColumn": 4,
-                    "startOffset": 21536,
-                    "endColumn": 56,
-                    "endOffset": 21588
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 271,
-                        "startColumn": 4,
-                        "startOffset": 19049,
-                        "endColumn": 56,
-                        "endOffset": 19101
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 300,
-                    "startColumn": 4,
-                    "startOffset": 21593,
-                    "endColumn": 51,
-                    "endOffset": 21640
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 272,
-                        "startColumn": 4,
-                        "startOffset": 19106,
-                        "endColumn": 51,
-                        "endOffset": 19153
+                        "startOffset": 18597,
+                        "endLine": 273,
+                        "endColumn": 12,
+                        "endOffset": 18822
                     }
                 }
             },
@@ -4211,188 +3767,125 @@
                 "to": {
                     "startLine": 301,
                     "startColumn": 4,
-                    "startOffset": 21645,
-                    "endLine": 306,
+                    "startOffset": 21268,
+                    "endLine": 304,
                     "endColumn": 12,
-                    "endOffset": 22134
+                    "endOffset": 21484
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 273,
+                        "startLine": 274,
                         "startColumn": 4,
-                        "startOffset": 19158,
-                        "endLine": 278,
+                        "startOffset": 18827,
+                        "endLine": 277,
                         "endColumn": 12,
-                        "endOffset": 19647
+                        "endOffset": 19043
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 307,
+                    "startLine": 305,
                     "startColumn": 4,
-                    "startOffset": 22139,
-                    "endLine": 314,
+                    "startOffset": 21489,
+                    "endLine": 313,
                     "endColumn": 12,
-                    "endOffset": 22520
+                    "endOffset": 21949
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 279,
+                        "startLine": 278,
                         "startColumn": 4,
-                        "startOffset": 19652,
+                        "startOffset": 19048,
                         "endLine": 286,
                         "endColumn": 12,
-                        "endOffset": 20033
+                        "endOffset": 19508
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 315,
+                    "startLine": 314,
                     "startColumn": 4,
-                    "startOffset": 22525,
-                    "endLine": 318,
+                    "startOffset": 21954,
+                    "endLine": 321,
                     "endColumn": 12,
-                    "endOffset": 22744
+                    "endOffset": 22341
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 287,
                         "startColumn": 4,
-                        "startOffset": 20038,
-                        "endLine": 290,
-                        "endColumn": 12,
-                        "endOffset": 20257
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 319,
-                    "startColumn": 4,
-                    "startOffset": 22749,
-                    "endLine": 322,
-                    "endColumn": 12,
-                    "endOffset": 22968
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 291,
-                        "startColumn": 4,
-                        "startOffset": 20262,
+                        "startOffset": 19513,
                         "endLine": 294,
                         "endColumn": 12,
-                        "endOffset": 20481
+                        "endOffset": 19900
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 323,
+                    "startLine": 322,
                     "startColumn": 4,
-                    "startOffset": 22973,
-                    "endLine": 326,
+                    "startOffset": 22346,
+                    "endLine": 335,
                     "endColumn": 12,
-                    "endOffset": 23195
+                    "endOffset": 23072
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 295,
                         "startColumn": 4,
-                        "startOffset": 20486,
-                        "endLine": 298,
+                        "startOffset": 19905,
+                        "endLine": 308,
                         "endColumn": 12,
-                        "endOffset": 20708
+                        "endOffset": 20631
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 327,
+                    "startLine": 336,
                     "startColumn": 4,
-                    "startOffset": 23200,
-                    "endLine": 330,
+                    "startOffset": 23077,
+                    "endLine": 347,
                     "endColumn": 12,
-                    "endOffset": 23425
+                    "endOffset": 23682
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 299,
+                        "startLine": 309,
                         "startColumn": 4,
-                        "startOffset": 20713,
-                        "endLine": 302,
+                        "startOffset": 20636,
+                        "endLine": 320,
                         "endColumn": 12,
-                        "endOffset": 20938
+                        "endOffset": 21241
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 331,
+                    "startLine": 348,
                     "startColumn": 4,
-                    "startOffset": 23430,
-                    "endLine": 334,
-                    "endColumn": 12,
-                    "endOffset": 23646
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 303,
-                        "startColumn": 4,
-                        "startOffset": 20943,
-                        "endLine": 306,
-                        "endColumn": 12,
-                        "endOffset": 21159
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 335,
-                    "startColumn": 4,
-                    "startOffset": 23651,
-                    "endLine": 343,
-                    "endColumn": 12,
-                    "endOffset": 24111
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 307,
-                        "startColumn": 4,
-                        "startOffset": 21164,
-                        "endLine": 315,
-                        "endColumn": 12,
-                        "endOffset": 21624
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 344,
-                    "startColumn": 4,
-                    "startOffset": 24116,
+                    "startOffset": 23687,
                     "endLine": 351,
                     "endColumn": 12,
-                    "endOffset": 24503
+                    "endOffset": 23937
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 316,
+                        "startLine": 321,
                         "startColumn": 4,
-                        "startOffset": 21629,
-                        "endLine": 323,
+                        "startOffset": 21246,
+                        "endLine": 324,
                         "endColumn": 12,
-                        "endOffset": 22016
+                        "endOffset": 21496
                     }
                 }
             },
@@ -4400,83 +3893,125 @@
                 "to": {
                     "startLine": 352,
                     "startColumn": 4,
-                    "startOffset": 24508,
-                    "endLine": 365,
+                    "startOffset": 23942,
+                    "endLine": 354,
                     "endColumn": 12,
-                    "endOffset": 25234
+                    "endOffset": 24097
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 324,
+                        "startLine": 325,
                         "startColumn": 4,
-                        "startOffset": 22021,
-                        "endLine": 337,
+                        "startOffset": 21501,
+                        "endLine": 327,
                         "endColumn": 12,
-                        "endOffset": 22747
+                        "endOffset": 21656
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 366,
+                    "startLine": 355,
                     "startColumn": 4,
-                    "startOffset": 25239,
-                    "endLine": 377,
+                    "startOffset": 24102,
+                    "endLine": 360,
                     "endColumn": 12,
-                    "endOffset": 25844
+                    "endOffset": 24392
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 338,
+                        "startLine": 328,
                         "startColumn": 4,
-                        "startOffset": 22752,
-                        "endLine": 349,
+                        "startOffset": 21661,
+                        "endLine": 333,
                         "endColumn": 12,
-                        "endOffset": 23357
+                        "endOffset": 21951
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 378,
+                    "startLine": 361,
                     "startColumn": 4,
-                    "startOffset": 25849,
-                    "endLine": 381,
+                    "startOffset": 24397,
+                    "endLine": 367,
                     "endColumn": 12,
-                    "endOffset": 26099
+                    "endOffset": 24797
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 350,
+                        "startLine": 334,
                         "startColumn": 4,
-                        "startOffset": 23362,
-                        "endLine": 353,
+                        "startOffset": 21956,
+                        "endLine": 340,
                         "endColumn": 12,
-                        "endOffset": 23612
+                        "endOffset": 22356
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 382,
+                    "startLine": 368,
                     "startColumn": 4,
-                    "startOffset": 26104,
+                    "startOffset": 24802,
+                    "endLine": 374,
+                    "endColumn": 12,
+                    "endOffset": 25165
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 341,
+                        "startColumn": 4,
+                        "startOffset": 22361,
+                        "endLine": 347,
+                        "endColumn": 12,
+                        "endOffset": 22724
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 375,
+                    "startColumn": 4,
+                    "startOffset": 25170,
+                    "endLine": 379,
+                    "endColumn": 12,
+                    "endOffset": 25406
+                },
+                "from": {
+                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 348,
+                        "startColumn": 4,
+                        "startOffset": 22729,
+                        "endLine": 352,
+                        "endColumn": 12,
+                        "endOffset": 22965
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 380,
+                    "startColumn": 4,
+                    "startOffset": 25411,
                     "endLine": 384,
                     "endColumn": 12,
-                    "endOffset": 26259
+                    "endOffset": 25639
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 354,
+                        "startLine": 353,
                         "startColumn": 4,
-                        "startOffset": 23617,
-                        "endLine": 356,
+                        "startOffset": 22970,
+                        "endLine": 357,
                         "endColumn": 12,
-                        "endOffset": 23772
+                        "endOffset": 23198
                     }
                 }
             },
@@ -4484,272 +4019,251 @@
                 "to": {
                     "startLine": 385,
                     "startColumn": 4,
-                    "startOffset": 26264,
-                    "endLine": 390,
+                    "startOffset": 25644,
+                    "endLine": 388,
                     "endColumn": 12,
-                    "endOffset": 26554
+                    "endOffset": 25820
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 357,
+                        "startLine": 358,
                         "startColumn": 4,
-                        "startOffset": 23777,
-                        "endLine": 362,
+                        "startOffset": 23203,
+                        "endLine": 361,
                         "endColumn": 12,
-                        "endOffset": 24067
+                        "endOffset": 23379
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 391,
+                    "startLine": 389,
                     "startColumn": 4,
-                    "startOffset": 26559,
-                    "endLine": 397,
+                    "startOffset": 25825,
+                    "endLine": 393,
                     "endColumn": 12,
-                    "endOffset": 26959
+                    "endOffset": 26059
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 363,
+                        "startLine": 362,
                         "startColumn": 4,
-                        "startOffset": 24072,
-                        "endLine": 369,
+                        "startOffset": 23384,
+                        "endLine": 366,
                         "endColumn": 12,
-                        "endOffset": 24472
+                        "endOffset": 23618
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 398,
+                    "startLine": 394,
                     "startColumn": 4,
-                    "startOffset": 26964,
-                    "endLine": 404,
+                    "startOffset": 26064,
+                    "endLine": 399,
                     "endColumn": 12,
-                    "endOffset": 27327
+                    "endOffset": 26308
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 370,
+                        "startLine": 367,
                         "startColumn": 4,
-                        "startOffset": 24477,
-                        "endLine": 376,
+                        "startOffset": 23623,
+                        "endLine": 372,
                         "endColumn": 12,
-                        "endOffset": 24840
+                        "endOffset": 23867
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 405,
+                    "startLine": 400,
                     "startColumn": 4,
-                    "startOffset": 27332,
-                    "endLine": 409,
+                    "startOffset": 26313,
+                    "endLine": 405,
                     "endColumn": 12,
-                    "endOffset": 27568
+                    "endOffset": 26601
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 377,
+                        "startLine": 373,
                         "startColumn": 4,
-                        "startOffset": 24845,
-                        "endLine": 381,
+                        "startOffset": 23872,
+                        "endLine": 378,
                         "endColumn": 12,
-                        "endOffset": 25081
+                        "endOffset": 24160
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 410,
+                    "startLine": 406,
                     "startColumn": 4,
-                    "startOffset": 27573,
-                    "endLine": 414,
+                    "startOffset": 26606,
+                    "endLine": 410,
                     "endColumn": 12,
-                    "endOffset": 27801
+                    "endOffset": 26827
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 382,
+                        "startLine": 379,
                         "startColumn": 4,
-                        "startOffset": 25086,
-                        "endLine": 386,
+                        "startOffset": 24165,
+                        "endLine": 383,
                         "endColumn": 12,
-                        "endOffset": 25314
+                        "endOffset": 24386
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 415,
+                    "startLine": 411,
                     "startColumn": 4,
-                    "startOffset": 27806,
-                    "endLine": 418,
+                    "startOffset": 26832,
+                    "endLine": 415,
                     "endColumn": 12,
-                    "endOffset": 27982
+                    "endOffset": 27071
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 387,
+                        "startLine": 384,
                         "startColumn": 4,
-                        "startOffset": 25319,
-                        "endLine": 390,
+                        "startOffset": 24391,
+                        "endLine": 388,
                         "endColumn": 12,
-                        "endOffset": 25495
+                        "endOffset": 24630
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 419,
+                    "startLine": 416,
                     "startColumn": 4,
-                    "startOffset": 27987,
-                    "endLine": 423,
+                    "startOffset": 27076,
+                    "endLine": 420,
                     "endColumn": 12,
-                    "endOffset": 28221
+                    "endOffset": 27295
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 391,
+                        "startLine": 389,
                         "startColumn": 4,
-                        "startOffset": 25500,
-                        "endLine": 395,
+                        "startOffset": 24635,
+                        "endLine": 393,
                         "endColumn": 12,
-                        "endOffset": 25734
+                        "endOffset": 24854
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 424,
+                    "startLine": 421,
                     "startColumn": 4,
-                    "startOffset": 28226,
-                    "endLine": 429,
+                    "startOffset": 27300,
+                    "endLine": 425,
                     "endColumn": 12,
-                    "endOffset": 28470
+                    "endOffset": 27539
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 396,
+                        "startLine": 394,
                         "startColumn": 4,
-                        "startOffset": 25739,
-                        "endLine": 401,
+                        "startOffset": 24859,
+                        "endLine": 398,
                         "endColumn": 12,
-                        "endOffset": 25983
+                        "endOffset": 25098
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 430,
+                    "startLine": 426,
                     "startColumn": 4,
-                    "startOffset": 28475,
-                    "endLine": 435,
+                    "startOffset": 27544,
+                    "endLine": 432,
                     "endColumn": 12,
-                    "endOffset": 28763
+                    "endOffset": 27929
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 402,
+                        "startLine": 399,
                         "startColumn": 4,
-                        "startOffset": 25988,
-                        "endLine": 407,
+                        "startOffset": 25103,
+                        "endLine": 405,
                         "endColumn": 12,
-                        "endOffset": 26276
+                        "endOffset": 25488
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 436,
+                    "startLine": 433,
                     "startColumn": 4,
-                    "startOffset": 28768,
-                    "endLine": 440,
+                    "startOffset": 27934,
+                    "endLine": 443,
                     "endColumn": 12,
-                    "endOffset": 28989
+                    "endOffset": 28511
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 408,
+                        "startLine": 406,
                         "startColumn": 4,
-                        "startOffset": 26281,
-                        "endLine": 412,
+                        "startOffset": 25493,
+                        "endLine": 416,
                         "endColumn": 12,
-                        "endOffset": 26502
+                        "endOffset": 26070
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 441,
+                    "startLine": 444,
                     "startColumn": 4,
-                    "startOffset": 28994,
-                    "endLine": 445,
+                    "startOffset": 28516,
+                    "endLine": 449,
                     "endColumn": 12,
-                    "endOffset": 29233
+                    "endOffset": 28792
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 413,
+                        "startLine": 417,
                         "startColumn": 4,
-                        "startOffset": 26507,
-                        "endLine": 417,
-                        "endColumn": 12,
-                        "endOffset": 26746
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 446,
-                    "startColumn": 4,
-                    "startOffset": 29238,
-                    "endLine": 450,
-                    "endColumn": 12,
-                    "endOffset": 29457
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 418,
-                        "startColumn": 4,
-                        "startOffset": 26751,
+                        "startOffset": 26075,
                         "endLine": 422,
                         "endColumn": 12,
-                        "endOffset": 26970
+                        "endOffset": 26351
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 451,
+                    "startLine": 450,
                     "startColumn": 4,
-                    "startOffset": 29462,
+                    "startOffset": 28797,
                     "endLine": 455,
-                    "endColumn": 12,
-                    "endOffset": 29701
+                    "endColumn": 9,
+                    "endOffset": 29216
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 423,
                         "startColumn": 4,
-                        "startOffset": 26975,
-                        "endLine": 427,
-                        "endColumn": 12,
-                        "endOffset": 27214
+                        "startOffset": 26356,
+                        "endLine": 428,
+                        "endColumn": 9,
+                        "endOffset": 26775
                     }
                 }
             },
@@ -4757,146 +4271,62 @@
                 "to": {
                     "startLine": 456,
                     "startColumn": 4,
-                    "startOffset": 29706,
-                    "endLine": 462,
+                    "startOffset": 29221,
+                    "endLine": 460,
                     "endColumn": 12,
-                    "endOffset": 30091
+                    "endOffset": 29432
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 428,
+                        "startLine": 429,
                         "startColumn": 4,
-                        "startOffset": 27219,
-                        "endLine": 434,
+                        "startOffset": 26780,
+                        "endLine": 433,
                         "endColumn": 12,
-                        "endOffset": 27604
+                        "endOffset": 26991
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 463,
+                    "startLine": 461,
                     "startColumn": 4,
-                    "startOffset": 30096,
-                    "endLine": 473,
+                    "startOffset": 29437,
+                    "endLine": 466,
                     "endColumn": 12,
-                    "endOffset": 30673
+                    "endOffset": 29727
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 435,
+                        "startLine": 434,
                         "startColumn": 4,
-                        "startOffset": 27609,
-                        "endLine": 445,
+                        "startOffset": 26996,
+                        "endLine": 439,
                         "endColumn": 12,
-                        "endOffset": 28186
+                        "endOffset": 27286
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 474,
+                    "startLine": 467,
                     "startColumn": 4,
-                    "startOffset": 30678,
-                    "endLine": 479,
+                    "startOffset": 29732,
+                    "endLine": 474,
                     "endColumn": 12,
-                    "endOffset": 30954
+                    "endOffset": 30122
                 },
                 "from": {
                     "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 446,
+                        "startLine": 440,
                         "startColumn": 4,
-                        "startOffset": 28191,
-                        "endLine": 451,
+                        "startOffset": 27291,
+                        "endLine": 447,
                         "endColumn": 12,
-                        "endOffset": 28467
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 480,
-                    "startColumn": 4,
-                    "startOffset": 30959,
-                    "endLine": 485,
-                    "endColumn": 9,
-                    "endOffset": 31378
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 452,
-                        "startColumn": 4,
-                        "startOffset": 28472,
-                        "endLine": 457,
-                        "endColumn": 9,
-                        "endOffset": 28891
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 486,
-                    "startColumn": 4,
-                    "startOffset": 31383,
-                    "endLine": 490,
-                    "endColumn": 12,
-                    "endOffset": 31594
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 458,
-                        "startColumn": 4,
-                        "startOffset": 28896,
-                        "endLine": 462,
-                        "endColumn": 12,
-                        "endOffset": 29107
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 491,
-                    "startColumn": 4,
-                    "startOffset": 31599,
-                    "endLine": 496,
-                    "endColumn": 12,
-                    "endOffset": 31889
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 463,
-                        "startColumn": 4,
-                        "startOffset": 29112,
-                        "endLine": 468,
-                        "endColumn": 12,
-                        "endOffset": 29402
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 497,
-                    "startColumn": 4,
-                    "startOffset": 31894,
-                    "endLine": 504,
-                    "endColumn": 12,
-                    "endOffset": 32284
-                },
-                "from": {
-                    "file": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 469,
-                        "startColumn": 4,
-                        "startOffset": 29407,
-                        "endLine": 476,
-                        "endColumn": 12,
-                        "endOffset": 29797
+                        "endOffset": 27681
                     }
                 }
             }

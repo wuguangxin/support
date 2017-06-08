@@ -48,10 +48,6 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xin_item_single_pressed.9.png"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_btn_check_on_pressed_holo_light.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_btn_check_on_pressed_holo_light.png"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xin_gesture_lock_top_selected.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xin_gesture_lock_top_selected.png"
     },
@@ -82,14 +78,6 @@
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/voice_mic_2.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/voice_mic_2.png"
-    },
-    {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_btn_check_off_focused_holo_light.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_btn_check_off_focused_holo_light.png"
-    },
-    {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_btn_check_off_holo_light.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_btn_check_off_holo_light.png"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xin_arrow_left.png",
@@ -140,10 +128,6 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_action_share.png"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_close_bg_normal.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_close_bg_normal.png"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xin_loading_10.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xin_loading_10.png"
     },
@@ -184,10 +168,6 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/switch_slider_normal.png"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_close_bg_tap.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_close_bg_tap.png"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xin_loading_04.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xin_loading_04.png"
     },
@@ -206,10 +186,6 @@
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xin_title_search_normal.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xin_title_search_normal.png"
-    },
-    {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_btn_check_on_holo_light.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_btn_check_on_holo_light.png"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/icon_common_succeed.png",
@@ -268,20 +244,12 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/icon_common_error.png"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_btn_check_off_pressed_holo_light.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_btn_check_off_pressed_holo_light.png"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/switch_slide_on.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/switch_slide_on.png"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xin_icon_arrow_solid_down_pressed.png",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xin_icon_arrow_solid_down_pressed.png"
-    },
-    {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/umeng_update_btn_check_on_focused_holo_light.png",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/drawable-hdpi-v4/umeng_update_btn_check_on_focused_holo_light.png"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xin_loading_06.png",

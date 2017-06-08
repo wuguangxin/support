@@ -28,10 +28,6 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/layout/item_bank_list.xml"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/layout/umeng_update_dialog.xml",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/layout/umeng_update_dialog.xml"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/androidTest/debug/layout/xin_toast_error_layout.xml",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/bundles/debug/res/layout/xin_toast_error_layout.xml"
     },

@@ -32,10 +32,6 @@
         "source": "/Users/wuguangxin/.android/build-cache/11d276dc5adf5cb9b5fea70f74edc02bdb91891a/output/res/layout/pull_to_refresh_header_vertical.xml"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/umeng_update_dialog.xml",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/umeng_update_dialog.xml"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/xin_usericon_set_dialog_layout.xml",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_usericon_set_dialog_layout.xml"
     },
@@ -44,12 +40,12 @@
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_tabhost_item_layout.xml"
     },
     {
-        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/xin_menu_layout.xml",
-        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_menu_layout.xml"
-    },
-    {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/xin_toast_warn_layout.xml",
         "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_toast_warn_layout.xml"
+    },
+    {
+        "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/xin_menu_layout.xml",
+        "source": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/src/main/res/layout/xin_menu_layout.xml"
     },
     {
         "merged": "/Users/wuguangxin/works/works/XinAndroid/xinAndroid/build/intermediates/res/merged/debug/layout/pull_to_refresh_header_horizontal.xml",
