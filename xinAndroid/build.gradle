@@ -29,7 +29,7 @@ android {
     allprojects {
         repositories {
             jcenter()
-            mavenCentral();
+            mavenCentral()
 
             maven { url 'https://jitpack.io' }
         }
@@ -38,14 +38,12 @@ android {
 
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.2.4'
-    compile 'com.android.support:support-v4:19.0.1'
-    compile 'com.android.support:support-v4:24.0.0'
-    compile 'com.android.support:support-annotations:24.0.0'
-    compile 'com.zhy:okhttputils:2.0.0'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-annotations:25.3.1'
     compile 'com.github.wuguangxin:Lib_PullToRefresh:1.0.0'
 }
