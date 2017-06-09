@@ -6,15 +6,13 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * DEX加密解密工具类。
  * <br/>（在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
- *
  * Created by wuguangxin on 16/10/11
  */
 public class DES {
-
 	private static final byte decodeMap[] = initDecodeMap();
 	private static final char encodeMap[] = initEncodeMap();
 	/** 默认秘钥 */
-	private static final String DEF_ENCRYPTION = "com.xin.wu@201701010000";
+	private static final String DEF_ENCRYPTION = "@com.xin.wu@201701010000";
 	private static String ENCRYPTION = DEF_ENCRYPTION;
 
 	/**
@@ -23,38 +21,6 @@ public class DES {
 	 */
 	public static void setEncryption(String encryption) {
 		DES.ENCRYPTION = encryption;
-	}
-
-	/**
-	 * 加密数据。
-	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
-	 */
-	public static String encode(String data) {
-		return encrypt(data, ENCRYPTION);
-	}
-
-	/**
-	 * 解密数据。
-	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
-	 */
-	public static String decode(String data) {
-		return decrypt(data, ENCRYPTION);
-	}
-
-	/**
-	 * 加密数据
-	 * @deprecated use encode()
-	 */
-	public static String getEncrypData(String data) {
-		return encrypt(data, ENCRYPTION);
-	}
-
-	/**
-	 * 解密数据
-	 * @deprecated use decode()
-	 */
-	public static String getDecodeData(String data) {
-		return decrypt(data, ENCRYPTION);
 	}
 
 	protected static char encode(int i) {
@@ -295,5 +261,42 @@ public class DES {
 			result[i] = (byte) (high * 16 + low);
 		}
 		return result;
+	}
+
+
+	// ============== 扩展方法 ==================================================
+
+	/**
+	 * 加密数据。
+	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
+	 */
+	public static String encode(String data) {
+		return encrypt(data, ENCRYPTION);
+	}
+
+	/**
+	 * 解密数据。
+	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
+	 */
+	public static String decode(String data) {
+		return decrypt(data, ENCRYPTION);
+	}
+
+	/**
+	 * 加密数据
+	 *
+	 * @deprecated use encode()
+	 */
+	public static String getEncrypData(String data) {
+		return encrypt(data, ENCRYPTION);
+	}
+
+	/**
+	 * 解密数据
+	 *
+	 * @deprecated use decode()
+	 */
+	public static String getDecodeData(String data) {
+		return decrypt(data, ENCRYPTION);
 	}
 }
