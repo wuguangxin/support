@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 单独的 item 景选择器，适合每个item之间只有一定距离的布局 -->
+    <item android:drawable="@drawable/xin_item_single_normal" android:state_pressed="false"/>
+    <item android:drawable="@drawable/xin_item_single_pressed" android:state_pressed="true"/>
+
+</selector>

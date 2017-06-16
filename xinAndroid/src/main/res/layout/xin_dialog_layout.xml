@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/df_dialog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/xin_dialog_bg"
+        android:orientation="vertical">
+        <!--android:background="@drawable/xin_dialog_bg"-->
+        <!--android:background="@color/transparent"-->
+
+        <!-- 标题区 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="10dip"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/df_dialog_title_layout"
+                layout="@layout/xin_dialog_title"
+                android:visibility="gone"/>
+        </LinearLayout>
+        <!-- 消息区 -->
+
+        <ScrollView
+            android:id="@+id/df_dialog_body_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/df_dialog_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:minHeight="50dip"
+                    android:padding="15dip"
+                    android:text=""
+                    android:textColor="@color/x333333"
+                    android:textSize="@dimen/font_L"
+                    android:visibility="gone"/>
+
+                <com.wuguangxin.view.MyListView
+                    android:id="@+id/df_dialog_listview_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:divider="#d1d1d1"
+                    android:dividerHeight="0.1dip"
+                    android:footerDividersEnabled="true"
+                    android:headerDividersEnabled="true"
+                    android:visibility="gone"/>
+
+                <com.wuguangxin.view.MyGridView
+                    android:id="@+id/df_dialog_gridview_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="15dip"
+                    android:visibility="gone"/>
+
+                <DatePicker
+                    android:id="@+id/dialog_datepicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="15dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:visibility="gone"/>
+
+                <TimePicker
+                    android:id="@+id/dialog_timepicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="15dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:visibility="gone"/>
+
+                <include
+                    android:id="@+id/xin_dialog_password_edittext_layout"
+                    layout="@layout/xin_dialog_input_password_layout"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/df_dialog_body_user_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- 按钮区 -->
+        <LinearLayout
+            android:id="@+id/df_dialog_button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/xcccccc"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/df_dialog_button_negative"
+                    android:layout_width="0dip"
+                    android:layout_height="45dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/xin_dialog_bottom_button_left"
+                    android:gravity="center"
+                    android:text="@string/dialog_button_negative_text_default"
+                    android:textColor="@drawable/xin_dialog_button_font_color"
+                    android:textSize="@dimen/font_M"
+                    android:visibility="visible"/>
+
+                <View
+                    android:id="@+id/dialog_bottom_line"
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/xcccccc"/>
+
+                <TextView
+                    android:id="@+id/df_dialog_button_positive"
+                    android:layout_width="0dip"
+                    android:layout_height="45dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/xin_dialog_bottom_button_right"
+                    android:gravity="center"
+                    android:text="@string/dialog_button_positive_text_default"
+                    android:textColor="@drawable/xin_dialog_button_font_color"
+                    android:textSize="@dimen/font_M"
+                    android:visibility="visible"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

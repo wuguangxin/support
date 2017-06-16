@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ================== 公共属性区域 ======================== -->
+    <attr name="startAngle" format="integer"/>
+    <attr name="sweepAngle" format="integer"/>
+
+
+    <!-- ================== 私有属性区域 ======================== -->
+    <declare-styleable name="MyCheckBox">
+        <attr name="value" format="reference|string" />
+    </declare-styleable>
+    
+    <declare-styleable name="KeyValueView">
+        <attr name="keys" format="reference|string" />
+        <attr name="keySize" format="dimension" />
+        <attr name="keyColor" format="color" />
+        <attr name="values" format="reference|string" />
+        <attr name="valueSize" format="dimension" />
+        <attr name="valueColor" format="color" />
+    </declare-styleable>
+    
+    <declare-styleable name="MyView">
+        <attr name="backgroundColor" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
+    </declare-styleable>
+    
+    <declare-styleable name="ItemView">
+        <attr name="item_background" format="reference|color" />
+        <attr name="item_paddingLeft" format="dimension" />
+        <attr name="item_paddingRight" format="dimension" />
+        <attr name="item_paddingTop" format="dimension" />
+        <attr name="item_paddingBottom" format="dimension" />
+        <attr name="item_text" format="reference|string" />
+        <attr name="item_textSize" format="dimension" />
+        <attr name="item_textColor" format="reference|color" />
+        <attr name="item_value" format="reference|string" />
+        <attr name="item_valueSize" format="dimension" />
+        <attr name="item_valueColor" format="reference|color" />
+        <attr name="item_singleLine" format="reference|boolean" />
+        <attr name="item_divider">
+        	<enum name="none" value="0" />
+            <enum name="both" value="1" />
+        	<enum name="singleTop" value="2" />
+            <enum name="singleBottom" value="3" />
+        </attr>
+        <attr name="item_dividerColor" format="color" />
+        <attr name="item_iconLeft" format="reference" />
+        <attr name="item_iconLeft_width" format="dimension" />
+        <attr name="item_iconLeft_height" format="dimension" />
+        <attr name="item_iconLeft_margin_left" format="dimension" />
+        <attr name="item_iconLeft_margin_top" format="dimension" />
+        <attr name="item_iconLeft_margin_right" format="dimension" />
+        <attr name="item_iconLeft_margin_bottom" format="dimension" />
+        <attr name="item_iconRight" format="reference" />
+        <attr name="item_iconRight_width" format="dimension" />
+        <attr name="item_iconRight_height" format="dimension" />
+        <attr name="item_iconRight_margin_left" format="dimension" />
+        <attr name="item_iconRight_margin_top" format="dimension" />
+        <attr name="item_iconRight_margin_right" format="dimension" />
+        <attr name="item_iconRight_margin_bottom" format="dimension" />
+    </declare-styleable>
+    
+    <declare-styleable name="PerCircleView">
+        <attr name="maxValue" format="reference|integer" />
+        <attr name="currentValue" format="reference|integer" />
+        <attr name="textSize" format="reference|dimension" />
+        <attr name="textColor" format="reference|color" />
+        <attr name="bottomColor" format="reference|color" />
+        <attr name="topColor" format="reference|color" />
+        <!-- 上圆的大小 -->
+        <attr name="topCircleSize" format="reference|dimension" />
+        <!-- 底圆的大小 -->
+        <attr name="bottomCircleSize" format="reference|dimension" />
+    </declare-styleable>
+    
+    <declare-styleable name="WaveView2">
+		<attr name="above_wave_color" format="color"/>
+		<attr name="blow_wave_color" format="color"/>
+        <attr name="progress" format="integer"/>
+        <attr name="wave_length" format="enum">
+            <enum name="large" value="1"/>
+            <enum name="middle" value="2"/>
+            <enum name="little" value="3"/>
+        </attr>
+        <attr name="wave_height" format="enum">
+            <enum name="large" value="1"/>
+            <enum name="middle" value="2"/>
+            <enum name="little" value="3"/>
+        </attr>
+        <attr name="wave_hz" format="enum">
+            <enum name="fast" value="1"/>
+            <enum name="normal" value="2"/>
+            <enum name="slow" value="3"/>
+        </attr>
+	</declare-styleable>
+	
+    <declare-styleable name="Themes">
+		<attr name="waveViewStyle" format="reference"/>
+	</declare-styleable>
+	
+    <declare-styleable name="SwitchButton">
+		<attr name="kswThumbDrawable" format="reference"/>
+		<attr name="kswThumbColor" format="color|reference"/>
+		<attr name="kswThumbMargin" format="dimension|reference"/>
+		<attr name="kswThumbMarginTop" format="dimension|reference"/>
+		<attr name="kswThumbMarginBottom" format="dimension|reference"/>
+		<attr name="kswThumbMarginLeft" format="dimension|reference"/>
+		<attr name="kswThumbMarginRight" format="dimension|reference"/>
+		<attr name="kswThumbWidth" format="dimension|reference"/>
+		<attr name="kswThumbHeight" format="dimension|reference"/>
+		<attr name="kswThumbRadius" format="dimension|reference"/>
+		<attr name="kswBackRadius" format="dimension|reference"/>
+		<attr name="kswBackDrawable" format="reference"/>
+		<attr name="kswBackColor" format="color|reference"/>
+		<attr name="kswFadeBack" format="boolean"/>
+		<attr name="kswBackMeasureRatio" format="float"/>
+		<attr name="kswAnimationDuration" format="integer"/>
+		<attr name="kswTintColor" format="color|reference"/>
+	</declare-styleable>
+	
+    <declare-styleable name="NoticeTextView">
+        <attr name="text_size" format="reference|dimension" />
+        <attr name="text_color" format="reference|color" />
+        <!-- 左边的Icon -->
+        <attr name="icon_resid" format="reference" /> 
+    </declare-styleable>
+
+
+    <declare-styleable name="DynamicWave" >
+        <!-- 进度百分比 也是水波纹的高度 -->
+        <attr name="dw_progress" format="reference|integer" />
+    </declare-styleable>
+
+    <!--半圆形仪表进度组件-->
+    <declare-styleable name="CircleProgressView">
+        <attr name="background_color" format="reference|color" /> <!--背景色-->
+        <attr name="start_color" format="reference|color" /> <!--渐变开始色-->
+        <attr name="end_color" format="reference|color" /> <!--渐变结束色-->
+        <attr name="stroke_width" format="dimension" /> <!--圆环大小-->
+        <attr name="startAngle"/> <!--圆环开始角度-->
+        <attr name="sweepAngle"/> <!--圆环跨度角度-->
+        <attr name="cur_progress" format="float" /> <!--进度值-->
+    </declare-styleable>
+
+    <!--半圆形仪表进度组件 - 仿微信芝麻信用分-->
+    <declare-styleable name="RoundIndicatorView">
+        <!--最大数值-->
+        <attr name="maxNum" format="integer"/>
+        <!--圆盘起始角度-->
+        <attr name="startAngle"/>
+        <!--圆盘扫过的角度-->
+        <attr name="sweepAngle"/>
+    </declare-styleable>
+
+    <declare-styleable name="ProgressWaveView">
+        <attr name="behindColor" format="color"/>
+        <attr name="aboveColor" format="color"/>
+        <attr name="waveProgress" format="float"/>
+        <attr name="shapeType" format="enum">
+            <enum name="square" value="0"/>
+            <enum name="circle" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="GestureView">
+        <attr name="circleRadius" format="dimension"/>
+        <attr name="circleSpace" format="dimension"/>
+        <attr name="circleNum" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="ItemTextView">
+        <attr name="dividerColor" format="reference|color"/>
+        <attr name="topPaddingLeft" format="dimension"/>
+        <attr name="topPaddingRight" format="dimension"/>
+        <attr name="bottomPaddingLeft" format="dimension"/>
+        <attr name="bottomPaddingRight" format="dimension"/>
+        <attr name="dividerMode" format="enum">
+            <enum name="none" value="0x00" />
+            <enum name="both" value="0x01" />
+            <enum name="top" value="0x02" />
+            <enum name="bottom" value="0x03" />
+        </attr>
+    </declare-styleable>
+
+</resources>

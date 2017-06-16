@@ -1,0 +1,13 @@
+<CheckedTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:checkMark="@null"
+    android:checked="true"
+    android:gravity="center_vertical"
+    android:minHeight="45dip"
+    android:paddingLeft="15dip"
+    android:paddingRight="15dip"
+    android:text="Item"
+    android:textColor="@color/x333333"
+    android:textSize="@dimen/font_M"/>

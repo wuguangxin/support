@@ -1,0 +1,284 @@
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <!-- Activity进入和退出动画 -->
+    <style name="xin_ActivityInOutAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/xin_anim_activity_open_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/xin_anim_activity_open_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/xin_anim_activity_close_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/xin_anim_activity_close_exit</item>
+    </style>
+
+    <!-- 设置沉㓎试状态栏 -->
+    <style name="xin_immersion_status">
+        <item name="android:clipToPadding">true</item>
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+    <!-- TabHost底部导航图标样式 -->
+    <style name="xin_tabhost_top_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- TabHost底部导航图标样式 -->
+    <style name="xin_tabhost_bottom_icon">
+        <item name="android:layout_width">48dip</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:padding">5dip</item>
+    </style>
+
+    <!-- TabHost底部导航文字样式 -->
+    <style name="xin_tabhost_bottom_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/font_10</item>
+    </style>
+
+    <!-- ******************* 线条 ***************************************************** -->
+    <!-- 实线-水平 -->
+    <style name="xin_line_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dip</item>
+        <item name="android:background">#DFDFDF</item>
+    </style>
+
+    <!-- 实线-垂直 -->
+    <style name="xin_line_vertical">
+        <item name="android:layout_width">0.5dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#d1d1d1</item>
+    </style>
+
+    <!-- 虚线-水平 -->
+    <style name="xin_line_horizontal_dash">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">3dip</item>
+        <item name="android:background">@drawable/xin_dashline</item>
+    </style>
+
+    <!-- 虚线-垂直 -->
+    <style name="xin_line_vertical_dash">
+        <item name="android:layout_width">0.5dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/xin_dashline</item>
+    </style>
+
+    <!-- 加载对话框 -->
+    <style name="xin_loading_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    
+    <!-- **********************************************按钮样式start*********************************************** -->
+    <!-- 按钮样式-基本 -->
+    <style name="xin_button_base">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dip</item>
+        <item name="android:paddingLeft">15dip</item>
+        <item name="android:paddingRight">15dip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_LL</item>
+    </style>
+    
+    <!-- 按钮样式-灰色 -->
+    <style name="xin_button_gray" parent="xin_button_base">
+        <item name="android:background">@drawable/xin_button_gray</item>
+        <item name="android:textColor">@drawable/xin_color_button_gray</item>
+    </style>
+    
+    <!-- 按钮样式-红色 -->
+    <style name="xin_button_red" parent="xin_button_base">
+        <item name="android:background">@drawable/xin_button_red</item>
+        <item name="android:textColor">@drawable/xin_color_button_red</item>
+    </style>
+
+    <!-- 按钮样式-绿色 -->
+    <style name="xin_button_green" parent="xin_button_base">
+        <item name="android:background">@drawable/xin_button_green</item>
+        <item name="android:textColor">@drawable/xin_color_button_green</item>
+    </style>
+
+    <!-- 按钮样式-蓝色 -->
+    <style name="xin_button_blue" parent="xin_button_base">
+        <item name="android:background">@drawable/xin_button_blue</item>
+        <item name="android:textColor">@drawable/xin_color_button_blue</item>
+    </style>
+
+    <!-- 按钮样式-橙色 -->
+    <style name="xin_button_orange" parent="xin_button_base">
+        <item name="android:background">@drawable/xin_button_orange</item>
+        <item name="android:textColor">@drawable/xin_color_button_orange</item>
+    </style>
+
+    <!-- **********************************************按钮样式end*********************************************** -->
+
+    <!-- 设置用户头像对话框样式 -->
+    <style name="xin_button_style_blue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:padding">5dip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/xin_bottom_circle</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/font_M</item>
+    </style>
+
+    <!-- 对话框从底部进入和退出的动画 -->
+    <style name="xin_dialog_from_bottom_in_out" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/xin_anim_dialog_in</item>
+        <item name="@android:windowExitAnimation">@anim/xin_anim_dialog_out</item>
+    </style>
+    
+    <!--
+    	文字阴影样式
+		android:shadowColor指定文本阴影的颜色，需要与shadowRadius一起使用。
+		android:shadowDx设置阴影横向坐标开始位置。
+		android:shadowDy设置阴影纵向坐标开始位置。
+		android:shadowRadius设置阴影的半径。设置为0.1就变成字体的颜色了，一般设置为3.0的效果比较好。
+    -->
+    <style name="xin_font_shadow">
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <!-- 手机号码EditView样式 -->
+    <style name="xin_editText_base">
+        <item name="android:textCursorDrawable" tools:targetApi="12">@drawable/xin_edittext_cursor_style</item>
+    </style>
+
+	<!-- 手机号码EditView样式 -->
+    <style name="xin_editText_phone_number" parent="xin_editText_base">
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">13</item>
+        <item name="android:digits">1234567890</item>
+    </style>
+
+    <!-- 身份证号码EditView样式 -->
+    <style name="xin_editText_idCard" parent="xin_editText_base">
+        <item name="android:digits">1234567890Xx</item>
+        <item name="android:inputType">numberSigned</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">18</item>
+    </style>
+
+    <!-- 真实姓名EditView样式 -->
+    <style name="xin_editText_realName" parent="xin_editText_base">
+        <item name="android:inputType">text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">15</item>
+    </style>
+
+    <!-- 验证码EditView样式 -->
+    <style name="xin_editText_verify_code" parent="xin_editText_base">
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">6</item>
+        <item name="android:digits">1234567890</item>
+    </style>
+
+    <!-- 登录账号EditView样式 -->
+    <style name="xin_editText_username" parent="xin_editText_base">
+        <item name="android:inputType">text</item>
+        <item name="android:maxLength">20</item>
+    </style>
+
+    <!-- 登录密码框EditView样式 -->
+    <style name="xin_editText_login_password" parent="xin_editText_base">
+<!--         <item name="android:digits">@string/xin_digits_0_9a_zA_Z_sign</item> 登录密码不在做digits限制 -->
+        <item name="android:longClickable">false</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">20</item>
+    </style>
+    
+    <!-- 交易密码EditView样式 -->
+    <style name="xin_editText_pay_password" parent="xin_editText_base">
+        <item name="android:digits">@string/xin_digits_0_9</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">6</item>
+    </style>
+    
+    <!-- 对话框中支付密码EditView样式 -->
+    <style name="xin_dialog_editText_pay_password">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:digits">@string/xin_digits_0_9</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">@dimen/font_35</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:maxLength">1</item>
+    </style>
+        
+    <!-- 对话框中支付密码显示6个点的textView样式 -->
+    <style name="xin_dialog_editText_pay_password_textView">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">45dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:textSize">@dimen/font_22</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:maxLength">1</item>
+    </style>
+    
+     <!-- EditText清除按钮样式 -->
+     <style name="xin_button_textDel">
+        <item name="android:layout_width">45dip</item>
+        <item name="android:layout_height">45dip</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:padding">15dip</item>
+        <item name="android:src">@drawable/xin_text_del</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    
+    <!-- Base menu -->
+    <style name="xin_menu_base">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">45dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">0dip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <!--<item name="android:background">@drawable/xin_menu_background</item>-->
+        <item name="android:textColor">@drawable/xin_menu_font_color</item>
+        <item name="android:textSize">@dimen/font_M</item>
+    </style>
+    
+    <!-- Base refreshview -->
+    <style name="xin_refreshView_base" >
+         <!--<item name="com.ephwealth.financing:ptrDrawable">@drawable/xin_refreshview_lable_icon</item>-->
+         <!--<item name="com.ephwealth.financing:ptrAnimationStyle">flip</item>-->
+         <!--<item name="com.ephwealth.financing:ptrHeaderBackground">@color/xeeeeee</item>-->
+         <!--<item name="com.ephwealth.financing:ptrHeaderTextColor">#333333</item>-->
+	</style>
+
+    <!--在按钮所在同层加上该RadioButton,即可实现按下动画效果-->
+    <style name="xin_radioButton_anim_bg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

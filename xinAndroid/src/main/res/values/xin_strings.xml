@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xin_digits_sign">_+-@#$%</string>
+    <string name="xin_digits_0_9">0123456789</string>
+    <string name="xin_digits_a_z">abcdefghijklmnopqrstuvwxyz</string>
+    <string name="xin_digits_A_Z">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="xin_digits_a_zA_Z">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="xin_digits_0_9a_z">0123456789abcdefghijklmnopqrstuvwxyz</string>
+    <string name="xin_digits_0_9A_Z">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="xin_digits_0_9a_zA_Z">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="xin_digits_0_9a_zA_Z_sign">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_+-@#$%</string>
+    <!-- 登录密码框允许输入的字符 -->
+    <string name="xin_digits_money">0123456789.</string> 
+    <!-- 金额输入框允许输入的字符 -->
+    <string name="xin_digits_login_password">@string/xin_digits_0_9a_zA_Z_sign</string>
+    
+    <!-- 国际化开始*************************************************************************************** -->
+    <!-- 对话框 -->
+    <string name="dialog_button_positive_text_default">确认</string>
+    <string name="dialog_button_negative_text_default">取消</string>
+    <string name="dialog_top_left_text_default">返回</string>
+    <string name="dialog_top_title_text_default">提示</string>
+    <string name="dialog_top_right_text_default">设置</string>
+    <!-- 加载中对话框 -->
+    <string name="dialog_loading_message_default">处理中&#8230;</string>
+    <!-- 空布局 -->
+    <string name="empty_layout_message_default">暂无相关数据</string>
+    <string name="empty_layout_button_default">确定</string>
+    <!-- 城市列表 -->
+    <string name="item_city_name_default">北京</string>
+    <!-- ListView -->
+    <string name="listview_footview_text_default">加载更多</string>
+    <!-- Toast -->
+    <string name="toast_error_text_default">提示</string>
+    <string name="toast_warn_text_default">提示</string>
+    <string name="toast_flow_text_default">0KB</string>
+    <!-- 标题栏 -->
+    <string name="actionbar_search_edittext_hint">输入搜索关键字</string>
+    <!-- 设置用户头像 -->
+    <string name="usericon_set_openCamera">拍照</string>
+    <string name="usericon_set_openPhtots">相册选择</string>
+    <string name="usericon_set_openBigimg">查看大头像</string>
+    <string name="usericon_set_menuCancel">取消</string>
+    <!-- 语音对话框 -->
+    <string name="voice_move_msg">上滑取消录音</string>
+    <string name="voice_cancel_msg">松手取消录音</string>
+    <!-- 交易明细遮罩view的tag -->
+    <string name="title_arrow_view_down">down</string>
+    <string name="title_arrow_view_up">up</string>
+    <string name="title_arrow_view_none">none</string>
+</resources>

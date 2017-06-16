@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 绿色按钮 -->
+    <item android:drawable="@drawable/xin_button_green_normal" android:state_enabled="true" android:state_pressed="false"/>
+    <item android:drawable="@drawable/xin_button_green_pressed" android:state_enabled="true" android:state_pressed="true"/>
+    <item android:drawable="@drawable/xin_button_green_disable" android:state_enabled="false" android:state_pressed="false"/>
+    
+</selector>
