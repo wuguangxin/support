@@ -1,1 +1,1 @@
-include ':app', ':xinAndroid'
+include ':app', ':support'
