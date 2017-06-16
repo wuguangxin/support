@@ -33,5 +33,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     testCompile 'junit:junit:4.12'
-    compile project(':support') // 框架支持库
+    compile project(':xinAndroid')
 }
