@@ -44,7 +44,7 @@ publish {
     artifactId = 'support'                   // 上传到bintray里的Package Name(这里填什么就显示什么)
     publishVersion ='2.0.0'                  // 引用版本号 (这里填什么就显示什么)
     dryRun = false                           // false:上传，true：不上传
-    desc = '首次提交'                         // 描述，不重要
+    desc = '首次提交1'                         // 描述，不重要
 }
 
 

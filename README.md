@@ -16,5 +16,5 @@ gradle配置
 2、Add the dependency
 
   dependencies {
-	        compile 'com.github.wuguangxin:support:1.3.1'
+	        compile 'com.github.wuguangxin:support:2.0.0'
 	}
