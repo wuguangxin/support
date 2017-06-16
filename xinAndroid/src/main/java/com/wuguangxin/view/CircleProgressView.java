@@ -13,7 +13,6 @@ import android.view.View;
 
 import com.wuguangxin.R;
 import com.wuguangxin.base.TimerHandler;
-import com.wuguangxin.utils.Logger;
 
 /**
  * 圆形进度View
@@ -138,7 +137,6 @@ public class CircleProgressView extends View {
      * @param progress
      */
     public void setProgress(final float progress) {
-        Logger.e("AAA", "setProgress progress="+progress);
         if(isUseAnim){
             setProgressOnAnim(progress);
         } else {
