@@ -34,7 +34,7 @@ private static boolean isAudioUsable;
 		NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 		// 创建通知
 		Notification notification;
-		if (android.os.Build.VERSION.SDK_INT >= 22) {
+		if (android.os.Build.VERSION.SDK_INT >= 16) {
 			notification = getNotificationOnSDK22After(context, intent, id, title, message, icon);
 		} else {
 			notification = getNotification(context, intent, id, title, message, icon);
@@ -44,7 +44,7 @@ private static boolean isAudioUsable;
 	}
 
 	/**
-	 * 该方法在API 22 以前使用（不包括22）
+	 * 该方法在API 22 以前使用（不包括22），如果API在16包括以上，使用 getNotificationOnSDK22After().
 	 * @param context
 	 * @param intent
 	 * @param id
@@ -58,7 +58,8 @@ private static boolean isAudioUsable;
 		Notification notification = new Notification(icon, message, System.currentTimeMillis());
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, id, intent, PendingIntent.FLAG_ONE_SHOT);
 		// 设置点击状态栏的图标出现的提示信息
-		notification.setLatestEventInfo(context, title, message, pendingIntent);
+		// 该方法在API22之后删除了。
+//		notification.setLatestEventInfo(context, title, message, pendingIntent);
 		// audioStreamType的值必须AudioManager中的值，代表着响铃的模式
 		notification.audioStreamType = android.media.AudioManager.ADJUST_LOWER;
 		// 点击通知自动消失
