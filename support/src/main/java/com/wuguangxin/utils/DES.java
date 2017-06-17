@@ -1,5 +1,7 @@
 package com.wuguangxin.utils;
 
+import android.text.TextUtils;
+
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -11,9 +13,8 @@ import javax.crypto.spec.SecretKeySpec;
 public class DES {
 	private static final byte decodeMap[] = initDecodeMap();
 	private static final char encodeMap[] = initEncodeMap();
-	/** 默认秘钥 */
-	private static final String DEF_ENCRYPTION = "@com.xin.wu@201701010000";
-	private static String ENCRYPTION = DEF_ENCRYPTION;
+	/** 秘钥 */
+	private static String ENCRYPTION;
 
 	/**
 	 * 设置秘钥
@@ -21,6 +22,14 @@ public class DES {
 	 */
 	public static void setEncryption(String encryption) {
 		DES.ENCRYPTION = encryption;
+	}
+
+	private static String getEncryption() {
+		if(TextUtils.isEmpty(ENCRYPTION)){
+			throw new NullPointerException("主要参数ENCRYPTION为null，" +
+					"请在使用DES类前调用DES.setEncryption()设置你的encryption，比如在Applacation.onCreate()里调用。");
+		}
+		return ENCRYPTION;
 	}
 
 	protected static char encode(int i) {
@@ -271,7 +280,7 @@ public class DES {
 	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
 	 */
 	public static String encode(String data) {
-		return encrypt(data, ENCRYPTION);
+		return encrypt(data, getEncryption());
 	}
 
 	/**
@@ -279,24 +288,7 @@ public class DES {
 	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
 	 */
 	public static String decode(String data) {
-		return decrypt(data, ENCRYPTION);
+		return decrypt(data, getEncryption());
 	}
 
-	/**
-	 * 加密数据
-	 *
-	 * @deprecated use encode()
-	 */
-	public static String getEncrypData(String data) {
-		return encrypt(data, ENCRYPTION);
-	}
-
-	/**
-	 * 解密数据
-	 *
-	 * @deprecated use decode()
-	 */
-	public static String getDecodeData(String data) {
-		return decrypt(data, ENCRYPTION);
-	}
 }

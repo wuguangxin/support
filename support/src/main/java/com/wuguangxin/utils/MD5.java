@@ -62,13 +62,4 @@ public class MD5 {
             return "";
         }
     }
-
-	/**
-	 * 加密密码(登录密码等)
-	 * @param text 密码原文
-	 * @return
-     */
-	public static String encodePassword(String text) {
-		return encode(String.format("52touzi%s", text));
-	}
 }
