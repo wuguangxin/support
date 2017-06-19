@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
 
-apply plugin: 'com.novoda.bintray-release' // bintray
+//apply plugin: 'com.novoda.bintray-release' // bintray
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 25
     buildToolsVersion '25.0.2'
 
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 21
+        targetSdkVersion 25
         versionCode 200
-        versionName "2.0.0"
+        versionName "1.5.0"
     }
 
     buildTypes {
@@ -20,31 +20,30 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
+//    lintOptions {
+//        abortOnError false
+//    }
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:support-annotations:25.3.1'
     compile 'com.github.wuguangxin:pull-to-refresh:1.0.0'
 }
 
-// 配置 bintray
-publish {
-    // 固定配置
-    bintrayUser = 'wuguangxin'               // 登陆账号
-    groupId = 'com.wuguangxin'               // 项目的包名
-    userOrg = 'wuguangxin'                   // bintray用户名
-    repoName = 'maven'                       // Repositories名，所有library都默认使用"maven"
-    // 可变配置
-    website = 'https://github.com/wuguangxin/support'   // 项目的地址，不重要
-    artifactId = 'support'                   // 上传到bintray里的Package Name(这里填什么就显示什么)
-    publishVersion ='2.0.0'                  // 引用版本号 (这里填什么就显示什么)
-    dryRun = false                           // false:上传，true：不上传
-    desc = '首次提交1'                         // 描述，不重要
-}
-
+//// 配置 bintray
+//publish {
+//    // 固定配置
+//    bintrayUser = 'wuguangxin'               // 登陆账号
+//    groupId = 'com.wuguangxin'               // 项目的包名
+//    userOrg = 'wuguangxin'                   // bintray用户名
+//    repoName = 'maven'                       // Repositories名，所有library都默认使用"maven"
+//    // 可变配置
+//    website = 'https://github.com/wuguangxin/support'   // 项目的地址，不重要
+//    artifactId = 'support'                   // 上传到bintray里的Package Name(这里填什么就显示什么)
+//    publishVersion ='2.0.0'                  // 引用版本号 (这里填什么就显示什么)
+//    dryRun = false                           // false:上传，true：不上传
+//    desc = '首次提交1'                         // 描述，不重要
+//}
 

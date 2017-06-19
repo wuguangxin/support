@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 账单详情适配器
+ * 带页脚的适配器
  *
  * <p>Created by wuguangxin on 14/11/17 </p>
  */
