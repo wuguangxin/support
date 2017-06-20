@@ -1,5 +1,5 @@
 # support
-项目框架
+android项目支持库，封装了基本的utils，自定义View等。
 
 gradle配置
 
@@ -7,8 +7,7 @@ gradle配置
 
 	allprojects {
 		repositories {
-			...
-			maven { url 'https://jitpack.io' }
+			jcenter()
 		}
 	}
   
@@ -16,5 +15,5 @@ gradle配置
 2、Add the dependency
 
   	dependencies {
-	        compile 'com.github.wuguangxin:support:1.5.2'
+	        compile 'com.wuguangxin:support:1.0.0'
 	}
