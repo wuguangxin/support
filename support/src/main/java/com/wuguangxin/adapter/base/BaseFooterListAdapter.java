@@ -48,14 +48,15 @@ public abstract class BaseFooterListAdapter extends BaseListAdapter {
 	
 	/**
 	 *  最少多少条数据才显示页脚信息View
-	 * @return
+	 * @return 最少多少条数据才显示页脚信息View
 	 */
 	public int getMinCountEnableFooterView(){
 		return minCountEnableFooterView;
 	}
 
 	/**
-	 *  最少多少条数据才显示页脚信息View
+	 * 最少多少条数据才显示页脚信息View
+	 * @param minCountEnableFooterView 最少多少条数据才显示页脚信息View
 	 */
 	public void setMinCountEnableFooterView(int minCountEnableFooterView){
 		this.minCountEnableFooterView = minCountEnableFooterView;

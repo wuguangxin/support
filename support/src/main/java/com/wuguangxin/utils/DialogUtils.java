@@ -108,8 +108,8 @@ public class DialogUtils{
 	
 	/**
 	 * 创建dialog 并显示
-	 * @param context
-	 * @return
+	 * @param context context
+	 * @return Dialog
 	 */
 	public static Dialog makeGoingDialog(Context context){
 		ProgressDialog pd = null;

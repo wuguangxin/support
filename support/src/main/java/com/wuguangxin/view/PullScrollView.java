@@ -158,7 +158,7 @@ public class PullScrollView extends ScrollView {
     /**
      * 设置Header
      *
-     * @param view
+     * @param view 头部View
      */
     public void setHeader(View view) {
         mHeader = view;
@@ -167,7 +167,7 @@ public class PullScrollView extends ScrollView {
     /**
      * 设置状态改变时的监听器
      *
-     * @param turnListener
+     * @param turnListener 状态改变时的监听器
      */
     public void setOnTurnListener(OnTurnListener turnListener) {
         mOnTurnListener = turnListener;

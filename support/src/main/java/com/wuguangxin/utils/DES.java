@@ -193,9 +193,9 @@ public class DES {
 	 * 示例：
 	 * DES.encrypt("") = /VZHDHrzpFU=
 	 * DES.encrypt(null) = /VZHDHrzpFU=
-	 * @param text
-	 * @param key
-	 * @return
+	 * @param text 要加密的文本
+	 * @param key 加密的秘钥
+	 * @return 返回密文
 	 */
 	public static String encrypt(String text, String key) {
 		if(key == null || key == ""){
@@ -218,9 +218,9 @@ public class DES {
 	 * 示例：
 	 * DES.decrypt("") = null
 	 * DES.decrypt(null) = null
-	 * @param text
-	 * @param key
-	 * @return
+	 * @param text 要加密的文本
+	 * @param key 加密的秘钥
+	 * @return 返回密文
 	 */
 	public static String decrypt(String text, String key) {
 		if(key == null || key == ""){
@@ -240,8 +240,8 @@ public class DES {
 
 	/**
 	 * 将二进制转换戄1�7进制
-	 * @param buf
-	 * @return
+	 * @param buf byte
+	 * @return 字符串
 	 */
 	public static String parseByte2HexStr(byte buf[]) {
 		StringBuffer sb = new StringBuffer();
@@ -257,8 +257,8 @@ public class DES {
 
 	/**
 	 * 射1�7进制转换为二进制
-	 * @param hexStr
-	 * @return
+	 * @param hexStr String
+	 * @return byte[]
 	 */
 	public static byte[] parseHexStr2Byte(String hexStr) {
 		if (hexStr.length() < 1)
@@ -278,6 +278,8 @@ public class DES {
 	/**
 	 * 加密数据。
 	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
+	 * @param data 数据
+	 * @return 密文
 	 */
 	public static String encode(String data) {
 		return encrypt(data, getEncryption());
@@ -286,6 +288,8 @@ public class DES {
 	/**
 	 * 解密数据。
 	 * （在程序初始化时设置秘钥 setEncryption()，否则会使用默认的秘钥）
+	 * @param data 数据
+	 * @return 明文
 	 */
 	public static String decode(String data) {
 		return decrypt(data, getEncryption());

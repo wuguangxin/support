@@ -90,13 +90,13 @@ private static boolean isAudioUsable;
 
 	/**
 	 * 当创建通知时，如果SDK大于22，则使用本方法，但该方法最小支持为SDK16
-	 * @param context
-	 * @param intent
-	 * @param id
-	 * @param title
-	 * @param message
-	 * @param icon
-	 * @return
+	 * @param context 上下文
+	 * @param intent 意图
+	 * @param id 通知ID
+	 * @param title 通知标题
+	 * @param message 通知信息
+	 * @param icon 通知icon
+	 * @return Notification
 	 */
 	@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
 	public static Notification getNotificationOnSDK22After(Context context, Intent intent, int id, String title, String message, int icon){
@@ -115,18 +115,34 @@ private static boolean isAudioUsable;
 		return notification;
 	}
 
+	/**
+	 * 是否开启震动
+	 * @return 是否开启震动
+	 */
 	public static boolean isShakeUsable() {
 		return isShakeUsable;
 	}
 
+	/**
+	 * 设置是否开启震动
+	 * @param isShakeUsable 是否开启震动
+	 */
 	public static void setShakeUsable(boolean isShakeUsable) {
 		NotificationUtils.isShakeUsable = isShakeUsable;
 	}
 
+	/**
+	 * 是否播放声音
+	 * @return 是否播放声音
+	 */
 	public static boolean isAudioUsable() {
 		return isAudioUsable;
 	}
 
+	/**
+	 * 设置是否播放声音
+	 * @param isAudioUsable 是否播放声音
+	 */
 	public static void setAudioUsable(boolean isAudioUsable) {
 		NotificationUtils.isAudioUsable = isAudioUsable;
 	}

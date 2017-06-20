@@ -419,7 +419,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
     /**
      * 当本组件被嵌套于一个可滚动组件内，比如ScrollView中时，设置本组件的外部ScrollView
-     * @param parentScrollView
+     * @param parentScrollView 父View
      */
     public void setParentScrollView(ViewGroup parentScrollView) {
         this.mParentScrollView = parentScrollView;

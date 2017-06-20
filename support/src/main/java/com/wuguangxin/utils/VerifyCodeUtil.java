@@ -111,7 +111,7 @@ public class VerifyCodeUtil{
 
 	/**
 	 * 获取随机字符串
-	 * @return
+	 * @return 随机字符串
 	 */
 	final public static String getRandomCode(){
 		StringBuilder buffer = new StringBuilder();
@@ -121,6 +121,11 @@ public class VerifyCodeUtil{
 		return buffer.toString();
 	}
 
+	/**
+	 * 画线
+	 * @param canvas 画板
+	 * @param paint 画笔
+	 */
 	final private static void drawLine(Canvas canvas, Paint paint){
 		int color = randomColor();
 		int startX = random.nextInt(width);
@@ -132,11 +137,19 @@ public class VerifyCodeUtil{
 		canvas.drawLine(startX, startY, stopX, stopY, paint);
 	}
 
+	/**
+	 * 随机颜色
+	 * @return 颜色
+	 */
 	final private static int randomColor(){
 		return randomColor(1);
 	}
 
-	// 随机颜色
+	/**
+	 * 随机颜色
+	 * @param rate int
+	 * @return 颜色
+	 */
 	private static int randomColor(int rate){
 		int red = random.nextInt(150) / rate;
 		int green = random.nextInt(150) / rate;
@@ -144,7 +157,10 @@ public class VerifyCodeUtil{
 		return Color.rgb(red, green, blue);
 	}
 
-	// 随机文字样式
+	/**
+	 * 随机文字样式
+	 * @param paint Paint
+	 */
 	final private static void randomTextStyle(Paint paint){
 		int color = randomColor();
 		paint.setColor(color);
@@ -158,6 +174,9 @@ public class VerifyCodeUtil{
 		// paint.setStrikeThruText(true); //true为删除线，false为非删除线
 	}
 
+	/**
+	 * 随机Padding
+	 */
 	final private static void randomPadding(){
 		padding_left += base_padding_left + random.nextInt(range_padding_left);
 		padding_top = base_padding_top + random.nextInt(range_padding_top);

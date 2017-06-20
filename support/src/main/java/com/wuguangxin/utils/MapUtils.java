@@ -17,7 +17,7 @@ public class MapUtils{
 	 * 根据value获取Map集合中的key
 	 * @param map Map集合
 	 * @param value value值
-	 * @return
+	 * @return key
 	 */
 	public static String getKeyFromValue(Map<String, String> map, String value){
 		if(!(map == null || map.isEmpty() || TextUtils.isEmpty(value))){
@@ -35,8 +35,8 @@ public class MapUtils{
 	
 	/**
 	 * 获取Map集合中的第一个Key
-	 * @param map
-	 * @return
+	 * @param map Map
+	 * @return Key
 	 */
 	public static String getFirstKey(Map<String, String> map){
 		return getKeyValue(map, MAP_KEY);
@@ -44,13 +44,19 @@ public class MapUtils{
 	
 	/**
 	 * 获取Map集合中的第一个Value
-	 * @param map
-	 * @return
+	 * @param map Map
+	 * @return Value
 	 */
 	public static String getFirstValue(Map<String, String> map){
 		return getKeyValue(map, MAP_VALUE);
 	}
 
+	/**
+	 *
+	 * @param map Map
+	 * @param keyOrValue MAP_KEY、MAP_VALUE
+	 * @return 返回key或者value
+	 */
 	@SuppressWarnings("null")
 	private static String getKeyValue(Map<String, String> map, int keyOrValue){
 		if(map != null || !map.isEmpty()){
@@ -70,9 +76,9 @@ public class MapUtils{
 	
 	/**
 	 * 获取key在Map中的索引
-	 * @param map
-	 * @param key
-	 * @return
+	 * @param map Map
+	 * @param key key
+	 * @return index
 	 */
 	public static int getIndex(Map<String, String> map, String key){
 		if(map != null && key != null){
@@ -89,7 +95,8 @@ public class MapUtils{
 
 	/**
 	 * 获取Map的key的列表
-	 * @param map
+	 * @param map Map
+	 * @return List
 	 */
 	public static List<String> getKeyList(Map<String, String> map){
 		List<String> list = new ArrayList<String>();
@@ -106,7 +113,8 @@ public class MapUtils{
 	
 	/**
 	 * 获取Map的value的列表
-	 * @param map
+	 * @param map Map
+	 * @return List
 	 */
 	public static List<String> getValueList(Map<String, String> map){
 		List<String> list = new ArrayList<String>();

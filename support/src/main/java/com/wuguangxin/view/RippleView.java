@@ -171,6 +171,7 @@ public class RippleView extends View {
 
     /**
      * 设置进度
+     * @param progress 进度
      */
     public void setProgress(float progress) {
         this.percent = progress;
@@ -196,6 +197,11 @@ public class RippleView extends View {
         }
     }
 
+    /**
+     * 设置边框
+     * @param width 宽
+     * @param color 颜色
+     */
     public void setBorder(int width, int color) {
         borderColor = color;
         borderWidth = width;
@@ -203,7 +209,7 @@ public class RippleView extends View {
 
     /**
      * 设置背景色
-     * @param color
+     * @param color 背景色
      */
     public void setBgColor(int color) {
         bgColor = color;
@@ -211,20 +217,32 @@ public class RippleView extends View {
 
     /**
      * 设置水波颜色
-     * @param color
+     * @param color 水波颜色
      */
     public void setWaveColor(int color) {
         waveColor1 = waveColor2 = color;
     }
 
+    /**
+     * 设置文本颜色
+     * @param textColor 文本颜色
+     */
     public void setTextColor(int textColor) {
         this.textColor = textColor;
     }
 
+    /**
+     * 设置文本颜色
+     * @param textColor 文本颜色
+     */
     public void setTextColor(String textColor) {
         this.textColor = Color.parseColor(textColor);
     }
 
+    /**
+     * 设置文本大小
+     * @param textSine 文本大小
+     */
     public void setTextSize(int textSine) {
         this.textSize = textSine;
     }
@@ -370,6 +388,9 @@ public class RippleView extends View {
         mAnimatorSet.playTogether(animators);
     }
 
+    /**
+     * @return mWaveShiftRatio
+     */
     public float getWaveShiftRatio() {
         return mWaveShiftRatio;
     }
@@ -387,6 +408,9 @@ public class RippleView extends View {
         }
     }
 
+    /**
+     * @return mWaterLevelRatio
+     */
     public float getWaterLevelRatio() {
         return mWaterLevelRatio;
     }
@@ -404,6 +428,9 @@ public class RippleView extends View {
         }
     }
 
+    /**
+     * @return mAmplitudeRatio
+     */
     public float getAmplitudeRatio() {
         return mAmplitudeRatio;
     }
@@ -421,6 +448,9 @@ public class RippleView extends View {
         }
     }
 
+    /**
+     * @return mWaveLengthRatio
+     */
     public float getWaveLengthRatio() {
         return mWaveLengthRatio;
     }

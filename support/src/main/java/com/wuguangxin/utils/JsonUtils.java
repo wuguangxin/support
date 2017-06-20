@@ -9,8 +9,8 @@ public class JsonUtils {
 	
 	/**
 	 * 字符转到json对象
-	 * @param inReader
-	 * @return
+	 * @param inReader json字符串
+	 * @return JSONObject
 	 */
 	public static JSONObject parseStr2Json(String inReader){
 		JSONTokener jsonParser = new JSONTokener(inReader);
@@ -26,8 +26,8 @@ public class JsonUtils {
 	
 	/**
 	 * 把标准json字符串转换为json对象JSONObject
-	 * @param stringJson
-	 * @return
+	 * @param stringJson json字符串
+	 * @return JSONObject
 	 */
 	public static JSONObject toJson(String stringJson){
 		try {

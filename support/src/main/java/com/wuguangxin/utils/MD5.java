@@ -14,8 +14,8 @@ public class MD5 {
 	 * 示例：
 	 * MD5.encode("") = d41d8cd98f00b204e9800998ecf8427e
 	 * MD5.encode(null) = d41d8cd98f00b204e9800998ecf8427e
-	 * @param text
-	 * @return
+	 * @param text 文本
+	 * @return 密文
 	 */
 	public static String encode(String text) {
 		if (text == null) text = "";
@@ -40,8 +40,8 @@ public class MD5 {
 
 	/**
 	 * 加密(注册用户测试用)
-	 * @param text
-	 * @return
+	 * @param text 文本
+	 * @return 密文
 	 */
 	public static String encryptUTF(String text) {
 		if (text == null) text = "";

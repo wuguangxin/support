@@ -46,7 +46,7 @@ public class DateUtils{
 	/**
 	 * 将短时间格式字符串转换为时间 yyyy-MM-dd
 	 * @param dataString 如2017-01-01
-	 * @return
+	 * @return 时间 yyyy-MM-dd
 	 */
 	public static Date getDateShort(String dataString) {
 		ParsePosition pos = new ParsePosition(0);
@@ -56,7 +56,7 @@ public class DateUtils{
 	/**
 	 * 将短时间格式字符串转换为时间 yyyy-MM-dd HH:mm:ss
 	 * @param dataString 如2017-01-01 10:20:30
-	 * @return
+	 * @return 时间 yyyy-MM-dd HH:mm:ss
 	 */
 	public static Date getDateLong(String dataString) {
 		ParsePosition pos = new ParsePosition(0);
@@ -66,7 +66,7 @@ public class DateUtils{
 	/**
 	 * 将短时间格式字符串转换为时间戳
 	 * @param dataString yyyy-MM-dd 如 2017-01-01
-	 * @return
+	 * @return 时间戳
 	 */
 	public static long formatTimestamp(String dataString) {
 		try {
@@ -80,7 +80,7 @@ public class DateUtils{
 	/**
 	 * 将长时间格式字符串转换为时间戳
 	 * @param dataString yyyy-MM-dd HH:mm:ss 如 2017-01-01 10:20:30
-	 * @return
+	 * @return 时间戳
 	 */
 	public static long formatTimestampLong(String dataString) {
 		try {
@@ -92,11 +92,10 @@ public class DateUtils{
 		return 0;
 	}
 
-
 	/**
 	 * 格式化为长日期
 	 * @param timestamp String类型时间戳
-	 * @return 如 2014-01-01 15:20:58
+	 * @return 长日期，如 2014-01-01 15:20:58
 	 */
 	public static String formatLongDate(String timestamp){
 		if (TextUtils.isEmpty(timestamp)) {
@@ -167,6 +166,8 @@ public class DateUtils{
 
 	/**
 	 * 格式化为短日期，如 14.05.13 把20140101/2014-01-01这样的日期字符串格式化为14.01.01
+	 * @param dateString 如 14.05.13 把20140101/2014-01-01
+	 * @return 如14.01.01
 	 */
 	public static String formatShortDate(String dateString){
 		if (TextUtils.isEmpty(dateString)) {
@@ -180,7 +181,7 @@ public class DateUtils{
 	 * 格式化日期
 	 * @param timestamp 时间戳
 	 * @param format 格式化样式 yyyy-MM-dd HH:mm:ss
-     * @return
+     * @return 日期
      */
 	public static String format(long timestamp, String format){
 		if (timestamp <= 0) {
@@ -233,7 +234,7 @@ public class DateUtils{
 
 	/**
 	 * 获取网络时间戳（默认时间源 http://www.beijing-time.org）
-	 * @return
+	 * @return 时间戳
 	 */
 	public static long getTimestampFromNet(){
 		return getTimestampFromNet(null);
@@ -242,7 +243,7 @@ public class DateUtils{
 	/**
 	 * String类型长日期转换为long类型时间戳(有BUG，未解决)
 	 * @param dateString String类型长日期
-	 * @return
+	 * @return long类型时间戳
 	 */
 	public static long getTimestamp(String dateString){
 		if (TextUtils.isEmpty(dateString)) {
@@ -257,8 +258,8 @@ public class DateUtils{
 
 	/**
 	 * 指定服务器地址获取网络时间戳
-	 * @param webUrl 任何一个网站域名或网络IP，如 http://www.ephwealth.com
-	 * @return
+	 * @param webUrl 任何一个网站域名或网络IP，如 http://www.baidu.com
+	 * @return 网络时间戳
 	 */
 	public static long getTimestampFromNet(String webUrl){
 		if (TextUtils.isEmpty(webUrl)) {
@@ -282,6 +283,7 @@ public class DateUtils{
 	 * 获取两个日期的间隔天数（精确到天，会把传入的两个时间戳去掉时分秒）
 	 * @param startTime 开始日期
 	 * @param endTime 结束日期
+	 * @return 间隔天数
 	 */
 	public static int dateDiff(long startTime, long endTime) {
 		String endStr = formatDateShortLine(endTime); // 把时分秒抹去
@@ -340,7 +342,6 @@ public class DateUtils{
 	 * 格式化指定时间毫秒数为(时分秒)格式
 	 * @param countTime 总时间 时间戳
 	 * @param isFormat 如果为true, 返回 11时22分33秒，如果为false，则为11:22:33
-	 * @param isFormat 是否是格式化为（00时00分00秒）
 	 * @return 返回如: 22时33分51秒 或 22:33:51
 	 */
 	public static String formatHHmmss(long countTime, boolean isFormat){
@@ -371,8 +372,7 @@ public class DateUtils{
 	/**
 	 * 格式化指定时间毫秒数为(时分)格式
 	 * @param countTime 总时间 时间戳
-	 * @param isFormat 如果为true, 返回 11时22分33秒，如果为false，则为11:22
-	 * @param isFormat 是否是格式化为（00时00分）
+	 * @param isFormat 如果为true, 返回 11时22分，如果为false，则为11:22
 	 * @return 返回如: 22时33分 或 22:33
 	 */
 	public static String formatHHmm(long countTime, boolean isFormat){
@@ -440,7 +440,7 @@ public class DateUtils{
 
 	/**
 	 * 根据2位String月份获取int类型月份（）
-	 * @param month
+	 * @param month 2位String月份
 	 * @return 如02获取2
 	 */
 	public static int getMonthInt(String month){
@@ -464,7 +464,7 @@ public class DateUtils{
 	 * 分 mm <br>
 	 * 秒 ss <br>
 	 * @param formatString 格式化样式，如"yyyy-MM-dd HH:mm:ss"
-	 * @return
+	 * @return 格式化的字符串
 	 */
 	public static String format(String formatString){
 		return format(formatString, new Date(System.currentTimeMillis()));
@@ -480,7 +480,7 @@ public class DateUtils{
 	 * 秒 ss <br>
 	 * @param formatString 格式化样式
 	 * @param date 日期
-	 * @return
+	 * @return 格式化的字符串
 	 */
 	public static String format(String formatString, Date date){
 		if (date == null || TextUtils.isEmpty(formatString)) {
@@ -508,7 +508,7 @@ public class DateUtils{
 	/**
 	 * 根据字符串日期获年份
 	 * @param date 长日期 如2015-01-01 10:20:30 返回2015
-	 * @return
+	 * @return 年份
 	 */
 	public static int getYear(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -523,7 +523,7 @@ public class DateUtils{
 	/**
 	 * 根据字符串日期获取当前第几月（已经-1）
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 1
-	 * @return
+	 * @return 第几月
 	 */
 	public static int getMonth(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -538,7 +538,7 @@ public class DateUtils{
 	/**
 	 * 根据字符串日期获取当前月的第几日
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 2
-	 * @return
+	 * @return 第几日
 	 */
 	public static int getDay(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -553,7 +553,7 @@ public class DateUtils{
 	/**
 	 * 根据字符串日期获取当前小时
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 10
-	 * @return
+	 * @return 当前小时
 	 */
 	public static int getHours(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -568,7 +568,7 @@ public class DateUtils{
 	/**
 	 * 根据字符串日期获取当前分钟
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 20
-	 * @return
+	 * @return 当前分钟
 	 */
 	public static int getMinute(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -583,7 +583,7 @@ public class DateUtils{
 	/**
 	 * 根据字符串日期获取当前秒
 	 * @param date 长日期 如2015-01-02 10:20:30 返回 30
-	 * @return
+	 * @return 当前秒
 	 */
 	public static int getSecond(String date){
 		if(!TextUtils.isEmpty(date)) {
@@ -597,7 +597,7 @@ public class DateUtils{
 
 	/**
 	 * 获取当前秒（2位，不足补0）
-	 * @return
+	 * @return 当前秒（2位，不足补0）
 	 */
 	public static String getSecond(){
 //	    System.out.println("========= 年：" + String.format("%ty%n", date)); // 当前年份（2位，不足补0）

@@ -138,7 +138,7 @@ public class VoicePlayer{
 	/**
 	 * 得到背景音乐的“音量”
 	 * 
-	 * @return
+	 * @return 音量值
 	 */
 	public float getVolume(){
 		return (mLeftVolume + mRightVolume) / 2;

@@ -33,7 +33,7 @@ public abstract class OnDoubleClickListener implements OnClickListener{
 	
 	/**
 	 * 当正确的点击按钮时回调
-	 * @param v
+	 * @param v 点击的View
 	 */
 	public abstract void onClicked(View v);
 	

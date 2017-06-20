@@ -52,7 +52,7 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 	private int mPosition; // 当前位置
 	private int mAnimMode; // 动画模式
 	private int mOrientation; // 滚动方向
-	
+
 	private Handler mHandler = new Handler(){
 		@Override
 		public void handleMessage(Message msg){
@@ -93,38 +93,41 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 			mBottomOut = createAnim(0, -90, false, false);
 		}
 	}
-	
+
 	/**
 	 * 设置切换动画模式（2D或3D效果）
-	 * @param animMode
+	 * @param animMode 切换动画模式
 	 */
 	public void setAnimMode(int animMode){
 		this.mAnimMode = animMode;
 		initAnim();
 	}
-	
+
 	/**
 	 * 设置滚动方向
-	 * @param orientation
+	 * @param orientation 滚动方向
 	 */
 	public void setOrientation(int orientation){
 		this.mOrientation = orientation;
 	}
-	
-	public static interface AnimMode {
+
+	public interface AnimMode {
 		/** 2D平移 */
 		int MODE_2D = 0;
 		/** 3D翻转 */
 		int MODE_3D = 1;
 	}
-	
-	public static interface Orientation {
+
+	public interface Orientation {
 		/** 由上至下滚动 */
 		int DOWN = 0;
 		/** 由下至上滚动 */
 		int TOP = 1;
 	}
-	
+
+	/**
+	 * 初始化 TimerTask
+	 */
 	private void initTimeTask(){
 		mIndex = 0;
 		mPosition = 0;
@@ -140,7 +143,7 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 		mTimer = new Timer(true);
 		mTimer.schedule(mTimerTask, mScrollDuration, mScrollDuration);
 	}
-	
+
 	/**
 	 * 滚动
 	 */
@@ -160,21 +163,21 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 			startAnim();
 		}
 	}
-	
+
 	/**
 	 * 启动
 	 */
 	public void start(){
 		isRunning = true;
 	}
-	
+
 	/**
 	 * 暂停
 	 */
 	public void pause(){
 		isRunning = false;
 	}
-	
+
 	/**
 	 * 销毁定时器
 	 */
@@ -187,26 +190,41 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 		isRunning = false;
 		mIndex = 0;
 	}
-	
+
+	/**
+	 * 下一个
+	 */
 	public void next(){
 		scroll();
 	}
-	
+
 	@Override
 	public void onClick(View v){
 		if(mListener != null){
 			mListener.onItemClick(mAdapter, NoticeView.this, mPosition);
 		}
 	}
-	
+
+	/**
+	 * 获取默认文本
+	 * @return 默认文本
+	 */
 	public CharSequence getDefaultText(){
 		return mDefaultText;
 	}
 
+	/**
+	 * 设置默认文本
+	 * @param text 默认文本
+	 */
 	public void setDefaultText(CharSequence text){
 		this.mDefaultText = text;
 	}
-	
+
+	/**
+	 * 设置适配器
+	 * @param textAdapter TextAdapter适配器
+	 */
 	public void setAdapter(TextAdapter textAdapter){
 		this.mAdapter = textAdapter;
 		reset();
@@ -216,38 +234,56 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 			addView(mAdapter.getView());
 		}
 	}
-	
+
+	/**
+	 * 获取适配器
+	 * @return 适配器
+	 */
 	public TextAdapter getAdapter(){
 		return mAdapter;
 	}
 
-	public static interface TextAdapter{
+	public interface TextAdapter{
 		Object getData();
 		int getCount();
 		CharSequence getText(int position);
 		TextView getView();
 	}
-	
+
 	private OnItemClickListener mListener;
-	
+
+	/**
+	 * item点击监听器
+	 * @param listener item点击监听器
+	 */
 	public void setOnItemClickListener(OnItemClickListener listener){
 		this.mListener = listener;
 	}
-	
-	public static interface OnItemClickListener{
+
+	/**
+	 * 监听器
+	 */
+	public interface OnItemClickListener{
 		void onItemClick(TextAdapter adapter, NoticeView view, int position);
 	}
-	
+
+	/**
+	 * 更新数据
+	 */
 	private void notifyDataChangeed(){
 		super.reset();
 		mIndex = 0;
 		mPosition = 0;
 	}
-	
+
+	/**
+	 * 获取当前位置
+	 * @return 当前位置
+	 */
 	public int getPosition(){
 		return mIndex;
 	}
-	
+
 	//这里返回的TextView，就是我们看到的View，改方法只执行两次
 	@Override
 	public View makeView(){
@@ -274,17 +310,35 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 			setOutAnimation(mTopOut);
 		}
 	}
-	
+
+	/**
+	 * px转为dip
+	 * @param pxValue px值
+	 * @return dip值
+	 */
 	private int px2dip(float pxValue){
 		float scale = mContext.getResources().getDisplayMetrics().density;
 		return (int)(pxValue / scale + 0.5f);
 	}
-	
+
+	/**
+	 * dip转px
+	 * @param dipValue dip
+	 * @return px
+	 */
 	private int dip2px(float dipValue){
 		float density = mContext.getResources().getDisplayMetrics().density;
 		return (int)(dipValue * density + 0.5f);
 	}
-	
+
+	/**
+	 * 创建动画
+	 * @param start 开始
+	 * @param end 结束
+	 * @param turnIn turnIn
+	 * @param turnUp turnUp
+	 * @return
+	 */
 	private Rotate3dAnimation createAnim(float start, float end, boolean turnIn, boolean turnUp){
 		final Rotate3dAnimation rotation = new Rotate3dAnimation(start, end, turnIn, turnUp);
 		rotation.setDuration(mAnimDuration);
@@ -292,7 +346,7 @@ public class NoticeView extends TextSwitcher implements ViewSwitcher.ViewFactory
 		rotation.setInterpolator(new AccelerateInterpolator());
 		return rotation;
 	}
-	
+
 	class Rotate3dAnimation extends Animation{
 		private final float mFromDegrees;
 		private final float mToDegrees;

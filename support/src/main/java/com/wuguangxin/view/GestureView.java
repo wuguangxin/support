@@ -221,7 +221,7 @@ public class GestureView extends View{
 	public interface OnGestureListener{
 		/**
 		 * 当为解锁状态时，请返回设置的解锁密码
-		 * @return
+		 * @return 设置的解锁密码
 		 */
 		String getOldKey();
 		
@@ -242,7 +242,7 @@ public class GestureView extends View{
 		 * 1：绘制手势点太短。<br>
 		 * 2：在设置手势时，第二次与第一次不一致。<br>
 		 * 3：解锁密码不正确。<br>
-		 * @param code
+		 * @param code 错误码
 		 */
 		void onError(int code);
 
@@ -546,50 +546,92 @@ public class GestureView extends View{
 		/** 是否选择:false=未选中 */
 		private boolean isTouch;
 
-		/** 圆心X轴 */
+		/**
+		 * 圆心X轴
+		 * @return 返回圆的X轴
+		 */
 		public float getCircleX(){
 			return circleX;
 		}
 
+		/**
+		 * 设置圆的X轴
+		 * @param circleX 圆的X轴
+		 */
 		public void setCircleX(float circleX){
 			this.circleX = circleX;
 		}
 
-		/** 半圆心Y轴 */
+		/**
+		 * 半圆心Y轴
+		 * @return 返回圆的Y轴
+		 */
 		public float getCircleY(){
 			return circleY;
 		}
 
+		/**
+		 * 设置圆的Y轴
+		 * @param circleY 圆的Y轴
+		 */
 		public void setCircleY(float circleY){
 			this.circleY = circleY;
 		}
 
-		/** 半径 */
+		/**
+		 * 半径
+		 * @return 返回半径
+		 */
 		public float getRadius(){
 			return radius;
 		}
 
+		/**
+		 * 设置圆的半径
+		 * @param radius 圆的半径
+		 */
 		public void setRadius(float radius){
 			this.radius = radius;
 		}
 
+		/**
+		 * 获取圆的数量
+		 * @return 圆的数量
+		 */
 		public Integer getNum(){
 			return num;
 		}
 
+		/**
+		 * 设置圆的数量
+		 * @param num 圆的数量
+		 */
 		public void setNum(Integer num){
 			this.num = num;
 		}
 
+		/**
+		 * 判断是否触摸
+		 * @return 是否触摸
+		 */
 		public boolean isTouch(){
 			return isTouch;
 		}
 
+		/**
+		 * 设置触摸状态
+		 * @param touch 触摸状态
+		 */
 		public void setTouch(boolean touch){
 			this.isTouch = touch;
 		}
 
-		/** 判读传入位置是否在圆心内部 */
+		/**
+		 * 判读传入位置是否在圆心内部
+		 * @param x 当前触摸的X轴
+		 * @param y 当前触摸的Y轴
+		 * @return 是否在圆心内部
+		 */
 		public boolean isPointIn(int x, int y){
 			double distance = Math.sqrt((x - circleX) * (x - circleX) + (y - circleY) * (y - circleY));
 			return distance < radius;
@@ -597,8 +639,8 @@ public class GestureView extends View{
 	}
 	
 	/**
-	 * 设置触觉反馈
-	 * @param shake 是否
+	 * 设置是否开启触觉反馈
+	 * @param shake 是否开启触觉反馈
 	 */
 	public void setShake(boolean shake){
 		this.shakeable = shake;

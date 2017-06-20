@@ -1,5 +1,6 @@
 package com.wuguangxin.utils;
 
+import android.Manifest;
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -7,7 +8,6 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.KeyguardManager;
 import android.content.ComponentName;
@@ -45,14 +45,15 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.NetworkInterface;
 import java.net.URL;
 import java.nio.channels.FileChannel;
@@ -103,8 +104,7 @@ public class AndroidUtils {
 
     /**
      * 获取SDK版本号
-     *
-     * @return
+     * @return SDK版本号
      */
     public static int getSdkVersion() {
         return VERSION.SDK_INT;
@@ -112,8 +112,7 @@ public class AndroidUtils {
 
     /**
      * 判断SD卡是否挂载 使用Environment.getExternalStorageState() 返回sd卡的状态， Environment.MEDIA_MOUNTED 表示被挂载
-     *
-     * @return
+     * @return 判断SD卡是否挂载
      */
     public static boolean isExtStorageAvailable() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
@@ -121,8 +120,7 @@ public class AndroidUtils {
 
     /**
      * 获取手机版本号
-     *
-     * @return
+     * @return 手机版本号
      */
     public static String isRelease() {
         return VERSION.RELEASE;
@@ -130,8 +128,7 @@ public class AndroidUtils {
 
     /**
      * 获取手机型号
-     *
-     * @return
+     * @return 手机型号
      */
     public static String getModel() {
         return Build.MODEL;
@@ -139,8 +136,7 @@ public class AndroidUtils {
 
     /**
      * 获取应用程序包名
-     *
-     * @return
+     * @return 应用程序包名
      */
     public static String getPackageName(Context context) {
         return context.getPackageName();
@@ -148,8 +144,7 @@ public class AndroidUtils {
 
     /**
      * 判断是否已经安装SD卡
-     *
-     * @return
+     * @return 是否已经安装SD卡
      */
     public static boolean isExistSDCard() {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
@@ -157,8 +152,7 @@ public class AndroidUtils {
 
     /**
      * 获取正在运行的进程信息列表
-     *
-     * @return
+     * @return 正在运行的进程信息列表
      */
     public static List<RunningAppProcessInfo> getRunningProcessList(Context context) {
         return getActivityManager(context).getRunningAppProcesses();
@@ -166,8 +160,7 @@ public class AndroidUtils {
 
     /**
      * 获取正在运行的进程数量
-     *
-     * @return
+     * @return 正在运行的进程数量
      */
     public static int getRunningProcessSize(Context context) {
         return getRunningProcessList(context).size();
@@ -175,8 +168,7 @@ public class AndroidUtils {
 
     /**
      * 获取手机内存路径
-     *
-     * @return
+     * @return 手机内存路径
      */
     public static String getInternalMemoryPath() {
         File dataDirectory = Environment.getDataDirectory();
@@ -188,8 +180,7 @@ public class AndroidUtils {
 
     /**
      * 获取扩展SD存储卡路径
-     *
-     * @return
+     * @return 扩展SD存储卡路径
      */
     public static String getExternalStoragePath() {
         File externalStorageDirectory = Environment.getExternalStorageDirectory();
@@ -199,6 +190,11 @@ public class AndroidUtils {
         return null;
     }
 
+    /**
+     * 获取 ActivityManager
+     * @param context 上下文
+     * @return ActivityManager
+     */
     public static ActivityManager getActivityManager(Context context) {
         if (mActivityManager == null) {
             mActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -208,9 +204,8 @@ public class AndroidUtils {
 
     /**
      * 获取手机的总RAM（运存） 获取失败返回0
-     *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 手机的总RAM（运存）
      */
     @SuppressLint("NewApi")
     public static long getTotalRAM(Context context) {
@@ -243,9 +238,8 @@ public class AndroidUtils {
 
     /**
      * 获取手机的可用RAM（运存）
-     *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 手机的可用RAM（运存）
      */
     public static long getAvailRAM(Context context) {
         mMemoryInfo = new MemoryInfo();
@@ -255,8 +249,7 @@ public class AndroidUtils {
 
     /**
      * 获取手机内存总容量
-     *
-     * @return
+     * @return 手机内存总容量
      */
     @SuppressWarnings("deprecation")
     public static long getTotalInternalMemorySize() {
@@ -270,7 +263,7 @@ public class AndroidUtils {
     /**
      * 获取手机内存剩余容量
      *
-     * @return
+     * @return 手机内存剩余容量
      */
     @SuppressWarnings("deprecation")
     public static long getAvailInternalMemorySize() {
@@ -319,7 +312,7 @@ public class AndroidUtils {
     /**
      * 判断SD卡下external_sd文件夹的总大小
      *
-     * @return
+     * @return SD卡下external_sd文件夹的总大小
      */
     @SuppressWarnings("deprecation")
     public static long getTotalExternal_SDMemorySize() {
@@ -342,7 +335,7 @@ public class AndroidUtils {
     /**
      * 判断SD卡下external_sd文件夹的可用大小
      *
-     * @return
+     * @return SD卡下external_sd文件夹的可用大小
      */
     @SuppressWarnings("deprecation")
     public static long getAvailableExternal_SDMemorySize() {
@@ -367,7 +360,7 @@ public class AndroidUtils {
     /**
      * 获取设备唯一标识ID
      *
-     * @return
+     * @return 设备唯一标识ID
      */
     public static String getDeviceId(Context context) {
         try {
@@ -382,7 +375,7 @@ public class AndroidUtils {
     /**
      * 获取当前应用程序版本名称
      *
-     * @return 如 1.0.0
+     * @return 当前应用程序版本名称。如 1.0.0
      */
     public static String getVersionName(Context context) {
         try {
@@ -397,8 +390,8 @@ public class AndroidUtils {
     /**
      * 获取版本号
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 版本号
      */
     public static int getVersionCode(Context context) {
         try {
@@ -413,7 +406,7 @@ public class AndroidUtils {
     /**
      * 获取SDK版本号
      *
-     * @return
+     * @return SDK版本号
      */
     public static int getSDKCode() {
         return VERSION.SDK_INT;
@@ -422,8 +415,8 @@ public class AndroidUtils {
     /**
      * 判断当前设备是否是模拟器。如果是模拟器返回TRUE，不是返回FALSE
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否是模拟器
      */
     public static boolean isMobilePhone(Context context) {
         try {
@@ -441,8 +434,8 @@ public class AndroidUtils {
     /**
      * 根据WifiManager获取MAC地址
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return MAC地址
      */
     public static String getMac(Context context) {
         String result = null;
@@ -459,8 +452,8 @@ public class AndroidUtils {
     }
 
     /**
-     * 通过网络接口取
-     * @return
+     * 通过网络接口取MAC地址
+     * @return MAC地址
      */
     public static String getMac() {
         try {
@@ -492,8 +485,8 @@ public class AndroidUtils {
 
     /**
      * 获取本机号码，如果是双卡手机，获取的将是卡槽1的号码
-     *
-     * @return
+     * @param context context
+     * @return 本机号码
      */
     public static String getPhoneNumber(Context context) {
         mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -507,8 +500,9 @@ public class AndroidUtils {
     /**
      * 获取联系人电话
      * 参考http://www.2cto.com/kf/201109/104686.html
-     * @param cursor
-     * @return
+     * @param context context
+     * @param cursor cursor
+     * @return 联系人电话
      */
     public static String getContactPhone(Context context, Cursor cursor){
         int phoneColumn = cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER);
@@ -538,8 +532,8 @@ public class AndroidUtils {
     /**
      * 判断网络是否是WIFI网络
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否是WIFI网络
      */
     public static boolean isWifi(Context context) {
         mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -556,6 +550,7 @@ public class AndroidUtils {
     /**
      * 得到屏幕宽度
      *
+     * @param context context
      * @return 单位:px
      */
     public static int getScreenWidth(Context context) {
@@ -568,6 +563,7 @@ public class AndroidUtils {
     /**
      * 得到屏幕高度
      *
+     * @param context context
      * @return 单位:px
      */
     public static int getScreenHeight(Context context) {
@@ -580,8 +576,8 @@ public class AndroidUtils {
     /**
      * 判断是否有任何可用的网络
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否有任何可用的网络
      */
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -595,8 +591,8 @@ public class AndroidUtils {
     /**
      * 判断是否有可以连接的WIFI
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否有可以连接的WIFI
      */
     public static boolean isWifiConnected(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -610,8 +606,8 @@ public class AndroidUtils {
     /**
      * 判断wifi的连接状态
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return wifi的连接状态
      */
     public static boolean isWifiConnection(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -625,8 +621,8 @@ public class AndroidUtils {
     /**
      * 判断基站的连接状态
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 基站的连接状态
      */
     public static boolean isBaseStateConnection(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -640,9 +636,9 @@ public class AndroidUtils {
     /**
      * 复制文件
      *
-     * @param sourceFile 源 {@link File}
-     * @param destinationFile 目标 {@link File}
-     * @throws IOException
+     * @param sourceFile 源
+     * @param destinationFile 目标
+     * @throws IOException 异常
      */
     public static void copyFile(File sourceFile, File destinationFile) throws IOException {
         FileInputStream in = new FileInputStream(sourceFile);
@@ -668,8 +664,8 @@ public class AndroidUtils {
      *
      * @param input 输入流
      * @param output 输出流
-     * @return
-     * @throws IOException
+     * @return 总大小
+     * @throws IOException 异常
      */
     public static int copy(InputStream input, OutputStream output) throws IOException {
         byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
@@ -700,6 +696,9 @@ public class AndroidUtils {
 
     /**
      * 通过HttpURLConnection连接到指定的URL地址，返回一个InputStream，实用于下载图片等..
+     * @param urlString 地址
+     * @return InputStream
+     * @throws IOException 异常
      */
     public static InputStream downloadUrl(String urlString) throws IOException {
         HttpURLConnection conn = buildHttpUrlConnection(urlString);
@@ -710,8 +709,11 @@ public class AndroidUtils {
 
     /**
      * 返回已个HttpURLConnection对象
+     * @param urlString 地址
+     * @return HttpURLConnection
+     * @throws IOException 异常
      */
-    public static HttpURLConnection buildHttpUrlConnection(String urlString) throws MalformedURLException, IOException {
+    public static HttpURLConnection buildHttpUrlConnection(String urlString) throws IOException {
         AndroidUtils.disableConnectionReuseIfNecessary();
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -735,7 +737,8 @@ public class AndroidUtils {
 
     /**
      * 判断程序是否在前台运行
-     * @return
+     * @param context context
+     * @return 程序是否在前台运行
      */
     public static boolean isAppOnForeground(Context context) {
         try {
@@ -755,7 +758,8 @@ public class AndroidUtils {
 
     /**
      * 判断程序是否在后台运行
-     * @return
+     * @param context context
+     * @return 程序是否在后台运行
      */
     public static boolean isAppOnBackground(Context context) {
         return !isAppOnForeground(context);
@@ -763,6 +767,8 @@ public class AndroidUtils {
 
     /**
      * 判断当前应用程序是否处于系统栈顶
+     * @param context context
+     * @return 当前应用程序是否处于系统栈顶
      */
     public static boolean isTopActivity(final Context context) {
         if (context == null) return false;
@@ -773,6 +779,8 @@ public class AndroidUtils {
 
     /**
      * 获取当前运行的APP中处于栈顶的APP包名
+     * @param context context
+     * @return 当前运行的APP中处于栈顶的APP包名
      */
     public static String getAppTopActivityPackageName(final Context context) {
         if (context == null) return null;
@@ -790,6 +798,8 @@ public class AndroidUtils {
 
     /**
      * 获取当前运行的APP中处于栈顶的APP包名
+     * @param context context
+     * @return 当前运行的APP中处于栈顶的APP包名
      */
     public static String getRunningAppList(final Context context) {
         if (context == null) return null;
@@ -810,8 +820,7 @@ public class AndroidUtils {
 
     /**
      * 让App在后台运行
-     *
-     * @param context
+     * @param context context
      */
     public static void setAppRunInBackground(Context context) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -822,9 +831,8 @@ public class AndroidUtils {
 
     /**
      * 获取当前应用程序的包名
-     *
-     * @param context
-     * @return
+     * @param context context
+     * @return 当前应用程序的包名
      */
     public static String getAppPackageName(Context context) {
         // Android 提供了一个API以让应用程序向系统查询包名信息，使用 PackageManager 的 getPackageInfo(java.lang.String, int)方法
@@ -840,24 +848,58 @@ public class AndroidUtils {
     /**
      * 获取设备ID和MAC信息（注册友盟测试设备使用）
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 设备ID和MAC信息
      */
+    @SuppressLint("HardwareIds")
     public static String getDeviceInfo(Context context) {
         try {
             org.json.JSONObject json = new org.json.JSONObject();
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            String device_id = tm.getDeviceId();
-            WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-            String mac = wifi.getConnectionInfo().getMacAddress();
+            android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            String device_id = null;
+            if (checkPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+                device_id = tm.getDeviceId();
+            }
+            String mac = null;
+            FileReader fstream = null;
+            try {
+                fstream = new FileReader("/sys/class/net/wlan0/address");
+            } catch (FileNotFoundException e) {
+                fstream = new FileReader("/sys/class/net/eth0/address");
+            }
+            BufferedReader in = null;
+            if (fstream != null) {
+                try {
+                    in = new BufferedReader(fstream, 1024);
+                    mac = in.readLine();
+                } catch (IOException e) {
+                } finally {
+                    if (fstream != null) {
+                        try {
+                            fstream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (in != null) {
+                        try {
+                            in.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            json.put("mac", mac);
             if (TextUtils.isEmpty(device_id)) {
                 device_id = mac;
             }
             if (TextUtils.isEmpty(device_id)) {
-                device_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+                device_id = android.provider.Settings.Secure.getString(context.getContentResolver(),
+                        android.provider.Settings.Secure.ANDROID_ID);
             }
             json.put("device_id", device_id);
-            json.put("mac", mac);
             return json.toString();
         } catch (Exception e) {
             e.printStackTrace();
@@ -866,11 +908,42 @@ public class AndroidUtils {
     }
 
     /**
+     * 检查权限是否获取
+     * @param context context
+     * @param permission 权限
+     * @return 是否已获取
+     */
+    public static boolean checkPermission(Context context, String permission) {
+        boolean result = false;
+        if (Build.VERSION.SDK_INT >= 23) {
+            try {
+                Class<?> clazz = Class.forName("android.content.Context");
+                Method method = clazz.getMethod("checkSelfPermission", String.class);
+                int rest = (Integer) method.invoke(context, permission);
+                if (rest == PackageManager.PERMISSION_GRANTED) {
+                    result = true;
+                } else {
+                    result = false;
+                }
+            } catch (Exception e) {
+                result = false;
+            }
+        } else {
+            PackageManager pm = context.getPackageManager();
+            if (pm.checkPermission(permission, context.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+
+    /**
      * 判断按下的是否是返回(back)键
      *
-     * @param keyCode
-     * @param event
-     * @return
+     * @param keyCode keyCode
+     * @param event KeyEvent
+     * @return 是否是返回(back)键
      */
     public static boolean isPressedKeycodeBack(int keyCode, KeyEvent event) {
         return (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN);
@@ -879,9 +952,9 @@ public class AndroidUtils {
     /**
      * 是否按下了屏幕菜单(menu)键
      *
-     * @param keyCode
-     * @param event
-     * @return
+     * @param keyCode keyCode
+     * @param event KeyEvent
+     * @return 是否按下了屏幕菜单(menu)键
      */
     public static boolean isPressedKeycodeMenu(int keyCode, KeyEvent event) {
         return (keyCode == KeyEvent.KEYCODE_MENU && event.getAction() == KeyEvent.ACTION_DOWN);
@@ -890,8 +963,8 @@ public class AndroidUtils {
     /**
      * 软键盘是否弹出
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 软键盘是否弹出
      */
     public static boolean isShowSoftKey(Context context) {
         return ((Activity) context).getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE;
@@ -899,6 +972,7 @@ public class AndroidUtils {
 
     /**
      * 打开设置网络界面
+     * @param context context
      */
     public static void setNetworkMethod(final Context context) {
         //提示对话框
@@ -930,7 +1004,7 @@ public class AndroidUtils {
     /**
      * 重启应用程序
      *
-     * @param context
+     * @param context context
      */
     public static void restartApplication(Context context) {
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
@@ -940,6 +1014,7 @@ public class AndroidUtils {
 
     /**
      * 卸载应用程序
+     * @param context context
      */
     public static void uninstallApplication(Context context) {
         // <action android:name="android.intent.action.DELETE" />
@@ -956,6 +1031,7 @@ public class AndroidUtils {
 
     /**
      * 开启一个应用程序
+     * @param context context
      */
     public static void startApplication(Context context) {
         // 开启这个应用程序的第一个activity. 默认情况下 第一个activity就是具有启动能力的activity.
@@ -981,6 +1057,7 @@ public class AndroidUtils {
 
     /**
      * 分享应用程序,启动系统的分享界面
+     * @param context context
      */
     public static void shareApplication(Context context) {
         // <action android:name="android.intent.action.SEND" />
@@ -997,8 +1074,8 @@ public class AndroidUtils {
     /**
      * 获取状态栏高度
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 状态栏高度
      */
     public static int getStatusBarHeight(Context context) {
         Class<?> c = null;
@@ -1019,6 +1096,7 @@ public class AndroidUtils {
 
     /**
      * 设置透明状态栏
+     * @param activity Activity
      */
     @SuppressLint("InlinedApi")
     public static void setImmersionStatusBar(Activity activity) {
@@ -1032,6 +1110,7 @@ public class AndroidUtils {
 
     /**
      * 清除透明状态栏设置
+     * @param activity Activity
      */
     @SuppressLint("InlinedApi")
     public static void clearImmersionStatusBar(Activity activity) {
@@ -1042,6 +1121,9 @@ public class AndroidUtils {
 
     /**
      * 获取Manifest中配置的渠道名
+     * @param context context
+     * @param key key
+     * @return 渠道名
      */
     public static String getChannelName(Context context, String key) {
         if (context == null || TextUtils.isEmpty(key)) {
@@ -1068,8 +1150,8 @@ public class AndroidUtils {
     /**
      * 判断屏幕是否亮着
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否亮着
      */
     public static boolean isScreenOn(Context context) {
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -1079,8 +1161,8 @@ public class AndroidUtils {
     /**
      * 是否开启了重力感应
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否开启了重力感应
      */
     public static boolean isOpenRotate(Context context) {
         int gravity = 0;
@@ -1094,8 +1176,8 @@ public class AndroidUtils {
 
     /**
      * 是否开启锁屏功能（比如手势，PIN，密码等锁屏功能）
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否开启锁屏功能
      */
     public static boolean isOpenKeyguard(Context context) {
         KeyguardManager keyguardManager =(KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
@@ -1106,8 +1188,8 @@ public class AndroidUtils {
     /**
      * 是否支持指纹识别（判断是否有硬件）
      * 给出两种方式，第一种是通过V4支持包获得兼容的对象引用，这是google推行的做法；还有就是直接使用api 23 framework中的接口获得对象引用。
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否支持指纹识别
      */
     public static boolean isSupportFingerprint(Context context) {
         // Using the Android Support Library v4
@@ -1120,8 +1202,8 @@ public class AndroidUtils {
 
     /**
      * 检查设备中是否有注册过的指纹信息
-     * @param context
-     * @return
+     * @param context context
+     * @return 是否有注册过的指纹信息
      */
     public static boolean hasEnrolledFingerprints(Context context) {
         FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(context);
@@ -1130,10 +1212,10 @@ public class AndroidUtils {
     }
 
     /**
-     * 检测辅助功能是否开启<br>
-     * @param mContext
+     * 检测辅助功能是否开启
+     * @param mContext Context
      * @param serviceClass extends AccessibilityService
-     * @return boolean
+     * @return 是否开启
      */
     public static boolean isAccessibilitySettingsOn(Context mContext, Class<? extends AccessibilityService> serviceClass) {
         int accessibilityEnabled = 0;
@@ -1165,9 +1247,9 @@ public class AndroidUtils {
 
     /**
      * 判断服务是否启动,context上下文对象 ，className服务的name
-     * @param context
+     * @param context context
      * @param serviceClass 服务类名
-     * @return
+     * @return 服务是否启动
      */
     public static boolean isServiceRunning(Context context, Class<? extends AccessibilityService> serviceClass) {
         if(context != null && serviceClass != null){
@@ -1187,9 +1269,9 @@ public class AndroidUtils {
 
     /**
      * 判断是否已经获取该权限
-     * @param context
+     * @param context context
      * @param permission 权限数组
-     * @return
+     * @return 是否已经获取该权限
      */
     public static boolean isGetPermission(Context context, String... permission) {
         if (permission == null) return true;
@@ -1205,7 +1287,7 @@ public class AndroidUtils {
 
     /**
      * 根据文件路径安装APK
-     * @param context
+     * @param context context
      * @param filePath 文件路径
      */
     public static void install(Context context, String filePath) {
@@ -1214,6 +1296,8 @@ public class AndroidUtils {
 
     /**
      * 根据文件安装APK
+     * @param context context
+     * @param file APK文件
      */
     public static void install(Context context, File file) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -1223,8 +1307,8 @@ public class AndroidUtils {
 
     /**
      * 获取屏幕密度DPI（如 120 / 160 / 240）
-     * @param context
-     * @return 默认返回0
+     * @param context context
+     * @return 获取屏幕密度DPI，默认返回0
      */
     public static int getScreenDensityDpi(Context context) {
         try {
@@ -1237,7 +1321,7 @@ public class AndroidUtils {
 
     /**
      * 获取屏幕密度（如1.0、1.5, 2.0）
-     * @param context
+     * @param context context
      * @return 默认返回0.0
      */
     public static float getScreenDensity(Context context) {
@@ -1251,8 +1335,8 @@ public class AndroidUtils {
 
     /**
      * 字体缩放比例
-     * @param context
-     * @return 默认返回0.0
+     * @param context context
+     * @return 字体缩放比例，默认返回0.0
      */
     public static float getScaledDensity(Context context) {
         try {

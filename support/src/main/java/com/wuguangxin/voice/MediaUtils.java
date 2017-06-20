@@ -12,7 +12,7 @@ public class MediaUtils{
 
 	/**
 	 * 播放
-	 * @param file
+	 * @param file 文件
 	 */
 	public static void play(File file){
 		play(file.getPath());
@@ -20,7 +20,7 @@ public class MediaUtils{
 
 	/**
 	 * 播放
-	 * @param path
+	 * @param path 文件路径
 	 */
 	public static void play(String path){
 		if (!TextUtils.isEmpty(path)) {
@@ -38,6 +38,9 @@ public class MediaUtils{
 		}
 	}
 
+	/**
+	 * 初始化
+	 */
 	private static void init(){
 		mediaPlayer.setOnCompletionListener(new OnCompletionListener(){
 			@Override

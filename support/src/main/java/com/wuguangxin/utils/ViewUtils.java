@@ -33,20 +33,17 @@ import com.wuguangxin.R;
 public class ViewUtils{
 	/**
 	 * 判断View是否是可见的
-	 * @param view
-	 * @return
+	 * @param view View
+	 * @return 是否是可见的
 	 */
-	public static boolean isVisible(View view){
-		if (view != null) {
-			return view.getVisibility() == View.VISIBLE;
-		}
-		return false;
+	public static boolean isVisible(View view) {
+		return view != null && view.getVisibility() == View.VISIBLE;
 	}
 
 	/**
 	 * 获取View的宽度
-	 * @param view
-	 * @return
+	 * @param view View
+	 * @return 宽度
 	 */
 	public static int getViewWidth(View view){
 		view.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
@@ -55,8 +52,8 @@ public class ViewUtils{
 
 	/**
 	 * 获取View的高度
-	 * @param view
-	 * @return
+	 * @param view View
+	 * @return 高度
 	 */
 	public static int getViewHeight(View view){
 		view.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
@@ -65,7 +62,7 @@ public class ViewUtils{
 
 	/**
 	 * 重置 ViewPager 的宽高度 (宽为屏幕宽度，高度为 屏幕宽/2)
-	 * @param viewPager
+	 * @param viewPager ViewPager
 	 */
 	public static void setViewPagerHeight(ViewPager viewPager){
 		LayoutParams layoutParams = viewPager.getLayoutParams();
@@ -78,7 +75,7 @@ public class ViewUtils{
 
 	/**
 	 * 重置 ViewPager 的宽高度
-	 * @param context
+	 * @param context 上下文
 	 * @param viewPager ViewPager
 	 * @param height 高
 	 */
@@ -123,7 +120,8 @@ public class ViewUtils{
 
 	/**
 	 * 重置 ViewPager 的高度,使高度等于Child 总数的高度(有bug)
-	 * @param viewPager
+	 * @param viewPager ViewPager
+	 * @param position 位置
 	 */
 	@SuppressLint("NewApi")
 	public static void setViewPagerChildCountHeight(ViewPager viewPager, int position){
@@ -143,7 +141,7 @@ public class ViewUtils{
 
 	/**
 	 * 重置 ViewPager 的高度,使高度等于Child 总数的高度
-	 * @param viewGroup
+	 * @param viewGroup ViewGroup
 	 */
 	@SuppressLint("NewApi")
 	public static void setViewGroupChildTotalHeight(ViewGroup viewGroup){
@@ -168,7 +166,7 @@ public class ViewUtils{
 
 	/**
 	 * 重置 ViewPager 的高度,为最高child的高度
-	 * @param parentView
+	 * @param parentView ViewGroup
 	 */
 	@SuppressLint("NewApi")
 	public static void setViewPagerHeightByMaxChild(ViewGroup parentView){
@@ -197,7 +195,7 @@ public class ViewUtils{
 	/**
 	 * 获取数据为空时显示的View
 	 * @param context 上下文
-	 * @return
+	 * @return View
 	 */
 	public static View getDataEmptyView(Context context){
 		return getDataEmptyView(context, null);
@@ -207,7 +205,7 @@ public class ViewUtils{
 	 * 获取数据为空时显示的View
 	 * @param context 上下文
 	 * @param msg 提示信息
-	 * @return
+	 * @return View
 	 */
 	public static View getDataEmptyView(Context context, String msg){
 		return getDataEmptyView(context, msg, null, null);
@@ -218,7 +216,7 @@ public class ViewUtils{
 	 * @param msg 消息
 	 * @param buttonName 按钮名称
 	 * @param onClickListener 点击监听器
-	 * @return
+	 * @return View
 	 */
 	public static View getDataEmptyView(String msg, String buttonName, OnClickListener onClickListener){
 		return getDataEmptyView(null, msg, buttonName, onClickListener);
@@ -230,7 +228,7 @@ public class ViewUtils{
 	 * @param msg 提示信息
 	 * @param buttonName 按钮名称
 	 * @param onClickListener 点击回调事件 注意: buttonName或者onClickListener其一为空, 将不显示按钮
-	 * @return
+	 * @return View
 	 */
 	public static View getDataEmptyView(Context context, String msg, String buttonName, OnClickListener onClickListener){
 		if (context == null) {
@@ -258,9 +256,9 @@ public class ViewUtils{
 
 	/**
 	 * 获取FootView
-	 * @param context
-	 * @param text
-	 * @return
+	 * @param context 上下文
+	 * @param text 文本
+	 * @return View
 	 */
 	public static TextView getFootView(Context context, String text){
 		if (context != null) {
@@ -273,7 +271,7 @@ public class ViewUtils{
 	
 	/**
 	 * 设置 RefreshView 上次更新时间
-	 * @param refreshView
+	 * @param refreshView PullToRefreshBase
 	 */
 	public static void setRefreshViewLastUpdatedLabel(PullToRefreshBase<?> refreshView){
 		if (refreshView != null) {
@@ -301,8 +299,8 @@ public class ViewUtils{
 
 	/**
 	 * 设置EditText内容的显示或隐藏状态
-	 * @param checkBox
-	 * @param editText
+	 * @param checkBox CheckBox
+	 * @param editText EditText
      */
 	public static void setEditTextVisibleStatus(CheckBox checkBox, final EditText editText){
 		if(checkBox != null && editText != null){

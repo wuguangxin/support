@@ -299,16 +299,16 @@ public class ItemView extends LinearLayout{
 	}
 
 	/**
-	 * 设置左边图标
-	 * @param resid
+	 * 设置左边图标ID
+	 * @param resid 左边图标ID
 	 */
 	public void setIconLeftImageResource(int resid){
 		iconLeft.setBackgroundResource(resid);
 	}
 
 	/**
-	 * 设置左边图标
-	 * @param drawable
+	 * 设置左边图标Drawable
+	 * @param drawable 左边图标Drawable
 	 */
 	@SuppressWarnings("deprecation")
 	public void setIconLeftImageResource(Drawable drawable){
@@ -316,16 +316,16 @@ public class ItemView extends LinearLayout{
 	}
 
 	/**
-	 * 设置右边图标
-	 * @param resid
+	 * 设置右边图标id
+	 * @param resid 右边图标ID
 	 */
 	public void setIconRightImageResource(int resid){
 		iconRight.setBackgroundResource(resid);
 	}
 
 	/**
-	 * 设置右边图标
-	 * @param drawable
+	 * 设置右边图标Drawable
+	 * @param drawable 右边图标Drawable
 	 */
 	@SuppressWarnings("deprecation")
 	public void setIconRightImageDrawable(Drawable drawable){
@@ -334,8 +334,8 @@ public class ItemView extends LinearLayout{
 
 	/**
 	 * dip转换为px
-	 * @param dipValue
-	 * @return
+	 * @param dipValue dip值
+	 * @return xp值
 	 */
 	public float dip2px(float dipValue){
 		final float scale = context.getResources().getDisplayMetrics().density;
@@ -345,8 +345,8 @@ public class ItemView extends LinearLayout{
 
 	/**
 	 * px转换为dip
-	 * @param pxValue
-	 * @return
+	 * @param pxValue px值
+	 * @return dip值
 	 */
 	public float px2dip(float pxValue){
 		final float scale = context.getResources().getDisplayMetrics().density;
@@ -358,7 +358,7 @@ public class ItemView extends LinearLayout{
 	 *
 	 * <p>Created by wuguangxin on 15/7/10 </p>
 	 */
-	public static enum DividerMode {
+	public enum DividerMode {
 		/**
 		 * 不显示分割线
 		 */
@@ -377,7 +377,7 @@ public class ItemView extends LinearLayout{
 		SingleBottom(3);
 		public final int value;
 
-		private DividerMode(int value){
+		DividerMode(int value){
 			this.value = value;
 		}
 

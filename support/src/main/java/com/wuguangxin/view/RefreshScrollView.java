@@ -208,7 +208,7 @@ public class RefreshScrollView extends ScrollView {
 
 	/**
 	 * 设置刷新监听器
-	 * @param onRefreshListener
+	 * @param onRefreshListener 刷新监听器
 	 */
 	public void setOnRefreshListener(OnRefreshListener onRefreshListener){
 		this.onRefreshListener = onRefreshListener;
@@ -225,6 +225,7 @@ public class RefreshScrollView extends ScrollView {
 
 	/**
 	 * 获取当前刷新模式
+	 * @return 当前刷新模式
 	 */
 	public Mode getMode(){
 		return mode;
@@ -232,7 +233,7 @@ public class RefreshScrollView extends ScrollView {
 
 	/**
 	 * 设置当前刷新模式
-	 * @param mode
+	 * @param mode 刷新模式
 	 */
 	public void setMode(Mode mode){
 		this.mode = mode;
@@ -243,7 +244,7 @@ public class RefreshScrollView extends ScrollView {
 	 *
 	 * <p>Created by wuguangxin on 15/12/18 </p>
 	 */
-	public static enum Mode {
+	public enum Mode {
 		/**
 		 * 禁用上拉和下拉功能
 		 */
@@ -270,6 +271,10 @@ public class RefreshScrollView extends ScrollView {
 
 		private int value;
 
+		/**
+		 * 获取value
+		 * @return value
+		 */
 		public int getValue(){
 			return value;
 		}

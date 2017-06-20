@@ -96,7 +96,7 @@ public class FontUtils{
 	 * @param string TextView中的文本（CharSequence）
 	 * @param text 要格式化的文本
 	 * @param textSize 文本大小（-1不设置）
-	 * @return
+	 * @return Spannable
 	 */
 	public static Spannable formatStyle(CharSequence string, CharSequence text, int textSize){
 		return formatStyle(string, text, textSize, -1, -1, -1);
@@ -108,7 +108,7 @@ public class FontUtils{
 	 * @param text 要格式化的文本
 	 * @param textSize 文本大小（-1不设置）
 	 * @param textStyle 文本粗体/斜体等样式（如粗体 Typeface.BOLD）（-1不设置）
-	 * @return
+	 * @return Spannable
 	 */
 	public static Spannable formatStyle(CharSequence string, CharSequence text, int textSize, int textStyle){
 		return formatStyle(string, text, textSize, textStyle, -1, -1);
@@ -121,7 +121,7 @@ public class FontUtils{
 	 * @param textSize 文本大小（-1不设置）
 	 * @param textStyle 文本粗体/斜体等样式（如粗体 Typeface.BOLD）（-1不设置）
 	 * @param textColor 字体前景颜色（-1不设置）
-	 * @return
+	 * @return Spannable
 	 */
 	public static Spannable formatStyle(CharSequence string, CharSequence text, int textSize, int textStyle, int textColor){
 		return formatStyle(string, text, textSize, textStyle, textColor, -1);
@@ -135,7 +135,7 @@ public class FontUtils{
 	 * @param textStyle 文本粗体/斜体等样式（如粗体 Typeface.BOLD）（-1不设置）
 	 * @param textColor 字体前景颜色（-1不设置）
 	 * @param textBgColor 字体背景颜色（-1不设置）
-	 * @return
+	 * @return Spannable
 	 */
 	public static Spannable formatStyle(CharSequence string, CharSequence text, int textSize, int textStyle, int textColor, int textBgColor){
 		Spannable word = null;
@@ -168,7 +168,7 @@ public class FontUtils{
 	 * @param text 字符串
 	 * @param keyword 关键字
 	 * @param color 要设置的颜色
-	 * @return
+	 * @return Spannable
 	 */
 	public static CharSequence formatColor(CharSequence text, String keyword, int color){
 		if (TextUtils.isEmpty(text)) {
@@ -185,9 +185,9 @@ public class FontUtils{
 
 	/**
 	 * TextView设置字体
-	 * @param activity
-	 * @param viewId
-	 * @param assetsPath
+	 * @param activity Activity
+	 * @param viewId View的ID
+	 * @param assetsPath 字体路径(assets中的)
      */
 	public static void setTypeface(Activity activity, int viewId, String assetsPath){
 		View view = activity.findViewById(viewId);
@@ -198,7 +198,7 @@ public class FontUtils{
 
 	/**
 	 * TextView设置字体
-	 * @param textView
+	 * @param textView TextView
 	 * @param assetsPath assets下的目录，例如 "fonts/SIMYOU.TTF"
      */
 	public static void setTypeface(TextView textView, String assetsPath){
@@ -212,9 +212,9 @@ public class FontUtils{
 
 	/**
 	 * TextView设置字体
-	 * @param activity
+	 * @param activity Activity
 	 * @param viewId 资源ID
-	 * @param ttf
+	 * @param ttf 字体 Typeface
      */
 	public static void setTypeface(Activity activity, int viewId, Typeface ttf){
 		View view = activity.findViewById(viewId);
@@ -225,8 +225,8 @@ public class FontUtils{
 
 	/**
 	 * TextView设置字体
-	 * @param textView
-	 * @param ttf
+	 * @param textView TextView
+	 * @param ttf 字体 Typeface
      */
 	public static void setTypeface(TextView textView, Typeface ttf){
 		if (ttf != null) {

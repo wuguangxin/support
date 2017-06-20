@@ -34,9 +34,9 @@ public class IOFormat{
 	}
 
 	/**
-	 * 将byte[]转换成InputStream
-	 * @param b
-	 * @return
+	 * 将 byte[] 转换成 InputStream
+	 * @param b byte[]
+	 * @return InputStream
 	 */
 	public InputStream byte2InputStream(byte[] b){
 		return new ByteArrayInputStream(b);
@@ -44,8 +44,8 @@ public class IOFormat{
 
 	/**
 	 * 将InputStream转换成byte[]
-	 * @param is
-	 * @return
+	 * @param is InputStream
+	 * @return byte[]
 	 */
 	public byte[] inputStream2Bytes(InputStream is){
 		byte[] readByte = new byte[1024];
@@ -63,8 +63,8 @@ public class IOFormat{
 
 	/**
 	 * 将Bitmap转换成InputStream
-	 * @param bm
-	 * @return
+	 * @param bm Bitmap
+	 * @return InputStream
 	 */
 	public InputStream bitmap2InputStream(Bitmap bm){
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -75,9 +75,9 @@ public class IOFormat{
 
 	/**
 	 * 将Bitmap转换成InputStream,并指定压缩质量
-	 * @param bm
+	 * @param bm Bitmap
 	 * @param quality 质量(0-100)
-	 * @return
+	 * @return InputStream
 	 */
 	public InputStream bitmap2InputStream(Bitmap bm, int quality){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -88,8 +88,8 @@ public class IOFormat{
 
 	/**
 	 * 将InputStream转换成Bitmap
-	 * @param is
-	 * @return
+	 * @param is InputStream
+	 * @return Bitmap
 	 */
 	public Bitmap inputStream2Bitmap(InputStream is){
 		if (is == null) {
@@ -106,8 +106,8 @@ public class IOFormat{
 
 	/**
 	 * Drawable转换成InputStream
-	 * @param d
-	 * @return
+	 * @param d Drawable
+	 * @return InputStream
 	 */
 	public InputStream drawable2InputStream(Drawable d){
 		if (d == null) {
@@ -119,8 +119,8 @@ public class IOFormat{
 
 	/**
 	 * InputStream转换成Drawable
-	 * @param is
-	 * @return
+	 * @param is InputStream
+	 * @return Drawable
 	 */
 	public Drawable inputStream2Drawable(InputStream is){
 		if (is != null) {
@@ -132,8 +132,8 @@ public class IOFormat{
 
 	/**
 	 * Drawable转换成byte[]
-	 * @param drawable
-	 * @return
+	 * @param drawable Drawable
+	 * @return byte[]
 	 */
 	public byte[] drawable2Bytes(Drawable drawable){
 		if (drawable != null) {
@@ -145,8 +145,8 @@ public class IOFormat{
 
 	/**
 	 * byte[]转换成Drawable
-	 * @param bytes
-	 * @return
+	 * @param bytes byte[]
+	 * @return Drawable
 	 */
 	public Drawable bytes2Drawable(byte[] bytes){
 		if (bytes != null) {
@@ -158,8 +158,8 @@ public class IOFormat{
 
 	/**
 	 * Bitmap转换成byte[]
-	 * @param bitmap
-	 * @return
+	 * @param bitmap Bitmap
+	 * @return byte[]
 	 */
 	public byte[] bitmap2Bytes(Bitmap bitmap){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -169,9 +169,9 @@ public class IOFormat{
 	
 	/**
 	 * Bitmap转换成byte[]
-	 * @param bitmap
+	 * @param bitmap Bitmap
 	 * @param quality 质量 （0-100）
-	 * @return
+	 * @return byte[]
 	 */
 	public byte[] bitmap2Bytes(Bitmap bitmap, int quality){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -181,8 +181,8 @@ public class IOFormat{
 
 	/**
 	 * byte[]转换成Bitmap
-	 * @param b
-	 * @return
+	 * @param b byte[]
+	 * @return Bitmap
 	 */
 	public Bitmap bytes2Bitmap(byte[] b){
 		if (b.length != 0) {
@@ -193,8 +193,8 @@ public class IOFormat{
 
 	/**
 	 * Drawable转换成Bitmap
-	 * @param drawable
-	 * @return
+	 * @param drawable Drawable
+	 * @return Bitmap
 	 */
 	public Bitmap drawable2Bitmap(Drawable drawable){
 		int width = drawable.getIntrinsicWidth();
@@ -213,8 +213,8 @@ public class IOFormat{
 
 	/**
 	 * Bitmap转换成Drawable
-	 * @param bitmap
-	 * @return
+	 * @param bitmap Bitmap
+	 * @return Drawable
 	 */
 	@SuppressWarnings("deprecation")
 	public Drawable bitmap2Drawable(Bitmap bitmap){
@@ -224,8 +224,8 @@ public class IOFormat{
 
 	/**
 	 * 将绑定的URI转换为Bitmap返回
-	 * @param uri
-	 * @return
+	 * @param uri Uri
+	 * @return Bitmap
 	 */
 	public Bitmap uri2Bitmap(Context context, Uri uri){
 		InputStream is = null;
@@ -259,7 +259,7 @@ public class IOFormat{
 	/**
 	 * 生成与原图同样大小的Bitmap，不作压缩
 	 * @param imageUrl 图片URL
-	 * @return
+	 * @return Bitmap
 	 */
 	public static Bitmap url2Bitmap(String imageUrl){
 		try {
@@ -272,8 +272,8 @@ public class IOFormat{
 
 	/**
 	 * 得到图片字节流 数组大小
-	 * @param inStream
-	 * @return
+	 * @param inStream InputStream
+	 * @return byte[]
 	 * @throws Exception
 	 */
 	public static byte[] readStream(InputStream inStream) throws Exception{
@@ -290,8 +290,8 @@ public class IOFormat{
 
 	/**
 	 * 简单获取网落图片资源
-	 * @param url
-	 * @return
+	 * @param url String
+	 * @return Bitmap
 	 */
 	public static Bitmap getBitmapFromUrl(final String url){
 		if(TextUtils.isEmpty(url)){

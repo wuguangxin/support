@@ -41,8 +41,8 @@ public class Utils{
 
 	/**
 	 * 显示加载中对话框, 默认提示信息
-	 * @param context
-	 * @return
+	 * @param context 上下文
+	 * @return LoadingDialog
 	 */
 	public static LoadingDialog loadingDialog(Context context){
 		loadingDialog = new LoadingDialog(context);
@@ -52,6 +52,9 @@ public class Utils{
 
 	/**
 	 * 获取百分比
+	 * @param num1 数值1
+	 * @param num2 数值2
+	 * @return 字符串
 	 */
 	public static String fmtPercent(double num1, float num2){
 		NumberFormat numberFormat = NumberFormat.getInstance();
@@ -64,6 +67,9 @@ public class Utils{
 
 	/**
 	 * 获取进度
+	 * @param num1 数值1
+	 * @param num2 数值2
+	 * @return 字符串
 	 */
 	public static String fmtProgress(float num1, float num2){
 		NumberFormat numberFormat = NumberFormat.getInstance();
@@ -74,8 +80,9 @@ public class Utils{
 	/**
 	 * 验证密码。只能包含数字、大小写字母或者符号 实现：匹配是否有中文，如果有，则表示密码格式不正确
 	 * 
-	 * @param context
+	 * @param context 上下文
 	 * @param password 要匹配的密码
+	 * @return 匹配是否通过
 	 */
 	public static boolean matchPassword(Context context, String password){
 		String passwordUsableSign = (String) context.getResources().getText(R.string.xin_digits_sign);
@@ -102,30 +109,41 @@ public class Utils{
 
 	/**
 	 * dip转换为px
-	 * @return
+	 * @param context 上下文
+	 * @param dipValue dip
+	 * @return px
 	 */
 	public static int dip2px(Context context, float dipValue){
 		float density = context.getResources().getDisplayMetrics().density;
 		return (int) (dipValue * density + 0.5f);
 	}
-	
+
 	/**
 	 * dip转换为sp
+	 * @param context 上下文
+	 * @param dpValue dip
+	 * @return sp
 	 */
 	public static int dip2sp(Context context, float dpValue){
 	    return (int)(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.getResources().getDisplayMetrics()));
 	}
-	
+
 	/**
 	 * px转换为dip
+	 * @param context 上下文
+	 * @param pxValue px
+	 * @return dip
 	 */
 	public static int px2dip(Context context, float pxValue){
 		float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (pxValue / scale + 0.5f);
 	}
-	
+
 	/**
 	 * px转换为sp
+	 * @param context 上下文
+	 * @param pxValue px数值
+	 * @return sp
 	 */
 	public static int px2sp(Context context, float pxValue){
 		float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
@@ -134,8 +152,9 @@ public class Utils{
 
 	/**
 	 * mm转换为px(X轴)
-	 * @param value
-	 * @return
+	 * @param context 上下文
+	 * @param value mm数值
+	 * @return X轴的px值
 	 */
 	public static float mm2pxX(Context context, float value){
 		return value * context.getResources().getDisplayMetrics().xdpi * (1.0f/25.4f);
@@ -143,8 +162,9 @@ public class Utils{
 
 	/**
 	 * mm转换为px(Y轴)
-	 * @param value
-	 * @return
+	 * @param context 上下文
+	 * @param value mm数值
+	 * @return Y轴的px值
 	 */
 	public static float mm2pxY(Context context, float value){
 		return value * context.getResources().getDisplayMetrics().ydpi * (1.0f/25.4f);
@@ -152,8 +172,9 @@ public class Utils{
 
 	/**
 	 * px转换为mm(X轴)
-	 * @param value
-	 * @return
+	 * @param context 上下文
+	 * @param value px值
+	 * @return X轴的mm值
 	 */
 	public static float px2mmX(Context context, float value){
 		return value * (1 / mm2pxX(context, 1));
@@ -161,8 +182,9 @@ public class Utils{
 
 	/**
 	 * px转换为mm(Y轴)
-	 * @param value
-	 * @return
+	 * @param context 上下文
+	 * @param value px值
+	 * @return Y轴的mm值
 	 */
 	public static float px2mmY(Context context, float value){
 		return value * (1 / mm2pxY(context, 1));
@@ -184,7 +206,8 @@ public class Utils{
 
 	/**
 	 * 跳转界面
-	 * 
+	 *
+	 * @param context 上下文
 	 * @param clazz 跳转的目标Activity，带数据
 	 */
 	public static void openActivity(Context context, Class<?> clazz){
@@ -193,9 +216,9 @@ public class Utils{
 	}
 
 	/**
-	 * 获取两个点之间的距离，
-	 * @param event
-	 * @return
+	 * 获取两个点之间的距离
+	 * @param event MotionEvent
+	 * @return 距离
 	 */
 	@SuppressLint("NewApi")
 	public static float getDistance(MotionEvent event){
@@ -206,8 +229,8 @@ public class Utils{
 
 	/**
 	 * 获取两个点的中间点坐标， 第一个点的x坐标+ 上第二个点的x坐标 结果/2 就是他们的中心点， y坐标同理。
-	 * @param event
-	 * @return
+	 * @param event MotionEvent
+	 * @return 中间点坐标
 	 */
 	@SuppressLint("NewApi")
 	public static PointF getPoint(MotionEvent event){
@@ -218,8 +241,8 @@ public class Utils{
 	
 	/**
 	 * 设置EditText的最大长度
-	 * @param mEditText
-	 * @param maxLength
+	 * @param mEditText EditText
+	 * @param maxLength 最大长度
 	 */
 	public static void setEditTextMaxLength(EditText mEditText, int maxLength){
 		if (mEditText != null) {
@@ -231,8 +254,8 @@ public class Utils{
 
 	/**
 	 * 把版本号转为数字。如1.2.5转换为010205，2.9.13转换为020913，再转换为int， 因为目前友盟的版本更新数据中并没有版本号,暂时这样做
-	 * @param cacheVersionName
-	 * @return
+	 * @param cacheVersionName 版本名称如1.2.5
+	 * @return 如1.2.5转换为010205
 	 */
 	public static int versionName2Int(String cacheVersionName){
 		if (TextUtils.isEmpty(cacheVersionName)) {
@@ -263,7 +286,7 @@ public class Utils{
 	/**
 	 * 返回文字的长度，一个汉字算2个字符
 	 * @param string 字符串
-	 * @return
+	 * @return 长度
 	 */
 	public static int getTextLength(String string){
 		try {
@@ -273,7 +296,12 @@ public class Utils{
 		}
 	}
 
-	// 重绘图片
+	/**
+	 * 重绘图片
+	 * @param mActivity Activity
+	 * @param bitmap Bitmap
+	 * @return Bitmap
+	 */
 	public static Bitmap reDrawBitMap(Activity mActivity, Bitmap bitmap){
 		DisplayMetrics dm = new DisplayMetrics();
 		mActivity.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -305,7 +333,7 @@ public class Utils{
 	/**
 	 * 冒泡排序
 	 * @param arr int数组
-	 * @return
+	 * @return 排序后的数组
 	 */
 	public static int[] sortBubbles(int[] arr){
 		for (int x = 0; x < arr.length - 1; x++) {
@@ -321,9 +349,9 @@ public class Utils{
 
 	/**
 	 * 冒泡排序的置换函数
-	 * @param arr
-	 * @param a
-	 * @param b
+	 * @param arr 原数组
+	 * @param a a
+	 * @param b b
 	 */
 	private static void swap(int[] arr, int a, int b){
 		int temp = arr[a];
@@ -340,16 +368,16 @@ public class Utils{
 		if (totalMinute <= 0) {
 			return "0分钟";
 		}
-		Long h = totalMinute / 60l;
-		Long m = totalMinute % 60l;
+		Long h = totalMinute / 60L;
+		Long m = totalMinute % 60L;
 		StringBuilder time = new StringBuilder().append(h).append("小时").append(m).append("分钟");
 		return time.toString();
 	}
 
 	/**
 	 * 加密姓名，只显示第一个字（如吴光新=吴**，吴新=吴*）
-	 * @param name
-	 * @return
+	 * @param name 名字
+	 * @return 字符串
 	 */
 	public static String encryptNameKeepFirst(String name){
 		if (!TextUtils.isEmpty(name)) {
@@ -365,8 +393,8 @@ public class Utils{
 	
 	/**
 	 * 加密姓名，只显示最后一个字（如吴光新=**新，吴新=*新）
-	 * @param name
-	 * @return
+	 * @param name 名字
+	 * @return 字符串
 	 */
 	public static String encryptNameKeepLast(String name){
 		if (!TextUtils.isEmpty(name)) {
@@ -385,9 +413,9 @@ public class Utils{
 	}
 
 	/**
-	 * 验证客户姓名
-	 * @param name
-	 * @return
+	 * 验证客户姓名："(([\u4E00-\u9FA5]{2,7})|([a-zA-Z]{3,15}))"
+	 * @param name 名字
+	 * @return 是否匹配
 	 */
 	public static boolean verifyUserName(String name){
 		String regx = "(([\u4E00-\u9FA5]{2,7})|([a-zA-Z]{3,15}))";
@@ -396,8 +424,8 @@ public class Utils{
 
 	/**
 	 * 复制文本到剪贴板
-	 * @param context
-	 * @param text
+	 * @param context 上下文
+	 * @param text 文本
 	 */
 	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
@@ -435,7 +463,7 @@ public class Utils{
 	 * 获取两个数之间的随机数（包含最小和最大数）
 	 * @param min 最小的数
 	 * @param max 最大的数
-	 * @return
+	 * @return 随机数
 	 */
 	public static int getRandom(int min, int max){
 		return new Random().nextInt(max - min + 1) + min; 
@@ -443,8 +471,8 @@ public class Utils{
 	
 	/**
 	 * 获取数组中的随机一个对象
-	 * @param array
-	 * @return
+	 * @param array 数组
+	 * @return Object
 	 */
 	public static Object getRandomByArray(Object[] array){
 		if(array == null || array.length == 0){
@@ -459,8 +487,8 @@ public class Utils{
 
 	/**
 	 * 获取List中的随机一个对象
-	 * @param list
-	 * @return
+	 * @param list 列表
+	 * @return Object
 	 */
 	public static Object getRandomByList(List<Object> list){
 		if(list == null || list.size() == 0){
@@ -475,8 +503,8 @@ public class Utils{
 	
 	/**
 	 * 判断软键盘是否是弹出状态
-	 * @param context
-	 * @return
+	 * @param context 上下文
+	 * @return 软键盘是否显示
 	 */
 	public static boolean isShowSoftKey(Context context){
 		return ((Activity) context).getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE;
@@ -484,8 +512,8 @@ public class Utils{
 	
 	/**
 	 * 从系统默认的浏览器打开网页
-	 * @param context
-	 * @param url
+	 * @param context 上下文
+	 * @param url 地址
 	 */
 	public static void openWebFromSystem(Context context, String url){
 		Intent intent = new Intent();
@@ -494,6 +522,11 @@ public class Utils{
 		context.startActivity(intent);
 	}
 
+	/**
+	 * 是否包含Emoji表情
+	 * @param string 文本
+	 * @return 是否包含
+	 */
 	public static boolean isEmoji(String string) {
 		Pattern p = Pattern.compile("[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]",
 				Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
@@ -503,8 +536,8 @@ public class Utils{
 
 	/**
 	 * 判断是否含有中文字符
-	 * @param string
-	 * @return
+	 * @param string 文本
+	 * @return 是否包含
      */
 	public static boolean isCNString(String string) {
 		for (int i = 0; i < string.length(); i++) {

@@ -16,17 +16,18 @@ import java.lang.reflect.Field;
 
 /**
  * Banner自动轮播ViewPager
+ *
+ *
+ * Basic Setting and Usage：<br>
  * <ul>
- * <b>Basic Setting and Usage</b>
  * <li>{@link #startAutoScroll()} start auto scroll, or {@link #startAutoScroll(int)} start auto scroll delayed</li>
  * <li>{@link #stopAutoScroll()} stop auto scroll</li>
  * <li>{@link #setInterval(long)} set auto scroll time in milliseconds, default is {@link #DEFAULT_INTERVAL}</li>
  * </ul>
+ * Advanced Settings and Usage：<br>
  * <ul>
- * <b>Advanced Settings and Usage</b>
  * <li>{@link #setDirection(int)} set auto scroll direction</li>
- * <li>{@link #setCycle(boolean)} set whether automatic cycle when auto scroll reaching the last or first item, default
- * is true</li>
+ * <li>{@link #setCycle(boolean)} set whether automatic cycle when auto scroll reaching the last or first item, default is true</li>
  * <li>{@link #setSlideBorderMode(int)} set how to process when sliding at the last or first item</li>
  * <li>{@link #setStopScrollWhenTouch(boolean)} set whether stop auto scroll when touching, default is true</li>
  * </ul>

@@ -23,5 +23,6 @@ public class MainActivity extends AppCompatActivity {
         mDialog.setPositiveButton("确认", null);
         mDialog.setNegativeButton("取消", null);
         mDialog.show();
+
     }
 }

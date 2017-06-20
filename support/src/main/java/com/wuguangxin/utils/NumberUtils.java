@@ -18,8 +18,8 @@ public class NumberUtils {
 
     /**
      * 去小数后面的.00 或 .0
-     * @param number
-     * @return
+     * @param number 数值
+     * @return 字符串
      */
     public static String replaceZero(Number number) {
         if(number == null) {
@@ -39,7 +39,7 @@ public class NumberUtils {
      * 格式化数字（不千分位，如 1234567.89）
      * @param number Number类型
      * @param bit 小数位数（注意将会四舍五入）
-     * @return
+     * @return 字符串
      */
     public static String format(Number number, int bit) {
         return getDecimalFormat(false, bit).format(number);
@@ -47,9 +47,9 @@ public class NumberUtils {
 
     /**
      * 格式化数字（不千分位，如 1234567.89）
-     * @param number
+     * @param number 数值
      * @param bit 小数位数（注意将会四舍五入）
-     * @return
+     * @return 字符串
      */
     public static String format(BigDecimal number, int bit) {
         return getDecimalFormat(false, bit).format(number);
@@ -59,7 +59,7 @@ public class NumberUtils {
      * 格式化收益率(不带%符号)
      * @param number 数值 (0-100)
      * @param bit 小数位数（注意将会四舍五入）
-     * @return
+     * @return 字符串
      */
     public static String formatIncome(Number number, int bit) {
         return formatIncomeSign(number, bit).replace("%", "");
@@ -78,7 +78,7 @@ public class NumberUtils {
      * 6. HALF_UP 		若舍弃部分大于0.5，则作UP；否则，作DOWN。
      * 7. UNNECESSARY 	该“伪舍入模式”实际是指明所要求的操作必须是精确的，，因此不需要舍入操作。
      * 8. UP 			总是在非0舍弃小数(即截断)之前增加数字。
-     * @return
+     * @return 字符串
      */
     public static String formatIncomeSign(Number number, int bit) {
         if (bit < 0) bit = 0;
@@ -88,6 +88,12 @@ public class NumberUtils {
         return nf.format(number.floatValue() / 100.0f).replace(".00", "").replace(".0", "");
     }
 
+    /**
+     *
+     * @param isSpace 是否使用间隔符
+     * @param bit 保留小数位数
+     * @return DecimalFormat
+     */
     private static DecimalFormat getDecimalFormat(boolean isSpace, int bit) {
         format.applyPattern(getReg(isSpace, bit));
         return format;
@@ -105,6 +111,13 @@ public class NumberUtils {
     * System.out.println(format(",###,###", bd1));      // 0
     * System.out.println(format(",###,###.00", bd1));   // .00
     * System.out.println(format(",###,##0.00", bd1));   // 0.00
+     */
+
+    /**
+     *
+     * @param isSpace 是否使用间隔符
+     * @param bit 保留小数位数
+     * @return String
      */
     private static String getReg(boolean isSpace, int bit) {
         switch (bit) {
@@ -141,7 +154,7 @@ public class NumberUtils {
      * 格式化为百分比。默认保留2位小数，默认舍入模式为 RoundingMode.HALF_UP
      *
      * @param num (0-1)
-     * @return
+     * @return 字符串
      */
     public static String formatPercent(Number num) {
         return formatPercent(num, 2, RoundingMode.HALF_UP);
@@ -152,7 +165,7 @@ public class NumberUtils {
      *
      * @param num 数值  (0-1)
      * @param roundingMode 舍入模式
-     * @return
+     * @return 字符串
      */
     public static String formatPercent(Number num, RoundingMode roundingMode) {
         return formatPercent(num, 2, roundingMode);
@@ -163,7 +176,7 @@ public class NumberUtils {
      *
      * @param num 数值 (0-1)
      * @param maximumFractionDigits 小数位数
-     * @return
+     * @return 字符串
      */
     public static String formatPercent(Number num, int maximumFractionDigits) {
         return formatPercent(num, maximumFractionDigits, RoundingMode.HALF_UP);
@@ -175,7 +188,7 @@ public class NumberUtils {
      * @param num 数值  (0-1)
      * @param maximumFractionDigits 小数位数
      * @param roundingMode 舍入模式
-     * @return
+     * @return 字符串
      */
     @SuppressLint("NewApi")
     public static String formatPercent(Number num, int maximumFractionDigits, RoundingMode roundingMode) {
@@ -188,8 +201,8 @@ public class NumberUtils {
     /**
      * 格式化为货币格式。默认保留2位小数，默认舍入模式为 RoundingMode.HALF_UP
      *
-     * @param num
-     * @return
+     * @param num 数值
+     * @return 字符串
      */
     public static String formatCurrency(Number num) {
         return formatPercent(num, 2, RoundingMode.HALF_UP);
@@ -200,7 +213,7 @@ public class NumberUtils {
      *
      * @param num 数值
      * @param roundingMode 舍入模式
-     * @return
+     * @return 字符串
      */
     public static String formatCurrency(Number num, RoundingMode roundingMode) {
         return formatPercent(num, 2, roundingMode);
@@ -211,7 +224,7 @@ public class NumberUtils {
      *
      * @param num 数值
      * @param maximumFractionDigits 小数位数
-     * @return
+     * @return 字符串
      */
     public static String formatCurrency(Number num, int maximumFractionDigits) {
         return formatPercent(num, maximumFractionDigits, RoundingMode.HALF_UP);
@@ -223,7 +236,7 @@ public class NumberUtils {
      * @param num 数值
      * @param maximumFractionDigits 小数位数
      * @param roundingMode 舍入模式
-     * @return
+     * @return 字符串
      */
     @SuppressLint("NewApi")
     public static String formatCurrency(Number num, int maximumFractionDigits, RoundingMode roundingMode) {
@@ -237,7 +250,7 @@ public class NumberUtils {
      * @param maximumFractionDigits 小数位数
      * @param roundingMode 舍入模式 （看 http://wenku.baidu.com/link?url=wqskKRDCuep020rIJcb04qbIIP59FtoS51LIvSDQK6Vah0-CfIRW0BEs2NyIgrGjYY6GUcc8v2Uz4MoCnWsbc0SC73gMyETxzwmeyRmcGAW）
      * @param numberFormat 格式化类型
-     * @return
+     * @return 字符串
      */
     @SuppressLint("NewApi")
     public static String format(Number num, int maximumFractionDigits, RoundingMode roundingMode, NumberFormat numberFormat) {

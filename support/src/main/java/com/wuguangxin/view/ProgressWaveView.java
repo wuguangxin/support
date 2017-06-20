@@ -162,8 +162,8 @@ public class ProgressWaveView extends View {
     }
 
     /**
-     * 设置水波进度条形状
-     * @param shapeType
+     * 设置水波进度条形状类型
+     * @param shapeType 水波进度条形状类型
      */
     public void setShapeType(ShapeType shapeType) {
         mShapeType = shapeType;
@@ -194,7 +194,7 @@ public class ProgressWaveView extends View {
 
     /**
      * 设置水波X轴的位移
-     * @param waveTranslateRatio
+     * @param waveTranslateRatio 水波X轴的位移
      */
     public void setWaveTranslateRatio(float waveTranslateRatio) {
         if (mWaveAmplitudeRatio != waveTranslateRatio && waveTranslateRatio > 0) {
@@ -205,7 +205,7 @@ public class ProgressWaveView extends View {
 
     /**
      * 设置水波的周期（宽度）0.0f - 1.0f
-     * @param waveCycleRatio
+     * @param waveCycleRatio 水波的周期（宽度）0.0f - 1.0f
      */
     public void setWaveCycleRatio(float waveCycleRatio) {
         if (mWaveCycleRatio != waveCycleRatio) {
@@ -214,24 +214,34 @@ public class ProgressWaveView extends View {
         }
     }
 
+    /**
+     * 获取水波的周期（宽度）0.0f - 1.0f
+     * @return 水波的周期（宽度）0.0f - 1.0f
+     */
     public float getWaveLevelRatio() {
         return mWaveProgress;
     }
 
+    /**
+     * @return mWaveAmplitudeRatio
+     */
     public float getWaveAmplitudeRatio() {
         return mWaveAmplitudeRatio;
     }
 
+    /**
+     * @return mWaveTranslateRatio
+     */
     public float getWaveTranslateRatio() {
         return mWaveTranslateRatio;
     }
 
-
+    /**
+     * @return mWaveCycleRatio
+     */
     public float getWaveCycleRatio() {
         return mWaveCycleRatio;
     }
-
-
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -239,7 +249,9 @@ public class ProgressWaveView extends View {
         createShader();
     }
 
-    // y=Asin(ωx+φ)+k
+    /**
+     * y=Asin(ωx+φ)+k
+     */
     private void createShader() {
         int height = getHeight();
         int width = getWidth();
@@ -303,6 +315,5 @@ public class ProgressWaveView extends View {
             canvas.drawRect(borderWidth, borderWidth, getWidth() - borderWidth, getHeight() - borderWidth, mPaint);
             break;
         }
-
     }
 }

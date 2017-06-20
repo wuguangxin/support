@@ -142,7 +142,8 @@ public class SwitchView extends View{
 	public interface OnSwitchChangeListener {
 		/**
 		 * 当前状态。true: ON  false:OFF
-		 * @param currentState
+		 * @param view SwitchView
+		 * @param currentState 当前状态。true: ON  false:OFF
 		 */
 		void onSwitchChanged(SwitchView view, boolean currentState);
 	}

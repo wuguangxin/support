@@ -17,7 +17,7 @@ public class MoneyUtils{
 	/**
 	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
 	 * @param moneyString String类型数据
-	 * @return
+	 * @return 金额字符串
 	 */
 	public static String format(String moneyString){
 		if (TextUtils.isEmpty(moneyString) || moneyString.split("\\.").length > 2) {
@@ -28,8 +28,8 @@ public class MoneyUtils{
 
 	/**
 	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
-	 * @param number
-	 * @return
+	 * @param number 金额
+	 * @return 金额字符串
 	 */
 	public static String format(Number number){
 		return format(number, "");
@@ -37,9 +37,9 @@ public class MoneyUtils{
 
 	/**
 	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
-	 * @param number
+	 * @param number 金额
 	 * @param unit 附加文字，比如"元"
-	 * @return
+	 * @return 金额字符串
 	 */
 	public static String format(Number number, String unit){
 		if (number == null) {
@@ -59,6 +59,7 @@ public class MoneyUtils{
 	 * @param number 数值
 	 * @param bit 保留的小数位数
 	 * @param roundingMode 舍入模式 RoundingMode
+	 * @return 金额字符串
 	 */
 	public static String format(Number number, int bit, RoundingMode roundingMode){
 		if (number == null) {
@@ -79,6 +80,7 @@ public class MoneyUtils{
 	/**
 	 * 格式化金额，只保留两位小数点，四舍五入，不用千分位格式化（如123456.78）
 	 * @param moneyString String类型数据
+	 * @return 金额字符串
 	 */
 	public static String format2bit(String moneyString){
 		if (TextUtils.isEmpty(moneyString) || moneyString.split("\\.").length > 2) {
@@ -90,6 +92,7 @@ public class MoneyUtils{
 	/**
 	 * 格式化金额，只保留两位小数点，四舍五入，不用千分位格式化（如123456.78）
 	 * @param moneyLong long类型
+	 * @return 金额字符串
 	 */
 	public static String format2bit(long moneyLong){
 		if (moneyLong == 0) {
@@ -107,6 +110,7 @@ public class MoneyUtils{
 	/**
 	 * 格式化金额，只保留两位小数点，四舍五入，不用千分位格式化（如123456.78）
 	 * @param moneyDouble double类型
+	 * @return 金额字符串
 	 */
 	public static String format2bit(double moneyDouble){
 		if (moneyDouble == 0) {
@@ -124,6 +128,7 @@ public class MoneyUtils{
 	/**
 	 * 格式化金额，只保留两位小数点，不用千分位格式化（如123456.78）
 	 * @param moneyBigDecimal BigDecimal类型
+	 * @return 金额字符串
 	 */
 	public static String format2bit(BigDecimal moneyBigDecimal){
 		if (moneyBigDecimal == null || moneyBigDecimal.doubleValue() == 0) {
@@ -141,6 +146,7 @@ public class MoneyUtils{
 	/**
 	 * 格式化金额，只保留两位小数点，不用千分位格式化（如123456.78）
 	 * @param moneyDouble double类型
+	 * @return 金额字符串
 	 */
 	public static String format1bit(double moneyDouble){
 		if (moneyDouble == 0) {
@@ -159,6 +165,7 @@ public class MoneyUtils{
 	 * 格式化金额，千分位格式化（如123,456.78...）
 	 * @param money double类型
 	 * @param bit 保留的小数位数
+	 * @return 金额字符串
 	 */
 	public static String format(BigDecimal money, int bit){
 		return getDecimalFormat(bit).format(money);
@@ -168,6 +175,7 @@ public class MoneyUtils{
 	 * 格式化金额，千分位格式化（如123,456.78...）
 	 * @param money double类型
 	 * @param bit 保留的小数位数
+	 * @return 金额字符串
 	 */
 	public static String format(double money, int bit){
 		return getDecimalFormat(bit).format(money);
@@ -177,6 +185,7 @@ public class MoneyUtils{
 	 * 格式化金额，千分位格式化（如123,456.78...）
 	 * @param money double类型
 	 * @param bit 保留的小数位数
+	 * @return 金额字符串
 	 */
 	public static String format(long money, int bit){
 		return getDecimalFormat(bit).format(money);
@@ -185,6 +194,7 @@ public class MoneyUtils{
 	/**
 	 * 获取DecimalFormat 实例，并设置保留的小数位数
 	 * @param bit 保留的小数位数
+	 * @return DecimalFormat
 	 */
 	private static DecimalFormat getDecimalFormat(int bit){
 		DecimalFormat decimalFormat = new DecimalFormat();
@@ -195,7 +205,7 @@ public class MoneyUtils{
 	/**
 	 * 将数字型货币转换为中文型货币
 	 * @param number 数字
-	 * @return
+	 * @return 金额字符串
 	 */
 	public static String formatCN(Number number){
 		if(number.doubleValue() == 0){
@@ -238,6 +248,11 @@ public class MoneyUtils{
 	System.out.println(format(",###,###.00", bd1)); //out: .00
 	System.out.println(format(",###,##0.00", bd1)); //out: 0.00
 	*/
+
+	/**
+	 * @param bit 小数位数
+	 * @return 通配符
+	 */
 	private static String getReg(int bit){
 		switch (bit) {
 		case 0: return ",###,##0";

@@ -13,7 +13,7 @@ public class BankCardUtils{
 	/**
 	 * 校验银行卡卡号是否正确
 	 * @param cardId 银行卡号
-	 * @return
+	 * @return 是否正确
 	 */
 	public static boolean isBankCard(String cardId){
 		cardId = cardId.replaceAll(" ", "");
@@ -49,8 +49,8 @@ public class BankCardUtils{
 	
 	/**
 	 * 隐藏中间的号码
-	 * @param bankNumber
-	 * @return
+	 * @param bankNumber 银行卡号
+	 * @return 返回隐藏好的卡号字符串
 	 */
 	public static String formatHint(String bankNumber){
 		if(TextUtils.isEmpty(bankNumber)){

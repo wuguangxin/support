@@ -175,7 +175,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * 注：想要在点击按钮时自动关闭对话框，则在监听器的onClick()方法中利用返回的dialog调用.dismiss()，否则对话框仍然存在。<br>
 	 * @param text 按钮文字
 	 * @param onClickDialogListener 按钮监听器
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setMenuLeft(String text, final OnClickDialogListener onClickDialogListener){
 		this.menuLeftText = text;
@@ -204,7 +204,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * 当点击按钮时，该按钮会默认被禁止点击setClickable(false) 直到对话框回调cancel()、dismiss()、hide()时被重置为true<br>
 	 * @param text 按钮文字
 	 * @param onClickDialogListener 按钮监听器
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setMenuRight(String text, final OnClickDialogListener onClickDialogListener){
 		this.menuRightText = text;
@@ -230,7 +230,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * 设置对话框的取消按钮监听器 <br>
 	 * @param text 取消按钮文字
 	 * @param isFinish 点击按钮关闭Activity
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setNegativeButton(String text, boolean isFinish){
 		return setNegativeButton(text, isFinish, null);
@@ -240,9 +240,9 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * 设置对话框的取消按钮监听器 <br>
 	 * 当text不为null但onClickListener为null时，点击按钮默认调用dismiss()。<br>
 	 * 注：想要在点击按钮时自动关闭对话框，则在监听器的onClick()方法中利用返回的dialog调用.dismiss()，否则对话框仍然存在。<br>
-	 * @param text
+	 * @param text 按钮文字
 	 * @param onClickDialogListener 监听器
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setNegativeButton(String text, final OnClickDialogListener onClickDialogListener){
 		return setNegativeButton(text, false, onClickDialogListener);
@@ -256,7 +256,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * @param text 按钮文字
 	 * @param isFinish 点击按钮关闭Activity, 当该值为true时，将不执行onClickDialogListener回调
 	 * @param onClickDialogListener 按钮监听器
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setNegativeButton(String text, final boolean isFinish, final OnClickDialogListener onClickDialogListener){
 		if (!TextUtils.isEmpty(text)) {
@@ -283,10 +283,10 @@ public class MyDialog extends Dialog implements DialogInterface{
 	}
 	
 	/**
-	 * 设置对话框的确认按钮监听器 <br>
+	 * 设置对话框的确认按钮监听器
 	 * @param text 确认按钮文字
 	 * @param isFinish 点击按钮关闭Activity
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setPositiveButton(String text, boolean isFinish){
 		return setPositiveButton(text, isFinish, null);
@@ -297,8 +297,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * 当text不为null但onClickListener为null时，点击按钮默认调用dismiss()。<br>
 	 * 注：想要在点击按钮时自动关闭对话框，则在监听器的onClick()方法中利用返回的dialog调用.dismiss()，否则对话框仍然存在。<br>
 	 * @param text 按钮文字
-	 * @param onClickDialogListener
-	 * @return
+	 * @param onClickDialogListener 监听器
+	 * @return MyDialog
 	 */
 	public MyDialog setPositiveButton(String text, final OnClickDialogListener onClickDialogListener){
 		return setPositiveButton(text, false, onClickDialogListener);
@@ -310,8 +310,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * 注：想要在点击按钮时自动关闭对话框，则在监听器的onClick()方法中利用返回的dialog调用.dismiss()，否则对话框仍然存在。<br>
 	 * @param text 按钮文字
 	 * @param isFinish 点击按钮关闭Activity,当该值为true时，将不执行onClickDialogListener回调
-	 * @param onClickDialogListener
-	 * @return
+	 * @param onClickDialogListener 监听器
+	 * @return MyDialog
 	 */
 	private MyDialog setPositiveButton(String text, final boolean isFinish, final OnClickDialogListener onClickDialogListener){
 		if (!TextUtils.isEmpty(text)) {
@@ -337,6 +337,10 @@ public class MyDialog extends Dialog implements DialogInterface{
 		return this;
 	}
 
+	/**
+	 * 设置按钮样式
+	 * @param button 按钮TextView
+	 */
 	private void setButtonStyle(TextView button){
 		// 两按钮都显示，则显示中间分割线
 		if (mPositiveButton.getVisibility() == View.VISIBLE && mNegativeButton.getVisibility() == View.VISIBLE) {
@@ -351,7 +355,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置NegativeButton按钮是否可用
-	 * @param enabled
+	 * @param enabled NegativeButton按钮是否可用
 	 */
 	public void setNegativeButtonEnabled(boolean enabled){
 		if (mNegativeButton != null) {
@@ -361,7 +365,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置ConfirmButton按钮是否可用
-	 * @param enabled
+	 * @param enabled ConfirmButton按钮是否可用
 	 */
 	public void setPositiveButtonEnabled(boolean enabled){
 		if (mPositiveButton != null) {
@@ -371,8 +375,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置对话框标题
-	 * @param title
-	 * @return
+	 * @param title 对话框标题
+	 * @return MyDialog
 	 */
 	public MyDialog setTitle(String title){
 		if (title != null) {
@@ -388,8 +392,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置对话框正文内容消息
-	 * @param message
-	 * @return
+	 * @param message 对话框正文内容消息
+	 * @return MyDialog
 	 */
 	public MyDialog setMessage(String message){
 		if (message != null) {
@@ -402,8 +406,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置对话框正文内容消息
-	 * @param message
-	 * @return
+	 * @param message 对话框正文内容消息
+	 * @return MyDialog
 	 */
 	public MyDialog setMessage(CharSequence message){
 		if (message != null) {
@@ -415,24 +419,24 @@ public class MyDialog extends Dialog implements DialogInterface{
 	}
 
 	/**
-	 * 获取默认的消息文本框
-	 * @return
+	 * 获取消息文本框
+	 * @return 消息文本框
 	 */
 	public TextView getMessageView(){
 		return mDialogMessage;
 	}
 	
 	/**
-	 * 获取默认的消息文本框
-	 * @return
+	 * 获取标题文本
+	 * @return 标题文本
 	 */
 	public TextView getTitleView(){
 		return mDialogTitle;
 	}
 	
 	/**
-	 * 获取默认的消息文本框
-	 * @return
+	 * 获取密码框焦点布局
+	 * @return 密码框焦点布局
 	 */
 	public View getPasswordFocusLayout(){
 		return mFocusLayout;
@@ -440,7 +444,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 获取对话框中的ListView
-	 * @return
+	 * @return 对话框中的ListView
 	 */
 	public MyListView getListView(){
 		return mDialogListView;
@@ -448,7 +452,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 获取对话框中的GridView
-	 * @return
+	 * @return 对话框中的GridView
 	 */
 	public MyGridView getGridView(){
 		return mDialogGridView;
@@ -456,7 +460,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 获取对话框中确认按钮
-	 * @return
+	 * @return 对话框中确认按钮
 	 */
 	public TextView getPositiveButton(){
 		return mPositiveButton;
@@ -464,7 +468,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 获取对话框中取消按钮
-	 * @return
+	 * @return 对话框中取消按钮
 	 */
 	public TextView getNegativeButton(){
 		return mNegativeButton;
@@ -472,8 +476,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置GridView适配器
-	 * @param adapter
-	 * @return
+	 * @param adapter GridView适配器
+	 * @return MyDialog
 	 */
 	public MyDialog setGridViewAdapter(BaseAdapter adapter){
 		if (adapter != null) {
@@ -484,6 +488,10 @@ public class MyDialog extends Dialog implements DialogInterface{
 		return this;
 	}
 
+	/**
+	 * 更新GridView适配器
+	 * @return MyDialog
+	 */
 	public MyDialog notifyGridView(){
 		if (mDialogGridView != null) {
 			mDialogGridView.getAdapter().notify();
@@ -493,8 +501,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置列表适配器
-	 * @param adapter
-	 * @return
+	 * @param adapter ListView列表适配器
+	 * @return MyDialog
 	 */
 	public MyDialog setListViewAdapter(BaseAdapter adapter){
 		if (adapter != null) {
@@ -505,6 +513,10 @@ public class MyDialog extends Dialog implements DialogInterface{
 		return this;
 	}
 
+	/**
+	 * 更新列表适配器
+	 * @return MyDialog
+	 */
 	public MyDialog notifyListView(){
 		if (mDialogListView != null) {
 			mDialogListView.getAdapter().notify();
@@ -547,7 +559,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	/**
 	 * 设置密码输入框组件显示状态
 	 * @param visible 是否可见 false-隐藏 true-显示
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setPasswordVisibility(boolean visible){
 		if (mDialogBodyPasswordEditTextLayout != null) {
@@ -563,8 +575,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 对本次输入交易密码的说明
-	 * @param descString
-	 * @return
+	 * @param descString 交易密码的说明
+	 * @return MyDialog
 	 */
 	public MyDialog setPasswordDesc(String descString){
 		if (mDialogBodyPasswordEditTextLayout == null) {
@@ -579,7 +591,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 获取交易密码描述TextView
-	 * @return
+	 * @return TextView
 	 */
 	public TextView getPasswordDescView(){
 		if(mPayPasswordDesc != null){
@@ -591,7 +603,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 判断是否显示软键盘
-	 * @return
+	 * @return 是否显示软键盘
 	 */
 	public boolean isSoftKeyboardVisibility(){
 		return isSoftKeyboardVisibility;
@@ -607,7 +619,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 获取输入的密码（如果设置显示了密码输入框才生效）
-	 * @return
+	 * @return 输入的密码
 	 */
 	public String getPassword(){
 		if(mPayPassword != null){
@@ -615,7 +627,11 @@ public class MyDialog extends Dialog implements DialogInterface{
 		}
 		return null;
 	}
-	
+
+	/**
+	 * 初始化6个密码框布局
+	 * @param visible 是否可见
+	 */
 	@SuppressLint("InflateParams")
 	private void initPasswordEditTextLayout(boolean visible){
 		mPayPasswordDesc = (TextView) findViewById(R.id.xin_dialog_password_desc);
@@ -651,7 +667,10 @@ public class MyDialog extends Dialog implements DialogInterface{
 			public void afterTextChanged(Editable s){}
 		});
 	}
-	
+
+	/**
+	 * 控制软键盘显示状态
+	 */
 	protected void setOnClientInputMethod(){
 		if (!isShowSoftKey()) {
 			handler.sendEmptyMessage(View.VISIBLE); // 显示软键盘
@@ -665,7 +684,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 软键盘是否弹出
-	 * @return
+	 * @return 软键盘是否弹出
 	 */
 	public boolean isShowSoftKey(){
 		return getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE;
@@ -683,8 +702,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 设置对话框中密码输入框监听器
-	 * @param onClickPasswordEditTextsListener
-	 * @return
+	 * @param onClickPasswordEditTextsListener 监听器
+	 * @return MyDialog
 	 */
 	public MyDialog setOnClickPasswordEditTextsListener(final OnClickPasswordEditTextsListener onClickPasswordEditTextsListener){
 		mFocusLayout.setOnClickListener(new View.OnClickListener(){
@@ -698,7 +717,10 @@ public class MyDialog extends Dialog implements DialogInterface{
 		});
 		return this;
 	}
-	
+
+	/**
+	 * 显示软键盘
+	 */
 	protected void showSoftkey(){
 //		if(Utils.isShowSoftKey(context)){
 //			return;
@@ -711,7 +733,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	/**
 	 * 设置自定义的对话框正文布局
 	 * @param view 你的布局
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setView(View view){
 		if (view != null) {
@@ -732,7 +754,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 获取对话框中ContextView里的Child的个数
-	 * @return
+	 * @return 对话框中ContextView里的Child的个数
 	 */
 	public int getChildCount(){
 		if (mDialogBodyUserLayout != null) {
@@ -741,6 +763,10 @@ public class MyDialog extends Dialog implements DialogInterface{
 		return 0;
 	}
 
+	/**
+	 * 设置Padding
+	 * @param size 大小
+	 */
 	public void setPadding(int size){
 		if (mDialogLayout != null) {
 			if (size < 0) {
@@ -752,8 +778,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置对话框顶部分割线颜色（若不想显示分割线，设置为透明色即可）
-	 * @param color
-	 * @return
+	 * @param color 对话框顶部分割线颜色
+	 * @return MyDialog
 	 */
 	public MyDialog setLineColor(int color){
 		if (mDialogTopLine != null) {
@@ -764,8 +790,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置分割线可见状态
-	 * @param visible
-	 * @return
+	 * @param visible 分割线可见状态
+	 * @return MyDialog
 	 */
 	public MyDialog setLineVisible(int visible){
 		if (mDialogTopLine != null) {
@@ -776,8 +802,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置标题文字颜色
-	 * @param color
-	 * @return
+	 * @param color 标题文字颜色
+	 * @return MyDialog
 	 */
 	public MyDialog setTitleTextColor(int color){
 		if (mDialogTitle != null) {
@@ -788,8 +814,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置标题文字大小
-	 * @param size
-	 * @return
+	 * @param size 标题文字大小
+	 * @return MyDialog
 	 */
 	public MyDialog setTitleTextSize(float size){
 		if (mDialogTitle != null) {
@@ -800,8 +826,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置消息文字大小
-	 * @param size
-	 * @return
+	 * @param size 消息文字大小
+	 * @return MyDialog
 	 */
 	public MyDialog setMessageTextSize(float size){
 		if (mDialogMessage != null) {
@@ -812,8 +838,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 设置消息文字对齐方式
-	 * @param gravity
-	 * @return
+	 * @param gravity 消息文字对齐方式
+	 * @return MyDialog
 	 */
 	public MyDialog setMessageGravity(int gravity){
 		if (mDialogMessage != null) {
@@ -824,8 +850,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 设置日期组件 变化监听器
-	 * @param onDateChangedListener
-	 * @return
+	 * @param onDateChangedListener 监听器
+	 * @return MyDialog
 	 */
 	public MyDialog setDataPicker(OnDateChangedListener onDateChangedListener){
 		return setDataPicker(System.currentTimeMillis(), onDateChangedListener);
@@ -834,8 +860,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	/**
 	 * 设置日期组件 变化监听器
 	 * @param timeMillis 默认显示的时间
-	 * @param onDateChangedListener
-	 * @return
+	 * @param onDateChangedListener 监听器
+	 * @return MyDialog
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public MyDialog setDataPicker(long timeMillis, OnDateChangedListener onDateChangedListener){
@@ -848,8 +874,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 设置时间组件变化监听器
-	 * @param onTimeChangedListener
-	 * @return
+	 * @param onTimeChangedListener 监听器
+	 * @return MyDialog
 	 */
 	public MyDialog setTimePicker(OnTimeChangedListener onTimeChangedListener){
 		return setTimePicker(System.currentTimeMillis(), onTimeChangedListener);
@@ -859,7 +885,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 * 设置时间组件变化监听器
 	 * @param timeMillis 默认显示的时间
 	 * @param onTimeChangedListener 监听器
-	 * @return
+	 * @return MyDialog
 	 */
 	public MyDialog setTimePicker(long timeMillis, OnTimeChangedListener onTimeChangedListener){
 		setTimePickerVisible(true, true);
@@ -875,8 +901,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 是否显示日期组件
-	 * @param visible
-	 * @return
+	 * @param visible 是否显示日期组件
+	 * @return MyDialog
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public MyDialog setDataPickerVisible(boolean visible){
@@ -895,8 +921,9 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 是否显示时间组件
-	 * @param visible
-	 * @return
+	 * @param visible 是否显示时间组件
+	 * @param is24HourView 是否是24小时
+	 * @return MyDialog
 	 */
 	public MyDialog setTimePickerVisible(boolean visible, Boolean is24HourView){
 		if(!visible && mDialogTimePicker == null){
@@ -910,13 +937,13 @@ public class MyDialog extends Dialog implements DialogInterface{
 	}
 	
 	/** 
-	 * TODO 此方法所实现的功能未完成，待改
-	 * @param calendar	Calendar
-	 * @param year						年
+	 * 此方法所实现的功能未完成，待改
+	 * @param calendar			Calendar
+	 * @param year				年
 	 * @param monthOfYear		月
 	 * @param dayOfMonth		日
 	 * @param hourOfDay			时
-	 * @param minute					分
+	 * @param minute			分
 	 */
 	@SuppressWarnings("unused")
 	private void setCalendarData(Calendar calendar, int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minute){
@@ -944,8 +971,8 @@ public class MyDialog extends Dialog implements DialogInterface{
 
 	/**
 	 * 设置消息文字颜色
-	 * @param color
-	 * @return
+	 * @param color 消息文字颜色
+	 * @return MyDialog
 	 */
 	public MyDialog setMessageTextColor(int color){
 		if (mDialogMessage != null) {
@@ -1006,7 +1033,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	
 	/**
 	 * 设置当对话框调用dismiss()或者cancel()后解除禁用的View
-	 * @param enableView
+	 * @param enableView View
 	 */
 	public void setEnableView(View enableView){
 		this.enableView = enableView;

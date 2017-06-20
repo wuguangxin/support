@@ -50,7 +50,7 @@ public class PhoneUtils{
 	/**
 	 * 将手机号码中间4位用*代替（如186 **** 1234），如果不是手机号码格式，返回原数据
 	 * @param phoneNumber 手机号码()
-	 * @return
+	 * @return 字符串
 	 */
 	public static String formatHide4(String phoneNumber){
 		if (!isPhoneNumber(phoneNumber)) {
@@ -63,7 +63,7 @@ public class PhoneUtils{
 	/**
 	 * 将手机号码中间4位用*代替（如186 **** 1234），并在*号两端加空格，适合于文本变化监听器调用
 	 * @param phoneNumber 手机号码
-	 * @return
+	 * @return 字符串
 	 */
 	public static String formatHide4Space(String phoneNumber){
 		if (!isPhoneNumber(phoneNumber)) {
@@ -75,8 +75,8 @@ public class PhoneUtils{
 
 	/**
 	 * 给手机号码加空格（如 186 0000 1111）
-	 * @param phoneNumber
-	 * @return
+	 * @param phoneNumber 手机号
+	 * @return 字符串
 	 */
 	public static String formatSpace(String phoneNumber){
 		if (!isPhoneNumber(phoneNumber)) {
@@ -89,8 +89,8 @@ public class PhoneUtils{
 	/**
 	 * 获取本机号码，如果是双卡手机，获取的将是卡槽1的号码
 	 * 
-	 * @param context
-	 * @return
+	 * @param context 上下文
+	 * @return 手机号
 	 */
 	public static String getThisPhoneNumber(Context context){
 		if (context == null) {
@@ -106,7 +106,7 @@ public class PhoneUtils{
 
 	/**
 	 * 直接拨打电话
-	 * @param context
+	 * @param context 上下文
 	 * @param tel 号码字符串
 	 */
 	public static void call(Context context, String tel){
@@ -115,7 +115,7 @@ public class PhoneUtils{
 
 	/**
 	 * 打开拨号界面
-	 * @param context
+	 * @param context 上下文
 	 * @param tel 号码字符串
 	 */
 	public static void callView(Context context, String tel){

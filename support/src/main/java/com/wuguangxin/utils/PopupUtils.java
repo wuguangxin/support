@@ -39,7 +39,7 @@ public class PopupUtils{
 	/**
 	 * 弹出默认PopupWindow, 透明度默认使用0.95f。
 	 * 记得在Antivity.finish前调PopupUtils.dismiss();
-	 * @param context
+	 * @param context 上下文
 	 * @param parentView 在哪个View下面弹出
 	 * @param msg 消息文本
 	 */
@@ -50,7 +50,7 @@ public class PopupUtils{
 	/**
 	 * 弹出默认PopupWindow <br>
 	 * 记得在Antivity.finish前调PopupUtils.dismiss();
-	 * @param context
+	 * @param context 上下文
 	 * @param parentView 在哪个View下面弹出
 	 * @param msg 消息文本
 	 * @param alpha PopupWindow透明度（0~1.0）
@@ -61,7 +61,7 @@ public class PopupUtils{
 	
 	/**
 	 * 弹出自定义布局的PopupWindow
-	 * @param context
+	 * @param context 上下文
 	 * @param parentView 在哪个View下面弹出
 	 * @param contentView 自定义View
 	 * @param alpha PopupWindow透明度（0~1.0）
@@ -86,7 +86,7 @@ public class PopupUtils{
 	
 	/**
 	 * 显示菜单view
-	 * @param context
+	 * @param context 上下文
 	 * @param contentView 显示的内容布局
 	 * @param parentView 与那个View对齐
 	 * @param width 菜单的宽度
@@ -99,7 +99,7 @@ public class PopupUtils{
 	
 	/**
 	 * 显示菜单view
-	 * @param context
+	 * @param context 上下文
 	 * @param contentView 显示的内容布局
 	 * @param parentView 与那个View对齐
 	 * @param width 菜单的宽度
@@ -114,7 +114,7 @@ public class PopupUtils{
 	
 	/**
 	 * 显示菜单view
-	 * @param context
+	 * @param context 上下文
 	 * @param contentView 显示的内容布局
 	 * @param parentView 与那个View对齐
 	 * @param width 菜单的宽度
@@ -130,7 +130,7 @@ public class PopupUtils{
 	
 	/**
 	 * 显示菜单view
-	 * @param context
+	 * @param context 上下文
 	 * @param contentView 显示的内容布局
 	 * @param parentView 与那个View对齐
 	 * @param width 菜单的宽度
@@ -164,7 +164,7 @@ public class PopupUtils{
 	
 	/**
 	 * 判断是否是显示中
-	 * @return
+	 * @return 是否显示中
 	 */
 	public static boolean isShowing(){
 		if(mPopupWindows != null){
@@ -181,7 +181,13 @@ public class PopupUtils{
 			mPopupWindows.dismiss();
 		}
 	}
-	
+
+	/**
+	 * 获取View
+	 * @param context 上下文
+	 * @param msg 文本
+	 * @return View
+	 */
 	private static View getView(Context context, String msg){
 		TextView mTextView = new TextView(context);
 		mTextView.setPadding(10, 10, 10, 10);
@@ -211,10 +217,10 @@ public class PopupUtils{
 	
 	/**
 	 * 创建一个PopupMenu（in API level 11）
-	 * @param context
-	 * @param anchor 
+	 * @param context 上下文
+	 * @param anchor  父View
 	 * @param menuRes menu的配置文件xml
-	 * @return
+	 * @return PopupMenu
 	 */
 	@SuppressLint("NewApi")
 	public static PopupMenu createPopupMenu(Context context, View anchor, int menuRes){
@@ -225,11 +231,11 @@ public class PopupUtils{
 	
 	/**
 	 * 创建一个PopupMenu（in API level 11）
-	 * @param context
-	 * @param anchor 
+	 * @param context 上下文
+	 * @param anchor 父View
 	 * @param menuRes menu的配置文件xml
 	 * @param isShowIcon 是否显示图标
-	 * @return
+	 * @return PopupMenu
 	 */
 	@SuppressLint("NewApi")
 	public static PopupMenu createPopupMenu(Context context, View anchor, int menuRes, boolean isShowIcon){

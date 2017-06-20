@@ -20,10 +20,10 @@ public class AlarmUtils{
 	//	RTC闹钟和ELAPSED_REALTIME最大的差别就是前者可以通过修改时间触发闹钟事件，后者要通过真实时间的流逝，即使在休眠状态，时间也会被计算。
 	/**
 	 * 添加提醒
-	 * @param context
-	 * @param requestCode
-	 * @param triggerAtMillis
-	 * @param intent 
+	 * @param context 上下文
+	 * @param requestCode 请求码
+	 * @param triggerAtMillis triggerAtMillis
+	 * @param intent intent
 	 */
 	public static void add(Context context, int requestCode, long triggerAtMillis, Intent intent){
 		// PendingIntent.FLAG_UPDATE_CURRENT如果pendingIntent已存在，则更新数据
@@ -38,7 +38,7 @@ public class AlarmUtils{
 	
 	/**
 	 * 取消提醒
-	 * @param context
+	 * @param context 上下文
 	 * @param requestCode Private request code for the sender
 	 * @param intent The Intent to be broadcast.
 	 */

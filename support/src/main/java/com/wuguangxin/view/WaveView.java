@@ -44,13 +44,17 @@ public class WaveView extends FrameLayout{
 		this.context = context;
 	}
 
+	/**
+	 * 文本颜色
+	 * @param color 文本颜色
+	 */
 	public void setTextColor(int color){
 		mTextColor = color;
 	}
 
 	/**
 	 * 文字大小（单位dip)
-	 * @param size
+	 * @param size 文字大小（单位dip)
 	 */
 	public void setTextSize(int size){
 		mTextSize = size;
@@ -68,10 +72,17 @@ public class WaveView extends FrameLayout{
 		onShakeListener();
 	}
 
+	/**
+	 * 状态
+	 * @param status 状态
+	 */
 	public void setStatus(Status status){
 		mFlag = status;
 	}
 
+	/**
+	 * 颜色
+	 */
 	public void clear(){
 		mFlag = Status.NONE;
 		if (mScaledBitmap != null) {
@@ -175,7 +186,12 @@ public class WaveView extends FrameLayout{
 			}  
         };
 	}
-	
+
+	/**
+	 * dip转为px
+	 * @param dipValue dip
+	 * @return px
+	 */
 	private int dip2px(float dipValue){
 		float density = context.getResources().getDisplayMetrics().density;
 		return (int) (dipValue * density + 0.5f);

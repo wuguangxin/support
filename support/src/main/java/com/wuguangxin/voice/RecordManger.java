@@ -124,9 +124,10 @@ public class RecordManger{
 		amplitudeImgs[5] = R.drawable.voice_mic_6;
 		amplitudeImgs[6] = R.drawable.voice_mic_7;
 	}
-	
+
 	/**
 	 * 启动录音(默认录音最大时长 60 秒)
+	 * @return 是否播放成功
 	 */
 	public boolean start(){
 		return start(maxDuration);
@@ -135,7 +136,7 @@ public class RecordManger{
 	/**
 	 * 启动录音
 	 * @param maxDuration 指定录音最大时长（秒）
-	 * @return
+	 * @return 是否播放成功
 	 */
 	@SuppressLint("InlinedApi")
 	public boolean start(long maxDuration){
@@ -226,7 +227,10 @@ public class RecordManger{
 			}
 		}
 	}
-	
+
+	/**
+	 * 初始化
+	 */
 	private void init(){
 		mTimeCount.cancel();
 		if (mMediaRecorder != null) {
@@ -248,13 +252,17 @@ public class RecordManger{
 		}
 	}
 
+	/**
+	 * 保存路径
+	 * @param savePath
+	 */
 	public void setSavePath(File savePath) {
 		this.savePath = savePath;
 	}
 
 	/**
-	 * 停止并重置计时器，返回计时时长（秒）
-	 * @return
+	 * 停止并重置计时器
+	 * @return 返回计时时长（秒）
 	 */
 	private long stopChronometer(){
 		if (mChronometer != null) {
@@ -267,7 +275,7 @@ public class RecordManger{
 
 	/**
 	 * 获取当前录制的时长
-	 * @return
+	 * @return 当前录制的时长
 	 */
 	private long getCurrentTimelong(){
 		return (SystemClock.elapsedRealtime() - mChronometer.getBase()) / 1000;
@@ -275,7 +283,7 @@ public class RecordManger{
 
 	/**
 	 * 显示返回信息
-	 * @param isShow
+	 * @param isShow 是否显示
 	 */
 	public void showBackMsg(boolean isShow){
 		if (mVoiceCancelMsg != null) {
@@ -283,33 +291,51 @@ public class RecordManger{
 		}
 	}
 
+	/**
+	 * 显示对话框
+	 */
 	private void showDialog(){
 		if (mPopupWindows != null && !mPopupWindows.isShowing()) {
 			mPopupWindows.showAtLocation(mDialogView, Gravity.CENTER, 0, 0);
 		}
 	}
 
+	/**
+	 * dismiss 对话框
+	 */
 	private void dismissDialog(){
 		if (mPopupWindows != null && mPopupWindows.isShowing()) {
 			mPopupWindows.dismiss();
 		}
 	}
 
+	/**
+	 * 是否正在录制
+	 * @return 是否正在录制
+	 */
 	public boolean isRecording(){
 		return isRecording;
 	}
 
+	/**
+	 * 获取录制监听器
+	 * @return 录制监听器
+	 */
 	public OnRecordListener getOnRecordListener(){
 		return onRecordListener;
 	}
 
+	/**
+	 * 设置录制监听器
+	 * @param onRecordListener 录制监听器
+	 */
 	public void setOnRecordListener(OnRecordListener onRecordListener){
 		this.onRecordListener = onRecordListener;
 	}
 
 	/**
 	 * 获取最大录制时长
-	 * @return
+	 * @return 最大录制时长
 	 */
 	public long getMaxDuration(){
 		return maxDuration;
@@ -317,7 +343,7 @@ public class RecordManger{
 
 	/**
 	 * 设置最大录制时长（秒），默认60秒
-	 * @param maxDuration
+	 * @param maxDuration 最大录制时长
 	 */
 	public void setMaxDuration(long maxDuration){
 		this.maxDuration = maxDuration;
@@ -346,7 +372,7 @@ public class RecordManger{
 
 		/**
 		 * 停止录音
-		 * @param voiceInfo
+		 * @param voiceInfo 语音信息
 		 */
 		public void onStop(VoiceInfo voiceInfo){};
 	}

@@ -15,21 +15,21 @@ public class UrlUtils{
 
 	/**
 	 * URL编码（默认UTF-8编码格式）
-	 * @param data
-	 * @return
+	 * @param data 数据
+	 * @return 密文
 	 */
 	public static String encoder(String data){
 		if(data == null){
 			return null;
 		}
 		return encoder(data, UTF_8);
-	};
+	}
 
 	/**
 	 * URL编码
 	 * @param data 数据
 	 * @param charsetName 编码格式
-	 * @return
+	 * @return 密文
 	 */
 	public static String encoder(String data, String charsetName){
 		if(data == null){
@@ -42,25 +42,25 @@ public class UrlUtils{
 			Logger.i(TAG, "URL编码异常：" + e.toString());
 			return null;
 		}
-	};
+	}
 	
 	/**
 	 * URL解密（默认UTF-8编码格式）
 	 * @param data 数据
-	 * @return
+	 * @return 明文
 	 */
 	public static String decoder(String data){
 		if(data == null){
 			return null;
 		}
 		return decoder(data, UTF_8);
-	};
+	}
 	
 	/**
 	 * URL解码
 	 * @param data 数据
 	 * @param charsetName 编码格式
-	 * @return
+	 * @return 明文
 	 */
 	public static String decoder(String data, String charsetName){
 		if(data == null){
@@ -76,5 +76,5 @@ public class UrlUtils{
 			Logger.i(TAG, "URL解码异常：" + e.toString());
 			return null;
 		}
-	};
+	}
 }
