@@ -6,14 +6,15 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/ToastUtils"
+        android:id="@+id/show_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ToastUtils"/>
+        android:text="同步Toast"/>
 
     <Button
-        android:id="@+id/MyDialog"
+        android:id="@+id/sync_show_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MyDialog"/>
+        android:text="异步Toast"/>
+
 </LinearLayout>

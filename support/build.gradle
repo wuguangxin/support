@@ -37,7 +37,6 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:support-annotations:25.3.1'
     compile 'com.wuguangxin:pull-to-refresh:1.0.0'
-    compile 'com.wuguangxin:http:1.1.0'                     // 网络请求库
 }
 
 // 配置 bintray
@@ -52,6 +51,9 @@ publish {
     artifactId = 'support'                   // 上传到bintray里的Package Name(这里填什么就显示什么)
     publishVersion ='1.0.1'                  // 引用版本号 (这里填什么就显示什么)
     dryRun = false                           // false:上传，true：不上传
-    desc = '封装Android APP的支持库'                         // 描述，不重要
+    // 版本描述（不重要）
+    desc = '1、删除jitpack.io的仓库；\n' +
+            '2、Logger类增加设置TAG前缀方法；\n' +
+            '3、处理多线程下操作ToastUtils报错的BUG；'
 }
 

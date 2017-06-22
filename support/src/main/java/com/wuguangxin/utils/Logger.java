@@ -10,16 +10,33 @@ import android.util.Log;
  */
 public class Logger{
 	private final static String TAG = "Logger";
+	private static String TAG_PREFIX = "";
 	private static boolean mDebug = false;
 
+	/**
+	 * 是否是DEBUG
+	 * @return 是否是DEBUG
+	 */
 	public static boolean isDebug() {
 		return mDebug;
 	}
 
+	/**
+	 * 设置Logger的debug模式，true则打印日志，false则不打印。
+	 * @param debug debug
+	 */
 	public static void setDebug(boolean debug) {
 		mDebug = debug;
 	}
-	
+
+	/**
+	 * 设置Tag的前缀，可以给整个项目加个前缀，便于过滤项目以外的日志。
+	 * @param tagPrefix 前缀
+	 */
+	public static void setTagPrefix(String tagPrefix) {
+		TAG_PREFIX = tagPrefix;
+	}
+
 	public static void d(String debugMsg){
 		printLog(TAG, debugMsg, Log.DEBUG);
 	}
@@ -74,7 +91,7 @@ public class Logger{
 		if (!mDebug) {
 			return;
 		}
-		tag = String.format("wgx %s", tag);
+		tag = String.format("%s%s", TAG_PREFIX, tag);
 		switch (type){
 		case Log.VERBOSE:
 			Log.v(tag, msg);
