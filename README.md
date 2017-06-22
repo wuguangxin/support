@@ -15,5 +15,5 @@ gradle配置
 2、Add the dependency
 
   	dependencies {
-	        compile 'com.wuguangxin:support:1.0.0'
+	        compile 'com.wuguangxin:support:1.0.1'
 	}
