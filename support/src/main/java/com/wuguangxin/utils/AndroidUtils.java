@@ -432,10 +432,11 @@ public class AndroidUtils {
     }
 
     /**
-     * 根据WifiManager获取MAC地址
+     * 根据WifiManager获取MAC地址(在6.0以上系统获取不到)
      *
      * @param context context
      * @return MAC地址
+     * @deprecated use getMac()
      */
     public static String getMac(Context context) {
         String result = null;

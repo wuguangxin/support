@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xin="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F2F3F5"
     android:orientation="vertical">
 
     <Button
@@ -16,4 +18,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MyDialog"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="50dip"
+        android:background="#0000FF"/>
+
+    <com.wuguangxin.view.ItemView
+        android:id="@+id/itemView"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:layout_marginTop="5dip"
+        android:background="@color/white"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dp"
+        xin:item_dividerColor="#DFDFDF"
+        xin:item_dividerMode="both"
+        xin:item_dividerSize="0.5dip"
+        xin:item_iconRight="@mipmap/arrow"
+        xin:item_key="姓名"
+        xin:item_keySize="14dip"
+        xin:topDividerMarginLeft="15dip"
+        xin:bottomDividerMarginLeft="15dip"
+        />
+
 </LinearLayout>

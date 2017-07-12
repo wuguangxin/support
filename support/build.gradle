@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 25
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.2"
     }
 
     buildTypes {
@@ -31,7 +31,6 @@ android {
     }
 }
 
-
 dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.android.support:support-v4:25.3.1'
@@ -49,11 +48,10 @@ publish {
     // 可变配置
     website = 'https://github.com/wuguangxin/support'   // 项目的地址，不重要
     artifactId = 'support'                   // 上传到bintray里的Package Name(这里填什么就显示什么)
-    publishVersion ='1.0.1'                  // 引用版本号 (这里填什么就显示什么)
+    publishVersion ='1.0.2'                  // 引用版本号 (这里填什么就显示什么)
     dryRun = false                           // false:上传，true：不上传
     // 版本描述（不重要）
-    desc = '1、删除jitpack.io的仓库；\n' +
-            '2、Logger类增加设置TAG前缀方法；\n' +
-            '3、处理多线程下操作ToastUtils报错的BUG；'
+    desc = '1、优化ItemView。\n' +
+            '2、增加getMac()，不用传Context，废弃带参数的方法。该方法在新SDK中可能不适用。'
 }
 

@@ -31,25 +31,46 @@
     </declare-styleable>
     
     <declare-styleable name="ItemView">
-        <attr name="item_background" format="reference|color" />
-        <attr name="item_paddingLeft" format="dimension" />
-        <attr name="item_paddingRight" format="dimension" />
-        <attr name="item_paddingTop" format="dimension" />
-        <attr name="item_paddingBottom" format="dimension" />
-        <attr name="item_text" format="reference|string" />
-        <attr name="item_textSize" format="dimension" />
-        <attr name="item_textColor" format="reference|color" />
+        <attr name="item_key" format="reference|string" />
+        <attr name="item_keySize" format="dimension" />
+        <attr name="item_keyColor" format="reference|color" />
+        <attr name="item_keyWidth" format="reference|dimension" />
+        <attr name="item_keySingleLine" format="reference|boolean" />
         <attr name="item_value" format="reference|string" />
         <attr name="item_valueSize" format="dimension" />
         <attr name="item_valueColor" format="reference|color" />
-        <attr name="item_singleLine" format="reference|boolean" />
-        <attr name="item_divider">
+        <attr name="item_valueWidth" format="reference|dimension" />
+        <attr name="item_valueSingleLine" format="reference|boolean" />
+        <attr name="item_dividerMode">
+            <!--没有线条-->
         	<enum name="none" value="0" />
+            <!--上下都有-->
             <enum name="both" value="1" />
-        	<enum name="singleTop" value="2" />
-            <enum name="singleBottom" value="3" />
+            <!--上有-->
+        	<enum name="top" value="2" />
+            <!--下有-->
+            <enum name="bottom" value="3" />
         </attr>
+        <!--指示器颜色-->
         <attr name="item_dividerColor" format="color" />
+
+        <!--20170710新增-->
+        <!--指示器大小（高度）-->
+        <attr name="item_dividerSize" format="dimension" />
+
+        <!--上指示器距左和右-->
+        <attr name="topDividerMargin" format="dimension" />
+        <!--上指示器距左-->
+        <attr name="topDividerMarginLeft" format="dimension" />
+        <!--上指示器距右-->
+        <attr name="topDividerMarginRight" format="dimension" />
+        <!--下指示器距左和右-->
+        <attr name="bottomDividerMargin" format="dimension" />
+        <!--下指示器距左-->
+        <attr name="bottomDividerMarginLeft" format="dimension" />
+        <!--下指示器距右-->
+        <attr name="bottomDividerMarginRight" format="dimension" />
+
         <attr name="item_iconLeft" format="reference" />
         <attr name="item_iconLeft_width" format="dimension" />
         <attr name="item_iconLeft_height" format="dimension" />

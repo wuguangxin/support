@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.wuguangxin.dialog.MyDialog;
+import com.wuguangxin.view.ItemView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MyDialog mDialog;
+    private ItemView mItemView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.ToastUtils).setOnClickListener(this);
         findViewById(R.id.MyDialog).setOnClickListener(this);
+
+        mItemView = (ItemView) findViewById(R.id.itemView);
     }
 
     @Override
