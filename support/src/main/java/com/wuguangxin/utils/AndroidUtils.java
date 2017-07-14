@@ -358,11 +358,17 @@ public class AndroidUtils {
     // *********************************************************************
 
     /**
-     * 获取设备唯一标识ID
-     *
-     * @return 设备唯一标识ID
+     * 获取设备ID (唯一标识 IMEI)。
+     * (6.0及以上系统需要动态请求权限 Manifest.permission.READ_PHONE_STATE)
+     * @param context 上下文
+     * @return 设备ID
      */
     public static String getDeviceId(Context context) {
+        if(VERSION.SDK_INT >= 23){
+            if (!isGetPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+                return "[权限拒绝]";
+            }
+        }
         try {
             mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             return mTelephonyManager.getDeviceId();
@@ -370,6 +376,15 @@ public class AndroidUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 获取设备IMEI，同 getDeviceId().
+     * @param context 上下文
+     * @return 设备IMEI
+     */
+    public static String getIMEI(Context context) {
+        return getDeviceId(context);
     }
 
     /**
