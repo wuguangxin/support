@@ -61,6 +61,8 @@ public class ItemView extends LinearLayout{
 	private int dividerColor; // 线条颜色
 	private float dividerSize; // 线条大小
 	private Context context;
+	private int keyStyleIndex;
+	private int valueStyleIndex;
 
 	public ItemView(Context context){
 		this(context, null);
@@ -126,12 +128,14 @@ public class ItemView extends LinearLayout{
 		float keySize = a.getDimension(R.styleable.ItemView_item_keySize, DEFAULT_KEY_SIZE);
 		int keyColor = a.getColor(R.styleable.ItemView_item_keyColor, DEFAULT_KEY_COLOR);
 		int keyWidth = a.getColor(R.styleable.ItemView_item_keyWidth, DEFAULT_KEY_WIDTH);
+		keyStyleIndex = a.getInt(R.styleable.ItemView_item_keyStyle, 0);
 		// 文字-value
 		String value = a.getString(R.styleable.ItemView_item_value);
 		float valueSize = a.getDimension(R.styleable.ItemView_item_valueSize, DEFAULT_VALUE_SIZE);
 		int valueColor = a.getColor(R.styleable.ItemView_item_valueColor, DEFAULT_VALUE_COLOR);
 		int valueWidth = a.getColor(R.styleable.ItemView_item_valueWidth, DEFAULT_VALUE_WIDTH);
-		// 
+		valueStyleIndex = a.getInt(R.styleable.ItemView_item_valueStyle, 0);
+		//
 		boolean keySingleLine = a.getBoolean(R.styleable.ItemView_item_keySingleLine, DEFAULT_SINGLE_LINE_KEY);
 		boolean valueSingleLine = a.getBoolean(R.styleable.ItemView_item_valueSingleLine, DEFAULT_SINGLE_LINE_VALUE);
 		a.recycle();
@@ -170,6 +174,7 @@ public class ItemView extends LinearLayout{
 		keyView.setTextColor(keyColor);
 		keyView.setSingleLine(keySingleLine);
 		keyView.setLayoutParams(keyParams);
+		keyView.setTypeface(keyView.getTypeface(), keyStyleIndex);
 		// value文字
 		valueView = new TextView(context);
 		LayoutParams valueParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -178,6 +183,7 @@ public class ItemView extends LinearLayout{
 		valueView.setTextColor(valueColor);
 		valueView.setSingleLine(valueSingleLine);
 		valueView.setLayoutParams(valueParams);
+		valueView.setTypeface(valueView.getTypeface(), valueStyleIndex);
 		// 加入layout
 		removeAllViews();
 		addView(iconLeft);
@@ -404,6 +410,21 @@ public class ItemView extends LinearLayout{
 		}
 	}
 
+	public void setKeyValue(int keyResId, int valueResId){
+		setKey(keyResId);
+		setValue(valueResId);
+	}
+
+	public void setKeyValue(String key, String value){
+		setKey(key);
+		setValue(value);
+	}
+
+	public void setKeyValue(CharSequence key, CharSequence value){
+		setKey(key);
+		setValue(value);
+	}
+
 	public void setValue(int resId){
 		valueView.setText(getResources().getString(resId));
 	}
@@ -434,6 +455,14 @@ public class ItemView extends LinearLayout{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void setKeyBoldText(boolean fakeBoldText){
+		keyView.getPaint().setFakeBoldText(fakeBoldText);
+	}
+
+	public void setValueBoldText(boolean fakeBoldText){
+		valueView.getPaint().setFakeBoldText(fakeBoldText);
 	}
 
 	public void setValueGravity(int gravity){
@@ -522,10 +551,9 @@ public class ItemView extends LinearLayout{
 	 * @param dipValue dip值
 	 * @return xp值
 	 */
-	public float dip2px(float dipValue){
+	public int dip2px(float dipValue){
 		final float scale = context.getResources().getDisplayMetrics().density;
-		float px = dipValue * scale + 0.5f;
-		return px;
+		return (int) (dipValue * scale + 0.5f);
 	}
 
 	/**
@@ -533,9 +561,9 @@ public class ItemView extends LinearLayout{
 	 * @param pxValue px值
 	 * @return dip值
 	 */
-	public float px2dip(float pxValue){
+	public int px2dip(float pxValue){
 		final float scale = context.getResources().getDisplayMetrics().density;
-		return pxValue / scale + 0.5f;
+		return (int) (pxValue / scale + 0.5f);
 	}
 
 	/**

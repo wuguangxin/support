@@ -1,8 +1,5 @@
 package com.wuguangxin.view;
 
-import com.wuguangxin.R;
-import com.wuguangxin.utils.Utils;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -11,6 +8,15 @@ import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.wuguangxin.R;
+import com.wuguangxin.utils.Utils;
+
+/**
+ * key--value的组件，适合使用子啊列表item里，左边是key，右边是value。
+ *
+ * <p>Created by wuguangxin on 14/9/8.</p>
+ * @deprecated use {link@{@link ItemView}}
+ */
 public class KeyValueView extends LinearLayout{
 //	private static final String NAME_SPACE = "http://schemas.android.com/apk/res/com.ephwealth.financing";
 	private static final float DEFAULT_TEXT_SIZE = 14.0f; // 默认文字尺寸

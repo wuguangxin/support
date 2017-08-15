@@ -36,11 +36,25 @@
         <attr name="item_keyColor" format="reference|color" />
         <attr name="item_keyWidth" format="reference|dimension" />
         <attr name="item_keySingleLine" format="reference|boolean" />
+        <!--key粗细体 true粗体，false正常-->
+        <!-- Default text typeface style. -->
+        <attr name="item_keyStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
         <attr name="item_value" format="reference|string" />
         <attr name="item_valueSize" format="dimension" />
         <attr name="item_valueColor" format="reference|color" />
         <attr name="item_valueWidth" format="reference|dimension" />
         <attr name="item_valueSingleLine" format="reference|boolean" />
+        <!-- Default text typeface style. -->
+        <attr name="item_valueStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+
         <attr name="item_dividerMode">
             <!--没有线条-->
         	<enum name="none" value="0" />

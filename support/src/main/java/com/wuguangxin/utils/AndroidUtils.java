@@ -363,6 +363,7 @@ public class AndroidUtils {
      * @param context 上下文
      * @return 设备ID
      */
+    @SuppressLint("MissingPermission")
     public static String getDeviceId(Context context) {
         if(VERSION.SDK_INT >= 23){
             if (!isGetPermission(context, Manifest.permission.READ_PHONE_STATE)) {
@@ -506,6 +507,7 @@ public class AndroidUtils {
      */
     public static String getPhoneNumber(Context context) {
         mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        @SuppressLint("MissingPermission")
         String phoneString = mTelephonyManager.getLine1Number();
         if (phoneString != null) {
             return phoneString.replace("+86", "");
@@ -553,6 +555,7 @@ public class AndroidUtils {
      */
     public static boolean isWifi(Context context) {
         mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        @SuppressLint("MissingPermission")
         NetworkInfo activeNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
         if (activeNetworkInfo != null) {
             int type = activeNetworkInfo.getType();
@@ -597,6 +600,7 @@ public class AndroidUtils {
      */
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        @SuppressLint("MissingPermission")
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         if (activeNetworkInfo != null) {
             return activeNetworkInfo.isConnected();
@@ -612,6 +616,7 @@ public class AndroidUtils {
      */
     public static boolean isWifiConnected(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        @SuppressLint("MissingPermission")
         NetworkInfo wifiNetworkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         if (wifiNetworkInfo != null) {
             return wifiNetworkInfo.isConnected();
@@ -794,14 +799,15 @@ public class AndroidUtils {
     }
 
     /**
-     * 获取当前运行的APP中处于栈顶的APP包名
+     * 获取当前运行的APP中处于栈顶的APP包名。
+     * 注：getRunningTasks() 方法从 Android L 起限制访问。
+     * 看：http://blog.csdn.net/hyhyl1990/article/details/45700447
      * @param context context
      * @return 当前运行的APP中处于栈顶的APP包名
      */
     public static String getAppTopActivityPackageName(final Context context) {
         if (context == null) return null;
         try {
-            // 该方法从Android L起限制访问，看 http://blog.csdn.net/hyhyl1990/article/details/45700447
             List<ActivityManager.RunningTaskInfo> tasks = getActivityManager(context).getRunningTasks(1);
             if (tasks != null && !tasks.isEmpty()) {
                 return tasks.get(0).topActivity.getPackageName();
@@ -867,7 +873,7 @@ public class AndroidUtils {
      * @param context context
      * @return 设备ID和MAC信息
      */
-    @SuppressLint("HardwareIds")
+    @SuppressLint({"HardwareIds", "MissingPermission"})
     public static String getDeviceInfo(Context context) {
         try {
             org.json.JSONObject json = new org.json.JSONObject();

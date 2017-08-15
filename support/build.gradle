@@ -2,10 +2,11 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20170714"
-def mVersionCode = 4
-def mVersionName = "1.0.3"
-def mDescription = "修复AndroidUtils.getDeviceId()方法在6.0以上未获取 READ_PHONE_STATE 时报错的问题。"
+def mVersionTime = "20170815"
+def mVersionCode = 5
+def mVersionName = "1.0.5"
+def mDescription = "1、优化ItemView。\n" +
+                   "2、增加getMac()，不用传Context，废弃带参数的方法。该方法在新SDK中可能不适用。"
 
 android {
     compileSdkVersion 25
