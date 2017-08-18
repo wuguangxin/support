@@ -105,7 +105,7 @@ public abstract class XinTabActivity extends TabActivity{
 			String tabId = "tab_" + i;
 			tabIdList.add(tabId);
 			Intent intent = new Intent(this, tabList.get(i).activity).putExtra("TAB_NAME", 0);
-			View view = getItemView(tabList.get(i).name, tabList.get(i).icon);
+			View view = getItemView(tabList.get(i).name, tabList.get(i).icon, i);
 			mTabHost.addTab(mTabHost.newTabSpec(tabId).setIndicator(view).setContent(intent));
 		}
 		mTabHost.setCurrentTab(currentTabId);
@@ -134,16 +134,37 @@ public abstract class XinTabActivity extends TabActivity{
 	 * 获取Tab ItemView
 	 * @param name tab名称
 	 * @param icon tab图标资源id
+	 * @param position 位置
 	 * @return View
 	 */
 	@SuppressLint("InflateParams")
-	public View getItemView(String name, int icon){
+	public View getItemView(String name, int icon, int position){
 		View view = LayoutInflater.from(this).inflate(R.layout.xin_tabhost_item_layout, null);
 		ImageView mIcon = (ImageView) view.findViewById(R.id.xin_tabhost_tab_icon);
 		TextView mName = (TextView) view.findViewById(R.id.xin_tabhost_tab_name);
 		mIcon.setImageResource(icon);
 		mName.setText(name);
+		if(onGetItemViewListener != null){
+			onGetItemViewListener.onGetItemView(view, mIcon, mName, position);
+		}
 		return view;
+	}
+
+	private OnGetItemViewListener onGetItemViewListener;
+
+	public void setOnGetItemViewListener(OnGetItemViewListener onGetItemViewListener) {
+		this.onGetItemViewListener = onGetItemViewListener;
+	}
+
+	public interface OnGetItemViewListener {
+		/**
+		 * 当获取itemview时
+		 * @param parentView
+		 * @param iconView
+		 * @param nameView
+		 * @param position 位置
+		 */
+		void onGetItemView(View parentView, ImageView iconView, TextView nameView, int position);
 	}
 
 	/**
