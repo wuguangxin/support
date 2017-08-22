@@ -2,6 +2,9 @@
 <resources>
 
     <!-- ================== 公共属性区域 ======================================================= -->
+    <attr name="width" format="reference|dimension"/>
+    <attr name="height" format="reference|dimension"/>
+
     <attr name="startAngle" format="integer"/>
     <attr name="sweepAngle" format="integer"/>
     <attr name="circleRadius" format="reference|dimension"/>	<!--圆半径-->
@@ -243,7 +246,7 @@
         <attr name="limitNum" format="reference|integer"/>		    <!--设置最少绘制数量-->
         <attr name="circleSpace" format="reference|dimension"/>		<!--圆与圆的间隔距离-->
         <attr name="circleRadius"/>	<!--圆半径-->
-        <attr name="width" format="reference|float"/>		        <!--整个手势View的宽度-->
+        <attr name="width"/>		        <!--整个手势View的宽度-->
         <!--背景-->
         <attr name="colorBackgroundNormal" format="reference|color"/>   <!--背景颜色 正常-->
         <attr name="colorBackgroundTouch" format="reference|color"/>    <!--背景颜色 触摸-->
@@ -284,8 +287,8 @@
         <attr name="lineSize" format="reference|dimension"/>
         <attr name="circleRadius"/>
         <attr name="circlePadding" format="reference|dimension"/>
-        <attr name="width" format="reference|dimension"/>
-        <attr name="height" format="reference|dimension"/>
+        <attr name="width"/>
+        <attr name="height"/>
         <attr name="rectWidth" format="reference|dimension"/>
         <attr name="rectHeight" format="reference|dimension"/>
         <attr name="count" format="reference|integer"/>
