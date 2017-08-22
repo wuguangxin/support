@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20170815"
-def mVersionCode = 5
-def mVersionName = "1.0.5"
-def mDescription = "1、优化ItemView。\n" +
-                   "2、增加getMac()，不用传Context，废弃带参数的方法。该方法在新SDK中可能不适用。"
+def mVersionTime = "20170822"
+def mVersionCode = 6
+def mVersionName = "1.0.6"
+def mDescription = "1、优化GestureView、ItemView、ViewPagerIndicator；\n" +
+        "2、删除KeyValueView。"
 
 android {
     compileSdkVersion 25

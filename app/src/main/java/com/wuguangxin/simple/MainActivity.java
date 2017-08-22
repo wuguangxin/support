@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 
 import com.wuguangxin.dialog.MyDialog;
@@ -22,6 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.MyDialog).setOnClickListener(this);
 
         mItemView = (ItemView) findViewById(R.id.itemView);
+        mItemView.setGravity(Gravity.CENTER);
+
+        Log.e("aa", "Gravity.CENTER===" + Gravity.CENTER);
+
     }
 
     @Override

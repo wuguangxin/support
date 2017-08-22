@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xin="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F3F5"
@@ -15,9 +15,15 @@
 
     <Button
         android:id="@+id/MyDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="-2dip"
+        android:layout_height="-2dip"
         android:text="MyDialog"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="0"
+        android:text="ToastUtilsToastUtilsToastUtils"/>
 
     <View
         android:layout_width="match_parent"
@@ -32,44 +38,22 @@
         android:layout_height="45dip"
         android:layout_marginTop="5dip"
         android:background="@color/white"
+        android:paddingEnd="15dp"
         android:paddingLeft="15dip"
         android:paddingRight="15dp"
-        xin:bottomDividerMarginLeft="15dip"
-        xin:item_dividerColor="#DFDFDF"
-        xin:item_dividerMode="both"
-        xin:item_dividerSize="0.5dip"
-        xin:item_iconRight="@mipmap/arrow"
-        xin:item_key="Hello! 张三丰 12345678901234567890"
-        xin:item_keySize="14dip"
-        xin:item_keyStyle="bold"
-        xin:item_value="哈哈哈"
-        xin:item_valueSize="14dip"
-        xin:topDividerMarginLeft="15dip"
-        />
-
-    <com.wuguangxin.view.ItemView
-        android:layout_width="match_parent"
-        android:layout_height="45dip"
-        android:layout_marginTop="5dip"
-        android:background="@color/white"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dp"
-        android:textStyle="bold"
-        xin:bottomDividerMarginLeft="15dip"
-        xin:item_dividerColor="#DFDFDF"
-        xin:item_dividerMode="both"
-        xin:item_dividerSize="0.5dip"
-        xin:item_iconRight="@mipmap/arrow"
-        xin:item_key="Hello! 张三丰 12345678901234567890"
-        xin:item_keyStyle="bold"
-        xin:item_keyColor="@color/black"
-        xin:item_keySize="14dip"
-        xin:item_value="哈哈哈"
-        xin:item_valueStyle="bold"
-        xin:item_valueSize="14dip"
-        xin:topDividerMarginLeft="15dip"
-        />
-
+        android:paddingStart="15dip"
+        app:dividerBottom_marginLeft="15dip"
+        app:dividerColor="#DFDFDF"
+        app:dividerMode="both"
+        app:dividerSize="0.5dip"
+        app:dividerTop_marginLeft="15dip"
+        app:iconRight="@mipmap/arrow"
+        app:key="姓名："
+        app:keySize="14dip"
+        app:keyStyle="normal"
+        app:value="张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
+        app:valueSize="14dip">
+    </com.wuguangxin.view.ItemView>
 
     <TextView
         android:layout_width="match_parent"

@@ -24,9 +24,13 @@ import java.util.TimerTask;
  * 自定义锁屏View
  */
 public class GestureView extends View{
-	private static final int DEF_CIRCLE_NUM = 3;
-	private static final float DEF_CIRCLE_RADIUS = 70f;
-	private static final float DEF_CIRCLE_SPACE = 50f;
+	// ================== 默认值 ==========================================================
+
+	private static final int DEF_LIMIT_NUM = 4; 		// 默认最少绘制数量
+	private static final int DEF_CIRCLE_NUM = 3;		// 默认水平方向排列的圆的个数（3X3就是3，4X4就是4）
+	private static final float DEF_WIDTH = 0F;			// 默认宽度
+	private static final float DEF_CIRCLE_SPACE = 50f;	// 默认圆与圆的间隔
+	private static final float DEF_CIRCLE_RADIUS = 70f;	// 默认圆的半径
 
 	/** 绘制手势点太短 */
 	public static final int ERROR_KEY_SHORT = 1;
@@ -34,50 +38,78 @@ public class GestureView extends View{
 	public static final int ERROR_KEY_UNLIKE = 2; 
 	/** 解锁密码不正确 */
 	public static final int ERROR_UNLOCK_NO = 3;
-	private static final int DELAY_RESET_TIME = 300;		// 延时恢复组件时间(毫秒)
+	private static final int DELAY_RESET_TIME = 300;	// 延时恢复组件时间(毫秒)
 
 	// 背景
-	private int COLOR_BACKGROUND_NORMAL = 0x00000000;		// 背景颜色 正常
-	private int COLOR_BACKGROUND_TOUCH = 0x00000000;		// 背景颜色 触摸
-	private int COLOR_BACKGROUND_ERROR = 0x00000000;		// 背景颜色 错误
+	private static final int DEF_COLOR_BACKGROUND_NORMAL = 0x00000000;		// 背景颜色 正常
+	private static final int DEF_COLOR_BACKGROUND_TOUCH = 0x00000000;		// 背景颜色 触摸
+	private static final int DEF_COLOR_BACKGROUND_ERROR = 0x00000000;		// 背景颜色 错误
 	// 外圆
-	private int COLOR_OUTER_CYCLE_NORMAL = 0xFF999999;		// 外圆颜色 正常
-	private int COLOR_OUTER_CYCLE_TOUCH = 0xFF999999;		// 外圆颜色 触摸
-	private int COLOR_OUTER_CYCLE_ERROR = 0xFFEE2F3A;		// 外圆颜色 错误
+	private static final int DEF_COLOR_OUTER_CYCLE_NORMAL = 0xFF999999;		// 外圆颜色 正常
+	private static final int DEF_COLOR_OUTER_CYCLE_TOUCH = 0xFF999999;		// 外圆颜色 触摸
+	private static final int DEF_COLOR_OUTER_CYCLE_ERROR = 0xFFEE2F3A;		// 外圆颜色 错误
 	// 内圆
-	private int COLOR_INNER_CYCLE_NORMAL = 0x00000000;		// 内圆颜色 正常
-	private int COLOR_INNER_CYCLE_TOUCH = 0xFF404040;		// 内圆颜色 触摸
-	private int COLOR_INNER_CYCLE_ERROR = 0xFFEE2F3A;		// 内圆颜色 错误
+	private static final int DEF_COLOR_INNER_CYCLE_NORMAL = 0x00000000;		// 内圆颜色 正常
+	private static final int DEF_COLOR_INNER_CYCLE_TOUCH = 0xFF404040;		// 内圆颜色 触摸
+	private static final int DEF_COLOR_INNER_CYCLE_ERROR = 0xFFEE2F3A;		// 内圆颜色 错误
 	// 连接线
-	private int COLOR_LINK_LINE_NORMAL = 0xFF959595;		// 线条颜色 正常
-	private int COLOR_LINK_LINE_ERROR = 0xFFfc727a;			// 线条颜色 错误
+	private static final int DEF_COLOR_LINK_LINE_NORMAL = 0xFF959595;		// 线条颜色 正常
+	private static final int DEF_COLOR_LINK_LINE_ERROR = 0xFFfc727a;		// 线条颜色 错误
 
-	private float outerCycleStrokeSizeError = 3; 			// 外圆边框大小 错误时
-	private float outerCycleStrokeSize = 3; 				// 外圆边框大小
-	private float innerCycleStrokeSize = 0; 				// 内圆边框大小
-	private float backgroundStrokeSize = 0; 				// 背景边框大小
-	private float linkLineStrokeSize = 5; 					// 连接线条大小
+	private static final float DEF_OUTER_CYCLE_STROKE_SIZE_ERROR = 3; 		// 外圆边框大小 错误时
+	private static final float DEF_OUTER_CYCLE_STROKE_SIZE = 3; 			// 外圆边框大小
+	private static final float DEF_INNER_CYCLE_STROKE_SIZE = 0; 			// 内圆边框大小
+	private static final float DEF_BACKGROUND_STROKE_SIZE = 0; 				// 背景边框大小
+	private static final float DEF_LINK_LINE_STROKE_SIZE = 5; 				// 连接线条大小
 
-	private float width = 0; 							// 视图的宽度
+	// ================== 默认值 END ==========================================================
+
+	// ================== 变量 ================================================================
+	// 背景
+	private int colorBackgroundNormal = DEF_COLOR_BACKGROUND_NORMAL;	// 背景颜色 正常
+	private int colorBackgroundTouch = DEF_COLOR_BACKGROUND_TOUCH;		// 背景颜色 触摸
+	private int colorBackgroundError = DEF_COLOR_BACKGROUND_ERROR;		// 背景颜色 错误
+	// 外圆
+	private int colorOuterCycleNormal = DEF_COLOR_OUTER_CYCLE_NORMAL;	// 外圆颜色 正常
+	private int colorOuterCycleTouch = DEF_COLOR_OUTER_CYCLE_TOUCH;		// 外圆颜色 触摸
+	private int colorOuterCycleError = DEF_COLOR_OUTER_CYCLE_ERROR;		// 外圆颜色 错误
+	// 内圆
+	private int colorInnerCycleNormal = DEF_COLOR_INNER_CYCLE_NORMAL;	// 内圆颜色 正常
+	private int colorInnerCycleTouch = DEF_COLOR_INNER_CYCLE_TOUCH;		// 内圆颜色 触摸
+	private int colorInnerCycleError = DEF_COLOR_INNER_CYCLE_ERROR;		// 内圆颜色 错误
+	// 连接线
+	private int colorLinkLineNormal = DEF_COLOR_LINK_LINE_NORMAL;		// 线条颜色 正常
+	private int colorLinkLineError = DEF_COLOR_LINK_LINE_ERROR;			// 线条颜色 错误
+
+	private float outerCycleStrokeSizeError = DEF_OUTER_CYCLE_STROKE_SIZE_ERROR; 	// 外圆边框大小 错误时
+	private float outerCycleStrokeSize = DEF_OUTER_CYCLE_STROKE_SIZE; 				// 外圆边框大小
+	private float innerCycleStrokeSize = DEF_INNER_CYCLE_STROKE_SIZE; 				// 内圆边框大小
+	private float backgroundStrokeSize = DEF_BACKGROUND_STROKE_SIZE; 				// 背景边框大小
+	private float linkLineStrokeSize = DEF_LINK_LINE_STROKE_SIZE; 					// 连接线条大小
+
+	private int circleNum = DEF_CIRCLE_NUM;				// 水平的圆圈个数，3X3就是3，4X4就是4
+	private int limitNum = DEF_LIMIT_NUM; 				// 设置最少绘制数量
+	private float width = DEF_WIDTH; 					// 整个手势View的宽度
 	private float circleSpace = DEF_CIRCLE_SPACE; 		// 圆间隔
 	private float circleRadius = DEF_CIRCLE_RADIUS; 	// 圆半径
-	private int circleNum = DEF_CIRCLE_NUM;
-	private int eventX; 				// 当前手指X位置
-	private int eventY; 				// 当前手指Y位置
-	private int limitNum = 4; 			// 设置最少绘制数量
-	private boolean canContinue = true; // 能否操控界面绘画
-	private boolean shakeable; 			// 是否使用触觉反馈
-	private boolean isTouch; 			// 手指是否按下
-	private String key; 				// 解锁密码
-	private Timer timer;
+
+	// ================== 默认值 END ==========================================================
+
 	private List<Integer> mPasswordList = new ArrayList<>(); // 存储密码集合
 	private OnGestureListener mOnGestureListener;
-	private LockCircle[] cycles; // 解锁圆点数组
-
+	private LockCircle[] cycles; 		// 解锁圆点数组
+	private String key; 				// 解锁密码
+	private Timer timer;				// 定时器
 	private Paint paintOuterCycle;		// 外圆
 	private Paint paintBackground;		// 内圆
 	private Paint paintCenterCycle;		// 中心正方形
 	private Paint paintLinkLines; 		// 路径画笔
+
+	private boolean canContinue = true; // 能否操控界面绘画
+	private boolean shakeable; 			// 是否使用触觉反馈
+	private boolean isTouch; 			// 手指是否按下
+	private int eventX; 				// 当前手指X位置
+	private int eventY; 				// 当前手指Y位置
 
 	private Path linePath = new Path();
 	
@@ -96,6 +128,35 @@ public class GestureView extends View{
 			circleNum = a.getInteger(R.styleable.GestureView_circleNum, DEF_CIRCLE_NUM);
 			circleSpace = a.getDimension(R.styleable.GestureView_circleSpace, DEF_CIRCLE_SPACE);
 			circleRadius = a.getDimension(R.styleable.GestureView_circleRadius, DEF_CIRCLE_RADIUS);
+			// 新增
+			// 背景
+			colorBackgroundNormal = a.getColor(R.styleable.GestureView_colorBackgroundNormal, DEF_COLOR_BACKGROUND_NORMAL);	// 背景颜色 正常
+			colorBackgroundTouch = a.getColor(R.styleable.GestureView_colorBackgroundTouch, DEF_COLOR_BACKGROUND_TOUCH);		// 背景颜色 触摸
+			colorBackgroundError = a.getColor(R.styleable.GestureView_colorBackgroundError, DEF_COLOR_BACKGROUND_ERROR);		// 背景颜色 错误
+			// 外圆
+			colorOuterCycleNormal = a.getColor(R.styleable.GestureView_colorOuterCycleNormal, DEF_COLOR_OUTER_CYCLE_NORMAL);	// 外圆颜色 正常
+			colorOuterCycleTouch = a.getColor(R.styleable.GestureView_colorOuterCycleTouch, DEF_COLOR_OUTER_CYCLE_TOUCH);		// 外圆颜色 触摸
+			colorOuterCycleError = a.getColor(R.styleable.GestureView_colorOuterCycleError, DEF_COLOR_OUTER_CYCLE_ERROR);		// 外圆颜色 错误
+			// 内圆
+			colorInnerCycleNormal = a.getColor(R.styleable.GestureView_colorInnerCycleNormal, DEF_COLOR_INNER_CYCLE_NORMAL);	// 内圆颜色 正常
+			colorInnerCycleTouch = a.getColor(R.styleable.GestureView_colorInnerCycleTouch, DEF_COLOR_INNER_CYCLE_TOUCH);		// 内圆颜色 触摸
+			colorInnerCycleError = a.getColor(R.styleable.GestureView_colorInnerCycleError, DEF_COLOR_INNER_CYCLE_ERROR);		// 内圆颜色 错误
+			// 连接线
+			colorLinkLineNormal = a.getColor(R.styleable.GestureView_colorLinkLineNormal, DEF_COLOR_LINK_LINE_NORMAL);		// 线条颜色 正常
+			colorLinkLineError = a.getColor(R.styleable.GestureView_colorLinkLineError, DEF_COLOR_LINK_LINE_ERROR);			// 线条颜色 错误
+
+			outerCycleStrokeSizeError = a.getDimension(R.styleable.GestureView_outerCycleStrokeSizeError, DEF_OUTER_CYCLE_STROKE_SIZE_ERROR); 	// 外圆边框大小 错误时
+			outerCycleStrokeSize = a.getDimension(R.styleable.GestureView_outerCycleStrokeSize, DEF_OUTER_CYCLE_STROKE_SIZE); 				// 外圆边框大小
+			innerCycleStrokeSize = a.getDimension(R.styleable.GestureView_innerCycleStrokeSize, DEF_INNER_CYCLE_STROKE_SIZE); 				// 内圆边框大小
+			backgroundStrokeSize = a.getDimension(R.styleable.GestureView_backgroundStrokeSize, DEF_BACKGROUND_STROKE_SIZE); 				// 背景边框大小
+			linkLineStrokeSize = a.getDimension(R.styleable.GestureView_linkLineStrokeSize, DEF_LINK_LINE_STROKE_SIZE); 					// 连接线条大小
+
+			circleNum = a.getInteger(R.styleable.GestureView_circleNum, DEF_CIRCLE_NUM);				// 水平的圆圈个数，3X3就是3，4X4就是4
+			limitNum = a.getInteger(R.styleable.GestureView_limitNum, DEF_LIMIT_NUM); 					// 设置最少绘制数量
+			width = a.getDimension(R.styleable.GestureView_width, DEF_WIDTH); 							// 整个手势View的宽度
+			circleSpace = a.getDimension(R.styleable.GestureView_circleSpace, DEF_CIRCLE_SPACE); 		// 圆间隔
+			circleRadius = a.getDimension(R.styleable.GestureView_circleRadius, DEF_CIRCLE_RADIUS); 	// 圆半径
+
 			a.recycle();
 		}
 
@@ -158,7 +219,7 @@ public class GestureView extends View{
 			invalidate();
 		}
 
-		setMeasuredDimension((int)width, (int)width);
+		setMeasuredDimension((int) width, (int) width);
 	}
 
 	@Override
@@ -421,9 +482,9 @@ public class GestureView extends View{
 		super.onDraw(canvas);
 		canvas.save();
 		if (!canContinue) {
-			drawLine(canvas, COLOR_LINK_LINE_ERROR);
+			drawLine(canvas, colorLinkLineError);
 		} else {
-			drawLine(canvas, COLOR_LINK_LINE_NORMAL);
+			drawLine(canvas, colorLinkLineNormal);
 		}
 
 		int cycleSize = cycles.length;
@@ -450,25 +511,25 @@ public class GestureView extends View{
 	/** 画正常的 */
 	private void drawNormal(Canvas canvas, LockCircle circle){
 		paintOuterCycle.setStrokeWidth(outerCycleStrokeSize);
-//		drawBackground(canvas, circle, COLOR_BACKGROUND_NORMAL);	// 1 画背景
-		drawOuterCycle(canvas, circle, COLOR_OUTER_CYCLE_NORMAL);	// 2 画外圆
-		drawInnerCycle(canvas, circle, COLOR_INNER_CYCLE_NORMAL);	// 3 画内圆
+//		drawBackground(canvas, circle, colorBackgroundNormal);	// 1 画背景
+		drawOuterCycle(canvas, circle, colorOuterCycleNormal);	// 2 画外圆
+		drawInnerCycle(canvas, circle, colorInnerCycleNormal);	// 3 画内圆
 	}
 
 	/** 画按下的 */
 	private void drawTouch(Canvas canvas, LockCircle circle){
 		paintOuterCycle.setStrokeWidth(outerCycleStrokeSize);
-//		drawBackground(canvas, circle, COLOR_BACKGROUND_TOUCH);		// 1 画背景
-		drawOuterCycle(canvas, circle, COLOR_OUTER_CYCLE_TOUCH);	// 2 画外圆
-		drawInnerCycle(canvas, circle, COLOR_INNER_CYCLE_TOUCH);	// 3 画内圆
+//		drawBackground(canvas, circle, colorBackgroundTouch);		// 1 画背景
+		drawOuterCycle(canvas, circle, colorOuterCycleTouch);	// 2 画外圆
+		drawInnerCycle(canvas, circle, colorInnerCycleTouch);	// 3 画内圆
 	}
 
 	/** 画错误的 */
 	private void drawError(Canvas canvas, LockCircle circle){
 		paintOuterCycle.setStrokeWidth(outerCycleStrokeSizeError);
-//		drawBackground(canvas, circle, COLOR_BACKGROUND_ERROR);		// 1 画背景
-		drawOuterCycle(canvas, circle, COLOR_OUTER_CYCLE_ERROR);	// 2 画外圆
-		drawInnerCycle(canvas, circle, COLOR_INNER_CYCLE_ERROR);	// 3 画内圆
+//		drawBackground(canvas, circle, colorBackgroundError);		// 1 画背景
+		drawOuterCycle(canvas, circle, colorOuterCycleError);	// 2 画外圆
+		drawInnerCycle(canvas, circle, colorInnerCycleError);	// 3 画内圆
 	}
 
 	/** 画外圆 */
@@ -644,5 +705,159 @@ public class GestureView extends View{
 	 */
 	public void setShake(boolean shake){
 		this.shakeable = shake;
+	}
+
+
+	//==================== 变量 setter/getter ===============================================
+
+
+	public int getColorBackgroundNormal() {
+		return colorBackgroundNormal;
+	}
+
+	public void setColorBackgroundNormal(int colorBackgroundNormal) {
+		this.colorBackgroundNormal = colorBackgroundNormal;
+		invalidate();
+	}
+
+	public int getColorBackgroundTouch() {
+		return colorBackgroundTouch;
+	}
+
+	public void setColorBackgroundTouch(int colorBackgroundTouch) {
+		this.colorBackgroundTouch = colorBackgroundTouch;
+		invalidate();
+	}
+
+	public int getColorBackgroundError() {
+		return colorBackgroundError;
+	}
+
+	public void setColorBackgroundError(int colorBackgroundError) {
+		this.colorBackgroundError = colorBackgroundError;
+		invalidate();
+	}
+
+	public int getColorOuterCycleNormal() {
+		return colorOuterCycleNormal;
+	}
+
+	public void setColorOuterCycleNormal(int colorOuterCycleNormal) {
+		this.colorOuterCycleNormal = colorOuterCycleNormal;
+		invalidate();
+	}
+
+	public int getColorOuterCycleTouch() {
+		return colorOuterCycleTouch;
+	}
+
+	public void setColorOuterCycleTouch(int colorOuterCycleTouch) {
+		this.colorOuterCycleTouch = colorOuterCycleTouch;
+		invalidate();
+	}
+
+	public int getColorOuterCycleError() {
+		return colorOuterCycleError;
+	}
+
+	public void setColorOuterCycleError(int colorOuterCycleError) {
+		this.colorOuterCycleError = colorOuterCycleError;
+		invalidate();
+	}
+
+	public int getColorInnerCycleNormal() {
+		return colorInnerCycleNormal;
+	}
+
+	public void setColorInnerCycleNormal(int colorInnerCycleNormal) {
+		this.colorInnerCycleNormal = colorInnerCycleNormal;
+		invalidate();
+	}
+
+	public int getColorInnerCycleTouch() {
+		return colorInnerCycleTouch;
+	}
+
+	public void setColorInnerCycleTouch(int colorInnerCycleTouch) {
+		this.colorInnerCycleTouch = colorInnerCycleTouch;
+		invalidate();
+	}
+
+	public int getColorInnerCycleError() {
+		return colorInnerCycleError;
+	}
+
+	public void setColorInnerCycleError(int colorInnerCycleError) {
+		this.colorInnerCycleError = colorInnerCycleError;
+		invalidate();
+	}
+
+	public int getColorLinkLineNormal() {
+		return colorLinkLineNormal;
+	}
+
+	public void setColorLinkLineNormal(int colorLinkLineNormal) {
+		this.colorLinkLineNormal = colorLinkLineNormal;
+		invalidate();
+	}
+
+	public int getColorLinkLineError() {
+		return colorLinkLineError;
+	}
+
+	public void setColorLinkLineError(int colorLinkLineError) {
+		this.colorLinkLineError = colorLinkLineError;
+		invalidate();
+	}
+
+
+	/**
+	 * 设置背景色
+	 * @param normalColor 正常颜色
+	 * @param touchColor 触摸颜色
+	 * @param errorColor 错误颜色
+	 */
+	public void setColorBackground(int normalColor, int touchColor, int errorColor){
+		this.colorBackgroundNormal = normalColor;
+		this.colorBackgroundTouch = touchColor;
+		this.colorBackgroundError = errorColor;
+		invalidate();
+	}
+
+	/**
+	 * 设置外圆颜色
+	 * @param normalColor 正常颜色
+	 * @param touchColor 触摸颜色
+	 * @param errorColor 错误颜色
+	 */
+	public void setColorOuterCycle(int normalColor, int touchColor, int errorColor){
+		this.colorOuterCycleNormal = normalColor;
+		this.colorOuterCycleTouch = touchColor;
+		this.colorOuterCycleError = errorColor;
+		invalidate();
+	}
+
+	/**
+	 * 设置连接线颜色
+	 * @param normalColor 正常颜色
+	 * @param touchColor 触摸颜色
+	 * @param errorColor 错误颜色
+	 */
+	public void setColorInnerCycle(int normalColor, int touchColor, int errorColor){
+		this.colorInnerCycleNormal = normalColor;
+		this.colorInnerCycleTouch = touchColor;
+		this.colorInnerCycleError = errorColor;
+		invalidate();
+	}
+
+	/**
+	 * 设置连接线颜色
+	 * @param normalColor 正常颜色
+	 * @param errorColor 错误颜色
+	 */
+	public void setColorLinkLine(int normalColor, int errorColor){
+		this.colorLinkLineNormal = normalColor;
+		this.colorInnerCycleError = errorColor;
+		invalidate();
 	}
 }

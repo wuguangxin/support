@@ -1,11 +1,13 @@
 package com.wuguangxin.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.wuguangxin.R;
 import com.wuguangxin.utils.Utils;
 
 /**
@@ -14,35 +16,59 @@ import com.wuguangxin.utils.Utils;
  * <p>Created by wuguangxin on 16/12/21 </p>
  */
 public class ViewPagerIndicator extends View {
-	private static final float DEF_CIRCLE_RADIUS = 5;
-	private static final float DEF_CIRCLE_PADDING = 5;
-	private int COLOR_NORMAL = 0XFFcccccc; // 正常颜色
-	private int COLOR_SELECTED = 0XFFee2f3a; // 选中颜色
-	private float DEF_LINE_SIZE = 0; // 圆圈线条的大小
-	private Paint paint;
-	private float lineSize;
-	private float circleRadius = 5f;
-	private float circlePadding = 5f;
-	private float width;
-	private float height;
-	private float rectWidth;
-	private float rectHeight;
-	private int count = 0;
-	private int currentItem = 0;
-	private IndicatorType indicatorType = IndicatorType.Rect; // 指示器类型
+	private static final int DEF_COLOR_NORMAL = 0XFFcccccc; // 默认正常颜色
+	private static final int DEF_COLOR_SELECTED = 0XFFee2f3a; // 默认选中颜色
+	private static final float DEF_LINE_SIZE = 0F; // 圆圈线条的大小
+	private static final float DEF_CIRCLE_RADIUS = 5; // 默认圆的变径
+	private static final float DEF_CIRCLE_PADDING = 5; // 默认圆的间距
+	private static final float DEF_WIDTH = 0; // 默认圆的宽度
+	private static final float DEF_HEIGHT = 0; // 默认圆的高度
 
-	public ViewPagerIndicator(Context context) {
-		super(context);
-		initView(context);
+	private static final float DEF_RECT_WIDTH = 0; // 默认矩形的宽度
+	private static final float DEF_RECT_HEIGHT = 0; // 默认矩形的高度
+	private static final int DEF_COUNT = 0; // 默认个数
+	private static final int DEF_CURRENT_ITEM = 0; // 默认当前显示的位置
+
+	private int colorNormal = DEF_COLOR_NORMAL; // 正常颜色
+	private int colorSelected = DEF_COLOR_SELECTED; // 选中颜色
+	private float lineSize = DEF_LINE_SIZE;
+	private float circleRadius = DEF_CIRCLE_RADIUS;
+	private float circlePadding = DEF_CIRCLE_PADDING;
+	private float width = DEF_WIDTH;
+	private float height = DEF_HEIGHT;
+	private float rectWidth = DEF_RECT_WIDTH;
+	private float rectHeight = DEF_RECT_HEIGHT;
+	private int count = DEF_COUNT;
+	private int currentItem = DEF_CURRENT_ITEM;
+
+	private IndicatorType indicatorType = IndicatorType.Rect; // 指示器类型
+	private Paint paint;
+
+	public ViewPagerIndicator(Context context){
+		this(context, null);
 	}
 
-	public ViewPagerIndicator(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		initView(context);
+	public ViewPagerIndicator(Context context, AttributeSet attrs){
+		this(context, attrs, 0);
 	}
 
 	public ViewPagerIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerIndicator);
+		if(a != null){
+			colorNormal = a.getColor(R.styleable.ViewPagerIndicator_colorNormal, DEF_COLOR_NORMAL); // 正常颜色
+			colorSelected = a.getColor(R.styleable.ViewPagerIndicator_colorSelected, DEF_COLOR_SELECTED); // 选中颜色
+			lineSize = a.getDimension(R.styleable.ViewPagerIndicator_lineSize, DEF_LINE_SIZE);
+			circleRadius = a.getDimension(R.styleable.ViewPagerIndicator_circleRadius, DEF_CIRCLE_RADIUS);
+			circlePadding = a.getDimension(R.styleable.ViewPagerIndicator_circlePadding, DEF_CIRCLE_PADDING);
+			width = a.getDimension(R.styleable.ViewPagerIndicator_width, DEF_WIDTH);
+			height = a.getDimension(R.styleable.ViewPagerIndicator_height, DEF_HEIGHT);
+			rectWidth = a.getDimension(R.styleable.ViewPagerIndicator_rectWidth, DEF_RECT_WIDTH);
+			rectHeight = a.getDimension(R.styleable.ViewPagerIndicator_rectHeight, DEF_RECT_HEIGHT);
+			count = a.getInteger(R.styleable.ViewPagerIndicator_count, DEF_COUNT);
+			currentItem = a.getInteger(R.styleable.ViewPagerIndicator_currentItem, DEF_CURRENT_ITEM);
+			a.recycle();
+		}
 		initView(context);
 	}
 
@@ -61,7 +87,7 @@ public class ViewPagerIndicator extends View {
 		// 画笔设置
 		paint = new Paint();
 		paint.setStyle(Paint.Style.FILL);
-		paint.setColor(COLOR_NORMAL);//设置线条颜色
+		paint.setColor(colorNormal);//设置线条颜色
 		paint.setStrokeWidth(lineSize);// 线条宽度
 		paint.setAntiAlias(true);//去除锯齿
 	}
@@ -100,19 +126,19 @@ public class ViewPagerIndicator extends View {
 			if(indicatorType == IndicatorType.Circle){
 				// 圆形
 				if(currentItem == i){
-					paint.setColor(COLOR_SELECTED);
+					paint.setColor(colorSelected);
 					canvas.drawCircle(cx, cy, circleRadius, paint); // 选中
 				} else {
-					paint.setColor(COLOR_NORMAL);
+					paint.setColor(colorNormal);
 					canvas.drawCircle(cx, cy, circleRadius, paint); // 未选
 				}
 			} else if(indicatorType == IndicatorType.Rect){
 				// 方形
 				if(currentItem == i){
-					paint.setColor(COLOR_SELECTED);
+					paint.setColor(colorSelected);
 					canvas.drawRect(cx-rectWidth/2, cy-rectHeight/2, cx+rectWidth/2, cy+rectHeight/2, paint);// 选中
 				} else {
-					paint.setColor(COLOR_NORMAL);
+					paint.setColor(colorNormal);
 					canvas.drawRect(cx-rectWidth/2, cy-rectHeight/2, cx+rectWidth/2, cy+rectHeight/2, paint); // 未选
 				}
 			}
@@ -146,5 +172,50 @@ public class ViewPagerIndicator extends View {
 		 * 圆形
 		 */
 		Circle
+	}
+
+	public void setColorNormal(int colorNormal) {
+		this.colorNormal = colorNormal;
+		invalidate();
+	}
+
+	public void setColorSelected(int colorSelected) {
+		this.colorSelected = colorSelected;
+		invalidate();
+	}
+
+	public void setLineSize(float lineSize) {
+		this.lineSize = lineSize;
+		invalidate();
+	}
+
+	public void setCircleRadius(float circleRadius) {
+		this.circleRadius = circleRadius;
+		invalidate();
+	}
+
+	public void setCirclePadding(float circlePadding) {
+		this.circlePadding = circlePadding;
+		invalidate();
+	}
+
+	public void setWidth(float width) {
+		this.width = width;
+		invalidate();
+	}
+
+	public void setHeight(float height) {
+		this.height = height;
+		invalidate();
+	}
+
+	public void setRectWidth(float rectWidth) {
+		this.rectWidth = rectWidth;
+		invalidate();
+	}
+
+	public void setRectHeight(float rectHeight) {
+		this.rectHeight = rectHeight;
+		invalidate();
 	}
 }
