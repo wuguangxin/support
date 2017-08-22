@@ -4,6 +4,7 @@
     <!-- ================== 公共属性区域 ======================================================= -->
     <attr name="startAngle" format="integer"/>
     <attr name="sweepAngle" format="integer"/>
+    <attr name="circleRadius" format="reference|dimension"/>	<!--圆半径-->
 
     <!--key 文本-->
     <attr name="key" format="reference|string" />
@@ -241,7 +242,7 @@
         <attr name="circleNum" format="reference|integer"/>		    <!--水平的圆圈个数，3X3就是3，4X4就是4-->
         <attr name="limitNum" format="reference|integer"/>		    <!--设置最少绘制数量-->
         <attr name="circleSpace" format="reference|dimension"/>		<!--圆与圆的间隔距离-->
-        <attr name="circleRadius" format="reference|dimension"/>	<!--圆半径-->
+        <attr name="circleRadius"/>	<!--圆半径-->
         <attr name="width" format="reference|float"/>		        <!--整个手势View的宽度-->
         <!--背景-->
         <attr name="colorBackgroundNormal" format="reference|color"/>   <!--背景颜色 正常-->
@@ -281,7 +282,7 @@
         <!--选中颜色-->
         <attr name="colorSelected" format="reference|color"/>
         <attr name="lineSize" format="reference|dimension"/>
-        <attr name="circleRadius" format="reference|dimension"/>
+        <attr name="circleRadius"/>
         <attr name="circlePadding" format="reference|dimension"/>
         <attr name="width" format="reference|dimension"/>
         <attr name="height" format="reference|dimension"/>
