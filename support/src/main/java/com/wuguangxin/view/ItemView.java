@@ -220,7 +220,8 @@ public class ItemView extends LinearLayout{
 		mKeyView.setTextColor(keyColor);
 		mKeyView.setSingleLine(keySingleLine);
 		mKeyView.setLayoutParams(keyParams);
-		mKeyView.setTypeface(mKeyView.getTypeface(), keyStyle);
+//		mKeyView.setTypeface(mKeyView.getTypeface(), keyStyle);
+		mKeyView.getPaint().setFakeBoldText(keyStyle == 1);
 		addView(mKeyView);
 
 		// value View
@@ -231,7 +232,8 @@ public class ItemView extends LinearLayout{
 			mValueView.setTextColor(valueColor);
 			mValueView.setSingleLine(valueSingleLine);
 			mValueView.setLayoutParams(valueParams);
-			mValueView.setTypeface(mValueView.getTypeface(), valueStyle);
+//			mValueView.setTypeface(mValueView.getTypeface(), valueStyle);
+			mValueView.getPaint().setFakeBoldText(valueStyle == 1);
 			mValueView.setGravity(valueGravity.value);
 
 			addView(mValueView);
