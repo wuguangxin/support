@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.wuguangxin.dialog.MyDialog;
 import com.wuguangxin.view.ItemView;
@@ -24,9 +25,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.MyDialog).setOnClickListener(this);
 
         mItemView = (ItemView) findViewById(R.id.itemView);
-        mItemView.setGravity(Gravity.CENTER);
+        mItemView.setOnClickListener(this);
+        mItemView.getKeyView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "点了Key", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mItemView.getValueView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("AAA", "LEFT = " + Gravity.LEFT);
+                Log.e("AAA", "TOP = " + Gravity.TOP);
+                Log.e("AAA", "RIGHT = " + Gravity.RIGHT);
+                Log.e("AAA", "BOTTOM = " + Gravity.BOTTOM);
+                Log.e("AAA", "CENTER = " + Gravity.CENTER);
+                Log.e("AAA", "CENTER_HORIZONTAL = " + Gravity.CENTER_HORIZONTAL);
+                Log.e("AAA", "CENTER_VERTICAL = " + Gravity.CENTER_VERTICAL);
+                Toast.makeText(MainActivity.this, "点了Value", Toast.LENGTH_SHORT).show();
+//                E/AAA: LEFT = 3
+//                E/AAA: TOP = 48
+//                E/AAA: RIGHT = 5
+//                E/AAA: BOTTOM = 80
+//                E/AAA: CENTER = 17
+//                E/AAA: CENTER_HORIZONTAL = 1
+//                E/AAA: CENTER_VERTICAL = 16
 
-        Log.e("aa", "Gravity.CENTER===" + Gravity.CENTER);
+
+            }
+        });
 
     }
 
@@ -34,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
+        case R.id.itemView:
+            Toast.makeText(MainActivity.this, "点了 ItemView", Toast.LENGTH_SHORT).show();
+            break;
         case R.id.ToastUtils:
             openActivity(BActivity.class);
             break;

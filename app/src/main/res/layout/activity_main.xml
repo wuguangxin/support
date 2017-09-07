@@ -19,46 +19,95 @@
         android:layout_height="-2dip"
         android:text="MyDialog"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_weight="0"
-        android:text="ToastUtilsToastUtilsToastUtils"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dip"
-        android:layout_marginLeft="15dip"
-        android:layout_marginTop="50dip"
-        android:background="#0000FF"/>
-
     <com.wuguangxin.view.ItemView
         android:id="@+id/itemView"
         android:layout_width="match_parent"
-        android:layout_height="45dip"
-        android:layout_marginTop="5dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
         android:background="@color/white"
+        android:baselineAligned="false"
+        android:paddingBottom="15dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dp"
+        android:paddingTop="15dip"
+
+        app:key="姓名："
+        app:keyBackground="#44FF0000"
+        app:keyColor="#000000"
+        app:keyHeight="-2dp"
+        app:keyWeight="1"
+        app:keySize="14dip"
+
+        app:value="1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
+        app:valueBackground="#eee"
+        app:valueColor="#000000"
+        app:valueDrawableRight="@mipmap/arrow"
+        app:valueGravity="right"
+        app:valueSize="14dip"
+        app:valueWeight="1"
+        />
+
+    <com.wuguangxin.view.ItemView
+        android:id="@+id/itemView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:background="@color/white"
+        android:paddingBottom="15dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dp"
+        android:paddingTop="15dip"
+
+        app:key="姓名："
+        app:keyColor="#000000"
+        app:keySize="14dip"
+
+        app:value="2张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
+        app:valueColor="@color/black"
+        app:valueDrawableRight="@mipmap/arrow"
+        app:valueGravity="right"
+        app:valueSize="14dip"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingBottom="15dip"
         android:paddingEnd="15dp"
         android:paddingLeft="15dip"
         android:paddingRight="15dp"
         android:paddingStart="15dip"
-        app:dividerBottom_marginLeft="15dip"
-        app:dividerColor="#DFDFDF"
-        app:dividerMode="both"
-        app:dividerSize="0.5dip"
-        app:dividerTop_marginLeft="15dip"
-        app:iconRight="@mipmap/arrow"
-        app:key="姓名："
-        app:keySize="14dip"
-        app:keyStyle="normal"
-        app:value="张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
-        app:valueSize="14dip">
-    </com.wuguangxin.view.ItemView>
+        android:paddingTop="15dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="姓名："
+            android:textColor="@color/black"
+            android:textSize="14dip"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@mipmap/arrow"
+            android:gravity="right"
+            android:lines="0"
+            android:text="3张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
+            android:textColor="@color/black"
+            android:textSize="14dip"/>
+
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="45dip"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="15dip"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingLeft="15dip"

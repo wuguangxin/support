@@ -43,43 +43,99 @@
     
     <declare-styleable name="ItemView">
         <!--key-->
-        <attr name="key"/>
+        <attr name="key" />
         <attr name="keySize" format="reference|dimension" />
         <attr name="keyColor" format="reference|color" />
+        <!--key-hint-->
+        <attr name="keyHint" format="string"/>
+        <attr name="keyHintColor" format="reference|color" />
+
+        <!--<attr name="keyMinWidth" format="reference|dimension" />-->
+        <!--<attr name="keyMinHeight" format="reference|dimension" />-->
+        <!--<attr name="keyMaxWidth" format="reference|dimension" />-->
+        <!--<attr name="keyMaxHeight" format="reference|dimension" />-->
+        <!--<attr name="keyMinLines" format="integer" />-->
+        <!--<attr name="keyMaxLines" format="integer" />-->
+        <attr name="keyLines" format="integer" />
+
         <attr name="keyWidth" format="reference|dimension" />
         <attr name="keyHeight" format="reference|dimension" />
-        <attr name="keyWeight" format="reference|float" />
-        <attr name="keySingleLine" format="reference|boolean" />
+        <attr name="keyWeight" format="float" />
+        <attr name="keyBackground" format="reference|color" />
+        <!--key margin-->
+        <attr name="keyMargin" format="reference|dimension" />
+        <attr name="keyMarginLeft" format="reference|dimension" />
+        <attr name="keyMarginTop" format="reference|dimension" />
+        <attr name="keyMarginRight" format="reference|dimension" />
+        <attr name="keyMarginBottom" format="reference|dimension" />
+        <!--key-padding-->
+        <attr name="keyPadding" format="reference|dimension" />
+        <attr name="keyPaddingLeft" format="reference|dimension" />
+        <attr name="keyPaddingTop" format="reference|dimension" />
+        <attr name="keyPaddingRight" format="reference|dimension" />
+        <attr name="keyPaddingBottom" format="reference|dimension" />
+        <!--key-drawable-->
+        <attr name="keyDrawableLeft" format="reference" />
+        <attr name="keyDrawableRight" format="reference" />
+        <attr name="keyDrawablePadding" format="reference|dimension" />
 
         <!--value-->
-        <attr name="value"/>
+        <attr name="value" />
         <attr name="valueSize" format="reference|dimension" />
         <attr name="valueColor" format="reference|color" />
+        <!--value-hint-->
+        <attr name="valueHint" format="string"/>
+        <attr name="valueHintColor" format="reference|color" />
+
+        <!--<attr name="valueMinWidth" format="reference|dimension" />-->
+        <!--<attr name="valueMinHeight" format="reference|dimension" />-->
+        <!--<attr name="valueMaxWidth" format="reference|dimension" />-->
+        <!--<attr name="valueMaxHeight" format="reference|dimension" />-->
+        <!--<attr name="valueMinLines" format="integer" />-->
+        <!--<attr name="valueMaxLines" format="integer" />-->
+        <attr name="valueLines" format="integer" />
+
         <attr name="valueWidth" format="reference|dimension" />
         <attr name="valueHeight" format="reference|dimension" />
-        <attr name="valueWeight" format="reference|float" />
-        <attr name="valueSingleLine" format="reference|boolean" />
+        <attr name="valueWeight" format="float" />
+        <attr name="valueBackground" format="reference|color" />
+        <!--value margin-->
+        <attr name="valueMargin" format="reference|dimension" />
+        <attr name="valueMarginLeft" format="reference|dimension" />
+        <attr name="valueMarginTop" format="reference|dimension" />
+        <attr name="valueMarginRight" format="reference|dimension" />
+        <attr name="valueMarginBottom" format="reference|dimension" />
+        <!--value-padding-->
+        <attr name="valuePadding" format="reference|dimension" />
+        <attr name="valuePaddingLeft" format="reference|dimension" />
+        <attr name="valuePaddingTop" format="reference|dimension" />
+        <attr name="valuePaddingRight" format="reference|dimension" />
+        <attr name="valuePaddingBottom" format="reference|dimension" />
+        <!--value-drawable-->
+        <attr name="valueDrawableLeft" format="reference" />
+        <attr name="valueDrawableRight" format="reference" />
+        <attr name="valueDrawablePadding" format="reference|dimension" />
 
         <!--key文字内部对齐-->
         <attr name="keyGravity">
-            <flag name="left" value="0" /> <!--左对齐-->
-            <flag name="top" value="1" /> <!--上对齐-->
-            <flag name="right" value="2" /> <!--右对齐-->
-            <flag name="bottom" value="3" /> <!--下对齐-->
-            <flag name="center" value="4" /> <!--居中-->
-            <flag name="center_horizontal" value="5" /> <!--水平居中-->
-            <flag name="center_vertical" value="6" /> <!--垂直居中-->
+            <flag name="left" value="3" /> <!--左对齐-->
+            <flag name="top" value="48" /> <!--上对齐-->
+            <flag name="right" value="5" /> <!--右对齐-->
+            <flag name="bottom" value="80" /> <!--下对齐-->
+            <flag name="center" value="17" /> <!--居中-->
+            <flag name="center_horizontal" value="1" /> <!--水平居中-->
+            <flag name="center_vertical" value="16" /> <!--垂直居中-->
         </attr>
 
         <!--value文字内部对齐-->
         <attr name="valueGravity">
-            <flag name="left" value="0" /> <!--左对齐-->
-            <flag name="top" value="1" /> <!--上对齐-->
-            <flag name="right" value="2" /> <!--右对齐-->
-            <flag name="bottom" value="3" /> <!--下对齐-->
-            <flag name="center" value="4" /> <!--居中-->
-            <flag name="center_horizontal" value="5" /> <!--水平居中-->
-            <flag name="center_vertical" value="6" /> <!--垂直居中-->
+            <flag name="left" value="3" /> <!--左对齐-->
+            <flag name="top" value="48" /> <!--上对齐-->
+            <flag name="right" value="5" /> <!--右对齐-->
+            <flag name="bottom" value="80" /> <!--下对齐-->
+            <flag name="center" value="17" /> <!--居中-->
+            <flag name="center_horizontal" value="1" /> <!--水平居中-->
+            <flag name="center_vertical" value="16" /> <!--垂直居中-->
         </attr>
 
         <!--key字体样式.-->
@@ -89,7 +145,7 @@
             <!--粗体-->
             <flag name="bold" value="1" />
             <!--斜体-->
-            <flag name="italic" value="2" />
+            <!--<flag name="italic" value="2" />-->
         </attr>
 
         <!-- value字体样式. -->
@@ -99,7 +155,7 @@
             <!--粗体-->
             <flag name="bold" value="1" />
             <!--斜体-->
-            <flag name="italic" value="2" />
+            <!--<flag name="italic" value="2" />-->
         </attr>
 
         <!--指示器颜色-->

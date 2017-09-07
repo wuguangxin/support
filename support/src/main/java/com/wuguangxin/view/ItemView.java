@@ -1,14 +1,14 @@
 package com.wuguangxin.view;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ImageView;
@@ -18,46 +18,11 @@ import android.widget.TextView;
 import com.wuguangxin.R;
 
 /**
- * Item项使用的View（组合控件）
+ * Item项使用的View（LinearLayout+TextView的组合控件，水平排列 key-value）
  *
  * <p>Created by wuguangxin on 15/7/10 </p>
  */
 public class ItemView extends LinearLayout{
-	// key
-	private static final int DEFAULT_KEY_COLOR = 0xff333333; // 默认key字体颜色
-	private static final float DEFAULT_KEY_SIZE = 14; // 默认key字体大小(DIP)
-	private static final float DEFAULT_KEY_WIDTH = LayoutParams.WRAP_CONTENT; // 默认key宽度
-	private static final float DEFAULT_KEY_HEIGHT = LayoutParams.WRAP_CONTENT; // 默认key高度
-	private static final float DEFAULT_KEY_WEIGHT = 0.0F; // 默认key权重
-	private static final boolean DEFAULT_KEY_SINGLE_LINE = false; // 默认单行文本-KEY
-	private static final GravityMode DEFAULT_KEY_GRAVITY = GravityMode.left; // 默认key对齐
-	// value
-	private static final int DEFAULT_VALUE_COLOR = 0xff333333; // 默认Value字体颜色
-	private static final float DEFAULT_VALUE_SIZE = 14; // 默认Value字体大小(DIP)
-	private static final float DEFAULT_VALUE_WIDTH = LayoutParams.WRAP_CONTENT; // 默认value宽度
-	private static final float DEFAULT_VALUE_HEIGHT = LayoutParams.WRAP_CONTENT; // 默认value高度
-	private static final float DEFAULT_VALUE_WEIGHT = 1.0F; // 默认value权重
-	private static final boolean DEFAULT_VALUE_SINGLE_LINE = false; // 默认单行文本-VALUE
-	private static final GravityMode DEFAULT_VALUE_GRAVITY = GravityMode.right; // 默认value对齐
-	// 指示器
-	private static final DividerMode DEFAULT_DIVIDER = DividerMode.None; // 默认不显示
-	private static final int DEFAULT_DIVIDER_COLOR = 0xffDFDFDF; // 默认divider颜色
-	private static final float DEFAULT_DIVIDER_SIZE = 0.5F; // 默认divider大小(DIP)
-	// 左边 图标
-	private static final float DEFAULT_ICON_LEFT_WIDTH = LayoutParams.WRAP_CONTENT; // 左边图标默认宽(DIP)
-	private static final float DEFAULT_ICON_LEFT_HEIGHT = LayoutParams.WRAP_CONTENT; // 左边图标默认高(DIP)
-	private static final float DEFAULT_ICON_LEFT_MARGIN_LEFT = 0; // 左边图标外边距左(DIP)
-	private static final float DEFAULT_ICON_LEFT_MARGIN_TOP = 0;// 左边图标外边距上(DIP)
-	private static final float DEFAULT_ICON_LEFT_MARGIN_RIGHT = 10; // 左边图标外边距右(DIP)
-	private static final float DEFAULT_ICON_LEFT_MARGIN_BOTTOM = 0;// 左边图标外边距下(DIP)
-	// 右边 图标
-	private static final float DEFAULT_ICON_RIGHT_WIDTH = LayoutParams.WRAP_CONTENT; // 右边图标外边距(DIP)
-	private static final float DEFAULT_ICON_RIGHT_HEIGHT = LayoutParams.WRAP_CONTENT;// 右边图标默认高(DIP)
-	private static final float DEFAULT_ICON_RIGHT_MARGIN_LEFT = 5;// 右边图标外边距左(DIP)
-	private static final float DEFAULT_ICON_RIGHT_MARGIN_TOP = 0;// 右边图标外边距上(DIP)
-	private static final float DEFAULT_ICON_RIGHT_MARGIN_RIGHT = 0;// 右边图标外边距右(DIP)
-	private static final float DEFAULT_ICON_RIGHT_MARGIN_BOTTOM = 0;// 右边图标外边距下(DIP)
-
 	private Context context;
 	private LayoutParams iconLeftParams;
 	private LayoutParams iconRightParams;
@@ -69,180 +34,333 @@ public class ItemView extends LinearLayout{
 	private TextView mValueView;
 
 	// 指示器
-	private DividerMode dividerMode;
-	private float dividerSize; // 线条大小
-	private int dividerColor;  // 线条颜色
+	private DividerMode dividerMode = DividerMode.None;
+	private int dividerSize = 1; 			// 线条大小(DIP) 0.5F
+	private int dividerColor = 0xffDFDFDF;  // 线条颜色
 	// 左图标
 	private Drawable iconLeft;
-	private float iconLeftWidth;
-	private float iconLeftHeight;
-	private float iconLeftMarginLeft;
-	private float iconLeftMarginTop;
-	private float iconLeftMarginRight;
-	private float iconLeftMarginBottom;
+	private int iconLeftWidth = LayoutParams.WRAP_CONTENT;	// 左边图标默认宽(DIP)
+	private int iconLeftHeight = LayoutParams.WRAP_CONTENT;	// 左边图标默认高(DIP)
+	private int iconLeftMarginLeft; 		// 左边图标外边距右(DIP)
+	private int iconLeftMarginTop;			// 左边图标外边距上(DIP)
+	private int iconLeftMarginRight = 10;	// 左边图标外边距右(DIP)
+	private int iconLeftMarginBottom;		// 左边图标外边距下(DIP)
 	// 右图标
 	private Drawable iconRight;
-	private float iconRightWidth;
-	private float iconRightHeight;
-	private float iconRightMarginLeft;
-	private float iconRightMarginTop;
-	private float iconRightMarginRight;
-	private float iconRightMarginBottom;
-	// 文字-key
+	private int iconRightWidth = LayoutParams.WRAP_CONTENT;	// 右边图标外边距(DIP)
+	private int iconRightHeight = LayoutParams.WRAP_CONTENT;// 右边图标默认高(DIP)
+	private int iconRightMarginLeft = 5;	// 右边图标外边距左(DIP)
+	private int iconRightMarginTop;			// 右边图标外边距上(DIP)
+	private int iconRightMarginRight;		// 右边图标外边距右(DIP)
+	private int iconRightMarginBottom;		// 右边图标外边距下(DIP)
+
+	// key
 	private String key;
-	private int keyStyle;
-	private int keyColor;
-	private float keySize;
-	private float keyWidth;
-	private float keyHeight;
-	private float keyWeight;
-	private boolean keySingleLine;
-	private GravityMode keyGravity;
-	// 文字-value
+	private int keyColor = Color.BLACK;				// key文本颜色
+	private int keySize = 14;						// key文本大小
+	private int keyStyle = 0; 						// 0正常，1粗体
+	private int keyLines = 0;						// 当前显示几行
+//	private int keyMinLines = 0;					// 最小行数
+//	private int keyMaxLines = Integer.MAX_VALUE; 	// 最大行数
+	// key-hint
+	private String keyHint;
+	private int keyHintColor = Color.LTGRAY;		// key-hint文本颜色
+	// key-width-height
+	private float keyWeight = 0;							// key权重
+	private int keyWidth = LayoutParams.WRAP_CONTENT;		// key宽
+	private int keyHeight = LayoutParams.WRAP_CONTENT;		// key高
+//	private int keyMinWidth = LayoutParams.WRAP_CONTENT;	// key最小宽
+//	private int keyMinHeight = LayoutParams.WRAP_CONTENT;	// key最小高
+//	private int keyMaxWidth = LayoutParams.WRAP_CONTENT;	// key最大宽
+//	private int keyMaxHeight = LayoutParams.WRAP_CONTENT;	// key最大高
+	// key-margin
+	private int keyMargin = -1; 			// 当 keyMargin >= 0 时，左上右下的值等于 keyMargin
+	private int keyMarginLeft;				// keyView距左
+	private int keyMarginTop;				// keyView距上
+	private int keyMarginRight;				// keyView距右
+	private int keyMarginBottom;			// keyView距下
+	// key-padding
+	private int keyPadding = -1; 			// 当 keyPadding >= 0 时，左上右下的值等于 keyPadding
+	private int keyPaddingLeft;				// key距离keyView的左
+	private int keyPaddingTop;				// key距离keyView的上
+	private int keyPaddingRight;			// key距离keyView的右
+	private int keyPaddingBottom;			// key距离keyView的下
+	// key-drawable
+	private int keyDrawablePadding;			// 图标与内容的间距
+	private Drawable keyDrawableLeft;		// keyView的drawableLeft
+	private Drawable keyDrawableRight;		// keyView的drawableRight
+	private Drawable keyBackground;  		// keyView的背景
+	private GravityMode keyGravity = GravityMode.left;	// keyView文本对齐方式
+
+	// value
 	private String value;
-	private int valueStyle;
-	private int valueColor;
-	private float valueSize;
-	private float valueWidth;
-	private float valueHeight;
+	private int valueColor = Color.BLACK;
+	private int valueSize = 14;
+	private int valueStyle = 0; // 0正常，1粗体
+	private int valueLines = 0;
+//	private int valueMinLines = 1;
+//	private int valueMaxLines = Integer.MAX_VALUE;
+	// value-hint
+	private String valueHint;
+	private int valueHintColor = Color.LTGRAY;
+	// value-width-height
 	private float valueWeight;
-	private boolean valueSingleLine;
-	private GravityMode valueGravity;
+	private int valueWidth = LayoutParams.WRAP_CONTENT;
+	private int valueHeight = LayoutParams.WRAP_CONTENT;
+//	private int valueMinWidth = LayoutParams.WRAP_CONTENT;
+//	private int valueMinHeight = LayoutParams.WRAP_CONTENT;
+//	private int valueMaxWidth = LayoutParams.WRAP_CONTENT;
+//	private int valueMaxHeight = LayoutParams.WRAP_CONTENT;
+	// value-margin
+	private int valueMargin = -1; // 当 valueMargin >= 0 时，左上右下的值等于 valueMargin
+	private int valueMarginLeft;
+	private int valueMarginTop;
+	private int valueMarginRight;
+	private int valueMarginBottom;
+	// value-padding
+	private int valuePadding = -1; // 当 valuePadding >= 0 时，左上右下的值等于 valuePadding
+	private int valuePaddingLeft;
+	private int valuePaddingTop;
+	private int valuePaddingRight;
+	private int valuePaddingBottom;
+	// value-drawable
+	private int valueDrawablePadding;
+	private Drawable valueDrawableLeft;
+	private Drawable valueDrawableRight;
+	private Drawable valueBackground;  // value的背景
+	private GravityMode valueGravity = GravityMode.left;
+
+	private OnClickListener keyOnClickListener, valueOnClickListener;
 
 	public ItemView(Context context){
 		this(context, null);
 	}
 
 	public ItemView(Context context, AttributeSet attrs){
-		super(context, attrs);
-		this.context = context;
-		init(attrs, -1);
+		this(context, attrs, 0);
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public ItemView(Context context, AttributeSet attrs, int defStyle){
-		super(context, attrs, defStyle);
+	public ItemView(Context context,  @Nullable AttributeSet attrs, int defStyleAttr){
+		super(context, attrs, defStyleAttr);
 		this.context = context;
-		init(attrs, defStyle);
-	}
-
-	@Override
-	final public void setOrientation(int orientation) {
-		if (orientation == VERTICAL) {
-			throw new SecurityException("只能设置为水平排列：HORIZONTAL");
-		}
-		super.setOrientation(HORIZONTAL);
+		init(attrs, defStyleAttr);
 	}
 
 	@SuppressWarnings("deprecation")
 	private void init(AttributeSet attrs, int defStyle){
-		setOrientation(LinearLayout.HORIZONTAL);
-		setGravity(Gravity.CENTER_VERTICAL);
-		// 获取属性方法2_1，使用attr.xml
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView, defStyle, 0);
-		// 线
-		dividerColor = a.getColor(R.styleable.ItemView_dividerColor, DEFAULT_DIVIDER_COLOR);
-		dividerSize = a.getDimension(R.styleable.ItemView_dividerSize, dip2px(DEFAULT_DIVIDER_SIZE));
-		dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemView_dividerMode, DEFAULT_DIVIDER.value));
+		if (a != null) {
+			// 线
+			dividerColor = a.getColor(R.styleable.ItemView_dividerColor, dividerColor);
+			dividerSize = a.getDimensionPixelSize(R.styleable.ItemView_dividerSize, dividerSize);
+			dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemView_dividerMode, dividerMode.value));
+			dividerTopMargin = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_margin, dividerTopMargin);
+			dividerTopMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginLeft, dividerTopMarginLeft);
+			dividerTopMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginRight, dividerTopMarginRight);
+			dividerBottomMargin = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_margin, dividerBottomMargin);
+			dividerBottomMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginLeft, dividerBottomMarginLeft);
+			dividerBottomMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginRight, dividerBottomMarginRight);
 
-		dividerTopMargin = a.getDimension(R.styleable.ItemView_dividerTop_margin, 0);
-		dividerTopMarginLeft = a.getDimension(R.styleable.ItemView_dividerTop_marginLeft, 0);
-		dividerTopMarginRight = a.getDimension(R.styleable.ItemView_dividerTop_marginRight, 0);
-		dividerBottomMargin = a.getDimension(R.styleable.ItemView_dividerBottom_margin, 0);
-		dividerBottomMarginLeft = a.getDimension(R.styleable.ItemView_dividerBottom_marginLeft, 0);
-		dividerBottomMarginRight = a.getDimension(R.styleable.ItemView_dividerBottom_marginRight, 0);
+			// 左图标
+			iconLeft = a.getDrawable(R.styleable.ItemView_iconLeft);
+			iconLeftWidth = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_width, iconLeftWidth);
+			iconLeftHeight = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_height, iconLeftHeight);
+			iconLeftMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginLeft, iconLeftMarginLeft);
+			iconLeftMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginTop, iconLeftMarginTop);
+			iconLeftMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginRight, iconLeftMarginRight);
+			iconLeftMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginBottom, iconLeftMarginBottom);
 
-		// 左图标
-		iconLeft = a.getDrawable(R.styleable.ItemView_iconLeft);
-		iconLeftWidth = a.getDimension(R.styleable.ItemView_iconRight_width, LayoutParams.WRAP_CONTENT);
-		iconLeftHeight = a.getDimension(R.styleable.ItemView_iconLeft_height, LayoutParams.WRAP_CONTENT);
-		iconLeftMarginLeft = a.getDimension(R.styleable.ItemView_iconLeft_marginLeft, dip2px(DEFAULT_ICON_LEFT_MARGIN_LEFT));
-		iconLeftMarginTop = a.getDimension(R.styleable.ItemView_iconLeft_marginTop, dip2px(DEFAULT_ICON_LEFT_MARGIN_TOP));
-		iconLeftMarginRight = a.getDimension(R.styleable.ItemView_iconLeft_marginRight, dip2px(DEFAULT_ICON_LEFT_MARGIN_RIGHT));
-		iconLeftMarginBottom = a.getDimension(R.styleable.ItemView_iconLeft_marginBottom, dip2px(DEFAULT_ICON_LEFT_MARGIN_BOTTOM));
+			// 右图标
+			iconRight = a.getDrawable(R.styleable.ItemView_iconRight);
+			iconRightWidth = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_width, iconRightWidth);
+			iconRightHeight = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_height, iconRightHeight);
+			iconRightMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginLeft, iconRightMarginLeft);
+			iconRightMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginTop, iconRightMarginTop);
+			iconRightMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginRight, iconRightMarginRight);
+			iconRightMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginBottom, iconRightMarginBottom);
 
-		// 右图标
-		iconRight = a.getDrawable(R.styleable.ItemView_iconRight);
-		iconRightWidth = a.getDimension(R.styleable.ItemView_iconRight_width, LayoutParams.WRAP_CONTENT);
-		iconRightHeight = a.getDimension(R.styleable.ItemView_iconRight_height, LayoutParams.WRAP_CONTENT);
-		iconRightMarginLeft = a.getDimension(R.styleable.ItemView_iconRight_marginLeft, dip2px(DEFAULT_ICON_RIGHT_MARGIN_LEFT));
-		iconRightMarginTop = a.getDimension(R.styleable.ItemView_iconRight_marginTop, dip2px(DEFAULT_ICON_RIGHT_MARGIN_TOP));
-		iconRightMarginRight = a.getDimension(R.styleable.ItemView_iconRight_marginRight, dip2px(DEFAULT_ICON_RIGHT_MARGIN_RIGHT));
-		iconRightMarginBottom = a.getDimension(R.styleable.ItemView_iconRight_marginBottom, dip2px(DEFAULT_ICON_RIGHT_MARGIN_BOTTOM));
+			// key
+			key = a.getString(R.styleable.ItemView_key);
+			keySize = a.getDimensionPixelSize(R.styleable.ItemView_keySize, keySize);
+			keyColor = a.getColor(R.styleable.ItemView_keyColor, keyColor);
+			keyStyle = a.getInt(R.styleable.ItemView_keyStyle, keyStyle);
+			keyLines = a.getInt(R.styleable.ItemView_keyLines, keyLines);
+//			keyMinLines = a.getInt(R.styleable.ItemView_keyMinLines, keyMinLines);
+//			keyMaxLines = a.getInt(R.styleable.ItemView_keyMaxLines, keyMaxLines);
+			keyBackground = a.getDrawable(R.styleable.ItemView_keyBackground);
+			keyGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_keyGravity, keyGravity.value));
+			// key-hint
+			keyHint = a.getString(R.styleable.ItemView_keyHint);
+			keyHintColor = a.getColor(R.styleable.ItemView_keyHintColor, keyHintColor);
+			// key-width-height
+			keyWeight = a.getFloat(R.styleable.ItemView_keyWeight, keyWeight);
+			keyWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyWidth, keyWidth);
+			keyHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyHeight, keyHeight);
+//			keyMinWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyMinWidth, keyMinWidth);
+//			keyMinHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyMinHeight, keyMinHeight);
+//			keyMaxWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyMaxWidth, keyMaxWidth);
+//			keyMaxHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyMaxHeight, keyMaxHeight);
+			// key-margin
+			keyMargin = a.getDimensionPixelSize(R.styleable.ItemView_keyMargin, keyMargin);
+			keyMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginLeft, keyMarginLeft);
+			keyMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginTop, keyMarginTop);
+			keyMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginRight, keyMarginRight);
+			keyMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginBottom, keyMarginBottom);
+			// key-padding
+			keyPadding = a.getDimensionPixelSize(R.styleable.ItemView_keyPadding, keyPadding);
+			keyPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingLeft, keyPaddingLeft);
+			keyPaddingTop = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingTop, keyPaddingTop);
+			keyPaddingRight = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingRight, keyPaddingRight);
+			keyPaddingBottom = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingBottom, keyPaddingBottom);
+			// key-drawable
+			keyDrawablePadding = a.getDimensionPixelSize(R.styleable.ItemView_keyDrawablePadding, keyDrawablePadding);
+			keyDrawableLeft = a.getDrawable(R.styleable.ItemView_keyDrawableLeft);
+			keyDrawableRight = a.getDrawable(R.styleable.ItemView_keyDrawableRight);
 
-		// key
-		key = a.getString(R.styleable.ItemView_key);
-		keySize = a.getDimension(R.styleable.ItemView_keySize, DEFAULT_KEY_SIZE);
-		keyColor = a.getColor(R.styleable.ItemView_keyColor, DEFAULT_KEY_COLOR);
-		keyWidth = a.getDimension(R.styleable.ItemView_keyWidth, LayoutParams.WRAP_CONTENT);
-		keyHeight = a.getDimension(R.styleable.ItemView_keyWidth, LayoutParams.WRAP_CONTENT);
-		keyWeight = a.getFloat(R.styleable.ItemView_keyWeight, DEFAULT_KEY_WEIGHT);
-		keyStyle = a.getInt(R.styleable.ItemView_keyStyle, 0);
-		keySingleLine = a.getBoolean(R.styleable.ItemView_keySingleLine, DEFAULT_KEY_SINGLE_LINE);
-		keyGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_keyGravity, DEFAULT_KEY_GRAVITY.value));
+			// value
+			value = a.getString(R.styleable.ItemView_value);
+			if (value != null) {
+				valueSize = a.getDimensionPixelSize(R.styleable.ItemView_valueSize, valueSize);
+				valueColor = a.getColor(R.styleable.ItemView_valueColor, valueColor);
+				valueStyle = a.getInt(R.styleable.ItemView_valueStyle, valueStyle);
+				valueLines = a.getInt(R.styleable.ItemView_valueLines, valueLines);
+//				valueMinLines = a.getInt(R.styleable.ItemView_valueMinLines, valueMinLines);
+//				valueMaxLines = a.getInt(R.styleable.ItemView_valueMaxLines, valueMaxLines);
+				valueBackground = a.getDrawable(R.styleable.ItemView_valueBackground);
+				valueGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_valueGravity, valueGravity.value));
+				// value-hint
+				valueHint = a.getString(R.styleable.ItemView_valueHint);
+				valueHintColor = a.getColor(R.styleable.ItemView_valueHintColor, valueHintColor);
+				// value-width-height
+				valueWeight = a.getFloat(R.styleable.ItemView_valueWeight, valueWeight);
+				valueWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueWidth, valueWidth);
+				valueHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueHeight, valueHeight);
+//				valueMinWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueMinWidth, valueMinWidth);
+//				valueMinHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueMinHeight, valueMinHeight);
+//				valueMaxWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueMaxWidth, valueMaxWidth);
+//				valueMaxHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueMaxHeight, valueMaxHeight);
+				// value-margin
+				valueMargin = a.getDimensionPixelSize(R.styleable.ItemView_valueMargin, valueMargin);
+				valueMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginLeft, valueMarginLeft);
+				valueMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginTop, valueMarginTop);
+				valueMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginRight, valueMarginRight);
+				valueMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginBottom, valueMarginBottom);
+				// value-padding
+				valuePadding = a.getDimensionPixelSize(R.styleable.ItemView_valuePadding, valuePadding);
+				valuePaddingLeft = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingLeft, valuePaddingLeft);
+				valuePaddingTop = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingTop, valuePaddingTop);
+				valuePaddingRight = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingRight, valuePaddingRight);
+				valuePaddingBottom = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingBottom, valuePaddingBottom);
+			}
+			// value-drawable
+			valueDrawablePadding = a.getDimensionPixelSize(R.styleable.ItemView_valueDrawablePadding, valueDrawablePadding);
+			valueDrawableLeft = a.getDrawable(R.styleable.ItemView_valueDrawableLeft);
+			valueDrawableRight = a.getDrawable(R.styleable.ItemView_valueDrawableRight);
 
-		// value
-		value = a.getString(R.styleable.ItemView_value);
-		if (value != null) {
-			valueSize = a.getDimension(R.styleable.ItemView_valueSize, DEFAULT_VALUE_SIZE);
-			valueColor = a.getColor(R.styleable.ItemView_valueColor, DEFAULT_VALUE_COLOR);
-			valueWidth = a.getDimension(R.styleable.ItemView_valueWidth, LayoutParams.WRAP_CONTENT);
-			valueHeight = a.getDimension(R.styleable.ItemView_valueHeight, LayoutParams.WRAP_CONTENT);
-			valueWeight = a.getFloat(R.styleable.ItemView_valueHeight, DEFAULT_VALUE_WEIGHT);
-			valueStyle = a.getInt(R.styleable.ItemView_valueStyle, 0);
-			valueSingleLine = a.getBoolean(R.styleable.ItemView_valueSingleLine, DEFAULT_VALUE_SINGLE_LINE);
-			valueGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_valueGravity, DEFAULT_VALUE_GRAVITY.value));
+			a.recycle();
 		}
 
-		a.recycle();
-
-		if (getChildCount() > 0) {
-			removeAllViews();
-		}
 		mIconLeftView = new ImageView(context);
 		mIconRightView = new ImageView(context);
 		mKeyView = new TextView(context);
 		mValueView = new TextView(context);
-
 		// icon left
 		if (iconLeft != null) {
-			iconLeftParams = new LayoutParams((int) iconLeftWidth, (int) iconLeftHeight);
-			iconLeftParams.setMargins((int) iconLeftMarginLeft, (int) iconLeftMarginTop, (int) iconLeftMarginRight, (int) iconLeftMarginBottom);
+			iconLeftParams = new LayoutParams(iconLeftWidth, iconLeftHeight);
+			iconLeftParams.leftMargin = iconLeftMarginLeft;
+			iconLeftParams.topMargin = iconLeftMarginTop;
+			iconLeftParams.rightMargin = iconLeftMarginRight;
+			iconLeftParams.bottomMargin = iconLeftMarginBottom;
 			mIconLeftView.setLayoutParams(iconLeftParams);
 			mIconLeftView.setImageDrawable(iconLeft);
 			addView(mIconLeftView);
 		}
 
 		// key View
-		keyParams = new LayoutParams((int) keyWidth, (int) keyHeight, keyWeight);
-		mKeyView.setText(key);
-		mKeyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, px2dip(keySize));
-		mKeyView.setTextColor(keyColor);
-		mKeyView.setSingleLine(keySingleLine);
+		keyParams = new LayoutParams(keyWidth, keyHeight, keyWeight);
+		if(keyMargin != -1) keyMarginLeft = keyMarginTop = keyMarginRight = keyMarginBottom = keyMargin;
+		keyParams.leftMargin = keyMarginLeft;
+		keyParams.topMargin = keyMarginTop;
+		keyParams.rightMargin = keyMarginRight;
+		keyParams.bottomMargin = keyMarginBottom;
 		mKeyView.setLayoutParams(keyParams);
-//		mKeyView.setTypeface(mKeyView.getTypeface(), keyStyle);
+		mKeyView.setGravity(keyGravity.value);
+		mKeyView.setBackgroundDrawable(keyBackground);
+
+		if(keyPadding != -1) keyPaddingLeft = keyPaddingTop = keyPaddingRight = keyPaddingBottom = keyPadding;
+		mKeyView.setPadding(keyPaddingLeft, keyPaddingTop, keyPaddingRight, keyPaddingBottom);
+		mKeyView.setText(key);
+		mKeyView.setTextColor(keyColor);
 		mKeyView.getPaint().setFakeBoldText(keyStyle == 1);
+		mKeyView.getPaint().setTextSize(keySize);
+
+		mKeyView.setLines(keyLines);
+//		mKeyView.setMinLines(keyMinLines);
+//		mKeyView.setMaxLines(keyMaxLines);
+//		mKeyView.setMinWidth(keyMinWidth);
+//		mKeyView.setMinHeight(keyMinHeight);
+//		mKeyView.setMaxWidth(keyMaxWidth);
+//		mKeyView.setMaxHeight(keyMaxHeight);
+
+		mKeyView.setHint(keyHint);
+		mKeyView.setHintTextColor(keyHintColor);
+
+		// 设置Key的图标
+		setKeyDrawablesPadding(keyDrawablePadding);
+		setKeyDrawablesLeft(keyDrawableLeft);
+		setKeyDrawablesRight(keyDrawableRight);
+
 		addView(mKeyView);
 
 		// value View
 		if (value != null) {
-			valueParams = new LayoutParams((int) valueWidth, (int) valueHeight, valueWeight);
-			mValueView.setText(value);
-			mValueView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, px2dip(valueSize));
-			mValueView.setTextColor(valueColor);
-			mValueView.setSingleLine(valueSingleLine);
+			Log.e("AAA", "valueParams valueWidth = " + valueWidth);
+			Log.e("AAA", "valueParams valueWeight = " + valueWeight);
+			valueParams = new LayoutParams(valueWidth, valueHeight, valueWeight);
+			if(valueMargin != -1) {
+				valueMarginLeft = valueMarginTop = valueMarginRight = valueMarginBottom = valueMargin;
+			}
+			valueParams.leftMargin = valueMarginLeft;
+			valueParams.topMargin = valueMarginTop;
+			valueParams.rightMargin = valueMarginRight;
+			valueParams.bottomMargin = valueMarginBottom;
 			mValueView.setLayoutParams(valueParams);
-//			mValueView.setTypeface(mValueView.getTypeface(), valueStyle);
+
+			if(valuePadding != -1) {
+				valuePaddingLeft = valuePaddingTop = valuePaddingRight = valuePaddingBottom = valuePadding;
+			}
+			mValueView.setPadding(valuePaddingLeft, valuePaddingTop, valuePaddingRight, valuePaddingBottom);
+
+			mValueView.setText(value);
+			mValueView.setTextColor(valueColor);
 			mValueView.getPaint().setFakeBoldText(valueStyle == 1);
+			mValueView.getPaint().setTextSize(valueSize);
 			mValueView.setGravity(valueGravity.value);
+			mValueView.setBackgroundDrawable(valueBackground);
+
+			mValueView.setLines(valueLines);
+//			mValueView.setMinLines(valueMinLines);
+//			mValueView.setMaxLines(valueMaxLines);
+//			mValueView.setMinWidth(valueMinWidth);
+//			mValueView.setMinHeight(valueMinHeight);
+//			mValueView.setMaxWidth(valueMaxWidth);
+//			mValueView.setMaxHeight(valueMaxHeight);
+
+			mValueView.setHint(valueHint);
+			mValueView.setHintTextColor(valueHintColor);
+
+			// 设置Value的图标
+			setValueDrawablesPadding(valueDrawablePadding);
+			setValueDrawablesLeft(valueDrawableLeft);
+			setValueDrawablesRight(valueDrawableRight);
 
 			addView(mValueView);
 		}
 
 		// icon right
 		if (iconRight != null) {
-			iconRightParams = new LayoutParams((int) iconRightWidth, (int) iconRightHeight);
-			iconRightParams.setMargins((int) iconRightMarginLeft, (int) iconRightMarginTop, (int) iconRightMarginRight, (int) iconRightMarginBottom);
+			iconRightParams = new LayoutParams(iconRightWidth, iconRightHeight);
+			iconRightParams.setMargins(iconRightMarginLeft, iconRightMarginTop, iconRightMarginRight, iconRightMarginBottom);
 			mIconRightView.setLayoutParams(iconRightParams);
 			mIconRightView.setImageDrawable(iconRight);
 			addView(mIconRightView);
@@ -250,6 +368,90 @@ public class ItemView extends LinearLayout{
 
 		// 加入layout
 		initDivider(context);
+	}
+
+	@Override
+	final public void setOrientation(int orientation) {
+		if (orientation == VERTICAL) {
+			throw new SecurityException("只能设置为水平排列：HORIZONTAL");
+		}
+		super.setOrientation(LinearLayout.HORIZONTAL);
+	}
+
+	/**
+	 * 获取ItemView的key文本
+	 * @return
+	 */
+	public String getKey(){
+		this.key = mKeyView.getText().toString();
+		return this.key;
+	}
+
+	/**
+	 * 获取ItemView的value文本
+	 * @return
+	 */
+	public String getValue(){
+		this.value = mValueView.getText().toString();
+		return this.value;
+	}
+
+	//	key
+	private void setKeyDrawablesPadding(int drawablePadding) {
+		this.keyDrawablePadding = drawablePadding;
+		mKeyView.setCompoundDrawablePadding(keyDrawablePadding);
+	}
+
+	private void setKeyDrawablesLeft(Drawable drawablesLeft) {
+		this.keyDrawableLeft = drawablesLeft;
+		if (keyDrawableLeft != null) {
+			keyDrawableLeft.setBounds(0, 0, keyDrawableLeft.getIntrinsicWidth(), keyDrawableLeft.getIntrinsicHeight());
+		}
+		mKeyView.setCompoundDrawablesWithIntrinsicBounds(keyDrawableLeft, null, keyDrawableRight, null);
+	}
+
+	private void setKeyDrawablesRight(Drawable drawablesRight) {
+		this.keyDrawableRight = drawablesRight;
+		if (keyDrawableRight != null) {
+			keyDrawableRight.setBounds(0, 0, keyDrawableRight.getIntrinsicWidth(), keyDrawableRight.getIntrinsicHeight());
+		}
+		mKeyView.setCompoundDrawablesWithIntrinsicBounds(keyDrawableLeft, null, keyDrawableRight, null);
+	}
+
+//	value
+	private void setValueDrawablesPadding(int drawablePadding) {
+		this.valueDrawablePadding = drawablePadding;
+		mValueView.setCompoundDrawablePadding(valueDrawablePadding);
+	}
+
+	private void setValueDrawablesLeft(Drawable drawablesLeft) {
+		this.valueDrawableLeft = drawablesLeft;
+		if (valueDrawableLeft != null) {
+			valueDrawableLeft.setBounds(0, 0, valueDrawableLeft.getIntrinsicWidth(), valueDrawableLeft.getIntrinsicHeight());
+		}
+		mValueView.setCompoundDrawablesWithIntrinsicBounds(valueDrawableLeft, null, valueDrawableRight, null);
+	}
+
+	private void setValueDrawablesRight(Drawable drawablesRight) {
+		this.valueDrawableRight= drawablesRight;
+		if (valueDrawableRight != null) {
+			valueDrawableRight.setBounds(0, 0, valueDrawableRight.getIntrinsicWidth(), valueDrawableRight.getIntrinsicWidth());
+		}
+		mValueView.setCompoundDrawablesWithIntrinsicBounds(null, null, valueDrawableRight, null);
+	}
+
+	public void setKeyOnClickListener(OnClickListener keyOnClickListener) {
+		this.keyOnClickListener = keyOnClickListener;
+		if (mKeyView != null) {
+			mKeyView.setOnClickListener(this.keyOnClickListener);
+		}
+	}
+
+	public void setValueOnClickListener(OnClickListener valueOnClickListener) {
+		this.valueOnClickListener = valueOnClickListener;
+		if (mValueView != null) {
+			mValueView.setOnClickListener(this.valueOnClickListener);
+		}
 	}
 
 	/**
@@ -262,25 +464,25 @@ public class ItemView extends LinearLayout{
 	 * dividerBottomMarginLeft、
 	 * dividerBottomMarginRight。
 	 */
-	private float dividerMargin = 0; // px
+	private int dividerMargin; // px
 
 	/**
 	 * 如果设置此值，则设置以下将无效：
 	 * dividerTopMarginLeft、
 	 * dividerTopMarginRight、
 	 */
-	private float dividerTopMargin = 0; // px
-	private float dividerTopMarginLeft = 0; // px
-	private float dividerTopMarginRight = 0; // px
+	private int dividerTopMargin; // px
+	private int dividerTopMarginLeft; // px
+	private int dividerTopMarginRight; // px
 
 	/**
 	 * 如果设置此值，则设置以下将无效：
 	 * dividerBottomMarginLeft、
 	 * dividerBottomMarginRight、
 	 */
-	private float dividerBottomMargin = 0; // px
-	private float dividerBottomMarginLeft = 0; // px
-	private float dividerBottomMarginRight = 0; // px
+	private int dividerBottomMargin = 0; // px
+	private int dividerBottomMarginLeft = 0; // px
+	private int dividerBottomMarginRight = 0; // px
 
 	private Paint dividerPaint;
 
@@ -588,37 +790,37 @@ public class ItemView extends LinearLayout{
 		mIconRightView.setBackgroundDrawable(drawable);
 	}
 
-	public void setDividerMargin(float dividerMargin) {
+	public void setDividerMargin(int dividerMargin) {
 		this.dividerMargin = dividerMargin;
 		invalidate();
 	}
 
-	public void setDividerTopMargin(float dividerTopMargin) {
+	public void setDividerTopMargin(int dividerTopMargin) {
 		this.dividerTopMargin = dividerTopMargin;
 		invalidate();
 	}
 
-	public void setDividerTopMarginLeft(float dividerTopMarginLeft) {
+	public void setDividerTopMarginLeft(int dividerTopMarginLeft) {
 		this.dividerTopMarginLeft = dividerTopMarginLeft;
 		invalidate();
 	}
 
-	public void setDividerTopMarginRight(float dividerTopMarginRight) {
+	public void setDividerTopMarginRight(int dividerTopMarginRight) {
 		this.dividerTopMarginRight = dividerTopMarginRight;
 		invalidate();
 	}
 
-	public void setDividerBottomMargin(float dividerBottomMargin) {
+	public void setDividerBottomMargin(int dividerBottomMargin) {
 		this.dividerBottomMargin = dividerBottomMargin;
 		invalidate();
 	}
 
-	public void setDividerBottomMarginLeft(float dividerBottomMarginLeft) {
+	public void setDividerBottomMarginLeft(int dividerBottomMarginLeft) {
 		this.dividerBottomMarginLeft = dividerBottomMarginLeft;
 		invalidate();
 	}
 
-	public void setDividerBottomMarginRight(float dividerBottomMarginRight) {
+	public void setDividerBottomMarginRight(int dividerBottomMarginRight) {
 		this.dividerBottomMarginRight = dividerBottomMarginRight;
 		invalidate();
 	}
@@ -628,7 +830,7 @@ public class ItemView extends LinearLayout{
 	 * @param dipValue dip值
 	 * @return xp值
 	 */
-	public float dip2px(float dipValue){
+	public int dip2px(float dipValue){
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (dipValue * scale + 0.5f);
 	}
@@ -638,7 +840,7 @@ public class ItemView extends LinearLayout{
 	 * @param pxValue px值
 	 * @return dip值
 	 */
-	public float px2dip(float pxValue){
+	public int px2dip(float pxValue){
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (pxValue / scale + 0.5f);
 	}
@@ -714,7 +916,7 @@ public class ItemView extends LinearLayout{
 					return position;
 				}
 			}
-			return null;
+			return left;
 		}
 	}
 }
