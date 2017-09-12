@@ -6,9 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class ItemView extends LinearLayout{
 
 	// 指示器
 	private DividerMode dividerMode = DividerMode.None;
-	private int dividerSize = 1; 			// 线条大小(DIP) 0.5F
+	private int dividerSize = 2; 			// 线条大小(px)
 	private int dividerColor = 0xffDFDFDF;  // 线条颜色
 	// 左图标
 	private Drawable iconLeft;
@@ -59,9 +60,8 @@ public class ItemView extends LinearLayout{
 	private int keyColor = Color.BLACK;				// key文本颜色
 	private int keySize = 14;						// key文本大小
 	private int keyStyle = 0; 						// 0正常，1粗体
-	private int keyLines = 0;						// 当前显示几行
-//	private int keyMinLines = 0;					// 最小行数
-//	private int keyMaxLines = Integer.MAX_VALUE; 	// 最大行数
+	private int keyLineSpacingExtra; // 行间距值（不是倍数）
+	private boolean keySingleLine;					// 是否只显示一行
 	// key-hint
 	private String keyHint;
 	private int keyHintColor = Color.LTGRAY;		// key-hint文本颜色
@@ -69,10 +69,6 @@ public class ItemView extends LinearLayout{
 	private float keyWeight = 0;							// key权重
 	private int keyWidth = LayoutParams.WRAP_CONTENT;		// key宽
 	private int keyHeight = LayoutParams.WRAP_CONTENT;		// key高
-//	private int keyMinWidth = LayoutParams.WRAP_CONTENT;	// key最小宽
-//	private int keyMinHeight = LayoutParams.WRAP_CONTENT;	// key最小高
-//	private int keyMaxWidth = LayoutParams.WRAP_CONTENT;	// key最大宽
-//	private int keyMaxHeight = LayoutParams.WRAP_CONTENT;	// key最大高
 	// key-margin
 	private int keyMargin = -1; 			// 当 keyMargin >= 0 时，左上右下的值等于 keyMargin
 	private int keyMarginLeft;				// keyView距左
@@ -97,9 +93,8 @@ public class ItemView extends LinearLayout{
 	private int valueColor = Color.BLACK;
 	private int valueSize = 14;
 	private int valueStyle = 0; // 0正常，1粗体
-	private int valueLines = 0;
-//	private int valueMinLines = 1;
-//	private int valueMaxLines = Integer.MAX_VALUE;
+	private int valueLineSpacingExtra; // 行间距值（不是倍数）
+	private boolean valueSingleLine;
 	// value-hint
 	private String valueHint;
 	private int valueHintColor = Color.LTGRAY;
@@ -107,10 +102,6 @@ public class ItemView extends LinearLayout{
 	private float valueWeight;
 	private int valueWidth = LayoutParams.WRAP_CONTENT;
 	private int valueHeight = LayoutParams.WRAP_CONTENT;
-//	private int valueMinWidth = LayoutParams.WRAP_CONTENT;
-//	private int valueMinHeight = LayoutParams.WRAP_CONTENT;
-//	private int valueMaxWidth = LayoutParams.WRAP_CONTENT;
-//	private int valueMaxHeight = LayoutParams.WRAP_CONTENT;
 	// value-margin
 	private int valueMargin = -1; // 当 valueMargin >= 0 时，左上右下的值等于 valueMargin
 	private int valueMarginLeft;
@@ -136,19 +127,25 @@ public class ItemView extends LinearLayout{
 		this(context, null);
 	}
 
-	public ItemView(Context context, AttributeSet attrs){
+	public ItemView(Context context, @Nullable AttributeSet attrs){
 		this(context, attrs, 0);
 	}
 
-	public ItemView(Context context,  @Nullable AttributeSet attrs, int defStyleAttr){
+	public ItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr){
 		super(context, attrs, defStyleAttr);
 		this.context = context;
-		init(attrs, defStyleAttr);
+		init(attrs, defStyleAttr, 0);
 	}
 
-	@SuppressWarnings("deprecation")
-	private void init(AttributeSet attrs, int defStyle){
-		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView, defStyle, 0);
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+	public ItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+		super(context, attrs, defStyleAttr, defStyleRes);
+		this.context = context;
+		init(attrs, defStyleAttr, defStyleRes);
+	}
+
+	private void init(AttributeSet attrs, int defStyle, int defStyleRes){
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView, defStyle, defStyleRes);
 		if (a != null) {
 			// 线
 			dividerColor = a.getColor(R.styleable.ItemView_dividerColor, dividerColor);
@@ -184,9 +181,8 @@ public class ItemView extends LinearLayout{
 			keySize = a.getDimensionPixelSize(R.styleable.ItemView_keySize, keySize);
 			keyColor = a.getColor(R.styleable.ItemView_keyColor, keyColor);
 			keyStyle = a.getInt(R.styleable.ItemView_keyStyle, keyStyle);
-			keyLines = a.getInt(R.styleable.ItemView_keyLines, keyLines);
-//			keyMinLines = a.getInt(R.styleable.ItemView_keyMinLines, keyMinLines);
-//			keyMaxLines = a.getInt(R.styleable.ItemView_keyMaxLines, keyMaxLines);
+			keyLineSpacingExtra = a.getDimensionPixelSize(R.styleable.ItemView_keyLineSpacingExtra, keyLineSpacingExtra);
+			keySingleLine = a.getBoolean(R.styleable.ItemView_keySingleLines, keySingleLine);
 			keyBackground = a.getDrawable(R.styleable.ItemView_keyBackground);
 			keyGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_keyGravity, keyGravity.value));
 			// key-hint
@@ -196,10 +192,6 @@ public class ItemView extends LinearLayout{
 			keyWeight = a.getFloat(R.styleable.ItemView_keyWeight, keyWeight);
 			keyWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyWidth, keyWidth);
 			keyHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyHeight, keyHeight);
-//			keyMinWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyMinWidth, keyMinWidth);
-//			keyMinHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyMinHeight, keyMinHeight);
-//			keyMaxWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyMaxWidth, keyMaxWidth);
-//			keyMaxHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyMaxHeight, keyMaxHeight);
 			// key-margin
 			keyMargin = a.getDimensionPixelSize(R.styleable.ItemView_keyMargin, keyMargin);
 			keyMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginLeft, keyMarginLeft);
@@ -223,9 +215,8 @@ public class ItemView extends LinearLayout{
 				valueSize = a.getDimensionPixelSize(R.styleable.ItemView_valueSize, valueSize);
 				valueColor = a.getColor(R.styleable.ItemView_valueColor, valueColor);
 				valueStyle = a.getInt(R.styleable.ItemView_valueStyle, valueStyle);
-				valueLines = a.getInt(R.styleable.ItemView_valueLines, valueLines);
-//				valueMinLines = a.getInt(R.styleable.ItemView_valueMinLines, valueMinLines);
-//				valueMaxLines = a.getInt(R.styleable.ItemView_valueMaxLines, valueMaxLines);
+				valueSingleLine = a.getBoolean(R.styleable.ItemView_valueSingleLine, valueSingleLine);
+				valueLineSpacingExtra = a.getDimensionPixelSize(R.styleable.ItemView_valueLineSpacingExtra, valueLineSpacingExtra);
 				valueBackground = a.getDrawable(R.styleable.ItemView_valueBackground);
 				valueGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_valueGravity, valueGravity.value));
 				// value-hint
@@ -235,10 +226,6 @@ public class ItemView extends LinearLayout{
 				valueWeight = a.getFloat(R.styleable.ItemView_valueWeight, valueWeight);
 				valueWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueWidth, valueWidth);
 				valueHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueHeight, valueHeight);
-//				valueMinWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueMinWidth, valueMinWidth);
-//				valueMinHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueMinHeight, valueMinHeight);
-//				valueMaxWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueMaxWidth, valueMaxWidth);
-//				valueMaxHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueMaxHeight, valueMaxHeight);
 				// value-margin
 				valueMargin = a.getDimensionPixelSize(R.styleable.ItemView_valueMargin, valueMargin);
 				valueMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginLeft, valueMarginLeft);
@@ -277,6 +264,7 @@ public class ItemView extends LinearLayout{
 		}
 
 		// key View
+		if(keyWeight > 0) keyWidth = LayoutParams.WRAP_CONTENT;
 		keyParams = new LayoutParams(keyWidth, keyHeight, keyWeight);
 		if(keyMargin != -1) keyMarginLeft = keyMarginTop = keyMarginRight = keyMarginBottom = keyMargin;
 		keyParams.leftMargin = keyMarginLeft;
@@ -294,14 +282,8 @@ public class ItemView extends LinearLayout{
 		mKeyView.getPaint().setFakeBoldText(keyStyle == 1);
 		mKeyView.getPaint().setTextSize(keySize);
 
-		mKeyView.setLines(keyLines);
-//		mKeyView.setMinLines(keyMinLines);
-//		mKeyView.setMaxLines(keyMaxLines);
-//		mKeyView.setMinWidth(keyMinWidth);
-//		mKeyView.setMinHeight(keyMinHeight);
-//		mKeyView.setMaxWidth(keyMaxWidth);
-//		mKeyView.setMaxHeight(keyMaxHeight);
-
+		mKeyView.setLineSpacing(keyLineSpacingExtra, 1);
+		mKeyView.setSingleLine(keySingleLine);
 		mKeyView.setHint(keyHint);
 		mKeyView.setHintTextColor(keyHintColor);
 
@@ -314,8 +296,7 @@ public class ItemView extends LinearLayout{
 
 		// value View
 		if (value != null) {
-			Log.e("AAA", "valueParams valueWidth = " + valueWidth);
-			Log.e("AAA", "valueParams valueWeight = " + valueWeight);
+			if(valueWeight > 0) valueWidth = LayoutParams.WRAP_CONTENT;
 			valueParams = new LayoutParams(valueWidth, valueHeight, valueWeight);
 			if(valueMargin != -1) {
 				valueMarginLeft = valueMarginTop = valueMarginRight = valueMarginBottom = valueMargin;
@@ -338,14 +319,8 @@ public class ItemView extends LinearLayout{
 			mValueView.setGravity(valueGravity.value);
 			mValueView.setBackgroundDrawable(valueBackground);
 
-			mValueView.setLines(valueLines);
-//			mValueView.setMinLines(valueMinLines);
-//			mValueView.setMaxLines(valueMaxLines);
-//			mValueView.setMinWidth(valueMinWidth);
-//			mValueView.setMinHeight(valueMinHeight);
-//			mValueView.setMaxWidth(valueMaxWidth);
-//			mValueView.setMaxHeight(valueMaxHeight);
-
+			mValueView.setLineSpacing(valueLineSpacingExtra, 1);
+			mValueView.setSingleLine(valueSingleLine);
 			mValueView.setHint(valueHint);
 			mValueView.setHintTextColor(valueHintColor);
 
@@ -823,26 +798,6 @@ public class ItemView extends LinearLayout{
 	public void setDividerBottomMarginRight(int dividerBottomMarginRight) {
 		this.dividerBottomMarginRight = dividerBottomMarginRight;
 		invalidate();
-	}
-
-	/**
-	 * dip转换为px
-	 * @param dipValue dip值
-	 * @return xp值
-	 */
-	public int dip2px(float dipValue){
-		final float scale = context.getResources().getDisplayMetrics().density;
-		return (int) (dipValue * scale + 0.5f);
-	}
-
-	/**
-	 * px转换为dip
-	 * @param pxValue px值
-	 * @return dip值
-	 */
-	public int px2dip(float pxValue){
-		final float scale = context.getResources().getDisplayMetrics().density;
-		return (int) (pxValue / scale + 0.5f);
 	}
 
 	/**

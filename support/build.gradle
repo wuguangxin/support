@@ -2,10 +2,10 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20170823"
-def mVersionCode = 8
-def mVersionName = "1.0.8"
-def mDescription = "优化ItemView的属性功能，可以更多的设置key和value的属性"
+def mVersionTime = "20170907"
+def mVersionCode = 9
+def mVersionName = "1.0.9"
+def mDescription = "修复ItemView的key和value在android7包括以下系统不显示文字bug"
 
 android {
     compileSdkVersion 25

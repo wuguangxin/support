@@ -7,17 +7,192 @@
     android:background="#F2F3F5"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/ToastUtils"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ToastUtils"/>
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/ToastUtils"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ToastUtils"/>
 
-    <Button
-        android:id="@+id/MyDialog"
-        android:layout_width="-2dip"
-        android:layout_height="-2dip"
-        android:text="MyDialog"/>
+        <Button
+            android:id="@+id/MyDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MyDialog"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--项目名称-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="12dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerSize="1dip"
+            app:dividerColor="@color/line"
+            app:dividerMode="top"
+            app:key="项目名称："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="安心宝20170101001"
+            app:valueColor="#454545"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--出借日期-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_date"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            app:dividerSize="1dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerColor="@color/line"
+            app:dividerMode="top"
+            app:dividerTop_marginLeft="15dip"
+            app:key="出借日期："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="1970-01-01"
+            app:valueColor="#454545"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--期待年化回报率-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_income"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerColor="@color/line"
+            app:dividerSize="0.5dip"
+            app:dividerMode="top"
+            app:dividerTop_marginLeft="15dip"
+            app:key="期待年化回报率："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="0%"
+            app:valueColor="#454545"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--项目期限-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_duration"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            app:dividerSize="0.5dip"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerColor="@color/line"
+            app:dividerTop_marginLeft="15dip"
+            app:dividerMode="both"
+            app:key="剩余期限："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="0天"
+            app:valueColor="#454545"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--还款方式-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_type"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:layout_marginTop="12dip"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerColor="@color/line"
+            app:dividerMode="top"
+            app:key="还款方式："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="按月付息，到期还本"
+            app:valueColor="#454545"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--转让金额-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_money"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerColor="@color/line"
+            app:dividerMode="top"
+            app:dividerTop_marginLeft="15dip"
+            app:key="转让金额："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="0.00元"
+            app:valueColor="@color/text_blue"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--接力奖-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_discount_money"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerColor="@color/line"
+            app:dividerMode="top"
+            app:dividerTop_marginLeft="15dip"
+            app:key="    接力奖："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="0.00元"
+            app:valueColor="@color/text_blue"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--实付金额-->
+        <com.wuguangxin.view.ItemView
+            android:id="@+id/debts_invest_confirm_realMoney"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:dividerColor="@color/line"
+            app:dividerMode="both"
+            app:dividerTop_marginLeft="15dip"
+            app:key="实付金额："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="0.00元"
+            app:valueColor="@color/text_blue"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+    </LinearLayout>
 
     <com.wuguangxin.view.ItemView
         android:id="@+id/itemView"
@@ -30,14 +205,12 @@
         android:paddingLeft="15dip"
         android:paddingRight="15dp"
         android:paddingTop="15dip"
-
         app:key="姓名："
         app:keyBackground="#44FF0000"
         app:keyColor="#000000"
         app:keyHeight="-2dp"
         app:keyWeight="1"
         app:keySize="14dip"
-
         app:value="1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
         app:valueBackground="#eee"
         app:valueColor="#000000"
@@ -57,11 +230,9 @@
         android:paddingLeft="15dip"
         android:paddingRight="15dp"
         android:paddingTop="15dip"
-
         app:key="姓名："
         app:keyColor="#000000"
         app:keySize="14dip"
-
         app:value="2张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
         app:valueColor="@color/black"
         app:valueDrawableRight="@mipmap/arrow"
@@ -96,9 +267,8 @@
             android:layout_height="wrap_content"
             android:drawableRight="@mipmap/arrow"
             android:gravity="right"
-            android:lines="0"
             android:text="3张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
-            android:textColor="@color/black"
+            android:textColor="#000000"
             android:textSize="14dip"/>
 
     </LinearLayout>

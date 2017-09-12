@@ -46,17 +46,11 @@
         <attr name="key" />
         <attr name="keySize" format="reference|dimension" />
         <attr name="keyColor" format="reference|color" />
+        <attr name="keyLineSpacingExtra" format="reference|dimension" />
+        <attr name="keySingleLines" format="boolean" />
         <!--key-hint-->
         <attr name="keyHint" format="string"/>
         <attr name="keyHintColor" format="reference|color" />
-
-        <!--<attr name="keyMinWidth" format="reference|dimension" />-->
-        <!--<attr name="keyMinHeight" format="reference|dimension" />-->
-        <!--<attr name="keyMaxWidth" format="reference|dimension" />-->
-        <!--<attr name="keyMaxHeight" format="reference|dimension" />-->
-        <!--<attr name="keyMinLines" format="integer" />-->
-        <!--<attr name="keyMaxLines" format="integer" />-->
-        <attr name="keyLines" format="integer" />
 
         <attr name="keyWidth" format="reference|dimension" />
         <attr name="keyHeight" format="reference|dimension" />
@@ -83,17 +77,11 @@
         <attr name="value" />
         <attr name="valueSize" format="reference|dimension" />
         <attr name="valueColor" format="reference|color" />
+        <attr name="valueLineSpacingExtra" format="reference|dimension" />
+        <attr name="valueSingleLine" format="boolean" />
         <!--value-hint-->
         <attr name="valueHint" format="string"/>
         <attr name="valueHintColor" format="reference|color" />
-
-        <!--<attr name="valueMinWidth" format="reference|dimension" />-->
-        <!--<attr name="valueMinHeight" format="reference|dimension" />-->
-        <!--<attr name="valueMaxWidth" format="reference|dimension" />-->
-        <!--<attr name="valueMaxHeight" format="reference|dimension" />-->
-        <!--<attr name="valueMinLines" format="integer" />-->
-        <!--<attr name="valueMaxLines" format="integer" />-->
-        <attr name="valueLines" format="integer" />
 
         <attr name="valueWidth" format="reference|dimension" />
         <attr name="valueHeight" format="reference|dimension" />
