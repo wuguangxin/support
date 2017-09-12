@@ -372,12 +372,12 @@ public class ItemView extends LinearLayout{
 	}
 
 	//	key
-	private void setKeyDrawablesPadding(int drawablePadding) {
+	public void setKeyDrawablesPadding(int drawablePadding) {
 		this.keyDrawablePadding = drawablePadding;
 		mKeyView.setCompoundDrawablePadding(keyDrawablePadding);
 	}
 
-	private void setKeyDrawablesLeft(Drawable drawablesLeft) {
+	public void setKeyDrawablesLeft(Drawable drawablesLeft) {
 		this.keyDrawableLeft = drawablesLeft;
 		if (keyDrawableLeft != null) {
 			keyDrawableLeft.setBounds(0, 0, keyDrawableLeft.getIntrinsicWidth(), keyDrawableLeft.getIntrinsicHeight());
@@ -385,7 +385,7 @@ public class ItemView extends LinearLayout{
 		mKeyView.setCompoundDrawablesWithIntrinsicBounds(keyDrawableLeft, null, keyDrawableRight, null);
 	}
 
-	private void setKeyDrawablesRight(Drawable drawablesRight) {
+	public void setKeyDrawablesRight(Drawable drawablesRight) {
 		this.keyDrawableRight = drawablesRight;
 		if (keyDrawableRight != null) {
 			keyDrawableRight.setBounds(0, 0, keyDrawableRight.getIntrinsicWidth(), keyDrawableRight.getIntrinsicHeight());
@@ -393,13 +393,13 @@ public class ItemView extends LinearLayout{
 		mKeyView.setCompoundDrawablesWithIntrinsicBounds(keyDrawableLeft, null, keyDrawableRight, null);
 	}
 
-//	value
-	private void setValueDrawablesPadding(int drawablePadding) {
+	//	value
+	public void setValueDrawablesPadding(int drawablePadding) {
 		this.valueDrawablePadding = drawablePadding;
 		mValueView.setCompoundDrawablePadding(valueDrawablePadding);
 	}
 
-	private void setValueDrawablesLeft(Drawable drawablesLeft) {
+	public void setValueDrawablesLeft(Drawable drawablesLeft) {
 		this.valueDrawableLeft = drawablesLeft;
 		if (valueDrawableLeft != null) {
 			valueDrawableLeft.setBounds(0, 0, valueDrawableLeft.getIntrinsicWidth(), valueDrawableLeft.getIntrinsicHeight());
@@ -407,7 +407,7 @@ public class ItemView extends LinearLayout{
 		mValueView.setCompoundDrawablesWithIntrinsicBounds(valueDrawableLeft, null, valueDrawableRight, null);
 	}
 
-	private void setValueDrawablesRight(Drawable drawablesRight) {
+	public void setValueDrawablesRight(Drawable drawablesRight) {
 		this.valueDrawableRight= drawablesRight;
 		if (valueDrawableRight != null) {
 			valueDrawableRight.setBounds(0, 0, valueDrawableRight.getIntrinsicWidth(), valueDrawableRight.getIntrinsicWidth());
