@@ -3,9 +3,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release' // bintray
 
 def mVersionTime = "20170912"
-def mVersionCode = 10
-def mVersionName = "1.0.10"
-def mDescription = "修改ItemView的部分方法修饰符为public"
+def mVersionCode = 11
+def mVersionName = "1.0.11"
+def mDescription = "修改TextChangeListener当EditText为禁用时，不显示清除按钮。"
 
 android {
     compileSdkVersion 25

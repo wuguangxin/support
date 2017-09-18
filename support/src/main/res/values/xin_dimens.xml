@@ -88,10 +88,16 @@
 
     <dimen name="xin_history_score_tb">10dp</dimen>
 
-    <!--对话MyDialog框配置-->
+    <!-- ==================对话框MyDialog配置================= -->
+    <!--MyDialog左边的按钮左上角圆角半径-->
     <dimen name="xin_dialog_button_top_left_corner_size">2dip</dimen>
+    <!--MyDialog右边的按钮右上角圆角半径-->
     <dimen name="xin_dialog_button_top_right_corner_size">2dip</dimen>
+    <!--MyDialog左边的按钮左下角圆角半径-->
     <dimen name="xin_dialog_button_bottom_left_corner_size">2dip</dimen>
+    <!--MyDialog右边的按钮右下角圆角半径-->
     <dimen name="xin_dialog_button_bottom_right_corner_size">2dip</dimen>
+    <!--MyDialog确认/取消按钮文字大小-->
+    <dimen name="xin_dialog_button_font_size">14dip</dimen>
 
 </resources>

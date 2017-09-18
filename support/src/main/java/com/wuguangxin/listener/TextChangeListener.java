@@ -178,12 +178,20 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	 */
 	private void setClearViewVisibility(int visibility){
 		if(mClearBtn != null){
+			// 如果输入框不可用，则不显示清除按钮
+			if (!mEditText.isEnabled()) {
+				visibility = View.GONE;
+			}
 			if (visibility == View.GONE) {
 				if (mClearBtn.getVisibility() != View.GONE) {
 					mClearBtn.setVisibility(View.GONE);
 					mClearBtn.startAnimation(fade_out);
 				}
 			} else {
+				// 不可用，则不显示清空按钮
+				if (!mEditText.isEnabled()) {
+					return;
+				}
 				// 如果已获得焦点、不是显示的并且内容不为空，则显示清除按钮
 				if (mEditText.isFocused() && mClearBtn.getVisibility() != visibility && !TextUtils.isEmpty(mEditText.getText().toString().trim())) {
 					mClearBtn.setVisibility(visibility);

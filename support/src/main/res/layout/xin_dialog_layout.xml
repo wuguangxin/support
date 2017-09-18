@@ -130,6 +130,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:divider="@drawable/xin_dialog_button_divider"
+                android:showDividers="middle"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:visibility="visible">
@@ -143,14 +145,8 @@
                     android:gravity="center"
                     android:text="@string/dialog_button_negative_text_default"
                     android:textColor="@drawable/xin_dialog_button_font_color"
-                    android:textSize="@dimen/font_M"
+                    android:textSize="@dimen/xin_dialog_button_font_size"
                     android:visibility="visible"/>
-
-                <View
-                    android:id="@+id/dialog_bottom_line"
-                    android:layout_width="0.5dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/xcccccc"/>
 
                 <TextView
                     android:id="@+id/df_dialog_button_positive"
@@ -161,7 +157,7 @@
                     android:gravity="center"
                     android:text="@string/dialog_button_positive_text_default"
                     android:textColor="@drawable/xin_dialog_button_font_color"
-                    android:textSize="@dimen/font_M"
+                    android:textSize="@dimen/xin_dialog_button_font_size"
                     android:visibility="visible"/>
             </LinearLayout>
         </LinearLayout>

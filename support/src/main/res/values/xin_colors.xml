@@ -34,6 +34,11 @@
     <color name="xin_selector_default_normal">#ffffff</color>
     <color name="xin_selector_default_pressed">#cccccc</color>
 
+    <!-- 对话框确认和取消 -->
+    <color name="xin_dialog_button_font_color_normal">#333333</color>
+    <color name="xin_dialog_button_font_color_pressed">#333333</color>
+    <color name="xin_dialog_button_font_color_disable">#bbbbbb</color>
+
     <!-- listView相关的默认颜色 -->
     <color name="xin_item_default_color">#F2F3F5</color> <!-- #85D3EF -->
     <color name="xin_listview_divider_color">#d1d1d1</color>

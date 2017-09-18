@@ -51,7 +51,6 @@ public class MyDialog extends Dialog implements DialogInterface{
 	private RelativeLayout mDialogBodyPasswordEditTextLayout; // 输入密码布局
 	private LinearLayout mDialogBodyUserLayout; // 用户自定义的view布局显示区
 	private View mDialogTopLine;
-	private View mDialogBottomLine;
 	private Context context;
 	private View mDialogButtonLayout;
 	private TextView mPositiveButton; // 确认按钮
@@ -129,7 +128,6 @@ public class MyDialog extends Dialog implements DialogInterface{
 		mDialogMessage = (TextView) mDialogLayout.findViewById(R.id.df_dialog_message);  //消息内容
 		mDialogListView = (MyListView) mDialogLayout.findViewById(R.id.df_dialog_listview_default);  // 默认listView
 		mDialogGridView = (MyGridView) mDialogLayout.findViewById(R.id.df_dialog_gridview_default);  // 默认listView
-		mDialogBottomLine = mDialogLayout.findViewById(R.id.dialog_bottom_line); // 提交按钮
 		mDialogButtonLayout = mDialogLayout.findViewById(R.id.df_dialog_button_layout); // 按钮布局
 		mPositiveButton = (TextView) mDialogLayout.findViewById(R.id.df_dialog_button_positive); // 确认按钮
 		mNegativeButton = (TextView) mDialogLayout.findViewById(R.id.df_dialog_button_negative); //否认按钮
@@ -344,11 +342,9 @@ public class MyDialog extends Dialog implements DialogInterface{
 	private void setButtonStyle(TextView button){
 		// 两按钮都显示，则显示中间分割线
 		if (mPositiveButton.getVisibility() == View.VISIBLE && mNegativeButton.getVisibility() == View.VISIBLE) {
-			mDialogBottomLine.setVisibility(View.VISIBLE);
 			mNegativeButton.setBackgroundResource(R.drawable.xin_dialog_bottom_button_left);
 			mPositiveButton.setBackgroundResource(R.drawable.xin_dialog_bottom_button_right);
 		} else {
-			mDialogBottomLine.setVisibility(View.GONE);
 			button.setBackgroundResource(R.drawable.xin_dialog_bottom_button_single);
 		}
 	}

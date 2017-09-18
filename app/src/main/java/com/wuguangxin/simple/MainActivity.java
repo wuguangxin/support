@@ -7,15 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.wuguangxin.dialog.MyDialog;
+import com.wuguangxin.listener.TextChangeListener;
+import com.wuguangxin.utils.ToastUtils;
 import com.wuguangxin.view.ItemView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MyDialog mDialog;
     private ItemView mItemView;
+    private EditText mEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.ToastUtils).setOnClickListener(this);
         findViewById(R.id.MyDialog).setOnClickListener(this);
 
+        mEditText = (EditText) findViewById(R.id.edit);
+        mEditText.addTextChangedListener(new TextChangeListener(mEditText, R.id.del));
+        findViewById(R.id.disable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditText.setEnabled(!mEditText.isEnabled());
+            }
+        });
+        findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditText.setText("插入的文字");
+            }
+        });
+        mEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                ToastUtils.showToast(MainActivity.this, "hasFocus = " + hasFocus);
+            }
+        });
         mItemView = (ItemView) findViewById(R.id.itemView);
         mItemView.setOnClickListener(this);
         mItemView.getKeyView().setOnClickListener(new View.OnClickListener() {

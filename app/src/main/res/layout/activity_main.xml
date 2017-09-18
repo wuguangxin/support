@@ -26,6 +26,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="插入文字"/>
+
+        <Button
+            android:id="@+id/disable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="禁用"/>
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="请输入"/>
+
+        <Button
+            android:id="@+id/del"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="清空"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
