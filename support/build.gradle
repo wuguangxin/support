@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20170918"
+def mVersionTime = "20170924"
 def mVersionCode = 13
 def mVersionName = "1.0.13"
 def mDescription = "优化CircleProgressView、ItemView组件"
