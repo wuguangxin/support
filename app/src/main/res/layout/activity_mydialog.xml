@@ -12,26 +12,6 @@
         android:background="#F2F3F5"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/ItemView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ItemView"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/CircleProgressView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CircleProgressView"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/ToastUtils"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ToastUtils"
-            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/MyDialog"

@@ -1,20 +1,18 @@
 package com.wuguangxin.view;
 
-import com.wuguangxin.R;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.view.View;
-
-import android.graphics.Path;
+import com.wuguangxin.R;
 
 /**
  * 水波纹圆形进度，形状为正方形的两层水波纹，无法实现圆形形状
@@ -26,7 +24,7 @@ public class WaveView2 extends LinearLayout{
 	protected static final int LITTLE = 3;
 	private int aboveWaveColor;
 	private int blowWaveColor;
-	private int progress;
+	private float progress; // 进度0-1
 	private int waveHeight;
 	private int waveMultiple;
 	private int waveHz;
@@ -35,7 +33,7 @@ public class WaveView2 extends LinearLayout{
 	private Solid mSolid;
 	private final int DEFAULT_ABOVE_WAVE_COLOR = 0xff0000ff;
 	private final int DEFAULT_BLOW_WAVE_COLOR = 0xff0000ff;
-	private final int DEFAULT_PROGRESS = 0;
+	private final float DEFAULT_PROGRESS = 0; // 进度0-1
 
 	public WaveView2(Context context){
 		this(context, null);
@@ -48,7 +46,7 @@ public class WaveView2 extends LinearLayout{
 		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WaveView2, R.attr.waveViewStyle, 0);
 		aboveWaveColor = a.getColor(R.styleable.WaveView2_above_wave_color, DEFAULT_ABOVE_WAVE_COLOR);
 		blowWaveColor = a.getColor(R.styleable.WaveView2_blow_wave_color, DEFAULT_BLOW_WAVE_COLOR);
-		progress = a.getInt(R.styleable.WaveView2_progress, DEFAULT_PROGRESS);
+		progress = a.getFloat(R.styleable.WaveView2_progress, DEFAULT_PROGRESS);
 		waveHeight = a.getInt(R.styleable.WaveView2_wave_height, MIDDLE);
 		waveMultiple = a.getInt(R.styleable.WaveView2_wave_length, LARGE);
 		waveHz = a.getInt(R.styleable.WaveView2_wave_hz, MIDDLE); 
@@ -81,8 +79,8 @@ public class WaveView2 extends LinearLayout{
 		super.onDraw(canvas);
 	}
 
-	public void setProgress(int progress){
-		this.progress = progress > 100 ? 100 : progress;
+	public void setProgress(float progress){
+		this.progress = progress > 1 ? 1 : progress;
 		computeWaveToTop();
 	}
 
@@ -95,7 +93,7 @@ public class WaveView2 extends LinearLayout{
 	}
 
 	private void computeWaveToTop(){
-		mWaveToTop = (int) (getHeight() * (1f - progress / 100f));
+		mWaveToTop = (int) (getHeight() * (1f - progress));
 		ViewGroup.LayoutParams params = mWave.getLayoutParams();
 		if (params != null) {
 			((LayoutParams) params).topMargin = mWaveToTop;

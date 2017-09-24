@@ -1,7 +1,9 @@
 package com.wuguangxin.view;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -529,6 +531,8 @@ public class ItemView extends LinearLayout{
 		canvas.drawLine(bottomStartX, bottomStartY, bottomStopX, bottomStopY, dividerPaint); // 下
 	}
 
+	// =============================== getter start=================================================
+
 	/**
 	 * 获取key的View
 	 * @return key View
@@ -545,6 +549,23 @@ public class ItemView extends LinearLayout{
 		return mValueView;
 	}
 
+	/**
+	 * 获取左边的图标ImageView
+	 * @return
+	 */
+	public ImageView getIconLeftView() {
+		return mIconLeftView;
+	}
+
+	/**
+	 * 获取右边的图标ImageView
+	 * @return
+	 */
+	public ImageView getIconRightView() {
+		return mIconRightView;
+	}
+
+	// =============================== 对key、value的操作 start======================================
 	/**
 	 * 设置Key文本资源ID
 	 * @param resId 文本资源ID
@@ -709,12 +730,13 @@ public class ItemView extends LinearLayout{
 		setValue(value);
 	}
 
+	// =============================== 对左边图标的操作 start=========================================
 	/**
 	 * 设置左边icon的margins
-	 * @param left
-	 * @param top
-	 * @param right
-	 * @param bottom
+	 * @param left 左
+	 * @param top 上
+	 * @param right 右
+	 * @param bottom 下
 	 */
 	public void setIconLeftMargins(int left, int top, int right, int bottom){
 		iconLeftParams.setMargins(left, top, right, bottom);
@@ -722,79 +744,190 @@ public class ItemView extends LinearLayout{
 
 	/**
 	 * 设置右边icon的margins
-	 * @param left
-	 * @param top
-	 * @param right
-	 * @param bottom
+	 * @param left 左
+	 * @param top 上
+	 * @param right 右
+	 * @param bottom 下
 	 */
 	public void setIconRightMargins(int left, int top, int right, int bottom){
 		iconRightParams.setMargins(left, top, right, bottom);
 	}
 
 	/**
-	 * 设置左边图标ID
-	 * @param resid 左边图标ID
+	 * 设置左边图标资源ID
+	 * @param resId 资源ID
 	 */
-	public void setIconLeftImageResource(int resid){
-		mIconLeftView.setBackgroundResource(resid);
+	public void setIconLeftImageResource(int resId){
+		mIconLeftView.setImageResource(resId);
 	}
 
 	/**
 	 * 设置左边图标Drawable
-	 * @param drawable 左边图标Drawable
+	 * @param drawable Drawable
 	 */
-	@SuppressWarnings("deprecation")
-	public void setIconLeftImageResource(Drawable drawable){
+	public void setIconLeftImageDrawable(Drawable drawable){
+		mIconLeftView.setImageDrawable(drawable);
+	}
+
+	/**
+	 * 设置左边图标 Bitmap
+	 * @param bitmap Bitmap
+	 */
+	public void setIconLeftImageBitmap(Bitmap bitmap){
+		mIconLeftView.setImageBitmap(bitmap);
+	}
+
+	/**
+	 * 设置左边图标背景资源ID
+	 * @param resId 资源ID
+	 */
+	public void setIconLeftBackgroundResource(int resId){
+		mIconLeftView.setBackgroundResource(resId);
+	}
+
+	/**
+	 * 设置左边图标背景Drawable
+	 * @param drawable Drawable
+	 */
+	public void setIconLeftBackgroundDrawable(Drawable drawable){
 		mIconLeftView.setBackgroundDrawable(drawable);
 	}
 
 	/**
-	 * 设置右边图标id
-	 * @param resid 右边图标ID
+	 * 设置左边图标背景Drawable
+	 * @param drawable Drawable
 	 */
-	public void setIconRightImageResource(int resid){
-		mIconRightView.setBackgroundResource(resid);
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	public void setIconLeftBackground(Drawable drawable){
+		mIconLeftView.setBackground(drawable);
+	}
+
+	/**
+	 * 设置左边图标背景颜色
+	 * @param color 颜色值
+	 */
+	public void setIconLeftBackgroundColor(int color){
+		mIconLeftView.setBackgroundColor(color);
+	}
+
+	// =============================== 对右边图标的操作 start=========================================
+	/**
+	 * 设置右边图标资源ID
+	 * @param resId 图标资源ID
+	 */
+	public void setIconRightImageResource(int resId){
+		mIconRightView.setImageResource(resId);
 	}
 
 	/**
 	 * 设置右边图标Drawable
 	 * @param drawable 右边图标Drawable
 	 */
-	@SuppressWarnings("deprecation")
 	public void setIconRightImageDrawable(Drawable drawable){
+		mIconRightView.setImageDrawable(drawable);
+	}
+
+	/**
+	 * 设置右边图标 Bitmap
+	 * @param bitmap 图标 Bitmap
+	 */
+	public void setIconRightImageBitmap(Bitmap bitmap){
+		mIconRightView.setImageBitmap(bitmap);
+	}
+
+	/**
+	 * 设置右边图标背景资源ID
+	 * @param resId 资源ID
+	 */
+	public void setIconRightBackgroundResource(int resId){
+		mIconRightView.setBackgroundResource(resId);
+	}
+
+	/**
+	 * 设置右边图标背景Drawable
+	 * @param drawable Drawable
+	 */
+	public void setIconRightBackgroundDrawable(Drawable drawable){
 		mIconRightView.setBackgroundDrawable(drawable);
 	}
 
+	/**
+	 * 设置右边图标背景Drawable
+	 * @param drawable Drawable
+	 */
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	public void setIconRightBackground(Drawable drawable){
+		mIconRightView.setBackground(drawable);
+	}
+
+	/**
+	 * 设置右边图标背景颜色
+	 * @param color 颜色值
+	 */
+	public void setIconRightBackgroundColor(int color){
+		mIconRightView.setBackgroundColor(color);
+	}
+
+	// =============================== 对分割线的操作 start===========================================
+
+	/**
+	 * 设置所有分割线Margin
+	 * @param dividerMargin 值
+	 */
 	public void setDividerMargin(int dividerMargin) {
 		this.dividerMargin = dividerMargin;
 		invalidate();
 	}
 
+	/**
+	 * 设置Top分割线Margin
+	 * @param dividerTopMargin 值
+	 */
 	public void setDividerTopMargin(int dividerTopMargin) {
 		this.dividerTopMargin = dividerTopMargin;
 		invalidate();
 	}
 
+	/**
+	 * 设置Top分割线MarginLeft
+	 * @param dividerTopMarginLeft 值
+	 */
 	public void setDividerTopMarginLeft(int dividerTopMarginLeft) {
 		this.dividerTopMarginLeft = dividerTopMarginLeft;
 		invalidate();
 	}
 
+	/**
+	 * 设置Top分割线MarginRight
+	 * @param dividerTopMarginRight 值
+	 */
 	public void setDividerTopMarginRight(int dividerTopMarginRight) {
 		this.dividerTopMarginRight = dividerTopMarginRight;
 		invalidate();
 	}
 
+	/**
+	 * 设置Bottom分割线Margin
+	 * @param dividerBottomMargin 值
+	 */
 	public void setDividerBottomMargin(int dividerBottomMargin) {
 		this.dividerBottomMargin = dividerBottomMargin;
 		invalidate();
 	}
 
+	/**
+	 * 设置Bottom分割线MarginLeft
+	 * @param dividerBottomMarginLeft 值
+	 */
 	public void setDividerBottomMarginLeft(int dividerBottomMarginLeft) {
 		this.dividerBottomMarginLeft = dividerBottomMarginLeft;
 		invalidate();
 	}
 
+	/**
+	 * 设置Bottom分割线MarginRight
+	 * @param dividerBottomMarginRight 值
+	 */
 	public void setDividerBottomMarginRight(int dividerBottomMarginRight) {
 		this.dividerBottomMarginRight = dividerBottomMarginRight;
 		invalidate();

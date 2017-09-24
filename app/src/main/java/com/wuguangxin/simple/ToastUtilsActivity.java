@@ -5,21 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.wuguangxin.dialog.MyDialog;
 import com.wuguangxin.utils.ToastUtils;
 
-public class BActivity extends AppCompatActivity implements View.OnClickListener{
-
-    private MyDialog mDialog;
+public class ToastUtilsActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_b);
-
+        setTitle("Toast工具类");
+        setContentView(R.layout.activity_toastutils);
         findViewById(R.id.show_toast).setOnClickListener(this);
         findViewById(R.id.sync_show_toast).setOnClickListener(this);
-
     }
 
     @Override
@@ -40,7 +36,7 @@ public class BActivity extends AppCompatActivity implements View.OnClickListener
                             Thread.sleep(1000);
                             Log.d("test", String.valueOf(i));
                             if(i == size-1){
-                                ToastUtils.showToast(BActivity.this, "异步Toast");
+                                ToastUtils.showToast(ToastUtilsActivity.this, "异步Toast");
                             }
                         } catch (InterruptedException e) {
                             e.printStackTrace();

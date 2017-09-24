@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="15dip"
+        android:text="圆形进度条"/>
+
+    <com.wuguangxin.view.CircleProgressView
+        android:id="@+id/home_CircleProgressView"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dip"
+        android:background="#00FF00"
+        android:visibility="visible"
+        app:background_color="#e6e6e6"
+        app:end_color="#ffdd00"
+        app:progress="0.5"
+        app:start_color="#ff7d31"
+        app:stroke_width="18dip"
+        app:sweepAngle="360"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dip"
+        android:text="注意：组件高度不能随扇形跨度改变而改变，待修复,现在需要直接在xml中写好，或者只能在acTivity里的onCreate()里设置一次"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="50dip"
+        android:text="跨度(0-360)"/>
+
+    <SeekBar
+        android:id="@+id/seekBar_sweepAngle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="360"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="30dip"
+        android:text="进度(0-100)"/>
+
+    <SeekBar
+        android:id="@+id/seekBar_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"/>
+
+</LinearLayout>

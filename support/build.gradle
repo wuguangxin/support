@@ -2,10 +2,10 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20170912"
-def mVersionCode = 12
-def mVersionName = "1.0.12"
-def mDescription = "优化MyDialog的按钮样式，文字颜色和大小属性可配置，引用的项目可以重写该属性值来改变样式。"
+def mVersionTime = "20170918"
+def mVersionCode = 13
+def mVersionName = "1.0.13"
+def mDescription = "优化CircleProgressView、ItemView组件"
 
 android {
     compileSdkVersion 25
