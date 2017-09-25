@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.wuguangxin.R;
@@ -91,7 +90,7 @@ public class CircleProgressView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.e(TAG,"=========================================onMeasure()");
+//        Log.e(TAG,"=========================================onMeasure()");
 
         if (progress > 1) progress = 1;
         if (progress < 0) progress = 0;
@@ -203,15 +202,15 @@ public class CircleProgressView extends View {
             height = AC; // = 180度时，以内圆或外圆直径都一样
         }
 
-        Log.e(TAG, "基准偏移度 offset       =" + offset);
-        Log.e(TAG, "开始的角度 startAngle   =" + startAngle);
-        Log.e(TAG, "内外圆间距 strokeWidth  =" + strokeWidth);
-        Log.e(TAG, "扇形的跨度 sweepAngle   =" + sweepAngle);
-        Log.e(TAG, "组件的宽度 width        =" + width);
-        Log.e(TAG, "组件的高度 height       =" + height);
-        Log.e(TAG, "三角形角A    cosA       =" + cosA);
-        Log.e(TAG, "三角形斜边     AC       =" + AC);
-        Log.e(TAG, "三角形直角边   BC       =" + AB);
+//        Log.e(TAG, "基准偏移度 offset       =" + offset);
+//        Log.e(TAG, "开始的角度 startAngle   =" + startAngle);
+//        Log.e(TAG, "内外圆间距 strokeWidth  =" + strokeWidth);
+//        Log.e(TAG, "扇形的跨度 sweepAngle   =" + sweepAngle);
+//        Log.e(TAG, "组件的宽度 width        =" + width);
+//        Log.e(TAG, "组件的高度 height       =" + height);
+//        Log.e(TAG, "三角形角A    cosA       =" + cosA);
+//        Log.e(TAG, "三角形斜边     AC       =" + AC);
+//        Log.e(TAG, "三角形直角边   BC       =" + AB);
 
         return height;
     }
