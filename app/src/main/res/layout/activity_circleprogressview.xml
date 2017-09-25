@@ -19,35 +19,35 @@
         android:layout_width="200dip"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:background="#4400ff00"
         android:layout_marginTop="30dip"
-        android:background="#00FF00"
         android:visibility="visible"
         app:background_color="#e6e6e6"
         app:end_color="#ffdd00"
         app:progress="0.5"
         app:start_color="#ff7d31"
         app:stroke_width="18dip"
-        app:sweepAngle="360"/>
+        app:top_stroke_width="18dip"
+        app:sweepAngle="224"/>
 
-    <TextView
+    <android.support.v4.widget.Space
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="15dip"
-        android:text="注意：组件高度不能随扇形跨度改变而改变，待修复,现在需要直接在xml中写好，或者只能在acTivity里的onCreate()里设置一次"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dip"
-        android:layout_marginTop="50dip"
+        android:layout_marginTop="15dip"
         android:text="跨度(0-360)"/>
 
     <SeekBar
         android:id="@+id/seekBar_sweepAngle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="360"/>
+        android:max="360"
+        android:progress="270"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,6 +60,10 @@
         android:id="@+id/seekBar_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="100"/>
+        android:max="100"
+        android:progress="50"/>
 
+    <android.support.v4.widget.Space
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"/>
 </LinearLayout>

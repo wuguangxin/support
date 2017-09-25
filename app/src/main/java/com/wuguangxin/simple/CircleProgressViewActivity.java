@@ -11,6 +11,7 @@ public class CircleProgressViewActivity extends AppCompatActivity {
     private SeekBar mSeekBarSweepAngle; // 跨度
     private SeekBar mSeekBarProgress;   // 进度
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

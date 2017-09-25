@@ -257,6 +257,8 @@
 
     <!--半圆形仪表进度组件-->
     <declare-styleable name="CircleProgressView">
+        <!--顶部圆环的颜色-->
+        <attr name="top_color" format="reference|color" />
         <!--背景色-->
         <attr name="background_color" format="reference|color" />
         <!--渐变开始色-->
@@ -265,6 +267,11 @@
         <attr name="end_color" format="reference|color" />
         <!--圆环大小-->
         <attr name="stroke_width" format="reference|dimension" />
+        <!--Top圆环大小-->
+        <attr name="top_stroke_width" format="reference|dimension" />
+        <!--是否显示Top圆环-->
+        <attr name="showTopOval" format="boolean" />
+
         <!--圆环开始角度-->
         <attr name="startAngle"/>
         <!--圆环跨度角度-->
@@ -273,17 +280,6 @@
         <attr name="progress"/>
         <!--比例为宽:高，格式"100:50" -->
         <attr name="ratio" format="string" />
-        <!--基准线位置 有BUG，未解决-->
-        <!--<attr name="baseLine" format="enum">-->
-            <!--&lt;!&ndash;右边 默认 &ndash;&gt;-->
-            <!--<enum name="Right" value="0"/>-->
-            <!--&lt;!&ndash;底部&ndash;&gt;-->
-            <!--<enum name="Bottom" value="1"/>-->
-            <!--&lt;!&ndash;左边&ndash;&gt;-->
-            <!--<enum name="Left" value="2"/>-->
-            <!--&lt;!&ndash;顶部&ndash;&gt;-->
-            <!--<enum name="Top" value="3"/>-->
-        <!--</attr>-->
     </declare-styleable>
 
     <!--半圆形仪表进度组件 - 仿微信芝麻信用分-->
