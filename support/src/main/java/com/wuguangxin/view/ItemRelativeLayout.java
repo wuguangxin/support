@@ -3,12 +3,11 @@ package com.wuguangxin.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 import com.wuguangxin.R;
-import com.wuguangxin.utils.Utils;
 
 /**
  * 带有上分割线、下分割线的 RelativeLayout
@@ -16,17 +15,14 @@ import com.wuguangxin.utils.Utils;
  * <p>Created by wuguangxin on 15/7/10 </p>
  */
 public class ItemRelativeLayout extends RelativeLayout {
-	private static final int DEF_DIVIDER_COLOR = 0xffd1d1d1;
-	private static final float DEF_DIVIDER_SIZE = 0.5F;
-	private float lineSize = DEF_DIVIDER_SIZE;
-	private float topPaddingLeft;
-	private float topPaddingRight;
-	private float bottomPaddingLeft;
-	private float bottomPaddingRight;
+	private int topPaddingLeft;
+	private int topPaddingRight;
+	private int bottomPaddingLeft;
+	private int bottomPaddingRight;
 	private int width;
 	private int height;
-	private int dividerColor = 0xffd1d1d1;
-	private Paint paint;
+	private int dividerSize;
+	private Drawable divider;
 	private DividerMode dividerMode = DividerMode.Both;
 
 	public ItemRelativeLayout(Context context) {
@@ -42,24 +38,17 @@ public class ItemRelativeLayout extends RelativeLayout {
 		if(attrs != null){
 			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemTextView);
 			if(a != null){
-				dividerColor = a.getColor(R.styleable.ItemTextView_dividerColor, DEF_DIVIDER_COLOR);
-				topPaddingLeft = a.getDimension(R.styleable.ItemTextView_topPaddingLeft, 0);
-				topPaddingRight = a.getDimension(R.styleable.ItemTextView_topPaddingRight, 0);
-				bottomPaddingLeft = a.getDimension(R.styleable.ItemTextView_bottomPaddingLeft, 0);
-				bottomPaddingRight = a.getDimension(R.styleable.ItemTextView_bottomPaddingRight, 0);
+				divider = a.getDrawable(R.styleable.ItemTextView_divider);
+				topPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingLeft, topPaddingLeft);
+				topPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingRight, topPaddingRight);
+				bottomPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingLeft, bottomPaddingLeft);
+				bottomPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingRight, bottomPaddingRight);
 				int integer = a.getInteger(R.styleable.ItemTextView_dividerMode, DividerMode.Both.value);
 				dividerMode = DividerMode.fromValue(integer);
 				a.recycle();
 			}
 		}
-
-//		oldBackgroundDrawable = getBackground();
-
-		lineSize = Utils.dip2px(context, DEF_DIVIDER_SIZE);
-		paint = new Paint();
-		paint.setColor(dividerColor);//设置线条颜色
-		paint.setStrokeWidth(lineSize);// 线条宽度
-		paint.setAntiAlias(true);//去除锯齿
+		dividerSize = divider != null ? divider.getIntrinsicHeight() : 0;
 	}
 
 	@Override
@@ -72,29 +61,41 @@ public class ItemRelativeLayout extends RelativeLayout {
 		width = getMeasuredWidth();
 		height = getMeasuredHeight();
 
-		float topStartX = 0 + topPaddingLeft;
-		float topStartY = lineSize / 2;
-		float topEndX = width - topPaddingRight;
-		float topEndY = lineSize / 2;
-
-		float bottomStartX = 0 + bottomPaddingLeft;
-		float bottomStartY = height - lineSize / 2;
-		float bottomEndX = width - bottomPaddingRight;
-		float bottomEndY = height - lineSize / 2;
-
 		switch (dividerMode) {
 		case None:
 			break;
 		case Both:
-			canvas.drawLine(topStartX, topStartY, topEndX, topEndY, paint); // Top
-			canvas.drawLine(bottomStartX, bottomStartY, bottomEndX, bottomEndY, paint); // Bottom
+			drawDividerTop(canvas);
+			drawDividerBottom(canvas);
 			break;
 		case Top:
-			canvas.drawLine(topStartX, topStartY, topEndX, topEndY, paint); // Top
+			drawDividerTop(canvas);
 			break;
 		case Bottom:
-			canvas.drawLine(bottomStartX, bottomStartY, bottomEndX, bottomEndY, paint); // Bottom
+			drawDividerBottom(canvas);
 			break;
+		}
+	}
+
+	/**
+	 * 画上线
+	 * @param canvas
+	 */
+	private void drawDividerTop(Canvas canvas) {
+		if(divider != null){
+			divider.setBounds(topPaddingLeft, 0, width - topPaddingRight, dividerSize);
+			divider.draw(canvas);
+		}
+	}
+
+	/**
+	 * 画下线
+	 * @param canvas
+	 */
+	private void drawDividerBottom(Canvas canvas) {
+		if(divider != null){
+			divider.setBounds(bottomPaddingLeft, height - dividerSize, width - bottomPaddingRight, width);
+			divider.draw(canvas);
 		}
 	}
 
@@ -135,22 +136,4 @@ public class ItemRelativeLayout extends RelativeLayout {
 			return null;
 		}
 	}
-
-//	private static int DEF_BACKGROUND_COLOR_TOUCH = 0xffF6F6F6;
-//	private final Drawable oldBackgroundDrawable;
-//
-//	@Override
-//	public boolean onTouchEvent(MotionEvent event) {
-//		switch (event.getAction()){
-//		case MotionEvent.ACTION_DOWN:
-//			setBackgroundColor(DEF_BACKGROUND_COLOR_TOUCH);
-//			break;
-//		case MotionEvent.ACTION_UP:
-//		case MotionEvent.ACTION_CANCEL:
-//			setBackgroundColor(Color.TRANSPARENT);
-//			setBackgroundDrawable(oldBackgroundDrawable);
-//			break;
-//		}
-//		return super.onTouchEvent(event);
-//	}
 }

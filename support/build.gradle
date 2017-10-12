@@ -2,10 +2,11 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20170925"
-def mVersionCode = 14
-def mVersionName = "1.0.14"
-def mDescription = "优化CircleProgressView组件性能"
+def mVersionTime = "20171011"
+def mVersionCode = 15
+def mVersionName = "1.0.15"
+def mDescription = "优化ItemView、ItemLinearLayout、ItemRelativeLayout、ItemTextView组件的divider绘制方式，" +
+        "使用drawable作为线条，删除了dividerColor和dividerSize属性"
 
 android {
     compileSdkVersion 25

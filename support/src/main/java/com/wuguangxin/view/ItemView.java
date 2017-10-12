@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -29,17 +28,15 @@ public class ItemView extends LinearLayout{
 	private Context context;
 	private LayoutParams iconLeftParams;
 	private LayoutParams iconRightParams;
-	private LayoutParams keyParams;
-	private LayoutParams valueParams;
 	private ImageView mIconLeftView;
 	private ImageView mIconRightView;
 	private TextView mKeyView;
 	private TextView mValueView;
 
 	// 指示器
-	private DividerMode dividerMode = DividerMode.None;
-	private int dividerSize = 2; 			// 线条大小(px)
-	private int dividerColor = 0xffDFDFDF;  // 线条颜色
+	private Drawable divider;  							// 线条Drawable
+	private int dividerSize;							// 线条大小
+	private DividerMode dividerMode = DividerMode.None;	// 线条模式
 	// 左图标
 	private Drawable iconLeft;
 	private int iconLeftWidth = LayoutParams.WRAP_CONTENT;	// 左边图标默认宽(DIP)
@@ -123,8 +120,6 @@ public class ItemView extends LinearLayout{
 	private Drawable valueBackground;  // value的背景
 	private GravityMode valueGravity = GravityMode.left;
 
-	private OnClickListener keyOnClickListener, valueOnClickListener;
-
 	public ItemView(Context context){
 		this(context, null);
 	}
@@ -150,8 +145,7 @@ public class ItemView extends LinearLayout{
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView, defStyle, defStyleRes);
 		if (a != null) {
 			// 线
-			dividerColor = a.getColor(R.styleable.ItemView_dividerColor, dividerColor);
-			dividerSize = a.getDimensionPixelSize(R.styleable.ItemView_dividerSize, dividerSize);
+			divider = a.getDrawable(R.styleable.ItemView_divider);
 			dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemView_dividerMode, dividerMode.value));
 			dividerTopMargin = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_margin, dividerTopMargin);
 			dividerTopMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginLeft, dividerTopMarginLeft);
@@ -249,6 +243,8 @@ public class ItemView extends LinearLayout{
 			a.recycle();
 		}
 
+		dividerSize = divider != null ? divider.getIntrinsicHeight() : 0;
+
 		mIconLeftView = new ImageView(context);
 		mIconRightView = new ImageView(context);
 		mKeyView = new TextView(context);
@@ -267,7 +263,7 @@ public class ItemView extends LinearLayout{
 
 		// key View
 		if(keyWeight > 0) keyWidth = LayoutParams.WRAP_CONTENT;
-		keyParams = new LayoutParams(keyWidth, keyHeight, keyWeight);
+		LayoutParams keyParams = new LayoutParams(keyWidth, keyHeight, keyWeight);
 		if(keyMargin != -1) keyMarginLeft = keyMarginTop = keyMarginRight = keyMarginBottom = keyMargin;
 		keyParams.leftMargin = keyMarginLeft;
 		keyParams.topMargin = keyMarginTop;
@@ -299,7 +295,7 @@ public class ItemView extends LinearLayout{
 		// value View
 		if (value != null) {
 			if(valueWeight > 0) valueWidth = LayoutParams.WRAP_CONTENT;
-			valueParams = new LayoutParams(valueWidth, valueHeight, valueWeight);
+			LayoutParams valueParams = new LayoutParams(valueWidth, valueHeight, valueWeight);
 			if(valueMargin != -1) {
 				valueMarginLeft = valueMarginTop = valueMarginRight = valueMarginBottom = valueMargin;
 			}
@@ -342,10 +338,8 @@ public class ItemView extends LinearLayout{
 			mIconRightView.setImageDrawable(iconRight);
 			addView(mIconRightView);
 		}
-
-		// 加入layout
-		initDivider(context);
 	}
+
 
 	@Override
 	final public void setOrientation(int orientation) {
@@ -418,16 +412,14 @@ public class ItemView extends LinearLayout{
 	}
 
 	public void setKeyOnClickListener(OnClickListener keyOnClickListener) {
-		this.keyOnClickListener = keyOnClickListener;
 		if (mKeyView != null) {
-			mKeyView.setOnClickListener(this.keyOnClickListener);
+			mKeyView.setOnClickListener(keyOnClickListener);
 		}
 	}
 
 	public void setValueOnClickListener(OnClickListener valueOnClickListener) {
-		this.valueOnClickListener = valueOnClickListener;
 		if (mValueView != null) {
-			mValueView.setOnClickListener(this.valueOnClickListener);
+			mValueView.setOnClickListener(valueOnClickListener);
 		}
 	}
 
@@ -461,15 +453,7 @@ public class ItemView extends LinearLayout{
 	private int dividerBottomMarginLeft = 0; // px
 	private int dividerBottomMarginRight = 0; // px
 
-	private Paint dividerPaint;
-
-	private void initDivider(Context context) {
-		this.context = context;
-		dividerPaint = new Paint();
-		dividerPaint.setAntiAlias(true);//去除锯齿
-		dividerPaint.setStrokeWidth(dividerSize);// 线条宽度
-		dividerPaint.setColor(dividerColor);//设置线条颜色
-	}
+//	private Paint dividerPaint;
 
 	@Override
 	public void draw(Canvas canvas) {
@@ -509,12 +493,15 @@ public class ItemView extends LinearLayout{
 	 * @param canvas
 	 */
 	private void drawDividerTop(Canvas canvas) {
+		if(divider == null){
+			return;
+		}
 		int measuredWidth = getMeasuredWidth();
-		float topStartX = 0 + dividerTopMarginLeft;
-		float topStopX = measuredWidth - dividerTopMarginRight;
-		float topStartY = 0 + dividerSize/2;
-		float topStopY = topStartY;
-		canvas.drawLine(topStartX, topStartY, topStopX, topStopY, dividerPaint); // 上
+		divider.setBounds(dividerTopMarginLeft,
+				0,
+				measuredWidth - dividerTopMarginRight,
+				dividerSize);
+		divider.draw(canvas);
 	}
 
 	/**
@@ -522,13 +509,17 @@ public class ItemView extends LinearLayout{
 	 * @param canvas
 	 */
 	private void drawDividerBottom(Canvas canvas) {
+		if(divider == null){
+			return;
+		}
 		int measuredWidth = getMeasuredWidth();
 		int measuredHeight = getMeasuredHeight();
-		float bottomStartX = 0 + dividerBottomMarginLeft;
-		float bottomStopX = measuredWidth - dividerBottomMarginRight;
-		float bottomStartY = measuredHeight - dividerSize/2;
-		float bottomStopY = bottomStartY;
-		canvas.drawLine(bottomStartX, bottomStartY, bottomStopX, bottomStopY, dividerPaint); // 下
+
+		divider.setBounds(dividerBottomMarginLeft,
+				measuredHeight - dividerSize,
+				measuredWidth - dividerBottomMarginRight,
+				measuredHeight);
+		divider.draw(canvas);
 	}
 
 	// =============================== getter start=================================================
@@ -1006,5 +997,16 @@ public class ItemView extends LinearLayout{
 			}
 			return left;
 		}
+	}
+
+	/**
+	 * dip转换为px
+	 * @param context 上下文
+	 * @param dipValue dip
+	 * @return px
+	 */
+	public int dip2px(Context context, float dipValue){
+		float density = context.getResources().getDisplayMetrics().density;
+		return (int) (dipValue * density + 0.5f);
 	}
 }

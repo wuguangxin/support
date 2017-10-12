@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,48 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <!--项目名称-->
-        <com.wuguangxin.view.ItemView
-            android:id="@+id/debts_invest_confirm_name"
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:layout_marginTop="12dip"
-            android:background="#fff"
-            android:gravity="center_vertical"
-            android:paddingLeft="15dip"
-            android:paddingRight="15dip"
-            app:dividerColor="@color/line"
-            app:dividerMode="top"
-            app:dividerSize="1dip"
-            app:key="项目名称："
-            app:keyColor="#454545"
-            app:keySize="@dimen/font_14"
-            app:value="安心宝20170101001"
-            app:valueColor="#454545"
-            app:valueMarginLeft="10dip"
-            app:valueSize="@dimen/font_14"/>
-
-        <!--出借日期-->
-        <com.wuguangxin.view.ItemView
-            android:id="@+id/debts_invest_confirm_date"
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:background="#fff"
-            android:gravity="center_vertical"
-            android:paddingLeft="15dip"
-            android:paddingRight="15dip"
-            app:dividerColor="@color/line"
-            app:dividerMode="both"
-            app:dividerSize="1dip"
-            app:dividerTop_marginLeft="15dip"
-            app:key="出借日期："
-            app:keyColor="#454545"
-            app:keySize="@dimen/font_14"
-            app:value="1970-01-01"
-            app:valueColor="#454545"
-            app:valueMarginLeft="10dip"
-            app:valueSize="@dimen/font_14"/>
 
         <!--还款方式-->
         <com.wuguangxin.view.ItemView
@@ -62,12 +21,12 @@
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
-            app:dividerColor="@color/line"
+            app:divider="@drawable/divider"
             app:dividerMode="top"
-            app:key="还款方式："
+            app:key="姓名1："
             app:keyColor="#454545"
             app:keySize="@dimen/font_14"
-            app:value="按月付息，到期还本"
+            app:value="张三丰"
             app:valueColor="#454545"
             app:valueMarginLeft="10dip"
             app:valueSize="@dimen/font_14"/>
@@ -80,17 +39,86 @@
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
-            app:dividerColor="@color/line"
-            app:dividerMode="both"
+            app:divider="@drawable/divider"
+            app:dividerMode="top"
             app:dividerTop_marginLeft="15dip"
-            app:key="实付金额："
+            app:key="姓名2："
             app:keyColor="#454545"
             app:keySize="@dimen/font_14"
-            app:value="0.00元"
-            app:valueColor="@color/text_blue"
+            app:value="张三丰"
+            app:valueColor="#454545"
             app:valueMarginLeft="10dip"
-            app:valueStyle="bold"
             app:valueSize="@dimen/font_14"/>
+
+        <!--实付金额-->
+        <com.wuguangxin.view.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:divider="@drawable/divider"
+            app:dividerMode="top"
+            app:dividerTop_marginLeft="15dip"
+            app:key="姓名3："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="张三丰"
+            app:valueColor="#454545"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"/>
+
+        <!--实付金额-->
+        <com.wuguangxin.view.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            app:divider="@drawable/divider"
+            app:dividerMode="top"
+            app:dividerTop_marginLeft="15dip"
+            app:key="姓名4："
+            app:keyColor="#454545"
+            app:keySize="@dimen/font_14"
+            app:value="张三丰"
+            app:valueColor="#454545"
+            app:valueMarginLeft="10dip"
+            app:valueSize="@dimen/font_14"
+            app:valueStyle="normal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginLeft="15dip"
+                android:layout_marginStart="15dip"
+                android:background="@color/line"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:text="姓名5：   张三丰"
+                android:textColor="#454545"
+                android:textSize="14dip"
+                tools:ignore="HardcodedText,SpUsage"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:background="@color/line"/>
+
+        </LinearLayout>
     </LinearLayout>
 
     <com.wuguangxin.view.ItemView
@@ -104,19 +132,16 @@
         android:paddingLeft="15dip"
         android:paddingRight="15dp"
         android:paddingTop="15dip"
-        app:dividerColor="@color/line"
         app:dividerMode="both"
         app:key="姓名："
-        app:keyBackground="#44FF0000"
         app:keyColor="#000000"
-        app:keyHeight="-2dp"
         app:keySize="14dip"
-        app:value="1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
-        app:valueBackground="#eee"
+        app:value="1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
         app:valueColor="#000000"
         app:valueDrawableRight="@mipmap/arrow"
         app:valueGravity="right"
         app:valueSize="14dip"
+        app:valueStyle="normal"
         app:valueWeight="1"
         />
 
@@ -126,13 +151,13 @@
         android:layout_marginTop="15dip"
         android:background="@color/white"
         android:baselineAligned="false"
+        android:divider="@color/line"
         android:orientation="horizontal"
         android:paddingBottom="15dip"
         android:paddingEnd="15dp"
         android:paddingLeft="15dip"
         android:paddingRight="15dp"
-        android:paddingStart="15dip"
-        android:paddingTop="15dip">
+        android:paddingStart="15dip">
 
         <TextView
             android:layout_width="wrap_content"
@@ -147,23 +172,56 @@
             android:layout_height="wrap_content"
             android:drawableRight="@mipmap/arrow"
             android:gravity="right"
-            android:text="3张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰1张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
+            android:text="2张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
             android:textColor="#000000"
             android:textSize="14dip"/>
 
     </LinearLayout>
 
 
-    <TextView
+    <com.wuguangxin.view.ItemTextView
         android:layout_width="match_parent"
-        android:layout_height="45dip"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dip"
         android:background="@color/white"
-        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:paddingBottom="15dip"
         android:paddingLeft="15dip"
         android:paddingRight="15dp"
-        android:text="Hello! 张三丰 12345678901234567890"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
+        android:paddingTop="15dip"
+        android:text="哈哈哈哈"
+        app:topPaddingLeft="20dip"
+        app:dividerMode="both"
+        app:divider="@drawable/divider"
+        />
 
+
+    <com.wuguangxin.view.ItemLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="15dip"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:paddingBottom="15dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dp"
+        android:paddingTop="15dip"
+        app:dividerMode="both"
+        app:divider="@drawable/divider"
+        />
+
+
+    <com.wuguangxin.view.ItemRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="15dip"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:paddingBottom="15dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dp"
+        android:paddingTop="15dip"
+        app:dividerMode="both"
+        app:divider="@drawable/divider"
+        />
 </LinearLayout>

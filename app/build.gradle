@@ -34,6 +34,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     testCompile 'junit:junit:4.12'
     compile project(':support')
-//    compile 'com.wuguangxin:support:1.0.6'                  // 支持库
+    compile 'com.wuguangxin:http:1.1.0'
 
 }

@@ -13,29 +13,36 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/okhttp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OkHttp"
+            android:textAllCaps="false"/>
+
+        <Button
             android:id="@+id/ItemView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ItemView"
             android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/CircleProgressView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CircleProgressView"
             android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/ToastUtils"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ToastUtils"
             android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/MyDialog"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MyDialog"
             android:textAllCaps="false"/>

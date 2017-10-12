@@ -15,10 +15,8 @@
     <attr name="key" format="reference|string" />
     <!--value 文本-->
     <attr name="value" format="reference|string" />
-    <!--指示器颜色-->
-    <attr name="dividerColor" format="reference|color" />
-    <!--指示器大小（高度）-->
-    <attr name="dividerSize" format="reference|dimension" />
+    <!--指示器 Drawable-->
+    <attr name="divider" format="reference" />
     <!--指示器样式，none没有，both上下有，top上有，bottom下有-->
     <attr name="dividerMode" format="enum">
         <!--没有线条-->
@@ -30,7 +28,6 @@
         <!--下有-->
         <enum name="bottom" value="3" />
     </attr>
-
 
     <!-- ================== 私有属性区域 ======================================================== -->
     <declare-styleable name="MyCheckBox">
@@ -134,8 +131,6 @@
             <flag name="normal" value="0" />
             <!--粗体-->
             <flag name="bold" value="1" />
-            <!--斜体-->
-            <!--<flag name="italic" value="2" />-->
         </attr>
 
         <!-- value字体样式. -->
@@ -144,14 +139,10 @@
             <flag name="normal" value="0" />
             <!--粗体-->
             <flag name="bold" value="1" />
-            <!--斜体-->
-            <!--<flag name="italic" value="2" />-->
         </attr>
 
-        <!--指示器颜色-->
-        <attr name="dividerColor"/>
-        <!--指示器大小（高度）20170710新增-->
-        <attr name="dividerSize"/>
+        <!--线条图标-->
+        <attr name="divider"/>
         <!--间隔线样式，none没有，both上下有，top上有，bottom下有-->
         <attr name="dividerMode" />
 
@@ -333,7 +324,7 @@
     </declare-styleable>
 
     <declare-styleable name="ItemTextView">
-        <attr name="dividerColor"/>
+        <attr name="divider"/>
         <attr name="dividerMode" />
         <attr name="topPaddingLeft" format="reference|dimension"/>
         <attr name="topPaddingRight" format="reference|dimension"/>
