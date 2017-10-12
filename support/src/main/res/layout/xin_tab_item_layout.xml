@@ -1,0 +1,22 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:minHeight="@dimen/xin_tab_layout_minHeight">
+
+    <ImageView
+        android:id="@+id/xin_tab_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:mipmap/sym_def_app_icon"/>
+
+    <TextView
+        android:id="@+id/xin_tab_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item"
+        android:textColor="@drawable/xin_tab_text_color"
+        android:textSize="@dimen/xin_tab_text_size" />
+</LinearLayout>

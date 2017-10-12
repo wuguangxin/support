@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TAB 发现 -->
+    <item android:drawable="@mipmap/main_tab_product_pressed" android:state_selected="true"/>
+    <item android:drawable="@mipmap/main_tab_product_pressed" android:state_pressed="true"/>
+    <item android:drawable="@mipmap/main_tab_product_normal" android:state_pressed="false"/>
+    <item android:drawable="@mipmap/main_tab_product_normal"/>
+
+</selector>

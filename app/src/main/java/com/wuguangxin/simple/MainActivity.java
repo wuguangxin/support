@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.tabHost).setOnClickListener(this);
         findViewById(R.id.okhttp).setOnClickListener(this);
         findViewById(R.id.ToastUtils).setOnClickListener(this);
         findViewById(R.id.MyDialog).setOnClickListener(this);
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
+        case R.id.tabHost:
+            openActivity(TabHostActivity.class);
+            break;
         case R.id.okhttp:
             testOkHttp();
             break;

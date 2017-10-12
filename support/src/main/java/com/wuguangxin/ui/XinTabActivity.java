@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,7 +26,7 @@ import java.util.LinkedList;
 /**
  * 一个封装部分功能的便捷TabHost，继承XinTabActivity后，只需简单设置Tab数据即可。
  *
- * <p>Created by wuguangxin on 16/1/22 </p>
+ * Created by wuguangxin on 16/1/22
  */
 @SuppressWarnings("deprecation")
 public abstract class XinTabActivity extends TabActivity{
@@ -37,11 +36,10 @@ public abstract class XinTabActivity extends TabActivity{
 	private SwitchTabHostReceiver mSwitchTabHostReceiver;
 	private int currentTabId; // 当前TAB位置
 	private ArrayList<Tab> tabList;
-	private ArrayList<String> tabIdList = new ArrayList<String>();
+	private ArrayList<String> tabIdList = new ArrayList<>();
 	private TabHost mTabHost;
 	private static Context mContext;
 	private static ClickHistoryList mClickHistoryList = new ClickHistoryList();
-	private static final Handler handler = new Handler();
 
 	private static class ClickHistoryList extends LinkedList<Integer> {
 		private final int maxSize = 2; // 最大存储数量
@@ -71,7 +69,7 @@ public abstract class XinTabActivity extends TabActivity{
 	/**
 	 * 设置View。
 	 *
-	 * 可以使用 R.layout.xin_tabhost_layout
+	 * 可以使用 R.layout.xin_tab_layout
 	 */
 	public abstract void onCreateView();
 
@@ -82,13 +80,17 @@ public abstract class XinTabActivity extends TabActivity{
 		return mTabHost;
 	}
 
-	// 创建广播接受者
+	/**
+	 * 创建广播接受者
+	 */
 	private void createReceiver(){
 		mSwitchTabHostReceiver = new SwitchTabHostReceiver();
 		registerReceiver(mSwitchTabHostReceiver, new IntentFilter(ACTION_INTENT_FILTER));
 	}
 
-	// 销毁广播接受者
+	/**
+	 * 销毁广播接受者
+	 */
 	private void destroyReceiver(){
 		if (mSwitchTabHostReceiver != null) {
 			unregisterReceiver(mSwitchTabHostReceiver);
@@ -99,7 +101,7 @@ public abstract class XinTabActivity extends TabActivity{
 	private void initTabHostView(){
 		mTabHost = super.getTabHost();
 		tabList = getTabList();
-		tabIdList = new ArrayList<String>();
+		tabIdList = new ArrayList<>();
 		currentTabId = getIntent().getIntExtra(ACTION_CURRENT_TAB, 0);
 		for (int i = 0; i < tabList.size(); i++) {
 			String tabId = "tab_" + i;
@@ -139,9 +141,9 @@ public abstract class XinTabActivity extends TabActivity{
 	 */
 	@SuppressLint("InflateParams")
 	public View getItemView(String name, int icon, int position){
-		View view = LayoutInflater.from(this).inflate(R.layout.xin_tabhost_item_layout, null);
-		ImageView mIcon = (ImageView) view.findViewById(R.id.xin_tabhost_tab_icon);
-		TextView mName = (TextView) view.findViewById(R.id.xin_tabhost_tab_name);
+		View view = LayoutInflater.from(this).inflate(R.layout.xin_tab_item_layout, null);
+		ImageView mIcon = (ImageView) view.findViewById(R.id.xin_tab_icon);
+		TextView mName = (TextView) view.findViewById(R.id.xin_tab_name);
 		mIcon.setImageResource(icon);
 		mName.setText(name);
 		if(onGetItemViewListener != null){
@@ -296,7 +298,7 @@ public abstract class XinTabActivity extends TabActivity{
 	 * @return TAB信息
 	 */
 	public ArrayList<Tab> getTabList(){
-		ArrayList<Tab> tabList = new ArrayList<Tab>();
+		ArrayList<Tab> tabList = new ArrayList<>();
 		tabList.add(new Tab("Item1", android.R.drawable.sym_def_app_icon, Demo1Activity.class));
 		tabList.add(new Tab("Item2", android.R.drawable.sym_def_app_icon, Demo2Activity.class));
 		tabList.add(new Tab("Item3", android.R.drawable.sym_def_app_icon, Demo3Activity.class));

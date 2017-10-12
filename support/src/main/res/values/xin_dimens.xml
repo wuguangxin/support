@@ -86,7 +86,12 @@
     <!-- 按钮配置 -->
     <dimen name="xin_button_radius_size">3dip</dimen>
 
-    <dimen name="xin_history_score_tb">10dp</dimen>
+    <dimen name="xin_history_score_tb">10dip</dimen>
+
+    <!--tab的文字大小-->
+    <dimen name="xin_tab_text_size">12dip</dimen>
+    <!--tab的布局最小高度-->
+    <dimen name="xin_tab_layout_minHeight">47dip</dimen>
 
     <!-- ==================对话框MyDialog配置================= -->
     <!--MyDialog左边的按钮左上角圆角半径-->

@@ -13,6 +13,13 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/tabHost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TabHost"
+            android:textAllCaps="false"/>
+
+        <Button
             android:id="@+id/okhttp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

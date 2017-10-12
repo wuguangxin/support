@@ -20,7 +20,7 @@ public class TabHostDemoActivity extends XinTabActivity{
 	@Override
 	public void onCreateView(){
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.xin_tabhost_layout);
+		setContentView(R.layout.xin_tab_layout);
 	}
 
 	@Override

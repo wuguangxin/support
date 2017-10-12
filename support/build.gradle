@@ -2,11 +2,10 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20171011"
-def mVersionCode = 15
-def mVersionName = "1.0.15"
-def mDescription = "优化ItemView、ItemLinearLayout、ItemRelativeLayout、ItemTextView组件的divider绘制方式，" +
-        "使用drawable作为线条，删除了dividerColor和dividerSize属性"
+def mVersionTime = "20171012"
+def mVersionCode = 16
+def mVersionName = "1.0.16"
+def mDescription = "优化XinTabHostActivity类"
 
 android {
     compileSdkVersion 25
@@ -58,6 +57,5 @@ publish {
     publishVersion =mVersionName             // 引用版本号 (这里填什么就显示什么)
     dryRun = false                           // false:上传，true：不上传
     desc = mDescription                      // 版本描述（不重要）
-    description mDescription
 }
 

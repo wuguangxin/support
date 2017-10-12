@@ -39,12 +39,11 @@ public class ItemTextView extends TextView {
 			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemTextView);
 			if(a != null){
 				divider = a.getDrawable(R.styleable.ItemTextView_divider);
+				dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemTextView_dividerMode, DividerMode.Both.value));
 				topPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingLeft, topPaddingLeft);
 				topPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingRight, topPaddingRight);
 				bottomPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingLeft, bottomPaddingLeft);
 				bottomPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingRight, bottomPaddingRight);
-				int integer = a.getInteger(R.styleable.ItemTextView_dividerMode, DividerMode.Both.value);
-				dividerMode = DividerMode.fromValue(integer);
 				a.recycle();
 			}
 		}

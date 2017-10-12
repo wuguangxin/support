@@ -39,12 +39,11 @@ public class ItemLinearLayout extends LinearLayout {
 			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemTextView);
 			if(a != null){
 				divider = a.getDrawable(R.styleable.ItemTextView_divider);
-				topPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingLeft, 0);
-				topPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingRight, 0);
-				bottomPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingLeft, 0);
-				bottomPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingRight, 0);
-				int integer = a.getInteger(R.styleable.ItemTextView_dividerMode, DividerMode.Both.value);
-				dividerMode = DividerMode.fromValue(integer);
+				dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemTextView_dividerMode, DividerMode.Both.value));
+				topPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingLeft, topPaddingLeft);
+				topPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingRight, topPaddingRight);
+				bottomPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingLeft, bottomPaddingLeft);
+				bottomPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingRight, bottomPaddingRight);
 				a.recycle();
 			}
 		}
