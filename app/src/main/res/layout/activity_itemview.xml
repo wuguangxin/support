@@ -5,37 +5,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="15dip">
 
-        <!--还款方式-->
-        <com.wuguangxin.view.ItemView
+        <com.wuguangxin.view.ItemTextView
             android:layout_width="match_parent"
             android:layout_height="40dip"
-            android:layout_marginTop="12dip"
-            android:background="#fff"
-            android:gravity="center_vertical"
-            android:paddingLeft="15dip"
-            android:paddingRight="15dip"
             app:divider="@drawable/divider"
-            app:dividerMode="top"
-            app:key="姓名1："
-            app:keyColor="#454545"
-            app:keySize="@dimen/font_14"
-            app:value="张三丰"
-            app:valueColor="#454545"
-            app:valueMarginLeft="10dip"
-            app:valueSize="@dimen/font_14"/>
+            app:dividerMode="top"/>
 
-        <!--实付金额-->
         <com.wuguangxin.view.ItemView
             android:layout_width="match_parent"
             android:layout_height="40dip"
-            android:background="#fff"
+            app:divider="@drawable/divider"
+            app:dividerMode="top"/>
+
+        <com.wuguangxin.view.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
@@ -50,11 +43,9 @@
             app:valueMarginLeft="10dip"
             app:valueSize="@dimen/font_14"/>
 
-        <!--实付金额-->
         <com.wuguangxin.view.ItemView
             android:layout_width="match_parent"
             android:layout_height="40dip"
-            android:background="#fff"
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
@@ -69,11 +60,9 @@
             app:valueMarginLeft="10dip"
             app:valueSize="@dimen/font_14"/>
 
-        <!--实付金额-->
         <com.wuguangxin.view.ItemView
             android:layout_width="match_parent"
             android:layout_height="40dip"
-            android:background="#fff"
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
@@ -92,7 +81,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical">
 
             <View
@@ -178,50 +166,34 @@
 
     </LinearLayout>
 
-
-    <com.wuguangxin.view.ItemTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dip"
-        android:background="@color/white"
-        android:baselineAligned="false"
-        android:paddingBottom="15dip"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dp"
-        android:paddingTop="15dip"
-        android:text="哈哈哈哈"
-        app:topPaddingLeft="20dip"
-        app:dividerMode="both"
-        app:divider="@drawable/divider"
-        />
-
-
     <com.wuguangxin.view.ItemLinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dip"
         android:layout_marginTop="15dip"
-        android:background="@color/white"
-        android:baselineAligned="false"
-        android:paddingBottom="15dip"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dp"
-        android:paddingTop="15dip"
-        app:dividerMode="both"
+        android:gravity="center_vertical"
         app:divider="@drawable/divider"
-        />
+        app:dividerMode="both">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dip"
+            android:text="ItemLinearLayout"/>
+    </com.wuguangxin.view.ItemLinearLayout>
 
     <com.wuguangxin.view.ItemRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dip"
         android:layout_marginTop="15dip"
-        android:background="@color/white"
-        android:baselineAligned="false"
-        android:paddingBottom="15dip"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dp"
-        android:paddingTop="15dip"
-        app:dividerMode="both"
+        android:background="@color/transparent"
+        android:gravity="center_vertical"
         app:divider="@drawable/divider"
-        />
+        app:dividerMode="top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dip"
+            android:text="ItemRelativeLayout"/>
+    </com.wuguangxin.view.ItemRelativeLayout>
 </LinearLayout>

@@ -8,8 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -25,7 +23,6 @@ import com.wuguangxin.R;
  * <p>Created by wuguangxin on 15/7/10 </p>
  */
 public class ItemView extends LinearLayout{
-	private Context context;
 	private LayoutParams iconLeftParams;
 	private LayoutParams iconRightParams;
 	private ImageView mIconLeftView;
@@ -33,10 +30,13 @@ public class ItemView extends LinearLayout{
 	private TextView mKeyView;
 	private TextView mValueView;
 
+	private int width;
+	private int height;
+
 	// 指示器
 	private Drawable divider;  							// 线条Drawable
-	private int dividerSize;							// 线条大小
 	private DividerMode dividerMode = DividerMode.None;	// 线条模式
+	private int dividerSize;							// 线条大小
 	// 左图标
 	private Drawable iconLeft;
 	private int iconLeftWidth = LayoutParams.WRAP_CONTENT;	// 左边图标默认宽(DIP)
@@ -120,37 +120,31 @@ public class ItemView extends LinearLayout{
 	private Drawable valueBackground;  // value的背景
 	private GravityMode valueGravity = GravityMode.left;
 
-	public ItemView(Context context){
+	private int dividerTopMarginLeft; // px
+	private int dividerTopMarginRight; // px
+	private int dividerBottomMarginLeft = 0; // px
+	private int dividerBottomMarginRight = 0; // px
+
+
+	public ItemView(Context context) {
 		this(context, null);
 	}
 
-	public ItemView(Context context, @Nullable AttributeSet attrs){
+	public ItemView(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
 
-	public ItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr){
+	public ItemView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		this.context = context;
-		init(attrs, defStyleAttr, 0);
-	}
-
-	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-	public ItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-		super(context, attrs, defStyleAttr, defStyleRes);
-		this.context = context;
-		init(attrs, defStyleAttr, defStyleRes);
-	}
-
-	private void init(AttributeSet attrs, int defStyle, int defStyleRes){
-		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView, defStyle, defStyleRes);
+		// 不设置颜色，就看不到线条，待解决（暂时使用透明色）
+		setBackgroundColor(Color.TRANSPARENT);
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView);
 		if (a != null) {
 			// 线
 			divider = a.getDrawable(R.styleable.ItemView_divider);
 			dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemView_dividerMode, dividerMode.value));
-			dividerTopMargin = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_margin, dividerTopMargin);
 			dividerTopMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginLeft, dividerTopMarginLeft);
 			dividerTopMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginRight, dividerTopMarginRight);
-			dividerBottomMargin = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_margin, dividerBottomMargin);
 			dividerBottomMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginLeft, dividerBottomMarginLeft);
 			dividerBottomMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginRight, dividerBottomMarginRight);
 
@@ -340,6 +334,60 @@ public class ItemView extends LinearLayout{
 		}
 	}
 
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		width = getMeasuredWidth();
+		height = getMeasuredHeight();
+	}
+
+	@Override
+	public void draw(Canvas canvas) {
+		super.draw(canvas);
+
+		if (dividerMode == DividerMode.None) {
+			return;
+		}
+
+		switch (dividerMode) {
+		case None:
+			break;
+		case SingleTop:
+			drawDividerTop(canvas);		// 上
+			break;
+		case SingleBottom:
+			drawDividerBottom(canvas); 	// 下
+			break;
+		case Both:
+			drawDividerTop(canvas);		// 上
+			drawDividerBottom(canvas); 	// 下
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 画上线
+	 * @param canvas
+	 */
+	private void drawDividerTop(Canvas canvas) {
+		if(divider != null){
+			divider.setBounds(dividerTopMarginLeft, 0, width - dividerTopMarginRight, dividerSize);
+			divider.draw(canvas);
+		}
+	}
+
+	/**
+	 * 画下线
+	 * @param canvas
+	 */
+	private void drawDividerBottom(Canvas canvas) {
+		if(divider != null){
+			divider.setBounds(dividerBottomMarginLeft, height - dividerSize, width - dividerBottomMarginRight, width);
+			divider.draw(canvas);
+		}
+	}
 
 	@Override
 	final public void setOrientation(int orientation) {
@@ -421,105 +469,6 @@ public class ItemView extends LinearLayout{
 		if (mValueView != null) {
 			mValueView.setOnClickListener(valueOnClickListener);
 		}
-	}
-
-	/**
-	 * 如果设置此值，则设置以下将无效：
-	 * dividerTopMargin、
-	 * dividerTopMarginLeft、
-	 * dividerTopMarginRight、
-	 *
-	 * dividerBottomMargin、
-	 * dividerBottomMarginLeft、
-	 * dividerBottomMarginRight。
-	 */
-	private int dividerMargin; // px
-
-	/**
-	 * 如果设置此值，则设置以下将无效：
-	 * dividerTopMarginLeft、
-	 * dividerTopMarginRight、
-	 */
-	private int dividerTopMargin; // px
-	private int dividerTopMarginLeft; // px
-	private int dividerTopMarginRight; // px
-
-	/**
-	 * 如果设置此值，则设置以下将无效：
-	 * dividerBottomMarginLeft、
-	 * dividerBottomMarginRight、
-	 */
-	private int dividerBottomMargin = 0; // px
-	private int dividerBottomMarginLeft = 0; // px
-	private int dividerBottomMarginRight = 0; // px
-
-//	private Paint dividerPaint;
-
-	@Override
-	public void draw(Canvas canvas) {
-		super.draw(canvas);
-		initMargin();
-		switch (dividerMode) {
-		case None:
-			break;
-		case SingleTop:
-			drawDividerTop(canvas);	// 上
-			break;
-		case SingleBottom:
-			drawDividerBottom(canvas); // 下
-			break;
-		case Both:
-			drawDividerTop(canvas);	// 上
-			drawDividerBottom(canvas); // 下
-			break;
-		default:
-			break;
-		}
-	}
-
-	private void initMargin() {
-		if(dividerMargin > 0){
-			dividerTopMargin = dividerTopMarginLeft = dividerTopMarginRight = dividerMargin;
-			dividerBottomMargin = dividerBottomMarginLeft = dividerBottomMarginRight = dividerMargin;
-		} else if(dividerTopMargin > 0){
-			dividerTopMarginLeft = dividerTopMarginRight = dividerTopMargin;
-		} else if(dividerBottomMargin > 0){
-			dividerBottomMarginLeft = dividerBottomMarginRight = dividerBottomMargin;
-		}
-	}
-
-	/**
-	 * 画上线
-	 * @param canvas
-	 */
-	private void drawDividerTop(Canvas canvas) {
-		if(divider == null){
-			return;
-		}
-		int measuredWidth = getMeasuredWidth();
-		divider.setBounds(dividerTopMarginLeft,
-				0,
-				measuredWidth - dividerTopMarginRight,
-				dividerSize);
-		divider.draw(canvas);
-	}
-
-	/**
-	 * 画下线
-	 * @param canvas
-	 */
-	private void drawDividerBottom(Canvas canvas) {
-		if(divider == null){
-			return;
-		}
-		int measuredWidth = getMeasuredWidth();
-		int measuredHeight = getMeasuredHeight();
-
-		divider.setBounds(dividerBottomMarginLeft,
-				measuredHeight - dividerSize,
-				measuredWidth - dividerBottomMarginRight,
-				measuredHeight);
-		divider.draw(canvas);
 	}
 
 	// =============================== getter start=================================================
@@ -862,24 +811,6 @@ public class ItemView extends LinearLayout{
 	// =============================== 对分割线的操作 start===========================================
 
 	/**
-	 * 设置所有分割线Margin
-	 * @param dividerMargin 值
-	 */
-	public void setDividerMargin(int dividerMargin) {
-		this.dividerMargin = dividerMargin;
-		invalidate();
-	}
-
-	/**
-	 * 设置Top分割线Margin
-	 * @param dividerTopMargin 值
-	 */
-	public void setDividerTopMargin(int dividerTopMargin) {
-		this.dividerTopMargin = dividerTopMargin;
-		invalidate();
-	}
-
-	/**
 	 * 设置Top分割线MarginLeft
 	 * @param dividerTopMarginLeft 值
 	 */
@@ -894,15 +825,6 @@ public class ItemView extends LinearLayout{
 	 */
 	public void setDividerTopMarginRight(int dividerTopMarginRight) {
 		this.dividerTopMarginRight = dividerTopMarginRight;
-		invalidate();
-	}
-
-	/**
-	 * 设置Bottom分割线Margin
-	 * @param dividerBottomMargin 值
-	 */
-	public void setDividerBottomMargin(int dividerBottomMargin) {
-		this.dividerBottomMargin = dividerBottomMargin;
 		invalidate();
 	}
 

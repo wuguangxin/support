@@ -146,14 +146,10 @@
         <!--间隔线样式，none没有，both上下有，top上有，bottom下有-->
         <attr name="dividerMode" />
 
-        <!--上指示器距左和右-->
-        <attr name="dividerTop_margin" format="reference|dimension" />
         <!--上指示器距左-->
         <attr name="dividerTop_marginLeft" format="reference|dimension" />
         <!--上指示器距右-->
         <attr name="dividerTop_marginRight" format="reference|dimension" />
-        <!--下指示器距左和右-->
-        <attr name="dividerBottom_margin" format="reference|dimension" />
         <!--下指示器距左-->
         <attr name="dividerBottom_marginLeft" format="reference|dimension" />
         <!--下指示器距右-->

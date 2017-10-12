@@ -3,6 +3,7 @@ package com.wuguangxin.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
@@ -35,6 +36,8 @@ public class ItemRelativeLayout extends RelativeLayout {
 
 	public ItemRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
+		// 不设置颜色，就看不到线条，待解决（暂时使用透明色）
+		setBackgroundColor(Color.TRANSPARENT);
 		if(attrs != null){
 			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemTextView);
 			if(a != null){
