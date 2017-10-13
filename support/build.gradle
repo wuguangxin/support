@@ -3,9 +3,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release' // bintray
 
 def mVersionTime = "20171012"
-def mVersionCode = 16
-def mVersionName = "1.0.16"
-def mDescription = "优化XinTabHostActivity类，修复ItemXxx系列View在不设置背景色时divider不显示的BUG"
+def mVersionCode = 17
+def mVersionName = "1.0.17"
+def mDescription = "修复ItemXxx系列View设置背景色失效的BUG"
 
 android {
     compileSdkVersion 25

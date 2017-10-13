@@ -36,8 +36,6 @@ public class ItemTextView extends TextView {
 
 	public ItemTextView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		// 不设置颜色，就看不到线条，待解决（暂时使用透明色）
-		setBackgroundColor(Color.TRANSPARENT);
 		if(attrs != null){
 			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemTextView);
 			if(a != null){
@@ -51,6 +49,11 @@ public class ItemTextView extends TextView {
 			}
 		}
 		dividerSize = divider != null ? divider.getIntrinsicHeight() : 0;
+
+		// 不设置颜色，就看不到线条，待解决（暂时判断未设置颜色时，使用透明色）
+		if (getBackground() == null) {
+			setBackgroundColor(Color.TRANSPARENT);
+		}
 	}
 
 	@Override

@@ -136,8 +136,6 @@ public class ItemView extends LinearLayout{
 
 	public ItemView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		// 不设置颜色，就看不到线条，待解决（暂时使用透明色）
-		setBackgroundColor(Color.TRANSPARENT);
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView);
 		if (a != null) {
 			// 线
@@ -235,6 +233,11 @@ public class ItemView extends LinearLayout{
 			valueDrawableRight = a.getDrawable(R.styleable.ItemView_valueDrawableRight);
 
 			a.recycle();
+		}
+
+		// 不设置颜色，就看不到线条，待解决（暂时判断未设置颜色时，使用透明色）
+		if (getBackground() == null) {
+			setBackgroundColor(Color.TRANSPARENT);
 		}
 
 		dividerSize = divider != null ? divider.getIntrinsicHeight() : 0;

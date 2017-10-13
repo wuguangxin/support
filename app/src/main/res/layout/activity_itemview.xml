@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,6 +16,9 @@
         <com.wuguangxin.view.ItemTextView
             android:layout_width="match_parent"
             android:layout_height="40dip"
+            android:textColor="@color/blue"
+            android:background="@color/white"
+            android:text="哈哈哈"
             app:divider="@drawable/divider"
             app:dividerMode="top"/>
 
@@ -24,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dip"
             app:divider="@drawable/divider"
+            android:background="@color/white"
             app:dividerMode="top"/>
 
         <com.wuguangxin.view.ItemView
@@ -32,6 +35,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
+            android:background="@color/white"
             app:divider="@drawable/divider"
             app:dividerMode="top"
             app:dividerTop_marginLeft="15dip"
@@ -49,6 +53,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
+            android:background="@color/white"
             app:divider="@drawable/divider"
             app:dividerMode="top"
             app:dividerTop_marginLeft="15dip"
@@ -65,6 +70,7 @@
             android:layout_height="40dip"
             android:gravity="center_vertical"
             android:paddingLeft="15dip"
+            android:background="@color/white"
             android:paddingRight="15dip"
             app:divider="@drawable/divider"
             app:dividerMode="top"
@@ -170,6 +176,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dip"
         android:layout_marginTop="15dip"
+        android:background="@color/white"
         android:gravity="center_vertical"
         app:divider="@drawable/divider"
         app:dividerMode="both">
@@ -185,7 +192,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dip"
         android:layout_marginTop="15dip"
-        android:background="@color/transparent"
+        android:background="@color/white"
         android:gravity="center_vertical"
         app:divider="@drawable/divider"
         app:dividerMode="top">
