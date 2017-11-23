@@ -6,12 +6,21 @@
     android:orientation="horizontal"
     android:visibility="visible" >
 
+    <!--状态栏占位布局-->
+    <RelativeLayout
+        android:id="@+id/statusbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="25dip"
+        android:background="@drawable/xin_statusbar_bg"
+        android:visibility="gone" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/statusbar_layout" >
 
         <!--左边区域-->
         <RelativeLayout

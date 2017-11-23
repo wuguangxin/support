@@ -2,10 +2,10 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release' // bintray
 
-def mVersionTime = "20171012"
-def mVersionCode = 17
-def mVersionName = "1.0.17"
-def mDescription = "修复ItemXxx系列View设置背景色失效的BUG"
+def mModulesName = "support"
+def mVersionCode = 19
+def mVersionName = "1.0.19"
+def mDescription = "修复xin_main_title.xml,增加statusBar，需要使用透明状态栏"
 
 android {
     compileSdkVersion 25
@@ -47,15 +47,15 @@ dependencies {
 // 配置 bintray
 publish {
     // 固定配置
-    bintrayUser = 'wuguangxin'               // 登陆账号
-    groupId = 'com.wuguangxin'               // 项目的包名
-    userOrg = 'wuguangxin'                   // bintray用户名
-    repoName = 'maven'                       // Repositories名，所有library都默认使用"maven"
+    bintrayUser = 'wuguangxin'              // 登陆账号
+    groupId = 'com.wuguangxin'              // 项目的包名
+    userOrg = 'wuguangxin'                  // bintray用户名
+    repoName = 'maven'                      // Repositories名，所有library都默认使用"maven"
     // 可变配置
-    website = 'https://github.com/wuguangxin/support'   // 项目的地址，不重要
-    artifactId = 'support'                   // 上传到bintray里的Package Name(这里填什么就显示什么)
-    publishVersion =mVersionName             // 引用版本号 (这里填什么就显示什么)
-    dryRun = false                           // false:上传，true：不上传
-    desc = mDescription                      // 版本描述（不重要）
+    website = 'https://github.com/wuguangxin/' + mModulesName   // 项目的地址，不重要
+    artifactId = mModulesName               // 上传到bintray里的Package Name(这里填什么就显示什么)
+    publishVersion = mVersionName           // 引用版本号 (这里填什么就显示什么)
+    dryRun = false                          // false:上传，true：不上传
+    desc = mDescription                     // 版本描述（不重要）
 }
 

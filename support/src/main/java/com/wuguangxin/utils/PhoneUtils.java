@@ -1,5 +1,6 @@
 package com.wuguangxin.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,22 +27,18 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class PhoneUtils{
 	private static TelephonyManager phoneManager;
-	/**
-	 * 手机段号列表 移动:134、135、136、137、138、139、150、151、152、157、158、 159、182、183、184、187、188、178(4G)、147(上网卡); 联通:130、131、132、155、156、185、186、176(4G)、145(上网卡); 电信:133、153、180、181、189 、177(4G);
-	 */
-	public static String[] PHONENUMBER_PREFIX = {"134", "135", "136", "137", "138", "139", "147", "150", "178", "184", "151", "152", "157", "158", "159", "182", "183", "187", "188",// 移动
-		"130", "131", "132", "145", "155", "156", "185", "186", "176",// 联通
-		"133", "153", "189", "180", "181", "177" // 电信
-	};
 
 	/**
-	 * 判断是否是手机号码（基本判断，不是很准确）
-	 * 
+	 * 判断是否是手机号码（基本判断，不是很准确）。
+	 *
 	 * @param number 手机号码
 	 * @return 参数为null和不合法时返回false，否则返回true
 	 */
 	public static boolean isPhoneNumber(String number){
-		if (!TextUtils.isEmpty(number) && number.matches("1[3|4|5|7|8][0-9]{9}")) {
+//		String regOld = "1[3|4|5|7|8][0-9]{9}";
+		// 20171116 add
+		String reg = "^((13[0-9])|(14[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(166)|(19[8,9]))\\d{8}$";
+		if (!TextUtils.isEmpty(number) && number.matches(reg)) {
 			return true;
 		}
 		return false;
@@ -97,6 +94,7 @@ public class PhoneUtils{
 			return null;
 		}
 		phoneManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+		@SuppressLint("MissingPermission")
 		String phoneString = phoneManager.getLine1Number();
 		if (phoneString != null) {
 			return phoneString.replace("+86", "");
@@ -109,6 +107,7 @@ public class PhoneUtils{
 	 * @param context 上下文
 	 * @param tel 号码字符串
 	 */
+	@SuppressLint("MissingPermission")
 	public static void call(Context context, String tel){
 		context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tel)));
 	}
