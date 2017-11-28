@@ -12,7 +12,15 @@ import java.text.DecimalFormat;
  * <p>Created by wuguangxin on 14/6/2 </p>
  */
 public class MoneyUtils{
-//	private static DecimalFormat decimalFormat = new DecimalFormat();
+	/** 是否清除后面的0，比如1.90，清除后是1.9 */
+	private static boolean isClearZero = false;
+
+	/**
+	 * 是否清除后面的0，比如1.90，清除后是1.9
+	 */
+	public static void setIsClearZero(boolean isClearZero) {
+		MoneyUtils.isClearZero = isClearZero;
+	}
 
 	/**
 	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
@@ -21,9 +29,9 @@ public class MoneyUtils{
 	 */
 	public static String format(String moneyString){
 		if (TextUtils.isEmpty(moneyString) || moneyString.split("\\.").length > 2) {
-			return "0.00";
+			return clearZero("0.00");
 		}
-		return format(new BigDecimal(moneyString).doubleValue());
+		return clearZero(format(new BigDecimal(moneyString).doubleValue()));
 	}
 
 	/**
@@ -32,7 +40,7 @@ public class MoneyUtils{
 	 * @return 金额字符串
 	 */
 	public static String format(Number number){
-		return format(number, "");
+		return clearZero(format(number, ""));
 	}
 
 	/**
@@ -46,12 +54,16 @@ public class MoneyUtils{
 			number = 0;
 		}
 		DecimalFormat decimalFormat = new DecimalFormat();
-		decimalFormat.applyPattern(String.format("##,###.00%s", unit));
+		decimalFormat.applyPattern("##,###.00");
 		String formatMoney = decimalFormat.format(number.doubleValue());
 		if (formatMoney.startsWith(".")) {
 			return "0" + formatMoney;
 		}
-		return formatMoney;
+		if (TextUtils.isEmpty(unit)) {
+			return clearZero(formatMoney);
+		} else {
+			return String.format("%s%s", clearZero(formatMoney), unit);
+		}
 	}
 
 	/**
@@ -74,7 +86,7 @@ public class MoneyUtils{
 		if (formatMoney.startsWith(".")) {
 			return "0" + formatMoney;
 		}
-		return formatMoney;
+		return clearZero(formatMoney);
 	}
 
 	/**
@@ -84,9 +96,9 @@ public class MoneyUtils{
 	 */
 	public static String format2bit(String moneyString){
 		if (TextUtils.isEmpty(moneyString) || moneyString.split("\\.").length > 2) {
-			return "0.00";
+			return clearZero("0.00");
 		}
-		return format2bit(new BigDecimal(moneyString).doubleValue());
+		return clearZero(format2bit(new BigDecimal(moneyString).doubleValue()));
 	}
 
 	/**
@@ -96,7 +108,7 @@ public class MoneyUtils{
 	 */
 	public static String format2bit(long moneyLong){
 		if (moneyLong == 0) {
-			return "0.00";
+			return clearZero("0.00");
 		}
 		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.00");
@@ -104,7 +116,7 @@ public class MoneyUtils{
 		if (moneyString.startsWith(".")) {
 			moneyString = "0" + moneyString;
 		}
-		return moneyString;
+		return clearZero(moneyString);
 	}
 
 	/**
@@ -114,7 +126,7 @@ public class MoneyUtils{
 	 */
 	public static String format2bit(double moneyDouble){
 		if (moneyDouble == 0) {
-			return "0.00";
+			return clearZero("0.00");
 		}
 		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.00");
@@ -122,7 +134,7 @@ public class MoneyUtils{
 		if (moneyString.startsWith(".")) {
 			moneyString = "0" + moneyString;
 		}
-		return moneyString;
+		return clearZero(moneyString);
 	}
 
 	/**
@@ -132,7 +144,7 @@ public class MoneyUtils{
 	 */
 	public static String format2bit(BigDecimal moneyBigDecimal){
 		if (moneyBigDecimal == null || moneyBigDecimal.doubleValue() == 0) {
-			return "0.00";
+			return clearZero("0.00");
 		}
 		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.00");
@@ -140,7 +152,7 @@ public class MoneyUtils{
 		if (formatMoney.startsWith(".")) {
 			return "0" + formatMoney;
 		}
-		return formatMoney;
+		return clearZero(formatMoney);
 	}
 
 	/**
@@ -150,7 +162,7 @@ public class MoneyUtils{
 	 */
 	public static String format1bit(double moneyDouble){
 		if (moneyDouble == 0) {
-			return "0";
+			return clearZero("0.0");
 		}
 		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("#####.0");
@@ -158,7 +170,7 @@ public class MoneyUtils{
 		if (moneyString.startsWith(".")) {
 			moneyString = "0" + moneyString;
 		}
-		return moneyString;
+		return clearZero(moneyString);
 	}
 
 	/**
@@ -168,7 +180,7 @@ public class MoneyUtils{
 	 * @return 金额字符串
 	 */
 	public static String format(BigDecimal money, int bit){
-		return getDecimalFormat(bit).format(money);
+		return clearZero(getDecimalFormat(bit).format(money));
 	}
 
 	/**
@@ -178,7 +190,7 @@ public class MoneyUtils{
 	 * @return 金额字符串
 	 */
 	public static String format(double money, int bit){
-		return getDecimalFormat(bit).format(money);
+		return clearZero(getDecimalFormat(bit).format(money));
 	}
 
 	/**
@@ -188,7 +200,26 @@ public class MoneyUtils{
 	 * @return 金额字符串
 	 */
 	public static String format(long money, int bit){
-		return getDecimalFormat(bit).format(money);
+		return clearZero(getDecimalFormat(bit).format(money));
+	}
+
+	/**
+	 * 去小数.00 或 .0（比如1.90，清除后是1.9）
+	 * @param numberStr 数值字符串
+	 * @return
+	 */
+	public static String clearZero(String numberStr) {
+		if (!isClearZero) {
+			return numberStr;
+		}
+		if(numberStr == null) {
+			return "0";
+		}
+		if(numberStr.indexOf(".") > 0){
+			numberStr = numberStr.replaceAll("0+?$", "");//去掉后面无用的零
+			numberStr = numberStr.replaceAll("[.]$", "");//如小数点后面全是零则去掉小数点
+		}
+		return numberStr;
 	}
 
 	/**

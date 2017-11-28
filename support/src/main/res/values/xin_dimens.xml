@@ -1,5 +1,6 @@
 <resources>
     <!-- 字体大小 -->
+    <dimen name="font_0">0dip</dimen>
     <dimen name="font_1">1dip</dimen>
     <dimen name="font_2">2dip</dimen>
     <dimen name="font_3">3dip</dimen>
@@ -50,8 +51,14 @@
     <dimen name="font_48">48dip</dimen>
     <dimen name="font_49">49dip</dimen>
     <dimen name="font_50">50dip</dimen>
+    <dimen name="font_60">60dip</dimen>
+    <dimen name="font_70">70dip</dimen>
+    <dimen name="font_80">80dip</dimen>
+    <dimen name="font_90">90dip</dimen>
     <dimen name="font_100">100dip</dimen>
     <dimen name="font_130">130dip</dimen>
+    <dimen name="font_150">150dip</dimen>
+    <dimen name="font_200">200dip</dimen>
     <dimen name="font_S">@dimen/font_12</dimen> <!-- 小号 -->
     <dimen name="font_M">@dimen/font_14</dimen> <!-- 中号 -->
     <dimen name="font_L">@dimen/font_16</dimen> <!-- 大号 -->
@@ -62,9 +69,9 @@
     <dimen name="xin_actionbar_height">50dp</dimen>
     
 	<!-- 表格配置 -->
-	<dimen name="xin_border_size">0.5dip</dimen> <!-- 表格中Item按下边框大小 -->
-	<dimen name="xin_table_border_size">0.5dip</dimen> <!-- 表格中Item按下边框大小 -->
-	<dimen name="xin_table_item_vertical_space">0.5dip</dimen> <!-- 表格中item与item的垂直方向的间隔距离 -->
+	<dimen name="xin_border_size">0.7dip</dimen> <!-- 表格中Item按下边框大小 -->
+	<dimen name="xin_table_border_size">0.7dip</dimen> <!-- 表格中Item按下边框大小 -->
+	<dimen name="xin_table_item_vertical_space">0.7dip</dimen> <!-- 表格中item与item的垂直方向的间隔距离 -->
 	<dimen name="xin_table_item_corners_radius">1.0dip</dimen> <!-- 圆角半径 -->
 	<dimen name="xin_table_item_border_size_normal">0dip</dimen> <!-- 表格中Item正常边框大小 -->
 	<dimen name="xin_table_item_border_size_pressed">0dip</dimen> <!-- 表格中Item按下边框大小 -->
@@ -88,10 +95,10 @@
 
     <dimen name="xin_history_score_tb">10dip</dimen>
 
-    <!--tab的文字大小-->
-    <dimen name="xin_tab_text_size">12dip</dimen>
-    <!--tab的布局最小高度-->
-    <dimen name="xin_tab_layout_minHeight">47dip</dimen>
+    <!-- 首页 tab的文字大小-->
+    <dimen name="xin_tab_text_size">10dip</dimen>
+    <!-- 首页 tab的布局最小高度-->
+    <dimen name="xin_tab_layout_minHeight">50dip</dimen>
 
     <!-- ==================对话框MyDialog配置================= -->
     <!--MyDialog左边的按钮左上角圆角半径-->

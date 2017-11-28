@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- TabHost.item文字颜色选择器 -->
-    <item android:state_selected="true" android:color="#ee2f3a"/>
-    <item android:state_selected="false" android:color="#797979"/>
-    <item android:state_pressed="true" android:color="#ee2f3a"/>
-    <item android:color="#797979"/>
+    <item android:state_selected="true" android:color="@color/xin_tab_text_pressed"/>
+    <item android:state_selected="false" android:color="@color/xin_tab_text_normal"/>
+    <item android:state_pressed="true" android:color="@color/xin_tab_text_pressed"/>
+    <item android:color="@color/xin_tab_text_normal"/>
 
 </selector>

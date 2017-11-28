@@ -27,10 +27,16 @@
     <color name="xdddddd">#dddddd</color>
     <color name="xeeeeee">#eeeeee</color>
     <color name="xffffff">#ffffff</color>
-    
+
+    <!-- 首页 tab文字颜色 -->
+    <color name="xin_tab_text_normal">#838383</color>
+    <color name="xin_tab_text_pressed">#0251c3</color>
+
+    <!--按钮默认背景状态选择器颜色-->
+    <color name="xin_button_default_bg_color_normal">#00000000</color>
+    <color name="xin_button_default_bg_color_pressed">#22000000</color>
+
     <!-- （对话框）顶部设置按钮背景颜色 -->
-    <color name="xin_dialog_setting_color_normal">#00000000</color>
-    <color name="xin_dialog_setting_color_pressed">#22000000</color>
     <color name="xin_selector_default_normal">#ffffff</color>
     <color name="xin_selector_default_pressed">#cccccc</color>
 

@@ -34,8 +34,6 @@
     <string name="toast_error_text_default">提示</string>
     <string name="toast_warn_text_default">提示</string>
     <string name="toast_flow_text_default">0KB</string>
-    <!-- 标题栏 -->
-    <string name="actionbar_search_edittext_hint">输入搜索关键字</string>
     <!-- 设置用户头像 -->
     <string name="usericon_set_openCamera">拍照</string>
     <string name="usericon_set_openPhtots">相册选择</string>
@@ -44,8 +42,4 @@
     <!-- 语音对话框 -->
     <string name="voice_move_msg">上滑取消录音</string>
     <string name="voice_cancel_msg">松手取消录音</string>
-    <!-- 交易明细遮罩view的tag -->
-    <string name="title_arrow_view_down">down</string>
-    <string name="title_arrow_view_up">up</string>
-    <string name="title_arrow_view_none">none</string>
 </resources>

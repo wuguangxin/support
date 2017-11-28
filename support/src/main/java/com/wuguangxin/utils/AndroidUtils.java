@@ -39,6 +39,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -1100,9 +1101,9 @@ public class AndroidUtils {
      * @return 状态栏高度
      */
     public static int getStatusBarHeight(Context context) {
-        Class<?> c = null;
-        Object obj = null;
-        Field field = null;
+        Class<?> c;
+        Object obj;
+        Field field;
         int x = 0, sbar = 0;
         try {
             c = Class.forName("com.android.internal.R$dimen");
@@ -1121,12 +1122,39 @@ public class AndroidUtils {
      * @param activity Activity
      */
     @SuppressLint("InlinedApi")
+    @Deprecated
     public static void setImmersionStatusBar(Activity activity) {
         if (VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
             // 透明状态栏
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             // 透明导航栏。注意华为和HTC等有虚拟HOME键盘的，如果使用下面这段代码，界面会被覆盖。无法操作底部TAB（建议关闭）
 //			 activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+    }
+
+    /**
+     * 设置透明状态栏
+     *
+     * @param activity Activity
+     * @param viewGroup 窗口的跟布局
+     */
+    public static void setImmersionStatusBar(Activity activity, ViewGroup viewGroup) {
+        if (activity == null || viewGroup == null) {
+            return;
+        }
+        // >=19
+        if (VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+            // 透明状态栏
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // 透明导航栏。注意华为和HTC等有虚拟HOME键盘的，如果不设置下面这段代码，虚拟键盘将覆盖APP底部界面，无法操作底部TAB
+//				activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            // <21
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+                //将主页面顶部延伸至status bar;虽默认为false,但经测试,DrawerLayout需显示设置
+                viewGroup.setClipToPadding(true);
+                //将侧边栏顶部延伸至status bar
+                viewGroup.setFitsSystemWindows(false);
+            }
         }
     }
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="xin_immersion_status">
+        <item name="android:clipToPadding">true</item>
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+
+        <!--状态栏为透明,如果设置为false，则没有黑色条盖住-->
+        <item name="android:windowTranslucentStatus">false</item>
+        <!--导航栏为透明-->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>

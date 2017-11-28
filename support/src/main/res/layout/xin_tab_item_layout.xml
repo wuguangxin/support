@@ -3,8 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical"
-    android:minHeight="@dimen/xin_tab_layout_minHeight">
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/xin_tab_icon"
@@ -18,5 +17,5 @@
         android:layout_height="wrap_content"
         android:text="Item"
         android:textColor="@drawable/xin_tab_text_color"
-        android:textSize="@dimen/xin_tab_text_size" />
+        android:textSize="@dimen/xin_tab_text_size"/>
 </LinearLayout>
