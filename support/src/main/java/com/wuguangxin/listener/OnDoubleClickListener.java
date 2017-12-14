@@ -9,10 +9,10 @@ import android.view.View.OnClickListener;
  * <p>Created by wuguangxin on 15-12-24 </p>
  */
 public abstract class OnDoubleClickListener implements OnClickListener{
-	public static long MIN_DOUBLE_CLICK_SPANCE_TIME = 300;
-	public static long LAST_DOUBLE_CLICK_TIME = 0;
 	private View mView;
-	
+	private long minClickSpaceTime = 300;
+	private long lastClickTime = 0;
+
 	public OnDoubleClickListener(){
 		super();
 	}
@@ -25,10 +25,10 @@ public abstract class OnDoubleClickListener implements OnClickListener{
 		this.mView = view;
 	}
 
-	public OnDoubleClickListener(View mView, long minClickSpanceTime){
+	public OnDoubleClickListener(View mView, long minClickSpaceTime){
 		super();
 		this.mView = mView;
-		OnDoubleClickListener.MIN_DOUBLE_CLICK_SPANCE_TIME = minClickSpanceTime;
+		this.minClickSpaceTime = minClickSpaceTime;
 	}
 	
 	/**
@@ -40,8 +40,8 @@ public abstract class OnDoubleClickListener implements OnClickListener{
 	@Override
 	final public void onClick(View v){
 		long currentTime = System.currentTimeMillis();
-		if (currentTime - LAST_DOUBLE_CLICK_TIME > MIN_DOUBLE_CLICK_SPANCE_TIME) {
-			LAST_DOUBLE_CLICK_TIME = currentTime;
+		if (currentTime - lastClickTime > minClickSpaceTime) {
+			lastClickTime = currentTime;
 			onClicked(mView != null ? mView : v);
 		} else {
 			System.out.println("click too fast ~~~");

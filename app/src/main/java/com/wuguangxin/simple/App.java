@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.wuguangxin.base.AppTask;
 import com.wuguangxin.utils.Logger;
+import com.wuguangxin.utils.MoneyUtils;
 
 /**
  * Application
@@ -23,6 +24,7 @@ public class App extends Application {
 		super.onCreate();
 		mContext = this;
 		// 基本信息
+		MoneyUtils.setIsClearZero(true);
 		Logger.setDebug(Constants.DEBUG);
 		Logger.setTagPrefix("wgx_");				// 设置日志Tag前缀，便于过滤
 	}

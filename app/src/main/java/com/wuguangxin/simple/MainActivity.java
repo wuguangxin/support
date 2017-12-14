@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.wuguangxin.utils.Logger;
+import com.wuguangxin.utils.MoneyUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.IOException;
@@ -27,6 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.MyDialog).setOnClickListener(this);
         findViewById(R.id.ItemView).setOnClickListener(this);
         findViewById(R.id.CircleProgressView).setOnClickListener(this);
+
+
+        Logger.i(this, MoneyUtils.format(100.00D, "元"));
+        Logger.i(this, MoneyUtils.format(100.00D));
+        Logger.i(this, MoneyUtils.format(0.00D));
+        Logger.i(this, MoneyUtils.format(0.00D, "元"));
+        Logger.i(this, MoneyUtils.format(100.90D, "元"));
     }
 
     @Override
