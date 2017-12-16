@@ -24,76 +24,45 @@ import java.util.TimerTask;
  * 自定义锁屏View
  */
 public class GestureView extends View{
-	// ================== 默认值 ==========================================================
-
-	private static final int DEF_LIMIT_NUM = 4; 		// 默认最少绘制数量
-	private static final int DEF_CIRCLE_NUM = 3;		// 默认水平方向排列的圆的个数（3X3就是3，4X4就是4）
-	private static final float DEF_WIDTH = 0F;			// 默认宽度
-	private static final float DEF_CIRCLE_SPACE = 50f;	// 默认圆与圆的间隔
-	private static final float DEF_CIRCLE_RADIUS = 70f;	// 默认圆的半径
-
+	// ================== 默认值 =========================
 	/** 绘制手势点太短 */
 	public static final int ERROR_KEY_SHORT = 1;
 	/** 在设置手势时，第二次与第一次不一致 */
 	public static final int ERROR_KEY_UNLIKE = 2; 
 	/** 解锁密码不正确 */
 	public static final int ERROR_UNLOCK_NO = 3;
-	private static final int DELAY_RESET_TIME = 300;	// 延时恢复组件时间(毫秒)
+	/** 延时恢复组件时间(毫秒) */
+	private static final int DELAY_RESET_TIME = 300;
+	// ================== 默认值 END =====================
 
+	// ================== 配置变量 ==================================================================
 	// 背景
-	private static final int DEF_COLOR_BACKGROUND_NORMAL = 0x00000000;		// 背景颜色 正常
-	private static final int DEF_COLOR_BACKGROUND_TOUCH = 0x00000000;		// 背景颜色 触摸
-	private static final int DEF_COLOR_BACKGROUND_ERROR = 0x00000000;		// 背景颜色 错误
+	private int colorBackgroundNormal = 0x00000000;		// 背景颜色 正常
+	private int colorBackgroundTouch = 0x00000000;		// 背景颜色 触摸
+	private int colorBackgroundError = 0x00000000;		// 背景颜色 错误
 	// 外圆
-	private static final int DEF_COLOR_OUTER_CYCLE_NORMAL = 0xFF999999;		// 外圆颜色 正常
-	private static final int DEF_COLOR_OUTER_CYCLE_TOUCH = 0xFF999999;		// 外圆颜色 触摸
-	private static final int DEF_COLOR_OUTER_CYCLE_ERROR = 0xFFEE2F3A;		// 外圆颜色 错误
+	private int colorOuterCycleNormal = 0xFF999999;		// 外圆颜色 正常
+	private int colorOuterCycleTouch = 0xFF999999;		// 外圆颜色 触摸
+	private int colorOuterCycleError = 0xFFEE2F3A;		// 外圆颜色 错误
 	// 内圆
-	private static final int DEF_COLOR_INNER_CYCLE_NORMAL = 0x00000000;		// 内圆颜色 正常
-	private static final int DEF_COLOR_INNER_CYCLE_TOUCH = 0xFF404040;		// 内圆颜色 触摸
-	private static final int DEF_COLOR_INNER_CYCLE_ERROR = 0xFFEE2F3A;		// 内圆颜色 错误
+	private int colorInnerCycleNormal = 0x00000000;		// 内圆颜色 正常
+	private int colorInnerCycleTouch = 0xFF404040;		// 内圆颜色 触摸
+	private int colorInnerCycleError = 0xFFEE2F3A;		// 内圆颜色 错误
 	// 连接线
-	private static final int DEF_COLOR_LINK_LINE_NORMAL = 0xFF959595;		// 线条颜色 正常
-	private static final int DEF_COLOR_LINK_LINE_ERROR = 0xFFfc727a;		// 线条颜色 错误
-
-	private static final float DEF_OUTER_CYCLE_STROKE_SIZE_ERROR = 3; 		// 外圆边框大小 错误时
-	private static final float DEF_OUTER_CYCLE_STROKE_SIZE = 3; 			// 外圆边框大小
-	private static final float DEF_INNER_CYCLE_STROKE_SIZE = 0; 			// 内圆边框大小
-	private static final float DEF_BACKGROUND_STROKE_SIZE = 0; 				// 背景边框大小
-	private static final float DEF_LINK_LINE_STROKE_SIZE = 5; 				// 连接线条大小
-
-	// ================== 默认值 END ==========================================================
-
-	// ================== 变量 ================================================================
-	// 背景
-	private int colorBackgroundNormal = DEF_COLOR_BACKGROUND_NORMAL;	// 背景颜色 正常
-	private int colorBackgroundTouch = DEF_COLOR_BACKGROUND_TOUCH;		// 背景颜色 触摸
-	private int colorBackgroundError = DEF_COLOR_BACKGROUND_ERROR;		// 背景颜色 错误
-	// 外圆
-	private int colorOuterCycleNormal = DEF_COLOR_OUTER_CYCLE_NORMAL;	// 外圆颜色 正常
-	private int colorOuterCycleTouch = DEF_COLOR_OUTER_CYCLE_TOUCH;		// 外圆颜色 触摸
-	private int colorOuterCycleError = DEF_COLOR_OUTER_CYCLE_ERROR;		// 外圆颜色 错误
-	// 内圆
-	private int colorInnerCycleNormal = DEF_COLOR_INNER_CYCLE_NORMAL;	// 内圆颜色 正常
-	private int colorInnerCycleTouch = DEF_COLOR_INNER_CYCLE_TOUCH;		// 内圆颜色 触摸
-	private int colorInnerCycleError = DEF_COLOR_INNER_CYCLE_ERROR;		// 内圆颜色 错误
-	// 连接线
-	private int colorLinkLineNormal = DEF_COLOR_LINK_LINE_NORMAL;		// 线条颜色 正常
-	private int colorLinkLineError = DEF_COLOR_LINK_LINE_ERROR;			// 线条颜色 错误
-
-	private float outerCycleStrokeSizeError = DEF_OUTER_CYCLE_STROKE_SIZE_ERROR; 	// 外圆边框大小 错误时
-	private float outerCycleStrokeSize = DEF_OUTER_CYCLE_STROKE_SIZE; 				// 外圆边框大小
-	private float innerCycleStrokeSize = DEF_INNER_CYCLE_STROKE_SIZE; 				// 内圆边框大小
-	private float backgroundStrokeSize = DEF_BACKGROUND_STROKE_SIZE; 				// 背景边框大小
-	private float linkLineStrokeSize = DEF_LINK_LINE_STROKE_SIZE; 					// 连接线条大小
-
-	private int circleNum = DEF_CIRCLE_NUM;				// 水平的圆圈个数，3X3就是3，4X4就是4
-	private int limitNum = DEF_LIMIT_NUM; 				// 设置最少绘制数量
-	private float width = DEF_WIDTH; 					// 整个手势View的宽度
-	private float circleSpace = DEF_CIRCLE_SPACE; 		// 圆间隔
-	private float circleRadius = DEF_CIRCLE_RADIUS; 	// 圆半径
-
-	// ================== 默认值 END ==========================================================
+	private int colorLinkLineNormal = 0xFF959595;		// 线条颜色 正常
+	private int colorLinkLineError = 0xFFfc727a;		// 线条颜色 错误
+	// 边框大小
+	private float outerCycleStrokeSizeError = 3; 		// 外圆边框大小 错误时
+	private float outerCycleStrokeSize = 3; 			// 外圆边框大小
+	private float innerCycleStrokeSize = 0; 			// 内圆边框大小
+	private float backgroundStrokeSize = 0; 			// 背景边框大小
+	private float linkLineStrokeSize = 5; 				// 连接线条大小
+	// 其他配置
+	private int limitNum = 4; 							// 设置最少绘制数量
+	private int circleNum = 3;							// 水平的圆圈个数，3X3就是3，4X4就是4
+	private float width = -1; 							// 整个手势View的宽度(默认填充父View)
+	private float circleSpace = 50.0F; 					// 圆间隔
+	private float circleRadius = 70.0F; 				// 圆半径
 
 	private List<Integer> mPasswordList = new ArrayList<>(); // 存储密码集合
 	private OnGestureListener mOnGestureListener;
@@ -125,44 +94,40 @@ public class GestureView extends View{
 		super(context, attrs, defStyle);
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GestureView);
 		if(a != null){
-			circleNum = a.getInteger(R.styleable.GestureView_circleNum, DEF_CIRCLE_NUM);
-			circleSpace = a.getDimension(R.styleable.GestureView_circleSpace, DEF_CIRCLE_SPACE);
-			circleRadius = a.getDimension(R.styleable.GestureView_circleRadius, DEF_CIRCLE_RADIUS);
-			// 新增
 			// 背景
-			colorBackgroundNormal = a.getColor(R.styleable.GestureView_colorBackgroundNormal, DEF_COLOR_BACKGROUND_NORMAL);	// 背景颜色 正常
-			colorBackgroundTouch = a.getColor(R.styleable.GestureView_colorBackgroundTouch, DEF_COLOR_BACKGROUND_TOUCH);		// 背景颜色 触摸
-			colorBackgroundError = a.getColor(R.styleable.GestureView_colorBackgroundError, DEF_COLOR_BACKGROUND_ERROR);		// 背景颜色 错误
+			colorBackgroundNormal = a.getColor(R.styleable.GestureView_colorBackgroundNormal, colorBackgroundNormal);	// 背景颜色 正常
+			colorBackgroundTouch = a.getColor(R.styleable.GestureView_colorBackgroundTouch, colorBackgroundTouch);		// 背景颜色 触摸
+			colorBackgroundError = a.getColor(R.styleable.GestureView_colorBackgroundError, colorBackgroundError);		// 背景颜色 错误
 			// 外圆
-			colorOuterCycleNormal = a.getColor(R.styleable.GestureView_colorOuterCycleNormal, DEF_COLOR_OUTER_CYCLE_NORMAL);	// 外圆颜色 正常
-			colorOuterCycleTouch = a.getColor(R.styleable.GestureView_colorOuterCycleTouch, DEF_COLOR_OUTER_CYCLE_TOUCH);		// 外圆颜色 触摸
-			colorOuterCycleError = a.getColor(R.styleable.GestureView_colorOuterCycleError, DEF_COLOR_OUTER_CYCLE_ERROR);		// 外圆颜色 错误
+			colorOuterCycleNormal = a.getColor(R.styleable.GestureView_colorOuterCycleNormal, colorOuterCycleNormal);	// 外圆颜色 正常
+			colorOuterCycleTouch = a.getColor(R.styleable.GestureView_colorOuterCycleTouch, colorOuterCycleTouch);		// 外圆颜色 触摸
+			colorOuterCycleError = a.getColor(R.styleable.GestureView_colorOuterCycleError, colorOuterCycleError);		// 外圆颜色 错误
 			// 内圆
-			colorInnerCycleNormal = a.getColor(R.styleable.GestureView_colorInnerCycleNormal, DEF_COLOR_INNER_CYCLE_NORMAL);	// 内圆颜色 正常
-			colorInnerCycleTouch = a.getColor(R.styleable.GestureView_colorInnerCycleTouch, DEF_COLOR_INNER_CYCLE_TOUCH);		// 内圆颜色 触摸
-			colorInnerCycleError = a.getColor(R.styleable.GestureView_colorInnerCycleError, DEF_COLOR_INNER_CYCLE_ERROR);		// 内圆颜色 错误
+			colorInnerCycleNormal = a.getColor(R.styleable.GestureView_colorInnerCycleNormal, colorInnerCycleNormal);	// 内圆颜色 正常
+			colorInnerCycleTouch = a.getColor(R.styleable.GestureView_colorInnerCycleTouch, colorInnerCycleTouch);		// 内圆颜色 触摸
+			colorInnerCycleError = a.getColor(R.styleable.GestureView_colorInnerCycleError, colorInnerCycleError);		// 内圆颜色 错误
 			// 连接线
-			colorLinkLineNormal = a.getColor(R.styleable.GestureView_colorLinkLineNormal, DEF_COLOR_LINK_LINE_NORMAL);		// 线条颜色 正常
-			colorLinkLineError = a.getColor(R.styleable.GestureView_colorLinkLineError, DEF_COLOR_LINK_LINE_ERROR);			// 线条颜色 错误
-
-			outerCycleStrokeSizeError = a.getDimension(R.styleable.GestureView_outerCycleStrokeSizeError, DEF_OUTER_CYCLE_STROKE_SIZE_ERROR); 	// 外圆边框大小 错误时
-			outerCycleStrokeSize = a.getDimension(R.styleable.GestureView_outerCycleStrokeSize, DEF_OUTER_CYCLE_STROKE_SIZE); 				// 外圆边框大小
-			innerCycleStrokeSize = a.getDimension(R.styleable.GestureView_innerCycleStrokeSize, DEF_INNER_CYCLE_STROKE_SIZE); 				// 内圆边框大小
-			backgroundStrokeSize = a.getDimension(R.styleable.GestureView_backgroundStrokeSize, DEF_BACKGROUND_STROKE_SIZE); 				// 背景边框大小
-			linkLineStrokeSize = a.getDimension(R.styleable.GestureView_linkLineStrokeSize, DEF_LINK_LINE_STROKE_SIZE); 					// 连接线条大小
-
-			circleNum = a.getInteger(R.styleable.GestureView_circleNum, DEF_CIRCLE_NUM);				// 水平的圆圈个数，3X3就是3，4X4就是4
-			limitNum = a.getInteger(R.styleable.GestureView_limitNum, DEF_LIMIT_NUM); 					// 设置最少绘制数量
-			width = a.getDimension(R.styleable.GestureView_width, DEF_WIDTH); 							// 整个手势View的宽度
-			circleSpace = a.getDimension(R.styleable.GestureView_circleSpace, DEF_CIRCLE_SPACE); 		// 圆间隔
-			circleRadius = a.getDimension(R.styleable.GestureView_circleRadius, DEF_CIRCLE_RADIUS); 	// 圆半径
+			colorLinkLineNormal = a.getColor(R.styleable.GestureView_colorLinkLineNormal, colorLinkLineNormal);			// 线条颜色 正常
+			colorLinkLineError = a.getColor(R.styleable.GestureView_colorLinkLineError, colorLinkLineError);			// 线条颜色 错误
+			// 边框
+			outerCycleStrokeSizeError = a.getDimension(R.styleable.GestureView_outerCycleStrokeSizeError, outerCycleStrokeSizeError); 	// 外圆边框大小 错误时
+			outerCycleStrokeSize = a.getDimension(R.styleable.GestureView_outerCycleStrokeSize, outerCycleStrokeSize); 				// 外圆边框大小
+			innerCycleStrokeSize = a.getDimension(R.styleable.GestureView_innerCycleStrokeSize, innerCycleStrokeSize); 				// 内圆边框大小
+			backgroundStrokeSize = a.getDimension(R.styleable.GestureView_backgroundStrokeSize, backgroundStrokeSize); 				// 背景边框大小
+			linkLineStrokeSize = a.getDimension(R.styleable.GestureView_linkLineStrokeSize, linkLineStrokeSize); 					// 连接线条大小
+			// 其他配置
+			circleNum = a.getInteger(R.styleable.GestureView_circleNum, circleNum);				// 水平的圆圈个数，3X3就是3，4X4就是4
+			limitNum = a.getInteger(R.styleable.GestureView_limitNum, limitNum); 				// 设置最少绘制数量
+			width = a.getDimension(R.styleable.GestureView_width, width); 						// 整个手势View的宽度
+			circleSpace = a.getDimension(R.styleable.GestureView_circleSpace, circleSpace); 	// 圆间隔
+			circleRadius = a.getDimension(R.styleable.GestureView_circleRadius, circleRadius); 	// 圆半径
 
 			a.recycle();
 		}
 
 		linkLineStrokeSize = Utils.dip2px(context, 2.5f); 					// 连接线条大小
 		outerCycleStrokeSize = Utils.dip2px(context, 1.5f); 				// 外圆边框大小
-		outerCycleStrokeSizeError = outerCycleStrokeSize; 					// 外圆边框大小 错误时
+		outerCycleStrokeSizeError = outerCycleStrokeSize; 							// 外圆边框大小 错误时
 
 		innerCycleStrokeSize = Utils.dip2px(context, 0); 					// 内圆边框大小
 		backgroundStrokeSize = Utils.dip2px(context, 0); 					// 背景边框大小
@@ -196,28 +161,20 @@ public class GestureView extends View{
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
-		super.onMeasure(widthMeasureSpec, widthMeasureSpec); // 让高==宽
-
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		// 以最小的值为实际尺寸
-		int w = MeasureSpec.getSize(widthMeasureSpec);
-		int h = MeasureSpec.getSize(heightMeasureSpec);
+		int measureWidth = MeasureSpec.getSize(widthMeasureSpec);
+		int measureHeight = MeasureSpec.getSize(heightMeasureSpec);
 
-		// 1、以组件最小边为组件的宽高，比如宽3，高2，则宽为2，但这样会造成软键盘未收回的情况下就测量了UI组件，会造成缩小问题。
-//		float min = Math.min(w, h) - circleSpace * 3;
-		// 2、以组件宽为组件宽高
-		float min = w - circleSpace * 3;
+		// 手势View的最小宽度
+		float minWidth = circleRadius * 2 * circleNum;
+		// 最大宽度
+		float maxWidth = (circleRadius * 2 + circleSpace) * circleNum;
 
-		// 间隔不能小于0, 且不能大于圆的直径
-		if (circleSpace < 0) circleSpace = 0F;
-		if (circleSpace > circleRadius * 2) circleSpace = circleRadius * 2;
-
-		width = (circleRadius*2 + circleSpace*2) * circleNum; // 计算整个组件的宽度
-		if(width > min){
-			float scaling = min / width; // 缩放比例
-			circleRadius *=  scaling;
-			circleSpace *=  scaling;
-			invalidate();
-		}
+		// 以矩形最小边为View的宽高，但这样会造成软键盘未收回的情况下就测量了UI组件，会造成手势密码布局缩小问题。
+		width = Math.min(measureWidth, measureHeight);
+		if (width < minWidth) width = minWidth;
+		if (width > maxWidth) width = maxWidth;
 
 		setMeasuredDimension((int) width, (int) width);
 	}

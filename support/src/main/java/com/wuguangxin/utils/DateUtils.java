@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * 日期时间工具类
@@ -126,6 +127,66 @@ public class DateUtils{
 			return null;
 		}
 		return formatDate.format(new Date(Long.parseLong(timestamp)));
+	}
+
+	/**
+	 * 把一个时间戳日期去掉时分秒并转换为Date
+	 * @param timeMillis 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
+	 * @return 如 2017-01-01 00:00:00 的Date对象，如果日期格式不传入不正确，则返回null。
+	 */
+	public static Date formatShortDateByTimeMillis(long timeMillis){
+		if (timeMillis == 0) {
+			return null;
+		}
+		return formatShortDateByStringDate(DateUtils.formatDateLong(new Date(timeMillis)));
+	}
+
+	/**
+	 * 把一个字符串日期去掉时分秒并转换为Date
+	 * @param stringDate 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
+	 * @return 如 2017-01-01 00:00:00 的Date对象，如果日期格式不传入不正确，则返回null。
+	 */
+	public static Date formatShortDateByStringDate(String stringDate){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        try {
+            return simpleDateFormat.parse(stringDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+	}
+
+
+	/**
+	 * 把一个时间戳日期（dateString） 按 自定义的格式化（pattern）进行格式化，并返回 Date
+	 * @param timeMillis 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
+	 * @param pattern 如 yyyy-MM-dd HH:mm:ss，可自定义
+	 * @return
+	 */
+	public static Date formatShortDateByTimeMillis(long timeMillis, String pattern){
+		try {
+			String dateString = new SimpleDateFormat(pattern).format(new Date(timeMillis));
+			return formatShortDate(dateString, pattern);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 把一个字符串日期（dateString） 按 自定义的格式化（pattern）进行格式化，并返回 Date
+	 * @param dateString 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
+	 * @param pattern 如 yyyy-MM-dd HH:mm:ss，可自定义
+	 * @return
+	 */
+	public static Date formatShortDate(String dateString, String pattern){
+		try {
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.CHINA);
+			return simpleDateFormat.parse(dateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**

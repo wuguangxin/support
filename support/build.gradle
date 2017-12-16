@@ -4,9 +4,9 @@ apply plugin: 'com.novoda.bintray-release' // bintray
 
 // 20171128
 def mModulesName = "support"
-def mVersionCode = 22
-def mVersionName = "1.0.22"
-def mDescription = "修复MoneyUtils格式化补0逻辑错误造成数据异常BUG。"
+def mVersionCode = 24
+def mVersionName = "1.0.24"
+def mDescription = "修复GestureView在部分机型显示不全bug"
 
 android {
     compileSdkVersion 25

@@ -12,6 +12,13 @@
         android:background="#F2F3F5"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:hint="输入姓名"
+            android:textAllCaps="false"/>
+
         <Button
             android:id="@+id/tabHost"
             android:layout_width="match_parent"
@@ -52,6 +59,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MyDialog"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/GestureView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="手势密码"
             android:textAllCaps="false"/>
 
     </LinearLayout>

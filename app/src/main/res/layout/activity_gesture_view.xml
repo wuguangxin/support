@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xin="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="20dip"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/gesture_pic"
+        android:layout_width="86dip"
+        android:layout_height="86dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dip"
+        android:src="@drawable/icon_common_info"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/gesture_message_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dip"
+        android:gravity="center"
+        android:text="绘制解锁密码"
+        android:textColor="#595959"
+        android:textSize="19sp"/>
+
+    <!-- 手势矩阵布局 -->
+    <com.wuguangxin.view.GestureView
+        android:id="@+id/gesture_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:padding="100dip"
+        xin:circleNum="3"
+        xin:circleRadius="35dip"
+        xin:circleSpace="43dip"
+        xin:colorInnerCycleError="@color/text_orange"
+        xin:colorLinkLineError="@color/text_orange"
+        xin:colorOuterCycleError="@color/text_orange"/>
+
+    <TextView
+        android:id="@+id/gesture_relogin"
+        android:layout_width="wrap_content"
+        android:layout_height="35dip"
+        android:layout_gravity="center_horizontal"
+        android:background="#3300ff00"
+        android:gravity="center"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:text="重新登录"
+        android:textColor="#636363"
+        android:textSize="15sp"
+        android:visibility="visible"/>
+</LinearLayout>

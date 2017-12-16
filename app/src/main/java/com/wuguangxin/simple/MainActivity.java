@@ -29,6 +29,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.MyDialog).setOnClickListener(this);
         findViewById(R.id.ItemView).setOnClickListener(this);
         findViewById(R.id.CircleProgressView).setOnClickListener(this);
+        findViewById(R.id.GestureView).setOnClickListener(this);
+
+        findViewById(R.id.EditText).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                openActivity(GestureViewActivity.class);
+                return false;
+            }
+        });
+
 
 
         Logger.i(this, MoneyUtils.format(100.00D, "元"));
@@ -59,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
         case R.id.CircleProgressView:
             openActivity(CircleProgressViewActivity.class);
+            break;
+        case R.id.GestureView:
+            openActivity(GestureViewActivity.class);
             break;
         }
     }
