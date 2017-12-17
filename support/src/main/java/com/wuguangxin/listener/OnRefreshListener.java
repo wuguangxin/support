@@ -10,10 +10,10 @@ public interface OnRefreshListener {
 	/**
 	 * 当下拉刷新时回调
 	 */
-	public void onDownRefresh();
+	void onDownRefresh();
 
 	/**
 	 * 当加载更多时回调
 	 */
-	public void onLoadMoring();
+	void onLoadMoring();
 }

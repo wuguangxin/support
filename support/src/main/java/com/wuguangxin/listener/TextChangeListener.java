@@ -110,7 +110,11 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 			setMaxLength(22);
 		}
 	}
-	
+
+	/**
+	 * 设置EditText最大长度
+	 * @param maxLength
+	 */
 	public void setMaxLength(int maxLength){
 		if(mEditText != null){
 			mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});

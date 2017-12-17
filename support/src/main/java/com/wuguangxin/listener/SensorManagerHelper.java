@@ -38,7 +38,9 @@ public class SensorManagerHelper implements SensorEventListener{
 		start();
 	}
 
-	// 开始
+	/**
+	 * 开始
+	 */
 	public void start(){
 		// 获得传感器管理器
 		sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -52,12 +54,16 @@ public class SensorManagerHelper implements SensorEventListener{
 		}
 	}
 
-	// 停止检测
+	/**
+	 * 停止检测
+	 */
 	public void stop(){
 		sensorManager.unregisterListener(this);
 	}
 
-	// 摇晃监听接口
+	/**
+	 * 摇晃监听接口
+	 */
 	public interface OnShakeListener{
 		/**
 		 * 重力感应速度值，不要在该回调中做耗时操作。
@@ -66,16 +72,19 @@ public class SensorManagerHelper implements SensorEventListener{
 		 * speed≈5000±：当摇晃手机时；
 		 * @param speed speed
 		 */
-		public void onSpeedChange(double speed);
-		public void onShake();
+		void onSpeedChange(double speed);
+		void onShake();
 	}
 
-	// 设置重力感应监听器
+	/**
+	 * 设置重力感应监听器
+	 * @param listener
+	 */
 	public void setOnShakeListener(OnShakeListener listener){
 		onShakeListener = listener;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc) android.hardware.SensorEventListener#onAccuracyChanged(android.hardware .Sensor, int)
 	 */
 	@Override
@@ -83,7 +92,7 @@ public class SensorManagerHelper implements SensorEventListener{
 		// TODO Auto-generated method stub
 	}
 
-	/*
+	/**
 	 * 重力感应器感应获得变化数据 android.hardware.SensorEventListener#onSensorChanged(android.hardware .SensorEvent)
 	 */
 	@Override

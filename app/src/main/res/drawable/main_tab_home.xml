@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TAB 推荐 -->
-    <item android:drawable="@mipmap/main_tab_home_pressed" android:state_selected="true"/>
-    <item android:drawable="@mipmap/main_tab_home_pressed" android:state_pressed="true"/>
-    <item android:drawable="@mipmap/main_tab_home_normal" android:state_pressed="false"/>
-    <item android:drawable="@mipmap/main_tab_home_normal"/>
+    <!-- TAB 首页 -->
+    <item android:drawable="@drawable/main_tab_home_pressed" android:state_selected="true"/>
+    <item android:drawable="@drawable/main_tab_home_pressed" android:state_pressed="true"/>
+    <item android:drawable="@drawable/main_tab_home_normal" android:state_pressed="false"/>
+    <item android:drawable="@drawable/main_tab_home_normal"/>
 
 </selector>

@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.wuguangxin.R;
-import com.wuguangxin.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,27 +36,26 @@ public class GestureView extends View{
 
 	// ================== 配置变量 ==================================================================
 	// 背景
-	private int colorBackgroundNormal = 0x00000000;		// 背景颜色 正常
-	private int colorBackgroundTouch = 0x00000000;		// 背景颜色 触摸
-	private int colorBackgroundError = 0x00000000;		// 背景颜色 错误
+	private int backgroundColorNormal = 0x00000000;		// 背景颜色 正常
+	private int backgroundColorTouch = 0x00000000;		// 背景颜色 触摸
+	private int backgroundColorError = 0x00000000;		// 背景颜色 错误
 	// 外圆
-	private int colorOuterCycleNormal = 0xFF999999;		// 外圆颜色 正常
-	private int colorOuterCycleTouch = 0xFF999999;		// 外圆颜色 触摸
-	private int colorOuterCycleError = 0xFFEE2F3A;		// 外圆颜色 错误
+	private int outerCycleColorNormal = 0xFF999999;		// 外圆颜色 正常
+	private int outerCycleColorTouch = 0xFF999999;		// 外圆颜色 触摸
+	private int outerCycleColorError = 0xFFEE2F3A;		// 外圆颜色 错误
 	// 内圆
-	private int colorInnerCycleNormal = 0x00000000;		// 内圆颜色 正常
-	private int colorInnerCycleTouch = 0xFF404040;		// 内圆颜色 触摸
-	private int colorInnerCycleError = 0xFFEE2F3A;		// 内圆颜色 错误
-	// 连接线
-	private int colorLinkLineNormal = 0xFF959595;		// 线条颜色 正常
-	private int colorLinkLineError = 0xFFfc727a;		// 线条颜色 错误
-	// 边框大小
-	private float outerCycleStrokeSizeError = 3; 		// 外圆边框大小 错误时
-	private float outerCycleStrokeSize = 3; 			// 外圆边框大小
+	private int innerCycleColorNormal = 0x00000000;		// 内圆颜色 正常
+	private int innerCycleColorTouch = 0xFF404040;		// 内圆颜色 触摸
+	private int innerCycleColorError = 0xFFEE2F3A;		// 内圆颜色 错误
+	// 边框
+	private float outerCycleStrokeSize = 1.5F; 			// 外圆边框大小
 	private float innerCycleStrokeSize = 0; 			// 内圆边框大小
 	private float backgroundStrokeSize = 0; 			// 背景边框大小
-	private float linkLineStrokeSize = 5; 				// 连接线条大小
-	// 其他配置
+	private float linkLineStrokeSize = 2.5F; 			// 连接线条大小
+	// 连接线
+	private int linkLineColorNormal = 0xFF959595;		// 线条颜色 正常
+	private int linkLineColorError = 0xFFfc727a;		// 线条颜色 错误
+	// 其他
 	private int limitNum = 4; 							// 设置最少绘制数量
 	private int circleNum = 3;							// 水平的圆圈个数，3X3就是3，4X4就是4
 	private float width = -1; 							// 整个手势View的宽度(默认填充父View)
@@ -66,7 +64,7 @@ public class GestureView extends View{
 
 	private List<Integer> mPasswordList = new ArrayList<>(); // 存储密码集合
 	private OnGestureListener mOnGestureListener;
-	private LockCircle[] cycles; 		// 解锁圆点数组
+	private LockCircle[] cycleList; 		// 解锁圆点数组
 	private String key; 				// 解锁密码
 	private Timer timer;				// 定时器
 	private Paint paintOuterCycle;		// 外圆
@@ -74,8 +72,9 @@ public class GestureView extends View{
 	private Paint paintCenterCycle;		// 中心正方形
 	private Paint paintLinkLines; 		// 路径画笔
 
+	private boolean touchShake; 		// 是否使用触觉反馈
+
 	private boolean canContinue = true; // 能否操控界面绘画
-	private boolean shakeable; 			// 是否使用触觉反馈
 	private boolean isTouch; 			// 手指是否按下
 	private int eventX; 				// 当前手指X位置
 	private int eventY; 				// 当前手指Y位置
@@ -95,42 +94,33 @@ public class GestureView extends View{
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GestureView);
 		if(a != null){
 			// 背景
-			colorBackgroundNormal = a.getColor(R.styleable.GestureView_colorBackgroundNormal, colorBackgroundNormal);	// 背景颜色 正常
-			colorBackgroundTouch = a.getColor(R.styleable.GestureView_colorBackgroundTouch, colorBackgroundTouch);		// 背景颜色 触摸
-			colorBackgroundError = a.getColor(R.styleable.GestureView_colorBackgroundError, colorBackgroundError);		// 背景颜色 错误
+			backgroundColorNormal = a.getColor(R.styleable.GestureView_backgroundColorNormal, backgroundColorNormal);	// 背景颜色 正常
+			backgroundColorTouch = a.getColor(R.styleable.GestureView_backgroundColorTouch, backgroundColorTouch);		// 背景颜色 触摸
+			backgroundColorError = a.getColor(R.styleable.GestureView_backgroundColorError, backgroundColorError);		// 背景颜色 错误
 			// 外圆
-			colorOuterCycleNormal = a.getColor(R.styleable.GestureView_colorOuterCycleNormal, colorOuterCycleNormal);	// 外圆颜色 正常
-			colorOuterCycleTouch = a.getColor(R.styleable.GestureView_colorOuterCycleTouch, colorOuterCycleTouch);		// 外圆颜色 触摸
-			colorOuterCycleError = a.getColor(R.styleable.GestureView_colorOuterCycleError, colorOuterCycleError);		// 外圆颜色 错误
+			outerCycleColorNormal = a.getColor(R.styleable.GestureView_outerCycleColorNormal, outerCycleColorNormal);	// 外圆颜色 正常
+			outerCycleColorTouch = a.getColor(R.styleable.GestureView_outerCycleColorTouch, outerCycleColorTouch);		// 外圆颜色 触摸
+			outerCycleColorError = a.getColor(R.styleable.GestureView_outerCycleColorError, outerCycleColorError);		// 外圆颜色 错误
 			// 内圆
-			colorInnerCycleNormal = a.getColor(R.styleable.GestureView_colorInnerCycleNormal, colorInnerCycleNormal);	// 内圆颜色 正常
-			colorInnerCycleTouch = a.getColor(R.styleable.GestureView_colorInnerCycleTouch, colorInnerCycleTouch);		// 内圆颜色 触摸
-			colorInnerCycleError = a.getColor(R.styleable.GestureView_colorInnerCycleError, colorInnerCycleError);		// 内圆颜色 错误
-			// 连接线
-			colorLinkLineNormal = a.getColor(R.styleable.GestureView_colorLinkLineNormal, colorLinkLineNormal);			// 线条颜色 正常
-			colorLinkLineError = a.getColor(R.styleable.GestureView_colorLinkLineError, colorLinkLineError);			// 线条颜色 错误
+			innerCycleColorNormal = a.getColor(R.styleable.GestureView_innerCycleColorNormal, innerCycleColorNormal);	// 内圆颜色 正常
+			innerCycleColorTouch = a.getColor(R.styleable.GestureView_innerCycleColorTouch, innerCycleColorTouch);		// 内圆颜色 触摸
+			innerCycleColorError = a.getColor(R.styleable.GestureView_innerCycleColorError, innerCycleColorError);		// 内圆颜色 错误
 			// 边框
-			outerCycleStrokeSizeError = a.getDimension(R.styleable.GestureView_outerCycleStrokeSizeError, outerCycleStrokeSizeError); 	// 外圆边框大小 错误时
-			outerCycleStrokeSize = a.getDimension(R.styleable.GestureView_outerCycleStrokeSize, outerCycleStrokeSize); 				// 外圆边框大小
-			innerCycleStrokeSize = a.getDimension(R.styleable.GestureView_innerCycleStrokeSize, innerCycleStrokeSize); 				// 内圆边框大小
-			backgroundStrokeSize = a.getDimension(R.styleable.GestureView_backgroundStrokeSize, backgroundStrokeSize); 				// 背景边框大小
-			linkLineStrokeSize = a.getDimension(R.styleable.GestureView_linkLineStrokeSize, linkLineStrokeSize); 					// 连接线条大小
+			outerCycleStrokeSize = a.getDimension(R.styleable.GestureView_outerCycleStrokeSize, outerCycleStrokeSize); 	// 外圆边框大小
+			innerCycleStrokeSize = a.getDimension(R.styleable.GestureView_innerCycleStrokeSize, innerCycleStrokeSize); 	// 内圆边框大小
+			linkLineStrokeSize = a.getDimension(R.styleable.GestureView_linkLineStrokeSize, linkLineStrokeSize); 		// 连接线条大小
+			// 连接线
+			linkLineColorNormal = a.getColor(R.styleable.GestureView_linkLineColorNormal, linkLineColorNormal);			// 线条颜色 正常
+			linkLineColorError = a.getColor(R.styleable.GestureView_linkLineColorError, linkLineColorError);			// 线条颜色 错误
 			// 其他配置
 			circleNum = a.getInteger(R.styleable.GestureView_circleNum, circleNum);				// 水平的圆圈个数，3X3就是3，4X4就是4
 			limitNum = a.getInteger(R.styleable.GestureView_limitNum, limitNum); 				// 设置最少绘制数量
-			width = a.getDimension(R.styleable.GestureView_width, width); 						// 整个手势View的宽度
 			circleSpace = a.getDimension(R.styleable.GestureView_circleSpace, circleSpace); 	// 圆间隔
 			circleRadius = a.getDimension(R.styleable.GestureView_circleRadius, circleRadius); 	// 圆半径
+			touchShake = a.getBoolean(R.styleable.GestureView_touchShake, touchShake); 			// 是否在触摸时震动
 
 			a.recycle();
 		}
-
-		linkLineStrokeSize = Utils.dip2px(context, 2.5f); 					// 连接线条大小
-		outerCycleStrokeSize = Utils.dip2px(context, 1.5f); 				// 外圆边框大小
-		outerCycleStrokeSizeError = outerCycleStrokeSize; 							// 外圆边框大小 错误时
-
-		innerCycleStrokeSize = Utils.dip2px(context, 0); 					// 内圆边框大小
-		backgroundStrokeSize = Utils.dip2px(context, 0); 					// 背景边框大小
 
 		init();
 	}
@@ -159,22 +149,67 @@ public class GestureView extends View{
 		paintLinkLines.setStrokeWidth(linkLineStrokeSize);
 	}
 
+	private float paddingLeft;
+	private float paddingRight;
+	private float paddingTop;
+	private float paddingBottom;
+
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+//		Log.e("wgx", "===========GestureView==================================");
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		// 以最小的值为实际尺寸
-		int measureWidth = MeasureSpec.getSize(widthMeasureSpec);
-		int measureHeight = MeasureSpec.getSize(heightMeasureSpec);
+		float measureWidth = MeasureSpec.getSize(widthMeasureSpec);
+		float measureHeight = MeasureSpec.getSize(heightMeasureSpec);
+		float widthMode = MeasureSpec.getMode(widthMeasureSpec);
+		float heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
+		paddingLeft = getPaddingLeft();
+		paddingRight = getPaddingRight();
+		paddingTop = getPaddingTop();
+		paddingBottom = getPaddingBottom();
+
+		// 手势View的最大宽度
+		float contextMaxSize = circleRadius * 2 * circleNum + circleSpace * (circleNum - 1) + paddingLeft + paddingRight;
 		// 手势View的最小宽度
-		float minWidth = circleRadius * 2 * circleNum;
-		// 最大宽度
-		float maxWidth = (circleRadius * 2 + circleSpace) * circleNum;
+		float contextMinSize = circleRadius * 2 * circleNum + paddingLeft+ paddingRight;
 
-		// 以矩形最小边为View的宽高，但这样会造成软键盘未收回的情况下就测量了UI组件，会造成手势密码布局缩小问题。
+		//Measure Width
+		if (widthMode == MeasureSpec.EXACTLY) {
+			//Must be this size
+		} else if (widthMode == MeasureSpec.AT_MOST) {
+			measureWidth = Math.min(contextMaxSize, measureWidth);
+		} else {
+			measureWidth = contextMaxSize;
+		}
+
+		//Measure Height
+		if (heightMode == MeasureSpec.EXACTLY) {
+			//Must be this size
+		} else if (heightMode == MeasureSpec.AT_MOST) {
+			measureHeight = Math.min(contextMaxSize, measureHeight);
+		} else {
+			measureHeight = contextMaxSize;
+		}
+
+		// 布局的可显示大小
 		width = Math.min(measureWidth, measureHeight);
-		if (width < minWidth) width = minWidth;
-		if (width > maxWidth) width = maxWidth;
+
+		// 画板<最大内容，则 缩小圆间距
+		if (width < contextMaxSize) {
+			circleSpace = (width - paddingLeft - paddingRight - circleRadius * 2 * circleNum) / (circleNum-1);
+		}
+
+		// 画板<最小内容，则 缩小圆半径，间距置为0
+		if (width < contextMinSize) {
+			circleRadius = (width-paddingLeft-paddingRight) / circleNum / 2;
+			circleSpace = 0;
+		}
+
+		// 画板>最大内容，则 画板=最大内容
+		if (width > contextMaxSize) {
+			width = contextMaxSize;
+		}
 
 		setMeasuredDimension((int) width, (int) width);
 	}
@@ -182,25 +217,46 @@ public class GestureView extends View{
 	@Override
 	protected void onLayout(boolean changed, int left, int top, int right, int bottom){
 		super.onLayout(changed, left, top, right, bottom);
-		// 初始化圆的参数
-		if (cycles == null && width > 0) {
-			cycles = new LockCircle[circleNum * circleNum];
+
+		// 新方式20171217
+		if (cycleList == null && width > 0) {
+			float padX = paddingLeft + paddingRight;
+			float sp = (width - padX - circleRadius * 2 * circleNum) / (circleNum -1); // 根据宽度，算出每个圆的间隔距离
+			sp = Math.min(sp, circleSpace);
+			float r = circleRadius;
+			cycleList = new LockCircle[circleNum * circleNum];
 			for (int x = 0; x < circleNum; x++) {
 				for (int y = 0; y < circleNum; y++) {
-					LockCircle circle = new LockCircle();
-					circle.setNum(x * circleNum + y);
-					circle.setRadius(circleRadius);
-					float r = width / circleNum / 2F;
-					circle.setCircleX(r + r * 2 * y);
-					circle.setCircleY(r + r * 2 * x);
-					cycles[x * circleNum + y] = circle;
+					LockCircle circle = new LockCircle();	// 创建圆对象
+					circle.setNum(x * circleNum + y);		// 在矩阵中的位置
+					circle.setRadius(circleRadius - outerCycleStrokeSize / 2); 			// 半径
+//					float r = (width - ((circleNum-1) * circleSpace)) / circleNum / 2;	// 就是算得每个格子的中间到它的边的距离
+					circle.setCircleX(r + r * 2 * y + sp * y + paddingLeft);			// 圆心X轴，就是每个圆的圆心坐标
+					circle.setCircleY(r + r * 2 * x + sp * x + paddingTop);				// 圆心Y轴
+					cycleList[x * circleNum + y] = circle;
 				}
 			}
 		}
 
-		// 老版备份
-//		if (cycles == null && perWidthSize > 0 && perHeightSize > 0) {
-//			cycles = new LockCircle[9];
+		// 方式1：备份20171217之前的代码
+//		if (cycleList == null && width > 0) {
+//			cycleList = new LockCircle[circleNum * circleNum];
+//			for (int x = 0; x < circleNum; x++) {
+//				for (int y = 0; y < circleNum; y++) {
+//					LockCircle circle = new LockCircle();	// 创建圆对象
+//					circle.setNum(x * circleNum + y);		// 在矩阵中的位置
+//					circle.setRadius(circleRadius); 		// 半径,
+//					float r = width / circleNum / 2;		// 就是算得每个格子的中间到它的边的距离，并不是圆的半径
+//					circle.setCircleX(r + r * 2 * y);		// 圆心X轴，就是每个圆的圆心坐标
+//					circle.setCircleY(r + r * 2 * x);		// 圆心Y轴
+//					cycleList[x * circleNum + y] = circle;
+//				}
+//			}
+//		}
+
+		// 方式2：老版备份
+//		if (cycleList == null && perWidthSize > 0 && perHeightSize > 0) {
+//			cycleList = new LockCircle[9];
 //			for (int i = 0; i < 3; i++) {
 //				for (int j = 0; j < 3; j++) {
 //					LockCircle lockCircle = new LockCircle();
@@ -209,7 +265,7 @@ public class GestureView extends View{
 //					lockCircle.setRadius(circleRadius);
 //					lockCircle.setCircleX(perWidthSize * (j * 2 + 1.5f) + 0.5f);
 //					lockCircle.setCircleY(perHeightSize * (i * 2 + 1.5f) + 0.5f);
-//					cycles[i * 3 + j] = lockCircle;
+//					cycleList[i * 3 + j] = lockCircle;
 //				}
 //			}
 //		}
@@ -290,16 +346,16 @@ public class GestureView extends View{
 		case MotionEvent.ACTION_MOVE:
 			eventX = (int) event.getX();
 			eventY = (int) event.getY();
-			for (int i = 0; i < cycles.length; i++) {
-				if (cycles[i].isPointIn(eventX, eventY)) {
-					cycles[i].setTouch(true);
-					if (!mPasswordList.contains(cycles[i].getNum())) {
-						mPasswordList.add(cycles[i].getNum());
+			for (int i = 0; i < cycleList.length; i++) {
+				if (cycleList[i].isPointIn(eventX, eventY)) {
+					cycleList[i].setTouch(true);
+					if (!mPasswordList.contains(cycleList[i].getNum())) {
+						mPasswordList.add(cycleList[i].getNum());
 						if (mOnGestureListener != null && mPasswordList.size() > 0) {
 							mOnGestureListener.onDrawing(getKey());
 						}
 						// 连接后震动手机
-						if (shakeable) {
+						if (touchShake) {
 							performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY,
 									HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING |
 											HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
@@ -414,10 +470,10 @@ public class GestureView extends View{
 	public void reset(){
 		canContinue = true;
 		eventX = eventY = 0;
-		if (cycles != null) {
-			int length = cycles.length;
+		if (cycleList != null) {
+			int length = cycleList.length;
 			for (int i = 0; i < length; i++) {
-				cycles[i].setTouch(false);
+				cycleList[i].setTouch(false);
 			}
 		}
 		if (linePath != null) {
@@ -439,26 +495,26 @@ public class GestureView extends View{
 		super.onDraw(canvas);
 		canvas.save();
 		if (!canContinue) {
-			drawLine(canvas, colorLinkLineError);
+			drawLine(canvas, linkLineColorError);
 		} else {
-			drawLine(canvas, colorLinkLineNormal);
+			drawLine(canvas, linkLineColorNormal);
 		}
 
-		int cycleSize = cycles.length;
+		int cycleSize = cycleList.length;
 		for (int i = 0; i < cycleSize; i++) {
 			if (!canContinue) {
 				// 绘画完
-				if (cycles[i].isTouch()) {
-					drawError(canvas, cycles[i]); 	// 错误
+				if (cycleList[i].isTouch()) {
+					drawError(canvas, cycleList[i]); 	// 错误
 				} else {
-					drawNormal(canvas, cycles[i]);	// 正常
+					drawNormal(canvas, cycleList[i]);	// 正常
 				}
 			} else {
 				//绘画中
-				if (cycles[i].isTouch()) {
-					drawTouch(canvas, cycles[i]);	// 触摸到的
+				if (cycleList[i].isTouch()) {
+					drawTouch(canvas, cycleList[i]);	// 触摸到的
 				} else {
-					drawNormal(canvas, cycles[i]);	// 触摸不到的
+					drawNormal(canvas, cycleList[i]);	// 触摸不到的
 				}
 			}
 		}
@@ -468,25 +524,25 @@ public class GestureView extends View{
 	/** 画正常的 */
 	private void drawNormal(Canvas canvas, LockCircle circle){
 		paintOuterCycle.setStrokeWidth(outerCycleStrokeSize);
-//		drawBackground(canvas, circle, colorBackgroundNormal);	// 1 画背景
-		drawOuterCycle(canvas, circle, colorOuterCycleNormal);	// 2 画外圆
-		drawInnerCycle(canvas, circle, colorInnerCycleNormal);	// 3 画内圆
+//		drawBackground(canvas, circle, backgroundColorNormal);	// 1 画背景
+		drawOuterCycle(canvas, circle, outerCycleColorNormal);	// 2 画外圆
+		drawInnerCycle(canvas, circle, innerCycleColorNormal);	// 3 画内圆
 	}
 
 	/** 画按下的 */
 	private void drawTouch(Canvas canvas, LockCircle circle){
 		paintOuterCycle.setStrokeWidth(outerCycleStrokeSize);
-//		drawBackground(canvas, circle, colorBackgroundTouch);		// 1 画背景
-		drawOuterCycle(canvas, circle, colorOuterCycleTouch);	// 2 画外圆
-		drawInnerCycle(canvas, circle, colorInnerCycleTouch);	// 3 画内圆
+//		drawBackground(canvas, circle, backgroundColorTouch);		// 1 画背景
+		drawOuterCycle(canvas, circle, outerCycleColorTouch);	// 2 画外圆
+		drawInnerCycle(canvas, circle, innerCycleColorTouch);	// 3 画内圆
 	}
 
 	/** 画错误的 */
 	private void drawError(Canvas canvas, LockCircle circle){
-		paintOuterCycle.setStrokeWidth(outerCycleStrokeSizeError);
-//		drawBackground(canvas, circle, colorBackgroundError);		// 1 画背景
-		drawOuterCycle(canvas, circle, colorOuterCycleError);	// 2 画外圆
-		drawInnerCycle(canvas, circle, colorInnerCycleError);	// 3 画内圆
+		paintOuterCycle.setStrokeWidth(outerCycleStrokeSize);
+//		drawBackground(canvas, circle, backgroundColorError);		// 1 画背景
+		drawOuterCycle(canvas, circle, outerCycleColorError);	// 2 画外圆
+		drawInnerCycle(canvas, circle, innerCycleColorError);	// 3 画内圆
 	}
 
 	/** 画外圆 */
@@ -529,8 +585,8 @@ public class GestureView extends View{
 			int size = mPasswordList.size();
 			for (int i = 0; i < size; i++) {
 				int index = mPasswordList.get(i);
-				float x = cycles[index].getCircleX();
-				float y = cycles[index].getCircleY();
+				float x = cycleList[index].getCircleX();
+				float y = cycleList[index].getCircleY();
 				if (i == 0) {
 					linePath.moveTo(x, y);
 				} else {
@@ -540,7 +596,7 @@ public class GestureView extends View{
 			if (canContinue) {
 				linePath.lineTo(eventX, eventY);
 			} else {
-				linePath.lineTo(cycles[mPasswordList.get(mPasswordList.size() - 1)].getCircleX(), cycles[mPasswordList.get(mPasswordList.size() - 1)].getCircleY());
+				linePath.lineTo(cycleList[mPasswordList.get(mPasswordList.size() - 1)].getCircleX(), cycleList[mPasswordList.get(mPasswordList.size() - 1)].getCircleY());
 			}
 			paintLinkLines.setColor(color);
 			canvas.drawPath(linePath, paintLinkLines);
@@ -658,112 +714,112 @@ public class GestureView extends View{
 	
 	/**
 	 * 设置是否开启触觉反馈
-	 * @param shake 是否开启触觉反馈
+	 * @param touchShake 是否开启触觉反馈
 	 */
-	public void setShake(boolean shake){
-		this.shakeable = shake;
+	public void setTouchShake(boolean touchShake){
+		this.touchShake = touchShake;
 	}
 
 
 	//==================== 变量 setter/getter ===============================================
 
 
-	public int getColorBackgroundNormal() {
-		return colorBackgroundNormal;
+	public int getBackgroundColorNormal() {
+		return backgroundColorNormal;
 	}
 
-	public void setColorBackgroundNormal(int colorBackgroundNormal) {
-		this.colorBackgroundNormal = colorBackgroundNormal;
+	public void setBackgroundColorNormal(int backgroundColorNormal) {
+		this.backgroundColorNormal = backgroundColorNormal;
 		invalidate();
 	}
 
-	public int getColorBackgroundTouch() {
-		return colorBackgroundTouch;
+	public int getBackgroundColorTouch() {
+		return backgroundColorTouch;
 	}
 
-	public void setColorBackgroundTouch(int colorBackgroundTouch) {
-		this.colorBackgroundTouch = colorBackgroundTouch;
+	public void setBackgroundColorTouch(int backgroundColorTouch) {
+		this.backgroundColorTouch = backgroundColorTouch;
 		invalidate();
 	}
 
-	public int getColorBackgroundError() {
-		return colorBackgroundError;
+	public int getBackgroundColorError() {
+		return backgroundColorError;
 	}
 
-	public void setColorBackgroundError(int colorBackgroundError) {
-		this.colorBackgroundError = colorBackgroundError;
+	public void setBackgroundColorError(int backgroundColorError) {
+		this.backgroundColorError = backgroundColorError;
 		invalidate();
 	}
 
-	public int getColorOuterCycleNormal() {
-		return colorOuterCycleNormal;
+	public int getOuterCycleColorNormal() {
+		return outerCycleColorNormal;
 	}
 
-	public void setColorOuterCycleNormal(int colorOuterCycleNormal) {
-		this.colorOuterCycleNormal = colorOuterCycleNormal;
+	public void setOuterCycleColorNormal(int outerCycleColorNormal) {
+		this.outerCycleColorNormal = outerCycleColorNormal;
 		invalidate();
 	}
 
-	public int getColorOuterCycleTouch() {
-		return colorOuterCycleTouch;
+	public int getOuterCycleColorTouch() {
+		return outerCycleColorTouch;
 	}
 
-	public void setColorOuterCycleTouch(int colorOuterCycleTouch) {
-		this.colorOuterCycleTouch = colorOuterCycleTouch;
+	public void setOuterCycleColorTouch(int outerCycleColorTouch) {
+		this.outerCycleColorTouch = outerCycleColorTouch;
 		invalidate();
 	}
 
-	public int getColorOuterCycleError() {
-		return colorOuterCycleError;
+	public int getOuterCycleColorError() {
+		return outerCycleColorError;
 	}
 
-	public void setColorOuterCycleError(int colorOuterCycleError) {
-		this.colorOuterCycleError = colorOuterCycleError;
+	public void setOuterCycleColorError(int outerCycleColorError) {
+		this.outerCycleColorError = outerCycleColorError;
 		invalidate();
 	}
 
-	public int getColorInnerCycleNormal() {
-		return colorInnerCycleNormal;
+	public int getInnerCycleColorNormal() {
+		return innerCycleColorNormal;
 	}
 
-	public void setColorInnerCycleNormal(int colorInnerCycleNormal) {
-		this.colorInnerCycleNormal = colorInnerCycleNormal;
+	public void setInnerCycleColorNormal(int innerCycleColorNormal) {
+		this.innerCycleColorNormal = innerCycleColorNormal;
 		invalidate();
 	}
 
-	public int getColorInnerCycleTouch() {
-		return colorInnerCycleTouch;
+	public int getInnerCycleColorTouch() {
+		return innerCycleColorTouch;
 	}
 
-	public void setColorInnerCycleTouch(int colorInnerCycleTouch) {
-		this.colorInnerCycleTouch = colorInnerCycleTouch;
+	public void setInnerCycleColorTouch(int innerCycleColorTouch) {
+		this.innerCycleColorTouch = innerCycleColorTouch;
 		invalidate();
 	}
 
-	public int getColorInnerCycleError() {
-		return colorInnerCycleError;
+	public int getInnerCycleColorError() {
+		return innerCycleColorError;
 	}
 
-	public void setColorInnerCycleError(int colorInnerCycleError) {
-		this.colorInnerCycleError = colorInnerCycleError;
+	public void setInnerCycleColorError(int innerCycleColorError) {
+		this.innerCycleColorError = innerCycleColorError;
 		invalidate();
 	}
 
-	public int getColorLinkLineNormal() {
-		return colorLinkLineNormal;
+	public int getLinkLineColorNormal() {
+		return linkLineColorNormal;
 	}
 
-	public void setColorLinkLineNormal(int colorLinkLineNormal) {
-		this.colorLinkLineNormal = colorLinkLineNormal;
+	public void setLinkLineColorNormal(int linkLineColorNormal) {
+		this.linkLineColorNormal = linkLineColorNormal;
 		invalidate();
 	}
 
-	public int getColorLinkLineError() {
-		return colorLinkLineError;
+	public int getLinkLineColorError() {
+		return linkLineColorError;
 	}
 
-	public void setColorLinkLineError(int colorLinkLineError) {
-		this.colorLinkLineError = colorLinkLineError;
+	public void setLinkLineColorError(int linkLineColorError) {
+		this.linkLineColorError = linkLineColorError;
 		invalidate();
 	}
 
@@ -775,9 +831,9 @@ public class GestureView extends View{
 	 * @param errorColor 错误颜色
 	 */
 	public void setColorBackground(int normalColor, int touchColor, int errorColor){
-		this.colorBackgroundNormal = normalColor;
-		this.colorBackgroundTouch = touchColor;
-		this.colorBackgroundError = errorColor;
+		this.backgroundColorNormal = normalColor;
+		this.backgroundColorTouch = touchColor;
+		this.backgroundColorError = errorColor;
 		invalidate();
 	}
 
@@ -788,9 +844,9 @@ public class GestureView extends View{
 	 * @param errorColor 错误颜色
 	 */
 	public void setColorOuterCycle(int normalColor, int touchColor, int errorColor){
-		this.colorOuterCycleNormal = normalColor;
-		this.colorOuterCycleTouch = touchColor;
-		this.colorOuterCycleError = errorColor;
+		this.outerCycleColorNormal = normalColor;
+		this.outerCycleColorTouch = touchColor;
+		this.outerCycleColorError = errorColor;
 		invalidate();
 	}
 
@@ -801,9 +857,9 @@ public class GestureView extends View{
 	 * @param errorColor 错误颜色
 	 */
 	public void setColorInnerCycle(int normalColor, int touchColor, int errorColor){
-		this.colorInnerCycleNormal = normalColor;
-		this.colorInnerCycleTouch = touchColor;
-		this.colorInnerCycleError = errorColor;
+		this.innerCycleColorNormal = normalColor;
+		this.innerCycleColorTouch = touchColor;
+		this.innerCycleColorError = errorColor;
 		invalidate();
 	}
 
@@ -813,8 +869,8 @@ public class GestureView extends View{
 	 * @param errorColor 错误颜色
 	 */
 	public void setColorLinkLine(int normalColor, int errorColor){
-		this.colorLinkLineNormal = normalColor;
-		this.colorInnerCycleError = errorColor;
+		this.linkLineColorNormal = normalColor;
+		this.innerCycleColorError = errorColor;
 		invalidate();
 	}
 }

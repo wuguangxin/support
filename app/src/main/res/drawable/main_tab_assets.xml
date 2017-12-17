@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- TAB 我的 -->
-    <item android:drawable="@mipmap/main_tab_assets_pressed" android:state_selected="true"/>
-    <item android:drawable="@mipmap/main_tab_assets_pressed" android:state_pressed="true"/>
-    <item android:drawable="@mipmap/main_tab_assets_normal" android:state_pressed="false"/>
-    <item android:drawable="@mipmap/main_tab_assets_normal"/>
+    <item android:drawable="@drawable/main_tab_assets_pressed" android:state_selected="true"/>
+    <item android:drawable="@drawable/main_tab_assets_pressed" android:state_pressed="true"/>
+    <item android:drawable="@drawable/main_tab_assets_normal" android:state_pressed="false"/>
+    <item android:drawable="@drawable/main_tab_assets_normal"/>
 
 </selector>

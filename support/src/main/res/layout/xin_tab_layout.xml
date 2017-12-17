@@ -18,13 +18,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.2dip"
-                android:background="#b2b2b2" />
+                android:layout_height="0.5dip"
+                android:background="#F3F3F7" />
 
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="50dip"
+                android:layout_height="45dip"
                 android:divider="@null" />
         </LinearLayout>
 

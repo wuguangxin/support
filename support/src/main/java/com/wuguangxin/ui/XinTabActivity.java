@@ -15,10 +15,6 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.wuguangxin.R;
-import com.wuguangxin.ui.test.tabhost.Demo1Activity;
-import com.wuguangxin.ui.test.tabhost.Demo2Activity;
-import com.wuguangxin.ui.test.tabhost.Demo3Activity;
-import com.wuguangxin.ui.test.tabhost.Demo4Activity;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -99,15 +95,22 @@ public abstract class XinTabActivity extends TabActivity{
 	}
 
 	private void initTabHostView(){
-		mTabHost = super.getTabHost();
-		tabList = getTabList();
-		tabIdList = new ArrayList<>();
 		currentTabId = getIntent().getIntExtra(ACTION_CURRENT_TAB, 0);
+		mTabHost = super.getTabHost();
+		tabIdList = new ArrayList<>();
+		tabList = getTabList();
+		if (tabList == null) {
+			tabList = new ArrayList<>();
+		}
+
 		for (int i = 0; i < tabList.size(); i++) {
 			String tabId = "tab_" + i;
 			tabIdList.add(tabId);
 			Intent intent = new Intent(this, tabList.get(i).activity).putExtra("TAB_NAME", 0);
 			View view = getItemView(tabList.get(i).name, tabList.get(i).icon, i);
+			if(onGetItemViewListener != null){
+				onGetItemViewListener.onGetItemView(view, tabList.get(i), i);
+			}
 			mTabHost.addTab(mTabHost.newTabSpec(tabId).setIndicator(view).setContent(intent));
 		}
 		mTabHost.setCurrentTab(currentTabId);
@@ -146,27 +149,7 @@ public abstract class XinTabActivity extends TabActivity{
 		TextView mName = (TextView) view.findViewById(R.id.xin_tab_name);
 		mIcon.setImageResource(icon);
 		mName.setText(name);
-		if(onGetItemViewListener != null){
-			onGetItemViewListener.onGetItemView(view, mIcon, mName, position);
-		}
 		return view;
-	}
-
-	private OnGetItemViewListener onGetItemViewListener;
-
-	public void setOnGetItemViewListener(OnGetItemViewListener onGetItemViewListener) {
-		this.onGetItemViewListener = onGetItemViewListener;
-	}
-
-	public interface OnGetItemViewListener {
-		/**
-		 * 当获取itemview时
-		 * @param parentView
-		 * @param iconView
-		 * @param nameView
-		 * @param position 位置
-		 */
-		void onGetItemView(View parentView, ImageView iconView, TextView nameView, int position);
 	}
 
 	/**
@@ -211,6 +194,22 @@ public abstract class XinTabActivity extends TabActivity{
 		 * @param position 即将切换到的Tab位置
          */
 		void onTabSwitch(int position);
+	}
+
+	private OnGetItemViewListener onGetItemViewListener;
+
+	public void setOnGetItemViewListener(OnGetItemViewListener onGetItemViewListener) {
+		this.onGetItemViewListener = onGetItemViewListener;
+	}
+
+	public interface OnGetItemViewListener {
+		/**
+		 * 当获取itemview时
+		 * @param parentView
+		 * @param tab
+		 * @param position 位置
+		 */
+		void onGetItemView(View parentView, Tab tab, int position);
 	}
 
 	/**
@@ -266,7 +265,7 @@ public abstract class XinTabActivity extends TabActivity{
 	 *
 	 * <p>Created by wuguangxin on 16/1/22 </p>
 	 */
-	public class Tab{
+	public class Tab {
 		/** Tab的名字 */
 		public String name;
 		/** Tab的图标资源ID */
@@ -286,23 +285,18 @@ public abstract class XinTabActivity extends TabActivity{
 			this.icon = icon;
 			this.activity = activity;
 		}
-
-		@Override
-		public String toString(){
-			return "Tab [name=" + name + ", icon=" + icon + ", activity=" + activity + "]";
-		}
 	}
 
 	/**
-	 * 获取TAB信息，请子类自行复写该方法
+	 * 获取TAB信息，请子类自行复写该方法。
+	 *<p>
+	 *     例如：
+	 *     ArrayList<Tab> tabList = new ArrayList<>();
+	 *     tabList.add(new Tab("Item1", android.R.drawable.sym_def_app_icon, Activity.class));
+	 *     tabList.add(new Tab("Item2", android.R.drawable.sym_def_app_icon, Activity.class));
+	 *     tabList.add(new Tab("Item3", android.R.drawable.sym_def_app_icon, Activity.class));
+	 *</p>
 	 * @return TAB信息
 	 */
-	public ArrayList<Tab> getTabList(){
-		ArrayList<Tab> tabList = new ArrayList<>();
-		tabList.add(new Tab("Item1", android.R.drawable.sym_def_app_icon, Demo1Activity.class));
-		tabList.add(new Tab("Item2", android.R.drawable.sym_def_app_icon, Demo2Activity.class));
-		tabList.add(new Tab("Item3", android.R.drawable.sym_def_app_icon, Demo3Activity.class));
-		tabList.add(new Tab("Item4", android.R.drawable.sym_def_app_icon, Demo4Activity.class));
-		return tabList;
-	}
+	public abstract ArrayList<Tab> getTabList();
 }

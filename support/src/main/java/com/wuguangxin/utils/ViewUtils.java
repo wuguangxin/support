@@ -2,6 +2,7 @@ package com.wuguangxin.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Point;
 import android.support.v4.view.ViewPager;
 import android.text.format.DateUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -329,4 +330,50 @@ public class ViewUtils{
 			view.getLayoutParams().height = realWidth * height / width;
 		}
 	}
+
+	/**
+	 * 判断指定坐标是否在圆内
+	 * @param curX 当前触摸的X轴
+	 * @param curY 当前触摸的Y轴
+	 * @param circleX 圆心X轴
+	 * @param circleY 圆心Y轴
+	 * @param circleRadius 圆半径
+	 * @return
+	 */
+	public static boolean withinCircle(float curX, float curY, float circleX, float circleY, float circleRadius){
+		Point point1 = new Point((int)curX, (int)curY);
+		Point point2 = new Point((int)circleX, (int)circleY);
+		double distance = getLength(point1, point2); // 两个坐标距离
+		return distance < circleRadius;
+	}
+
+	/**
+	 * 判断指定坐标是否在圆内
+	 * @param curPoint 当前坐标
+	 * @param circlePoint 圆心坐标
+	 * @param circleRadius 圆半径
+	 * @return
+	 */
+	public static boolean withinCircle(Point curPoint, Point circlePoint, float circleRadius){
+		double distance =getLength(curPoint, circlePoint); // 两个坐标距离
+		return distance < circleRadius;
+	}
+
+	/**
+	 * 获取两个坐标的距离
+	 * @param point1 坐标1
+	 * @param point2 坐标2
+	 * @return
+	 */
+	public static double getLength(Point point1, Point point2){
+		if (point1 == null || point1 == null) {
+			return 0F;
+		}
+		// 开方
+		double distance = Math.sqrt((point1.x - point2.x) * (point1.x - point2.x)
+				+ (point1.y - point2.y) * (point1.y - point2.y));
+		return distance;
+	}
+
+
 }

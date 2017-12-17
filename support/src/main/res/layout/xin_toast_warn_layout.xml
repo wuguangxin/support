@@ -7,6 +7,7 @@
     android:background="@drawable/xin_toast_bg"
     android:gravity="center"
     android:minWidth="100dip"
+
     android:minHeight="60dip"
     android:paddingBottom="5dip"
     android:paddingLeft="20dip"

@@ -18,10 +18,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TabHostActivity"/>
         <activity android:name=".TabHost0_Activity"/>
         <activity android:name=".TabHost1_Activity"/>
         <activity android:name=".TabHost2_Activity"/>
+        <activity android:name=".TabHostDemoActivity"/>
+
         <activity android:name=".ToastUtilsActivity"/>
         <activity android:name=".MyDialogActivity"/>
         <activity android:name=".ItemViewActivity"/>

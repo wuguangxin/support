@@ -12,12 +12,18 @@
         android:background="#F2F3F5"
         android:orientation="vertical">
 
+        <com.wuguangxin.simple.view.MyView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
         <EditText
             android:id="@+id/EditText"
             android:layout_width="match_parent"
             android:layout_height="40dip"
             android:hint="输入姓名"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/tabHost"

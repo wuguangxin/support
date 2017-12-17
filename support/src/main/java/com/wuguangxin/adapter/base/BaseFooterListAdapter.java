@@ -15,11 +15,11 @@ import java.util.List;
  *
  * <p>Created by wuguangxin on 14/11/17 </p>
  */
-public abstract class BaseFooterListAdapter extends BaseListAdapter {
-	public BigDecimal zero = new BigDecimal(0); 
+public abstract class BaseFooterListAdapter<T> extends BaseListAdapter<T> {
+	public BigDecimal zero = BigDecimal.ZERO;
 	private int minCountEnableFooterView; // 最少多少条数据才显示页脚信息View
 	
-	public BaseFooterListAdapter(Context context, List<?> list){
+	public BaseFooterListAdapter(Context context, List<T> list){
 		super(context, list);
 	}
 
@@ -39,7 +39,7 @@ public abstract class BaseFooterListAdapter extends BaseListAdapter {
 		// 控制下拉刷新组件的刷新模式，当适配器已经显示了全部的数据后，不可在上拉加载
 		mPullRefreshListView.setMode(getList().size() < totalNumber ? Mode.BOTH : Mode.PULL_FROM_START);
 		// 如果数据没有加载完全，则隐藏脚布局（附加如果第一页就显示完数据了，但数据小于5条的，也隐藏脚布局）
-		if(pageNumber == startIndex && getList().size() == totalNumber && getList().size() < minCountEnableFooterView){
+		if(pageNumber == startIndex && getCount() == totalNumber && getCount() < minCountEnableFooterView){
 			mFooterView.setVisibility(View.GONE);
 		} else {
 			mFooterView.setVisibility(View.VISIBLE);

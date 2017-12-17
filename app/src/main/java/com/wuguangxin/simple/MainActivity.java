@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
-import com.wuguangxin.utils.Logger;
-import com.wuguangxin.utils.MoneyUtils;
+import com.wuguangxin.utils.ShakeUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.IOException;
@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.CircleProgressView).setOnClickListener(this);
         findViewById(R.id.GestureView).setOnClickListener(this);
 
+        findViewById(R.id.GestureView).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                ShakeUtils.shake(v);
+                return false;
+            }
+        });
+
         findViewById(R.id.EditText).setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -40,12 +48,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
+//        Logger.i(this, MoneyUtils.format(100.00D, "元"));
+//        Logger.i(this, MoneyUtils.format(100.00D));
+//        Logger.i(this, MoneyUtils.format(0.00D));
+//        Logger.i(this, MoneyUtils.format(0.00D, "元"));
+//        Logger.i(this, MoneyUtils.format(100.90D, "元"));
 
-        Logger.i(this, MoneyUtils.format(100.00D, "元"));
-        Logger.i(this, MoneyUtils.format(100.00D));
-        Logger.i(this, MoneyUtils.format(0.00D));
-        Logger.i(this, MoneyUtils.format(0.00D, "元"));
-        Logger.i(this, MoneyUtils.format(100.90D, "元"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017.12.18"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017-12-18"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017/12/18"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017年12月18日"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017年12月18日02时13分01秒"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017/12/18 02:13:01"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017-12-18 00:00:00"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017-12-18 02:13:01"));
+//        Logger.i(this, "===========================");
+//        Logger.i(this, "间隔天数："+ DateUtils.dateDiff(1513451568000L, 1514044800000L));
     }
 
     @Override
@@ -53,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
         switch (id) {
         case R.id.tabHost:
-            openActivity(TabHostActivity.class);
+            openActivity(TabHostDemoActivity.class);
             break;
         case R.id.okhttp:
             testOkHttp();

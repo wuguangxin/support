@@ -12,21 +12,21 @@ import java.util.List;
  *
  * <p>Created by wuguangxin on 14/11/17 </p>
  */
-public abstract class BasePagerAdapter extends PagerAdapter {
+public abstract class BasePagerAdapter<T> extends PagerAdapter {
 	protected Context context;
-	protected List<?> list;
+	protected List<T> list;
 
-	public BasePagerAdapter(Context context, List<?> list){
+	public BasePagerAdapter(Context context, List<T> list){
 		super();
 		this.context = context;
 		this.list = list;
     }
 	
-	public void setList(List<?> list){
+	public void setList(List<T> list){
 		this.list = list;
 	}
 
-	public List<?> getList(){
+	public List<T> getList(){
 		return list;
 	}
 
@@ -38,7 +38,7 @@ public abstract class BasePagerAdapter extends PagerAdapter {
 		return list.size();
 	}
 	
-	public Object getItem(int position){
+	public T getItem(int position){
 		return list.get(position);
 	}
 	
@@ -69,7 +69,7 @@ public abstract class BasePagerAdapter extends PagerAdapter {
 	 * 更新PagerAdapter适配器
 	 * @param list 数据集
 	 */
-	public void notify(List<?> list){
+	public void notify(List<T> list){
 		this.list = list;
 		notifyDataSetChanged();
 	}
