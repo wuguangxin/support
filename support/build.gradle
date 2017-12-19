@@ -4,9 +4,14 @@ apply plugin: 'com.novoda.bintray-release' // bintray
 
 // 20171128
 def mModulesName = "support"
-def mVersionCode = 24
-def mVersionName = "1.0.24"
-def mDescription = "修复GestureView在部分机型显示不全bug"
+def mVersionCode = 26
+def mVersionName = "1.1.1"
+def mDescription = "1.修复GestureView在部分机型显示不全bug,优化屏幕尺寸适配。\n" +
+        "2.增加手机震动工具类ShakeUtils；\n" +
+        "3.优化DateUtils工具类，增加一些适用方法；\n" +
+        "4.ViewUtils增加判断一个坐标是否在指定圆内部，withinCircle();\n" +
+        "5.XinTabActivity把getTabList()抽象化，让子类自己实现。" +
+        "6.修复MoneyUtils在有unit，并且金额小于1时，不显示unit的bug。"
 
 android {
     compileSdkVersion 25

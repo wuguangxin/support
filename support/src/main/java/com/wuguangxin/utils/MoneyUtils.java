@@ -57,7 +57,7 @@ public class MoneyUtils{
 		decimalFormat.applyPattern("##,###.00");
 		String formatMoney = decimalFormat.format(number.doubleValue());
 		if (formatMoney.startsWith(".")) {
-			return "0" + formatMoney;
+			formatMoney = "0" + formatMoney;
 		}
 		if (TextUtils.isEmpty(unit)) {
 			return clearZero(formatMoney);
@@ -84,7 +84,7 @@ public class MoneyUtils{
 		}
 		String formatMoney = decimalFormat.format(number);
 		if (formatMoney.startsWith(".")) {
-			return "0" + formatMoney;
+			formatMoney = "0" + formatMoney;
 		}
 		return clearZero(formatMoney);
 	}
@@ -150,7 +150,7 @@ public class MoneyUtils{
 		decimalFormat.applyPattern("#####.00");
 		String formatMoney = decimalFormat.format(moneyBigDecimal.doubleValue());
 		if (formatMoney.startsWith(".")) {
-			return "0" + formatMoney;
+			formatMoney = "0" + formatMoney;
 		}
 		return clearZero(formatMoney);
 	}

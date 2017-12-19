@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
@@ -156,7 +157,7 @@ public class GestureView extends View{
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
-//		Log.e("wgx", "===========GestureView==================================");
+		Log.e("wgx", "===========GestureView==================================");
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		// 以最小的值为实际尺寸
 		float measureWidth = MeasureSpec.getSize(widthMeasureSpec);
@@ -191,27 +192,49 @@ public class GestureView extends View{
 		} else {
 			measureHeight = contextMaxSize;
 		}
+		Log.e("wgx", "初始化：measureWidth="+measureWidth);
+		Log.e("wgx", "初始化：measureHeight="+measureHeight);
+		Log.e("wgx", "初始化：contextMaxSize="+contextMaxSize);
+		Log.e("wgx", "初始化：contextMinSize="+contextMinSize);
 
 		// 布局的可显示大小
 		width = Math.min(measureWidth, measureHeight);
+		printInfo("初始化");
 
 		// 画板<最大内容，则 缩小圆间距
 		if (width < contextMaxSize) {
 			circleSpace = (width - paddingLeft - paddingRight - circleRadius * 2 * circleNum) / (circleNum-1);
+			printInfo("画板<最大内容，则 缩小圆间距");
 		}
 
 		// 画板<最小内容，则 缩小圆半径，间距置为0
 		if (width < contextMinSize) {
 			circleRadius = (width-paddingLeft-paddingRight) / circleNum / 2;
 			circleSpace = 0;
+			printInfo("画板<最小内容，则 缩小圆半径，间距置为0");
 		}
 
 		// 画板>最大内容，则 画板=最大内容
 		if (width > contextMaxSize) {
 			width = contextMaxSize;
+			printInfo("画板>最大内容，则 画板=最大内容");
 		}
 
+
+		printInfo("结果");
+
 		setMeasuredDimension((int) width, (int) width);
+
+	}
+
+	private boolean DEBUG = true;
+	private void printInfo(String tag) {
+		if (DEBUG) {
+			Log.e("wgx", tag + " width=" + width);
+			Log.e("wgx", tag + " paddingLeft=" + paddingLeft);
+			Log.e("wgx", tag + " circleSpace=" + circleSpace);
+			Log.e("wgx", tag + " circleRadius=" + circleRadius);
+		}
 	}
 
 	@Override

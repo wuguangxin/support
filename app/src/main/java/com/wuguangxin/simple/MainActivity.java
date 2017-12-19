@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
 //        Logger.i(this, MoneyUtils.format(100.00D, "元"));
 //        Logger.i(this, MoneyUtils.format(100.00D));
 //        Logger.i(this, MoneyUtils.format(0.00D));
 //        Logger.i(this, MoneyUtils.format(0.00D, "元"));
-//        Logger.i(this, MoneyUtils.format(100.90D, "元"));
+//        Logger.i(this, MoneyUtils.format(100.9, "元"));
+//        Logger.i(this, MoneyUtils.format(0.9, "元"));
 
 //        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017.12.18"));
 //        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017-12-18"));
