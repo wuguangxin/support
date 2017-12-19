@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 
+import com.wuguangxin.listener.TextChangeListener;
+import com.wuguangxin.utils.Logger;
 import com.wuguangxin.utils.ShakeUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -30,6 +34,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.ItemView).setOnClickListener(this);
         findViewById(R.id.CircleProgressView).setOnClickListener(this);
         findViewById(R.id.GestureView).setOnClickListener(this);
+
+
+        EditText mMoney = (EditText) findViewById(R.id.withdraw_money);
+        mMoney.addTextChangedListener(new TextChangeListener(mMoney, R.id.withdraw_money_del, TextChangeListener.TextType.MONEY){
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count){
+                super.onTextChanged(s, start, before, count);
+                String moneyString = s.toString().trim();
+                if (TextUtils.isEmpty(moneyString) || "0.".equals(moneyString) || ".".equals(moneyString)) {
+                    moneyString = "0";
+                }
+                double money = Double.parseDouble(moneyString);
+                Logger.e("wgx", "money="+money);
+            }
+        });
 
         findViewById(R.id.GestureView).setOnTouchListener(new View.OnTouchListener() {
             @Override

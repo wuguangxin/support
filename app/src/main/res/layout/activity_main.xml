@@ -12,6 +12,27 @@
         android:background="#F2F3F5"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/withdraw_money"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:hint="请输入提现金额"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:textColor="#333"
+            android:textColorHint="#BCBBBB"
+            android:textSize="@dimen/font_14"/>
+
+        <ImageView
+            android:id="@+id/withdraw_money_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"/>
+
         <com.wuguangxin.simple.view.MyView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

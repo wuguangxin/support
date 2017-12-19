@@ -2,6 +2,7 @@ package com.wuguangxin.listener;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -37,14 +38,14 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	private Animation fade_out;
 
 	public TextChangeListener(){
-		this(null, null, TextType.TEXT);
+		this(null);
 	}
 
 	/**
 	 * @param editText 要监听的EditText
 	 */
 	public TextChangeListener(EditText editText){
-		this(editText, null, TextType.TEXT);
+		this(editText, 0);
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	 * @param clearViewId 清除按钮ViewId
 	 */
 	public TextChangeListener(EditText editText, int clearViewId){
-		this(editText, findViewById(editText.getContext(), clearViewId), TextType.TEXT);
+		this(editText, findViewById(getActivityFromView(editText), clearViewId), TextType.TEXT);
 	}
 	
 	/**
@@ -61,7 +62,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
 	 */
 	public TextChangeListener(EditText editText, int clearViewId, int textType){
-		this(editText, findViewById(editText.getContext(), clearViewId), textType, null);
+		this(editText, findViewById(getActivityFromView(editText), clearViewId), textType, null);
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	 * @param callBack 回调
 	 */
 	public TextChangeListener(EditText editText, View clearBtn, int textType, EditTextCallBack callBack){
-		this.context = editText.getContext();
+        this.context = getActivityFromView(editText);
 		this.mEditText = editText;
 		this.mClearBtn = clearBtn;
 		this.textType = textType;
@@ -95,6 +96,17 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 			this.textType = TextType.TEXT;
 		}
 		init();
+	}
+
+	public static Activity getActivityFromView(View view) {
+		Context context = view.getContext();
+		while (context instanceof ContextWrapper) {
+			if (context instanceof Activity) {
+				return (Activity) context;
+			}
+			context = ((ContextWrapper) context).getBaseContext();
+		}
+		return null;
 	}
 
 	private void init(){
@@ -295,11 +307,16 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 		void onTextSet(String str);
 	}
 	
-	private static View findViewById(Context mContext, int clearViewId){
-		if(clearViewId == 0 || clearViewId == -1){
+	private static View findViewById(Activity activity, int clearViewId){
+		if(clearViewId == 0 || clearViewId == -1 || activity == null){
 			return null;
 		}
-		return ((Activity)mContext).findViewById(clearViewId);
+		try {
+			return activity.findViewById(clearViewId);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/**
