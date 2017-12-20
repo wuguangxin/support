@@ -68,8 +68,8 @@ public class SmsCodeReceiver{
 					long times = smsMessage.getTimestampMillis();						// 发送时间
 					
 //					Date date = new Date(times);
-//					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//					String receiveTime = format.format(date);
+//					SimpleDateFormat formatString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//					String receiveTime = formatString.formatString(date);
 					
 					SmsCodeReceiver.this.onReceive(number, msg, times);
 					

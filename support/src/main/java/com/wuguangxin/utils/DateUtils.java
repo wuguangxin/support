@@ -18,132 +18,154 @@ import java.util.Locale;
 @SuppressLint("SimpleDateFormat")
 public class DateUtils {
     private static final String DEFAULT_URL = "http://www.baidu.com"; // 默认时间来源
-    private static final SimpleDateFormat formatLongDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static final SimpleDateFormat formatShortDate = new SimpleDateFormat("yyyy-MM-dd");
-    private static final SimpleDateFormat formatDate = formatShortDate;
-    private static final SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss");
-    private static final long nd = 1000 * 60 * 60 * 24;        //一天的毫秒数
-    private static final long nh = 1000 * 60 * 60;            //一小时的毫秒数
-    private static final long nm = 1000 * 60;                //一分钟的毫秒数
-    private static final long ns = 1000;                    //一秒钟的毫秒数
+    private static final SimpleDateFormat FORMAT_DATE_LONG = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static final SimpleDateFormat FORMAT_DATE_SHORT = new SimpleDateFormat("yyyy-MM-dd");
+    private static final SimpleDateFormat FORMAT_DATE = FORMAT_DATE_SHORT;
+    private static final SimpleDateFormat FORMAT_TIME = new SimpleDateFormat("HH:mm:ss");
+    private static final long ND = 1000 * 60 * 60 * 24;        //一天的毫秒数
+    private static final long NH = 1000 * 60 * 60;            //一小时的毫秒数
+    private static final long NM = 1000 * 60;                //一分钟的毫秒数
+    private static final long NS = 1000;                    //一秒钟的毫秒数
     private static StringBuilder timeDiffBuilder;
 
+    /* *****************************************************************************************
+     *          获取 长日期 Date
+     *******************************************************************************************/
     /**
-     * 根据时间戳转换为长日期
-     *
-     * @param timestamp 时间戳
-     * @return 如 2015-01-01 10:20:30
+     * 获取系统当前长日期
+     * @return Date
      */
-    public static Date getDate(long timestamp) {
+    public static Date getDate() {
+        return new Date();
+    }
+
+    /**
+     * 获取系统当前长日期Date
+     * @return Date
+     */
+    public static Date getDateLong() {
+        return new Date();
+    }
+
+    /**
+     * 获取系统当前短日期，如 2015-01-01。
+     * @return 短日期字符串
+     */
+    public static Date getDateShort() {
+        return formatDateShort(new Date());
+    }
+
+    /**
+     * 获取当前系统短日期字符串，如 2014-01-01。
+     * @return 短日期字符串
+     */
+    public static String getStringShort() {
+        return FORMAT_DATE.format(new Date());
+    }
+
+    /**
+     * 获取当前系统时间，如 10:10:30。
+     * @return 长日期字符串
+     */
+    public static String getStringTime() {
+        return FORMAT_TIME.format(new Date());
+    }
+
+    /**
+     * 获取当前系统长日期字符串，如 2014-01-01 00:00:00。
+     * @return 长日期字符串
+     */
+    public static String formatDateLong() {
+        return FORMAT_DATE_LONG.format(new Date());
+    }
+
+    /**
+     * 获取网络长日期字符串，如 2014-01-01 00:00:00。
+     * @return 长日期字符串
+     */
+    public static String getStringFromNet() {
+        return DateUtils.formatStringLong(getTimestampFromNet(null));
+    }
+
+    /* *****************************************************************************************
+     *          格式化为 长日期 Date
+     *******************************************************************************************/
+    /**
+     * 根据时间戳转换为长日期Date。
+     * @param timestamp 时间戳
+     * @return Date
+     */
+    public static Date formatDateLong(long timestamp) {
         return new Date(timestamp);
     }
 
     /**
-     * 将短时间格式字符串转换为时间 yyyy-MM-dd
-     *
-     * @param dataString 如2017-01-01
-     * @return 时间 yyyy-MM-dd
-     */
-    public static Date getDateShort(String dataString) {
-        ParsePosition pos = new ParsePosition(0);
-        return formatDate.parse(dataString, pos);
-    }
-
-    /**
-     * 将短时间格式字符串转换为时间 yyyy-MM-dd HH:mm:ss
-     *
+     * 格式化为长日期对象Date。
      * @param dataString 如2017-01-01 10:20:30
-     * @return 时间 yyyy-MM-dd HH:mm:ss
+     * @return Date
      */
-    public static Date getDateLong(String dataString) {
+    public static Date formatDateLong(String dataString) {
         ParsePosition pos = new ParsePosition(0);
-        return formatLongDate.parse(dataString, pos);
+        return FORMAT_DATE_LONG.parse(dataString, pos);
     }
 
-    /**
-     * 将字符串日期转换为时间戳。
-     *
-     * @param dataString 必须符合以下几种格式：
-     * 1：yyyy-MM
-     * 2：yyyy-MM-dd
-     * 3：yyyy-MM-dd HH:mm
-     * 4：yyyy-MM-dd HH:mm:ss
-     * 5：yyyy/MM/dd HH:mm:ss
-     * 6：yyyy.MM.dd HH:mm:ss
-     * 7：yyyy年MM月dd日HH时mm分ss秒。
-     * 如果传入的时间格式不正确，则返回0。
-     * @return 时间戳
-     */
-    public static Date formatTimestamp(String dataString) {
-        if (TextUtils.isEmpty(dataString)) {
-            return null;
-        }
-        try {
-            if (dataString.contains(".")) dataString = dataString.replaceAll("\\.", "-");
-            if (dataString.contains("/")) dataString = dataString.replaceAll("/", "-");
-            if (dataString.contains("年")) dataString = dataString.replaceAll("年", "-");
-            if (dataString.contains("月")) dataString = dataString.replaceAll("月", "-");
-            if (dataString.contains("日")) dataString = dataString.replaceAll("日", " ");
-            if (dataString.contains("时")) dataString = dataString.replaceAll("时", ":");
-            if (dataString.contains("分")) dataString = dataString.replaceAll("分", ":");
-            if (dataString.contains("秒")) dataString = dataString.replaceAll("秒", "");
-            dataString = dataString.trim(); // 去除首尾空格
-            SimpleDateFormat format;
-            int length = dataString.length();
-            switch (length) {
-            case 7:
-                format = new SimpleDateFormat("yyyy-MM");
-                break;
-            case 10:
-                format = new SimpleDateFormat("yyyy-MM-dd");
-                break;
-            case 16:
-                format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                break;
-            default:
-            case 19:
-                format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                break;
-            }
-            Date date = format.parse(dataString);
-            return date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    /* *****************************************************************************************
+     *          格式化为 长日期 String
+     *******************************************************************************************/
 
     /**
-     * 格式化为长日期
-     *
+     * 格式化为长日期字符串，如 2014-01-01 00:00:00。
      * @param timestamp String类型时间戳
-     * @return 长日期，如 2014-01-01 15:20:58
+     * @return 长日期字符串
      */
-    public static String formatLongDate(String timestamp) {
+    public static String formatStringLong(String timestamp) {
         if (TextUtils.isEmpty(timestamp)) {
             return null;
         }
-        return formatLongDate.format(new Date(Long.parseLong(timestamp)));
+        return FORMAT_DATE_LONG.format(new Date(Long.parseLong(timestamp)));
     }
 
     /**
-     * 格式化时间戳为短日期格式，以"-"分割
-     *
-     * @param timestamp String类型时间戳
-     * @return 如 2014-01-01
-     */
-    public static String formatDateShortLine(String timestamp) {
-        if (TextUtils.isEmpty(timestamp)) {
-            return null;
-        }
-        return formatDate.format(new Date(Long.parseLong(timestamp)));
-    }
-
-    /**
-     * 格式化为长日期加时间，不带秒。
-     *
+     * 格式化为长日期字符串，如 2014-01-01 00:00:00。
      * @param timestamp long类型时间戳
-     * @return 如 2014-01-01 15:20
+     * @return 长日期字符串
+     */
+    public static String formatStringLong(long timestamp) {
+        if (timestamp <= 0) return null;
+        return FORMAT_DATE_LONG.format(new Date(timestamp));
+    }
+
+    /**
+     * 格式化为长日期字符串，如 2014-01-01 00:00:00。
+     * @param date Date类型时间
+     * @return 长日期字符串
+     */
+    public static String formatStringLong(Date date) {
+        if (date == null) return null;
+        return FORMAT_DATE_LONG.format(date);
+    }
+
+    /**
+     * 格式化为长日期字符串，如 2014-01-01 00:00:00。
+     * @param timestamp 时间戳
+     * @param format 格式化样式 yyyy-MM-dd HH:mm:ss
+     * @return 长日期字符串
+     */
+    public static String formatStringLong(long timestamp, String format) {
+        if (timestamp <= 0) {
+            return null;
+        }
+        if (!TextUtils.isEmpty(format)) {
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            return sdf.format(timestamp);
+        }
+        return FORMAT_DATE_LONG.format(new Date(timestamp));
+    }
+
+    /**
+     * 格式化为长日期加时间，不带秒。如 2014-01-01 15:20。
+     * @param timestamp long类型时间戳
+     * @return 返回年月日时分
      */
     public static String format_yyyyMMddHHmm(long timestamp) {
         if (timestamp <= 0) {
@@ -153,47 +175,66 @@ public class DateUtils {
         return format.format(new Date(timestamp));
     }
 
+    /* *****************************************************************************************
+     *          格式化 短日期 Date
+     *******************************************************************************************/
+
     /**
      * 把一个时间戳日期去掉时分秒并转换为Date
      *
-     * @param timeMillis 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
-     * @return 如 2017-01-01 00:00:00 的Date对象，如果日期格式不传入不正确，则返回null。
+     * @param timeMillis 时间戳
+     * @return Date，如果日期格式不传入不正确，则返回null。
      */
-    public static Date formatShortDate(long timeMillis) {
+    public static Date formatDateShort(long timeMillis) {
         if (timeMillis == 0) {
             return null;
         }
-        return formatShortDate(DateUtils.formatDateLong(new Date(timeMillis)));
+        return formatDateShort(DateUtils.formatStringLong(new Date(timeMillis)));
     }
 
     /**
      * 把一个字符串日期去掉时分秒并转换为Date
      *
-     * @param stringDate 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
-     * @return 如 2017-01-01 00:00:00 的Date对象，如果日期格式不传入不正确，则返回null。
+     * @param dateString 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
+     * @return Date，如果日期格式不传入不正确，则返回null。
      */
-    public static Date formatShortDate(String stringDate) {
+    public static Date formatDateShort(String dateString) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         try {
-            return simpleDateFormat.parse(stringDate);
+            return simpleDateFormat.parse(dateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return null;
     }
 
+    /**
+     * 格式化为短日期Date，就是去掉时分秒
+     *
+     * @param date 日期对象
+     * @return Date对象，如果日期格式不传入不正确，则返回null。
+     */
+    public static Date formatDateShort(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        try {
+            return format.parse(format.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
-     * 把一个时间戳日期（dateString） 按 自定义的格式化（pattern）进行格式化，并返回 Date
+     * 把一个时间戳，按 指定格式（pattern）进行格式化，并返回 Date
      *
-     * @param timeMillis 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
-     * @param pattern 如 yyyy-MM-dd HH:mm:ss，可自定义
-     * @return
+     * @param timeMillis 时间戳
+     * @param pattern 参考：yyyy-MM-dd HH:mm:ss
+     * @return Date，发生异常会返回null。
      */
-    public static Date formatShortDate(long timeMillis, String pattern) {
+    public static Date formatDateShort(long timeMillis, String pattern) {
         try {
             String dateString = new SimpleDateFormat(pattern).format(new Date(timeMillis));
-            return formatShortDate(dateString, pattern);
+            return formatDateShort(dateString, pattern);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -204,10 +245,10 @@ public class DateUtils {
      * 把一个字符串日期（dateString） 按 自定义的格式化（pattern）进行格式化，并返回 Date
      *
      * @param dateString 字符串日期 如：2017-01-01 或 2017-01-01 12:12:12,符合日期格式就行
-     * @param pattern 如 yyyy-MM-dd HH:mm:ss，可自定义
-     * @return
+     * @param pattern 参考：yyyy-MM-dd HH:mm:ss
+     * @return Date，发生异常返回null。
      */
-    public static Date formatShortDate(String dateString, String pattern) {
+    public static Date formatDateShort(String dateString, String pattern) {
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.CHINA);
             return simpleDateFormat.parse(dateString);
@@ -217,110 +258,98 @@ public class DateUtils {
         return null;
     }
 
+    /* *****************************************************************************************
+     *         格式化 短日期 String
+     *******************************************************************************************/
+
     /**
      * 格式化时间戳为短日期格式，以"-"分割
-     *
+     * @param date 日期对象
+     * @return 如 2014-01-01
+     */
+    public static String formatStringShort(Date date) {
+        if (date == null) return null;
+        return FORMAT_DATE_SHORT.format(date);
+    }
+
+    /**
+     * 格式化时间戳为短日期格式，以"-"分割
+     * @param timestamp String类型时间戳
+     * @return 如 2014-01-01
+     */
+    public static String formatStringShort(String timestamp) {
+        if (TextUtils.isEmpty(timestamp)) {
+            return null;
+        }
+        return FORMAT_DATE.format(new Date(Long.parseLong(timestamp)));
+    }
+
+    /**
+     * 格式化时间戳为短日期格式，以"-"分割
      * @param timestamp long类型时间戳
      * @return 如 2014-01-01
      */
-    public static String formatDateShortLine(long timestamp) {
+    public static String formatStringShort(long timestamp) {
         if (timestamp <= 0) return null;
-        return formatDate.format(new Date(timestamp));
+        return FORMAT_DATE.format(new Date(timestamp));
+    }
+
+    /* *****************************************************************************************
+     *          格式化为 自定义 当前手机时间字符串
+     *******************************************************************************************/
+
+    /**
+     * 把当前系统日期按指定样式进行格式化 <br>
+     * 年 yyyy <br>
+     * 月 MM <br>
+     * 日 dd <br>
+     * 时 HH <br>
+     * 分 mm <br>
+     * 秒 ss <br>
+     *
+     * @param format 格式化样式，如"yyyy-MM-dd HH:mm:ss"
+     * @return 格式化的字符串
+     */
+    public static String formatString(String format) {
+        return formatString(format, new Date());
     }
 
     /**
-     * 格式化时间戳为长日期格式
+     * 把指定的日期格式化为指定格式 <br>
+     * 年 yyyy <br>
+     * 月 MM <br>
+     * 日 dd <br>
+     * 时 HH <br>
+     * 分 mm <br>
+     * 秒 ss <br>
      *
-     * @param timestamp long类型时间戳
-     * @return 如 2014-01-01 12:30:50
+     * @param format 格式化样式
+     * @param date 日期
+     * @return 格式化的字符串
      */
-    public static String formatDateLong(long timestamp) {
-        if (timestamp <= 0) return null;
-        return formatLongDate.format(new Date(timestamp));
-    }
-
-    /**
-     * 格式化时间戳为长日期格式
-     *
-     * @param date Date类型时间
-     * @return 如 2014-01-01 12:30:50
-     */
-    public static String formatDateLong(Date date) {
-        if (date == null) return null;
-        return formatLongDate.format(date);
-    }
-
-    /**
-     * 格式化日期
-     *
-     * @param timestamp 时间戳
-     * @param format 格式化样式 yyyy-MM-dd HH:mm:ss
-     * @return 日期
-     */
-    public static String format(long timestamp, String format) {
-        if (timestamp <= 0) {
+    public static String formatString(String format, Date date) {
+        if (date == null || TextUtils.isEmpty(format)) {
             return null;
         }
-        if (!TextUtils.isEmpty(format)) {
-            SimpleDateFormat sdf = new SimpleDateFormat(format);
-            return sdf.format(timestamp);
-        }
-        return formatLongDate.format(new Date(timestamp));
+        return new SimpleDateFormat(format).format(date);
     }
 
-    /**
-     * 获取系统当前长日期
-     *
-     * @return 如 2015-01-01 10:20:30
-     */
-    public static Date getDate() {
-        return new Date();
-    }
+    /* *****************************************************************************************
+     *          返回时间戳long专区
+     *******************************************************************************************/
 
-    /**
-     * 获取当前系统完整日期
-     *
-     * @return 如 2014-01-01 10:20:55
-     */
-    public static String getLongDate() {
-        return formatLongDate.format(new Date());
-    }
-
-    /**
-     * 获取当前系统短日期，如 2014-01-01
-     */
-    public static String getShortDate() {
-        return formatDate.format(new Date());
-    }
-
-    /**
-     * 获取当前系统时间，如 10:20:55
-     */
-    public static String getTime() {
-        return formatTime.format(new Date());
-    }
-
-    /**
-     * 获取网络长日期
-     *
-     * @return 如 2015-01-10 20:20:10
-     */
-    public static String getDateFromNet() {
-        return formatDateLong(getTimestampFromNet(null));
-    }
 
     /**
      * String类型长日期转换为long类型时间戳(有BUG，未解决)
-     *
      * @param dateString String类型长日期
      * @return long类型时间戳
      */
-    public static long getTimestamp(String dateString) {
+    public static long formatLongTimestamp(String dateString) {
         if (TextUtils.isEmpty(dateString)) {
             return 0;
         }
         try {
-            return formatLongDate.parse(dateString).getTime();
+            return FORMAT_DATE_LONG.parse(dateString).getTime();
         } catch (ParseException e) {
             return 0;
         }
@@ -328,7 +357,6 @@ public class DateUtils {
 
     /**
      * 获取网络时间戳（默认时间源 http://www.beijing-time.org）
-     *
      * @return 时间戳
      */
     public static long getTimestampFromNet() {
@@ -337,7 +365,6 @@ public class DateUtils {
 
     /**
      * 指定服务器地址获取网络时间戳
-     *
      * @param webUrl 任何一个网站域名或网络IP，如 http://www.baidu.com
      * @return 网络时间戳
      */
@@ -358,6 +385,11 @@ public class DateUtils {
         }
         return bjTimestamp;
     }
+
+
+    /* *****************************************************************************************
+     *          返回时间相差几天
+     *******************************************************************************************/
 
     /**
      * 比较两个日期相差的天数，精确到天，时分秒去掉再比较。
@@ -409,8 +441,8 @@ public class DateUtils {
      */
     public static int dateDiff(long startTime, long endTime) {
         try {
-            Date startDate = formatShortDate.parse(formatShortDate.format(new Date(startTime)));
-            Date endDate = formatShortDate.parse(formatShortDate.format(new Date(endTime)));
+            Date startDate = FORMAT_DATE_SHORT.parse(FORMAT_DATE_SHORT.format(new Date(startTime)));
+            Date endDate = FORMAT_DATE_SHORT.parse(FORMAT_DATE_SHORT.format(new Date(endTime)));
             return dateDiff(startDate, endDate);
         } catch (Exception e) {
             e.printStackTrace();
@@ -441,10 +473,10 @@ public class DateUtils {
     public static String dateDiff(long countTime, boolean isFormat) {
         StringBuilder dateBuilder = new StringBuilder();
         long diff = new java.sql.Date(countTime).getTime();
-        long day = diff / nd;                        //天
-        long hour = diff % nd / nh;                    //时
-        long min = diff % nd % nh / nm;                //分
-        long sec = diff % nd % nh % nm / ns;        //秒
+        long day = diff / ND;                        //天
+        long hour = diff % ND / NH;                    //时
+        long min = diff % ND % NH / NM;                //分
+        long sec = diff % ND % NH % NM / NS;        //秒
         if (day + hour + min + sec < 0) {
             return null;
         }
@@ -476,9 +508,9 @@ public class DateUtils {
     public static String formatHHmmss(long countTime, boolean isFormat) {
         StringBuilder dateBuilder = new StringBuilder();
         long diff = new java.sql.Date(countTime).getTime();
-        long hour = diff % nd / nh + diff / nd * 24;//时
-        long min = diff % nd % nh / nm;                //分
-        long sec = diff % nd % nh % nm / ns;        //秒
+        long hour = diff % ND / NH + diff / ND * 24;//时
+        long min = diff % ND % NH / NM;                //分
+        long sec = diff % ND % NH % NM / NS;        //秒
         if (hour + min + sec < 0) {
             return null;
         }
@@ -508,8 +540,8 @@ public class DateUtils {
     public static String formatHHmm(long countTime, boolean isFormat) {
         StringBuilder dateBuilder = new StringBuilder();
         long diff = new java.sql.Date(countTime).getTime();
-        long hour = diff % nd / nh + diff / nd * 24;//时
-        long min = diff % nd % nh / nm;                //分
+        long hour = diff % ND / NH + diff / ND * 24;//时
+        long min = diff % ND % NH / NM;                //分
         if (hour + min < 0) {
             return null;
         }
@@ -534,8 +566,8 @@ public class DateUtils {
      */
     public static String timeDiff(long startTime, long endTime) {
         long diff = new java.sql.Date(endTime).getTime() - new java.sql.Date(startTime).getTime();
-        long min = diff % nd % nh / nm;                //分
-        long sec = diff % nd % nh % nm / ns;        //秒
+        long min = diff % ND % NH / NM;                //分
+        long sec = diff % ND % NH % NM / NS;        //秒
         if (min + sec < 0) {
             return "00:00";
         }
@@ -552,13 +584,71 @@ public class DateUtils {
         return timeDiffBuilder.toString();
     }
 
+
+    /**
+     * 将字符串日期转换为Date
+     *
+     * @param dataString 必须符合以下几种格式：
+     * 1：yyyy-MM
+     * 2：yyyy-MM-dd
+     * 3：yyyy-MM-dd HH:mm
+     * 4：yyyy-MM-dd HH:mm:ss
+     * 5：yyyy/MM/dd HH:mm:ss
+     * 6：yyyy.MM.dd HH:mm:ss
+     * 7：yyyy年MM月dd日HH时mm分ss秒。
+     * 如果传入的时间格式不正确，则返回0。
+     * @return Date
+     */
+    public static Date formatDate(String dataString) {
+        if (TextUtils.isEmpty(dataString)) {
+            return null;
+        }
+        try {
+            if (dataString.contains(".")) dataString = dataString.replaceAll("\\.", "-");
+            if (dataString.contains("/")) dataString = dataString.replaceAll("/", "-");
+            if (dataString.contains("年")) dataString = dataString.replaceAll("年", "-");
+            if (dataString.contains("月")) dataString = dataString.replaceAll("月", "-");
+            if (dataString.contains("日")) dataString = dataString.replaceAll("日", " ");
+            if (dataString.contains("时")) dataString = dataString.replaceAll("时", ":");
+            if (dataString.contains("分")) dataString = dataString.replaceAll("分", ":");
+            if (dataString.contains("秒")) dataString = dataString.replaceAll("秒", "");
+            dataString = dataString.trim(); // 去除首尾空格
+            SimpleDateFormat format;
+            int length = dataString.length();
+            switch (length) {
+            case 7:
+                format = new SimpleDateFormat("yyyy-MM");
+                break;
+            case 10:
+                format = new SimpleDateFormat("yyyy-MM-dd");
+                break;
+            case 16:
+                format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                break;
+            default:
+            case 19:
+                format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                break;
+            }
+            Date date = format.parse(dataString);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /* *****************************************************************************************
+     *          返回日期的值
+     *******************************************************************************************/
+
     /**
      * 获取当前手机日期的月份（用0补位）
      *
      * @return 如 1月获取01
      */
     public static String getCurrentMonth() {
-        String month = getShortDate().substring(5, 7);
+        String month = getStringShort().substring(5, 7);
         return month;
     }
 
@@ -568,7 +658,7 @@ public class DateUtils {
      * @return 如1月获取1
      */
     public static int getCurrentMonthInt() {
-        return getMonthInt(getShortDate().substring(5, 7));
+        return getMonthInt(getStringShort().substring(5, 7));
     }
 
     /**
@@ -590,66 +680,13 @@ public class DateUtils {
     }
 
     /**
-     * 把当前系统日期按指定样式进行格式化 <br>
-     * 年 yyyy <br>
-     * 月 MM <br>
-     * 日 dd <br>
-     * 时 HH <br>
-     * 分 mm <br>
-     * 秒 ss <br>
-     *
-     * @param formatString 格式化样式，如"yyyy-MM-dd HH:mm:ss"
-     * @return 格式化的字符串
-     */
-    public static String format(String formatString) {
-        return format(formatString, new Date(System.currentTimeMillis()));
-    }
-
-    /**
-     * 把指定的日期格式化为指定格式 <br>
-     * 年 yyyy <br>
-     * 月 MM <br>
-     * 日 dd <br>
-     * 时 HH <br>
-     * 分 mm <br>
-     * 秒 ss <br>
-     *
-     * @param formatString 格式化样式
-     * @param date 日期
-     * @return 格式化的字符串
-     */
-    public static String format(String formatString, Date date) {
-        if (date == null || TextUtils.isEmpty(formatString)) {
-            return null;
-        }
-        return new SimpleDateFormat(formatString).format(date);
-    }
-
-    /**
-     * 根据长日期字符串获取Date
-     *
-     * @param dateString 如 2015-05-15 10:10:20
-     * @return 返回Date对象
-     */
-    public static Date getDateFromString(String dateString) {
-        if (!TextUtils.isEmpty(dateString)) {
-            try {
-                return formatLongDate.parse(dateString);
-            } catch (ParseException e) {
-                return null;
-            }
-        }
-        return null;
-    }
-
-    /**
      * 根据字符串日期获年份(已加1900)
      *
      * @param dateString 长日期 如2015-01-01 10:20:30 返回2015
      * @return 年份
      */
     public static int getYear(String dateString) {
-        Date date = formatTimestamp(dateString);
+        Date date = formatDate(dateString);
         return date == null ? 0 : date.getYear() + 1900;
     }
 
@@ -660,7 +697,7 @@ public class DateUtils {
      * @return 月份（0-11）
      */
     public static int getMonth(String dateString) {
-        Date date = formatTimestamp(dateString);
+        Date date = formatDate(dateString);
         return date == null ? 0 : date.getMonth();
     }
 
@@ -671,7 +708,7 @@ public class DateUtils {
      * @return 第几日(1-31)
      */
     public static int getDate(String dateString) {
-        Date date = formatTimestamp(dateString);
+        Date date = formatDate(dateString);
         return date == null ? 0 : date.getDate();
     }
 
@@ -682,7 +719,7 @@ public class DateUtils {
      * @return 当前小时
      */
     public static int getHours(String dateString) {
-        Date date = formatTimestamp(dateString);
+        Date date = formatDate(dateString);
         return date == null ? 0 : date.getHours();
     }
 
@@ -693,7 +730,7 @@ public class DateUtils {
      * @return 当前分钟
      */
     public static int getMinute(String dateString) {
-        Date date = formatTimestamp(dateString);
+        Date date = formatDate(dateString);
         return date == null ? 0 : date.getMinutes();
     }
 
@@ -704,7 +741,7 @@ public class DateUtils {
      * @return 当前秒
      */
     public static int getSecond(String dateString) {
-        Date date = formatTimestamp(dateString);
+        Date date = formatDate(dateString);
         return date == null ? 0 : date.getSeconds();
     }
 
@@ -715,7 +752,7 @@ public class DateUtils {
      * @return 返回这个日期是周几（0-6：周日-周六）
      */
     public static int getWeek(String dateString) {
-        Date date = formatTimestamp(dateString);
+        Date date = formatDate(dateString);
         return date == null ? 0 : date.getDay();
     }
 
@@ -725,13 +762,13 @@ public class DateUtils {
      * @return 当前秒（2位，不足补0）
      */
     public static String addZero() {
-//	    System.out.println("========= 年：" + String.format("%ty%n", date)); // 当前年份（2位，不足补0）
-//	    System.out.println("========= 月：" + String.format("%tm%n", date) ); // 当前月份（2位，不足补0）
-//	    System.out.println("========= 日：" + String.format("%td%n", date) ); // 当前日（2位，不足补0）
-//	    System.out.println("========= 时：" + String.format("%tk%n", date) ); // 当前时（2位，不足补0）
-//	    System.out.println("========= 分：" + String.format("%tM%n", date) ); // 当前分（2位，不足补0）
-//	    System.out.println("========= 秒：" + String.format("%tS%n", date) ); // 当前秒（2位，不足补0）
-//	    System.out.println("========毫秒：" + String.format("%tL%n", date) ); // 当前毫秒（3位，不足补0）
+//	    System.out.println("========= 年：" + String.formatString("%ty%n", date)); // 当前年份（2位，不足补0）
+//	    System.out.println("========= 月：" + String.formatString("%tm%n", date) ); // 当前月份（2位，不足补0）
+//	    System.out.println("========= 日：" + String.formatString("%td%n", date) ); // 当前日（2位，不足补0）
+//	    System.out.println("========= 时：" + String.formatString("%tk%n", date) ); // 当前时（2位，不足补0）
+//	    System.out.println("========= 分：" + String.formatString("%tM%n", date) ); // 当前分（2位，不足补0）
+//	    System.out.println("========= 秒：" + String.formatString("%tS%n", date) ); // 当前秒（2位，不足补0）
+//	    System.out.println("========毫秒：" + String.formatString("%tL%n", date) ); // 当前毫秒（3位，不足补0）
         return String.format("%tS%n", new Date());
     }
 }

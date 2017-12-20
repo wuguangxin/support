@@ -268,16 +268,16 @@ public class MoneyUtils{
 
 	/*
 	BigDecimal bd = new BigDecimal(123456789);
-	System.out.println(format(",###,###", bd)); 	//out: 123,456,789
-	System.out.println(format("##,####,###", bd));	//out: 123,456,789
-	System.out.println(format("######,###", bd));	//out: 123,456,789
-	System.out.println(format("#,##,###,###", bd)); //out: 123,456,789
-	System.out.println(format(",###,###.00", bd));	//out: 123,456,789.00
-	System.out.println(format(",###,##0.00", bd));	//out: 123,456,789.00
+	System.out.println(formatString(",###,###", bd)); 	//out: 123,456,789
+	System.out.println(formatString("##,####,###", bd));	//out: 123,456,789
+	System.out.println(formatString("######,###", bd));	//out: 123,456,789
+	System.out.println(formatString("#,##,###,###", bd)); //out: 123,456,789
+	System.out.println(formatString(",###,###.00", bd));	//out: 123,456,789.00
+	System.out.println(formatString(",###,##0.00", bd));	//out: 123,456,789.00
 	BigDecimal bd1 = new BigDecimal(0);
-	System.out.println(format(",###,###", bd1)); 	//out: 0
-	System.out.println(format(",###,###.00", bd1)); //out: .00
-	System.out.println(format(",###,##0.00", bd1)); //out: 0.00
+	System.out.println(formatString(",###,###", bd1)); 	//out: 0
+	System.out.println(formatString(",###,###.00", bd1)); //out: .00
+	System.out.println(formatString(",###,##0.00", bd1)); //out: 0.00
 	*/
 
 	/**

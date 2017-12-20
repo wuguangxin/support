@@ -101,16 +101,16 @@ public class NumberUtils {
 
     /*
     * BigDecimal bd = new BigDecimal(123456789);
-    * System.out.println(format(",###,###", bd)); 		// 123,456,789
-    * System.out.println(format("##,####,###", bd));    // 123,456,789
-    * System.out.println(format("######,###", bd));     // 123,456,789
-    * System.out.println(format("#,##,###,###", bd));   // 123,456,789
-    * System.out.println(format(",###,###.00", bd));    // 123,456,789.00
-    * System.out.println(format(",###,##0.00", bd));    // 123,456,789.00
+    * System.out.println(formatString(",###,###", bd)); 		// 123,456,789
+    * System.out.println(formatString("##,####,###", bd));    // 123,456,789
+    * System.out.println(formatString("######,###", bd));     // 123,456,789
+    * System.out.println(formatString("#,##,###,###", bd));   // 123,456,789
+    * System.out.println(formatString(",###,###.00", bd));    // 123,456,789.00
+    * System.out.println(formatString(",###,##0.00", bd));    // 123,456,789.00
     * BigDecimal bd1 = new BigDecimal(0);
-    * System.out.println(format(",###,###", bd1));      // 0
-    * System.out.println(format(",###,###.00", bd1));   // .00
-    * System.out.println(format(",###,##0.00", bd1));   // 0.00
+    * System.out.println(formatString(",###,###", bd1));      // 0
+    * System.out.println(formatString(",###,###.00", bd1));   // .00
+    * System.out.println(formatString(",###,##0.00", bd1));   // 0.00
      */
 
     /**

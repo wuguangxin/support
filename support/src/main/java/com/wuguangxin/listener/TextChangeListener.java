@@ -37,11 +37,15 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	private Animation fade_in;
 	private Animation fade_out;
 
+	/**
+	 * 构造1
+	 */
 	public TextChangeListener(){
 		this(null);
 	}
 
 	/**
+	 * 构造2
 	 * @param editText 要监听的EditText
 	 */
 	public TextChangeListener(EditText editText){
@@ -49,14 +53,25 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
+	 * 构造3
 	 * @param editText 要监听的EditText
 	 * @param clearViewId 清除按钮ViewId
 	 */
 	public TextChangeListener(EditText editText, int clearViewId){
-		this(editText, findViewById(getActivityFromView(editText), clearViewId), TextType.TEXT);
+		this(editText, findViewById(getActivityFromView(editText), clearViewId));
 	}
-	
+
 	/**
+	 * 构造4
+	 * @param editText 要监听的EditText
+	 * @param clearViewId 清除按钮ViewId
+	 */
+	public TextChangeListener(EditText editText, View clearViewId){
+		this(editText, clearViewId, TextType.TEXT);
+	}
+
+	/**
+	 * 构造5
 	 * @param editText 要监听的EditText
 	 * @param clearViewId 清除按钮ViewId
 	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
@@ -66,6 +81,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
+	 * 构造6
 	 * @param editText 要监听的EditText
 	 * @param clearBtn 清除按钮
 	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
@@ -73,8 +89,9 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	public TextChangeListener(EditText editText, View clearBtn, int textType){
 		this(editText, clearBtn, textType, null);
 	}
-	
+
 	/**
+	 * 构造7
 	 * @param editText 要监听的EditText
 	 * @param clearBtn 清除按钮
 	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）

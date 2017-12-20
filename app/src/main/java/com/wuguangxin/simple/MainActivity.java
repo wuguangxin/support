@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.wuguangxin.listener.TextChangeListener;
+import com.wuguangxin.utils.DateUtils;
 import com.wuguangxin.utils.Logger;
 import com.wuguangxin.utils.ShakeUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -66,23 +67,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-//        Logger.i(this, MoneyUtils.format(100.00D, "元"));
-//        Logger.i(this, MoneyUtils.format(100.00D));
-//        Logger.i(this, MoneyUtils.format(0.00D));
-//        Logger.i(this, MoneyUtils.format(0.00D, "元"));
-//        Logger.i(this, MoneyUtils.format(100.9, "元"));
-//        Logger.i(this, MoneyUtils.format(0.9, "元"));
+//        Logger.i(this, MoneyUtils.formatString(100.00D, "元"));
+//        Logger.i(this, MoneyUtils.formatString(100.00D));
+//        Logger.i(this, MoneyUtils.formatString(0.00D));
+//        Logger.i(this, MoneyUtils.formatString(0.00D, "元"));
+//        Logger.i(this, MoneyUtils.formatString(100.9, "元"));
+//        Logger.i(this, MoneyUtils.formatString(0.9, "元"));
 
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017.12.18"));
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017-12-18"));
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017/12/18"));
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017年12月18日"));
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017年12月18日02时13分01秒"));
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017/12/18 02:13:01"));
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017-12-18 00:00:00"));
-//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatTimestamp("2017-12-18 02:13:01"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017.12.18"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017-12-18"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017/12/18"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017年12月18日"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017年12月18日02时13分01秒"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017/12/18 02:13:01"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017-12-18 00:00:00"));
+//        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017-12-18 02:13:01"));
 //        Logger.i(this, "===========================");
-//        Logger.i(this, "间隔天数："+ DateUtils.dateDiff(1513451568000L, 1514044800000L));
+        Logger.i(this, "间隔天数："+ DateUtils.dateDiff(1513451568000L, 1514044800000L));
     }
 
     @Override

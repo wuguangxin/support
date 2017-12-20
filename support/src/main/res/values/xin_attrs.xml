@@ -316,7 +316,7 @@
         <attr name="outerCycleStrokeSize" format="reference|dimension"/>		<!--外圆边框大小-->
         <attr name="innerCycleStrokeSize" format="reference|dimension"/>		<!--内圆边框大小-->
         <attr name="linkLineStrokeSize" format="reference|dimension"/>		    <!--连接线条大小-->
-        <!--<attr name="backgroundStrokeSize" format="reference|dimension"/>		&lt;!&ndash;背景边框大小&ndash;&gt;-->
+        <!--<attr name="backgroundStrokeSiformatStringrmat="reference|dimension"/>		&lt;!&ndash;背景边框大小&ndash;&gt;-->
     </declare-styleable>
 
     <declare-styleable name="ItemTextView">
