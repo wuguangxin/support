@@ -28,6 +28,21 @@ import javax.net.ssl.HttpsURLConnection;
 public class PhoneUtils{
 	private static TelephonyManager phoneManager;
 
+//	private static String REG_PHONE_OLD = "1[3|4|5|7|8][0-9]{9}";
+	// update by 20171116
+//	private static String REG_PHONE = "^((13[0-9])|(14[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(166)|(19[8,9]))\\d{8}$";
+
+	// update by 20171220
+	private static String REG_PHONE = "^(1[3-9])\\d{9}";
+
+	/**
+	 * 设置手机号码正则表达式
+	 * @param reg
+	 */
+	public static void setregphone(String reg){
+		PhoneUtils.REG_PHONE = reg;
+	}
+
 	/**
 	 * 判断是否是手机号码（基本判断，不是很准确）。
 	 *
@@ -35,10 +50,7 @@ public class PhoneUtils{
 	 * @return 参数为null和不合法时返回false，否则返回true
 	 */
 	public static boolean isPhoneNumber(String number){
-//		String regOld = "1[3|4|5|7|8][0-9]{9}";
-		// 20171116 add
-		String reg = "^((13[0-9])|(14[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(166)|(19[8,9]))\\d{8}$";
-		if (!TextUtils.isEmpty(number) && number.matches(reg)) {
+		if (!TextUtils.isEmpty(number) && number.matches(REG_PHONE)) {
 			return true;
 		}
 		return false;
