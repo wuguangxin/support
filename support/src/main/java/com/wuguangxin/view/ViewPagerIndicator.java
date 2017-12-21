@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.wuguangxin.R;
-import com.wuguangxin.utils.Utils;
 
 /**
  * ViewPager 指示器
@@ -16,30 +15,15 @@ import com.wuguangxin.utils.Utils;
  * <p>Created by wuguangxin on 16/12/21 </p>
  */
 public class ViewPagerIndicator extends View {
-	private static final int DEF_COLOR_NORMAL = 0XFFcccccc; // 默认正常颜色
-	private static final int DEF_COLOR_SELECTED = 0XFFee2f3a; // 默认选中颜色
-	private static final float DEF_LINE_SIZE = 0F; // 圆圈线条的大小
-	private static final float DEF_CIRCLE_RADIUS = 5; // 默认圆的变径
-	private static final float DEF_CIRCLE_PADDING = 5; // 默认圆的间距
-	private static final float DEF_WIDTH = 0; // 默认圆的宽度
-	private static final float DEF_HEIGHT = 0; // 默认圆的高度
-
-	private static final float DEF_RECT_WIDTH = 0; // 默认矩形的宽度
-	private static final float DEF_RECT_HEIGHT = 0; // 默认矩形的高度
-	private static final int DEF_COUNT = 0; // 默认个数
-	private static final int DEF_CURRENT_ITEM = 0; // 默认当前显示的位置
-
-	private int colorNormal = DEF_COLOR_NORMAL; // 正常颜色
-	private int colorSelected = DEF_COLOR_SELECTED; // 选中颜色
-	private float lineSize = DEF_LINE_SIZE;
-	private float circleRadius = DEF_CIRCLE_RADIUS;
-	private float circlePadding = DEF_CIRCLE_PADDING;
-	private float width = DEF_WIDTH;
-	private float height = DEF_HEIGHT;
-	private float rectWidth = DEF_RECT_WIDTH;
-	private float rectHeight = DEF_RECT_HEIGHT;
-	private int count = DEF_COUNT;
-	private int currentItem = DEF_CURRENT_ITEM;
+	private int colorNormal = 0XFFcccccc; 	// 默认正常颜色
+	private int colorSelected = 0XFFee2f3a; // 默认选中颜色
+	private int lineSize = 1; 		// 圆圈线条的大小
+	private int spaceWidth = 4; 	// 间隔距离
+	private int circleRadius = 4; 	// 默认圆的变径
+	private int rectWidth = 4; 		// 默认矩形的宽度
+	private int rectHeight = 4; 	// 默认矩形的高度
+	private int indicatorCount = 0; 			// 默认个数
+	private int currentItem = 0; 	// 默认当前显示的位置
 
 	private IndicatorType indicatorType = IndicatorType.Circle; // 指示器类型
 	private Paint paint;
@@ -56,36 +40,19 @@ public class ViewPagerIndicator extends View {
 		super(context, attrs, defStyleAttr);
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerIndicator);
 		if(a != null){
-			colorNormal = a.getColor(R.styleable.ViewPagerIndicator_colorNormal, DEF_COLOR_NORMAL); // 正常颜色
-			colorSelected = a.getColor(R.styleable.ViewPagerIndicator_colorSelected, DEF_COLOR_SELECTED); // 选中颜色
-			lineSize = a.getDimension(R.styleable.ViewPagerIndicator_lineSize, DEF_LINE_SIZE);
-			circleRadius = a.getDimension(R.styleable.ViewPagerIndicator_circleRadius, DEF_CIRCLE_RADIUS);
-			circlePadding = a.getDimension(R.styleable.ViewPagerIndicator_circlePadding, DEF_CIRCLE_PADDING);
-			width = a.getDimension(R.styleable.ViewPagerIndicator_width, DEF_WIDTH);
-			height = a.getDimension(R.styleable.ViewPagerIndicator_height, DEF_HEIGHT);
-			rectWidth = a.getDimension(R.styleable.ViewPagerIndicator_rectWidth, DEF_RECT_WIDTH);
-			rectHeight = a.getDimension(R.styleable.ViewPagerIndicator_rectHeight, DEF_RECT_HEIGHT);
-			count = a.getInteger(R.styleable.ViewPagerIndicator_count, DEF_COUNT);
-			currentItem = a.getInteger(R.styleable.ViewPagerIndicator_currentItem, DEF_CURRENT_ITEM);
-
+			colorNormal = a.getColor(R.styleable.ViewPagerIndicator_colorNormal, colorNormal); // 正常颜色
+			colorSelected = a.getColor(R.styleable.ViewPagerIndicator_colorSelected, colorSelected); // 选中颜色
+			lineSize = a.getDimensionPixelSize(R.styleable.ViewPagerIndicator_lineSize, lineSize);
+			circleRadius = a.getDimensionPixelSize(R.styleable.ViewPagerIndicator_circleRadius, circleRadius);
+			spaceWidth = a.getDimensionPixelSize(R.styleable.ViewPagerIndicator_spaceWidth, spaceWidth);
+			rectWidth = a.getDimensionPixelSize(R.styleable.ViewPagerIndicator_rectWidth, rectWidth);
+			rectHeight = a.getDimensionPixelSize(R.styleable.ViewPagerIndicator_rectHeight, rectHeight);
+			indicatorCount = a.getInt(R.styleable.ViewPagerIndicator_indicatorCount, indicatorCount);
+			currentItem = a.getInt(R.styleable.ViewPagerIndicator_currentItem, currentItem);
 			indicatorType = IndicatorType.format(a.getInt(R.styleable.ViewPagerIndicator_indicatorType, 0));
 
 			a.recycle();
 		}
-		initView(context);
-	}
-
-	private void initView(Context context) {
-		// 线条大小
-		lineSize = Utils.dip2px(context, DEF_LINE_SIZE);
-		circlePadding = Utils.dip2px(context, DEF_CIRCLE_PADDING); // 间隔距离
-
-		// 圆形样式尺寸
-		circleRadius = Utils.dip2px(context, DEF_CIRCLE_RADIUS);
-
-		// 方形样式尺寸
-		rectWidth = Utils.dip2px(context, 27) / 2;
-		rectHeight = Utils.dip2px(context, 5) / 2;
 
 		// 画笔设置
 		paint = new Paint();
@@ -94,6 +61,8 @@ public class ViewPagerIndicator extends View {
 		paint.setStrokeWidth(lineSize);// 线条宽度
 		paint.setAntiAlias(true);//去除锯齿
 	}
+
+	private int width, height;
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -104,15 +73,15 @@ public class ViewPagerIndicator extends View {
 
 		if(indicatorType == IndicatorType.Circle){
 			// 圆形
-			width += circleRadius*2*count + circlePadding*count; // 计算整个组件的宽度
+			width += circleRadius*2*indicatorCount + spaceWidth*indicatorCount; // 计算整个组件的宽度
 			height += circleRadius*2;
 		} else if(indicatorType == IndicatorType.Rect){
 			// 方形
-			width += rectWidth*count + circlePadding*count; // 计算整个组件的宽度
+			width += rectWidth*indicatorCount + spaceWidth*indicatorCount; // 计算整个组件的宽度
 			height += rectHeight;
 		}
 
-		setMeasuredDimension((int)width, (int)height);
+		setMeasuredDimension(width, height);
 	}
 
 	float r, cx, cy;
@@ -121,10 +90,10 @@ public class ViewPagerIndicator extends View {
 	public void draw(Canvas canvas) {
 		super.draw(canvas);
 
-		r = width / count / 2F;
+		r = indicatorCount == 0 ? 0 : width / indicatorCount / 2F;
 		cy = height / 2f;
 
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < indicatorCount; i++) {
 			cx = r + r * 2 * i;
 			if(indicatorType == IndicatorType.Circle){
 				// 圆形
@@ -156,8 +125,8 @@ public class ViewPagerIndicator extends View {
 		invalidate();
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setCount(int indicatorCount) {
+		this.indicatorCount = indicatorCount;
 		invalidate();
 	}
 
@@ -210,38 +179,30 @@ public class ViewPagerIndicator extends View {
 		invalidate();
 	}
 
-	public void setLineSize(float lineSize) {
+	public void setLineSize(int lineSize) {
 		this.lineSize = lineSize;
 		invalidate();
 	}
 
-	public void setCircleRadius(float circleRadius) {
+	public void setCircleRadius(int circleRadius) {
 		this.circleRadius = circleRadius;
 		invalidate();
 	}
 
-	public void setCirclePadding(float circlePadding) {
-		this.circlePadding = circlePadding;
+	public void setSpaceWidth(int spaceWidth) {
+		this.spaceWidth = spaceWidth;
 		invalidate();
 	}
 
-	public void setWidth(float width) {
-		this.width = width;
-		invalidate();
-	}
-
-	public void setHeight(float height) {
-		this.height = height;
-		invalidate();
-	}
-
-	public void setRectWidth(float rectWidth) {
+	public void setRectWidth(int rectWidth) {
 		this.rectWidth = rectWidth;
 		invalidate();
 	}
 
-	public void setRectHeight(float rectHeight) {
+	public void setRectHeight(int rectHeight) {
 		this.rectHeight = rectHeight;
 		invalidate();
 	}
+
+
 }

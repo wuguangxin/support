@@ -14,6 +14,7 @@ import com.wuguangxin.listener.TextChangeListener;
 import com.wuguangxin.utils.DateUtils;
 import com.wuguangxin.utils.Logger;
 import com.wuguangxin.utils.ShakeUtils;
+import com.wuguangxin.view.ViewPagerIndicator;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
+    private ViewPagerIndicator mViewPagerIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.CircleProgressView).setOnClickListener(this);
         findViewById(R.id.GestureView).setOnClickListener(this);
 
-
+        mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.home_banner_indicator);
+        mViewPagerIndicator.setCount(8);
         EditText mMoney = (EditText) findViewById(R.id.withdraw_money);
         mMoney.addTextChangedListener(new TextChangeListener(mMoney, R.id.withdraw_money_del, TextChangeListener.TextType.MONEY){
             @Override

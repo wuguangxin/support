@@ -4,9 +4,9 @@ apply plugin: 'com.novoda.bintray-release' // bintray
 
 // 20171128
 def mModulesName = "support"
-def mVersionCode = 30
-def mVersionName = "1.1.5"
-def mDescription = "修改ViewPagerIndicator的指示器类型为可配置。"
+def mVersionCode = 31
+def mVersionName = "1.1.6"
+def mDescription = "修改ViewPagerIndicator的指示器类型为可配置，优化和增加配置参数"
 
 android {
     compileSdkVersion 25
