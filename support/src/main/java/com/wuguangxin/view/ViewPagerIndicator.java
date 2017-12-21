@@ -41,7 +41,7 @@ public class ViewPagerIndicator extends View {
 	private int count = DEF_COUNT;
 	private int currentItem = DEF_CURRENT_ITEM;
 
-	private IndicatorType indicatorType = IndicatorType.Rect; // 指示器类型
+	private IndicatorType indicatorType = IndicatorType.Circle; // 指示器类型
 	private Paint paint;
 
 	public ViewPagerIndicator(Context context){
@@ -67,6 +67,9 @@ public class ViewPagerIndicator extends View {
 			rectHeight = a.getDimension(R.styleable.ViewPagerIndicator_rectHeight, DEF_RECT_HEIGHT);
 			count = a.getInteger(R.styleable.ViewPagerIndicator_count, DEF_COUNT);
 			currentItem = a.getInteger(R.styleable.ViewPagerIndicator_currentItem, DEF_CURRENT_ITEM);
+
+			indicatorType = IndicatorType.format(a.getInt(R.styleable.ViewPagerIndicator_indicatorType, 0));
+
 			a.recycle();
 		}
 		initView(context);
@@ -164,14 +167,37 @@ public class ViewPagerIndicator extends View {
 
 	public enum IndicatorType {
 		/**
-		 * 方形
-		 */
-		Rect,
-
-		/**
 		 * 圆形
 		 */
-		Circle
+		Circle(0),
+
+		/**
+		 * 方形
+		 */
+		Rect(1);
+
+		IndicatorType(int value) {
+			this.value = value;
+		}
+
+		private int value;
+
+		public int getValue() {
+			return value;
+		}
+
+		public void setValue(int value) {
+			this.value = value;
+		}
+
+		public static IndicatorType format(int value){
+			if (value == 0) {
+				return IndicatorType.Circle;
+			} else if (value == 1) {
+				return IndicatorType.Rect;
+			}
+			return IndicatorType.Rect;
+		}
 	}
 
 	public void setColorNormal(int colorNormal) {

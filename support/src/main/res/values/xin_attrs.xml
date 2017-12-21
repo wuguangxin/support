@@ -342,6 +342,12 @@
         <attr name="rectHeight" format="reference|dimension"/>
         <attr name="count" format="reference|integer"/>
         <attr name="currentItem" format="reference|integer"/>
+        <attr name="indicatorType" format="enum">
+            <!--矩形-->
+            <enum name="rect" value="0"/>
+            <!--圆形-->
+            <enum name="circle" value="1"/>
+        </attr>
     </declare-styleable>
 
 </resources>

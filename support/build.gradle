@@ -4,9 +4,9 @@ apply plugin: 'com.novoda.bintray-release' // bintray
 
 // 20171128
 def mModulesName = "support"
-def mVersionCode = 29
-def mVersionName = "1.1.4"
-def mDescription = "更换PhoneUtils验证手机号码的正则表达式，并且提供设置正则表达式的方法setRegPhone(String reg)，在程序初始化时设置即可。"
+def mVersionCode = 30
+def mVersionName = "1.1.5"
+def mDescription = "修改ViewPagerIndicator的指示器类型为可配置。"
 
 android {
     compileSdkVersion 25
