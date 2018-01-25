@@ -38,6 +38,7 @@ import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -368,11 +369,12 @@ public class AndroidUtils {
     public static String getDeviceId(Context context) {
         if(VERSION.SDK_INT >= 23){
             if (!isGetPermission(context, Manifest.permission.READ_PHONE_STATE)) {
-                return "[权限拒绝]";
+                Log.e("AndroidUtils","权限拒绝：READ_PHONE_STATE");
+                return null;
             }
         }
         try {
-            mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             return mTelephonyManager.getDeviceId();
         } catch (SecurityException e) {
             e.printStackTrace();
@@ -1118,7 +1120,8 @@ public class AndroidUtils {
     }
 
     /**
-     * 设置透明状态栏
+     * 设置透明状态栏。
+     * >=19时:getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
      * @param activity Activity
      */
     @SuppressLint("InlinedApi")
@@ -1134,6 +1137,14 @@ public class AndroidUtils {
 
     /**
      * 设置透明状态栏
+     * >=19时:
+     * getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+     *
+     * >=19 且 <21时，设置：
+     * //将主页面顶部延伸至status bar;虽默认为false,但经测试,DrawerLayout需显示设置
+     * viewGroup.setClipToPadding(true);
+     * //将侧边栏顶部延伸至status bar
+     * viewGroup.setFitsSystemWindows(false);
      *
      * @param activity Activity
      * @param viewGroup 窗口的跟布局
@@ -1143,17 +1154,24 @@ public class AndroidUtils {
             return;
         }
         // >=19
-        if (VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+        if (VERSION.SDK_INT >= 19) {
             // 透明状态栏
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             // 透明导航栏。注意华为和HTC等有虚拟HOME键盘的，如果不设置下面这段代码，虚拟键盘将覆盖APP底部界面，无法操作底部TAB
 //				activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             // <21
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
-                //将主页面顶部延伸至status bar;虽默认为false,但经测试,DrawerLayout需显示设置
-                viewGroup.setClipToPadding(true);
-                //将侧边栏顶部延伸至status bar
+            if(Build.VERSION.SDK_INT < 21){
+                // 设置系统是否需要考虑 StatusBar 占据的区域来显示
                 viewGroup.setFitsSystemWindows(false);
+                // 是否受 StatusBar的Padding的影响，true, 则布局会往下延伸Padding，false，则占用padding的区域
+                viewGroup.setClipToPadding(true);
+
+                // android:fitsSystemWindows=""，
+                // false：布局不受StatusBar的影响，可以完全的展示在StatusBar的下面。
+                // true：布局不受StatusBar的影响，不会被StatusBar遮住，
+
+                // android:clipToPadding="false"
+                // false：布局不受Padding的影响，可以展示在Padding的区域。其实fitsSystemWindows就是设置一个Padding使View不会展示在StatusBar的下方，
             }
         }
     }

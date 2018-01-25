@@ -110,7 +110,7 @@ public class ToastUtils {
                     return;
                 }
                 if (mErrorToast == null) {
-                    mErrorToast = Toast.makeText(context, null, Toast.LENGTH_LONG);
+                    mErrorToast = Toast.makeText(context, null, Toast.LENGTH_SHORT);
                     mErrorToast.setGravity(Gravity.FILL_HORIZONTAL | Gravity.TOP, 0, 0);
                     if (mErrorToastTextView == null) {
                         mErrorToastTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.xin_toast_error_layout, null);

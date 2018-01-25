@@ -1,17 +1,16 @@
 package com.wuguangxin.simple;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 
-import com.wuguangxin.listener.TextChangeListener;
-import com.wuguangxin.utils.DateUtils;
+import com.wuguangxin.utils.AndroidUtils;
 import com.wuguangxin.utils.Logger;
 import com.wuguangxin.utils.ShakeUtils;
 import com.wuguangxin.view.ViewPagerIndicator;
@@ -19,12 +18,20 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.IOException;
 
-import okhttp3.Call;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     private ViewPagerIndicator mViewPagerIndicator;
+    /**
+     * 6.0动态请求的权限-所有，存储空间和手机状态
+     */
+    public static final String[] PERMISSION_ALL = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,	// 读存储卡
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,	// 写存储卡
+            Manifest.permission.READ_PHONE_STATE,		// 手机状态
+            Manifest.permission.ACCESS_WIFI_STATE		// WIFI状态
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,22 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.ItemView).setOnClickListener(this);
         findViewById(R.id.CircleProgressView).setOnClickListener(this);
         findViewById(R.id.GestureView).setOnClickListener(this);
-
-        mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.home_banner_indicator);
-        mViewPagerIndicator.setCount(8);
-        EditText mMoney = (EditText) findViewById(R.id.withdraw_money);
-        mMoney.addTextChangedListener(new TextChangeListener(mMoney, R.id.withdraw_money_del, TextChangeListener.TextType.MONEY){
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count){
-                super.onTextChanged(s, start, before, count);
-                String moneyString = s.toString().trim();
-                if (TextUtils.isEmpty(moneyString) || "0.".equals(moneyString) || ".".equals(moneyString)) {
-                    moneyString = "0";
-                }
-                double money = Double.parseDouble(moneyString);
-                Logger.e("wgx", "money="+money);
-            }
-        });
+        findViewById(R.id.permission).setOnClickListener(this);
 
         findViewById(R.id.GestureView).setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -86,13 +78,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017-12-18 00:00:00"));
 //        Logger.i(this, "格式化为时间戳："+ DateUtils.formatDate("2017-12-18 02:13:01"));
 //        Logger.i(this, "===========================");
-        Logger.i(this, "间隔天数："+ DateUtils.dateDiff(1513451568000L, 1514044800000L));
+//        Logger.i(this, "间隔天数："+ DateUtils.dateDiff(1513451568000L, 1514044800000L));
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
+        case R.id.permission:
+            requestPermissions(PERMISSION_ALL);
+            String deviceId = AndroidUtils.getDeviceId(this);
+            Logger.e("onActivityResult", "deviceId："+deviceId);
+            break;
         case R.id.tabHost:
             openActivity(TabHostDemoActivity.class);
             break;
@@ -117,6 +114,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 请求获取权限
+     * @param permissions 权限
+     */
+    public void requestPermissions(String... permissions) {
+        ActivityCompat.requestPermissions(this, permissions, 1);
+    }
+
+
     public void testOkHttp(){
         try {
             com.zhy.http.okhttp.OkHttpUtils
@@ -138,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
 
                         @Override
-                        public void onError(Call call, Exception e, int id) {
+                        public void onError(okhttp3.Call call, Exception e, int id) {
                             Log.e(TAG, e.toString());
 
                         }
@@ -155,5 +161,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void openActivity(Class<? extends Activity> clazz){
         startActivity(new Intent(this, clazz));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Logger.e("onActivityResult", "requestCode = " +requestCode);
+        if (requestCode == 1) {
+            Logger.e("onActivityResult", "resultCode = " +resultCode);
+            Logger.e("onActivityResult", "data = " +data.toString());
+            String deviceId = AndroidUtils.getDeviceId(this);
+            Logger.e("onActivityResult", "deviceId："+deviceId);
+        }
     }
 }

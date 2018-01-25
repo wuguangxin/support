@@ -14,12 +14,14 @@ import android.view.View;
 import com.wuguangxin.utils.ShakeUtils;
 import com.wuguangxin.utils.ViewUtils;
 
+import java.io.Serializable;
+
 /**
  * ${DESC}
  * Created by wuguangxin on 2017/12/17.
  */
 
-public class MyView extends View{
+public class MyView extends View implements Serializable{
 
     private Paint paint;
 
