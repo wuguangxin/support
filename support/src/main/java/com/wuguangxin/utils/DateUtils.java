@@ -539,9 +539,12 @@ public class DateUtils {
      */
     public static String formatHHmm(long countTime, boolean isFormat) {
         StringBuilder dateBuilder = new StringBuilder();
-        long diff = new java.sql.Date(countTime).getTime();
+        // 因为不显示秒，避免显示00时00分(后面我59秒之后不显示)，所以分+1，秒去掉。
+        Date date = new Date(countTime+60*1000);
+        date.setSeconds(0);
+        long diff = date.getTime();
         long hour = diff % ND / NH + diff / ND * 24;//时
-        long min = diff % ND % NH / NM;                //分
+        long min = diff % ND % NH / NM;             //分
         if (hour + min < 0) {
             return null;
         }
