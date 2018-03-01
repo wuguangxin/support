@@ -4,8 +4,8 @@ apply plugin: 'com.novoda.bintray-release' // bintray
 
 // 20171128
 def mModulesName = "support"
-def mVersionCode = 32
-def mVersionName = "1.1.7"
+def mVersionCode = 33
+def mVersionName = "1.1.8"
 def mDescription = "修复DateUtils.formatHHmm()类，避免出现剩余时间小于1分钟时，显示00时00分，其实后面还有秒数在倒计时，所以分+1,秒去除。"
 
 android {

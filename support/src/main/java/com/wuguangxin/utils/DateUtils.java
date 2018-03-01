@@ -499,6 +499,35 @@ public class DateUtils {
     }
 
     /**
+     * 格式化指定时间毫秒数为 时、分、秒 三个数据格式，默认格式为 00时00分00秒。
+     *
+     * @param countTime 总时间戳（毫秒值）
+     * @param format 格式化类型,，例如：%s时%s分%s秒，则返回结果例如：00时00分00秒
+     * @return 返回如: 00时00分00秒
+     */
+    public static String formatHHmmss(long countTime, String format) {
+        StringBuilder dateBuilder = new StringBuilder();
+        long diff = new java.sql.Date(countTime).getTime();
+        long hour = diff % ND / NH + diff / ND * 24;//时
+        long min = diff % ND % NH / NM;                //分
+        long sec = diff % ND % NH % NM / NS;        //秒
+        if (hour + min + sec < 0) {
+            return null;
+        }
+        String hS = hour < 10 ? "0" + hour : "" + hour;
+        String mS = min < 10 ? "0" + min : "" + min;
+        String sS = sec < 10 ? "0" + sec : "" + sec;
+        if (TextUtils.isEmpty(format)) {
+            dateBuilder.append(hS).append("时");
+            dateBuilder.append(mS).append("分");
+            dateBuilder.append(sS).append("秒");
+            return dateBuilder.toString();
+        } else {
+            return String.format(format, hS, mS, sS);
+        }
+    }
+
+    /**
      * 格式化指定时间毫秒数为(时分秒)格式
      *
      * @param countTime 总时间 时间戳
@@ -524,7 +553,7 @@ public class DateUtils {
         } else {
             dateBuilder.append(hS).append(":");
             dateBuilder.append(mS).append(":");
-            dateBuilder.append(sS).append(":");
+            dateBuilder.append(sS);
         }
         return dateBuilder.toString();
     }
@@ -555,9 +584,38 @@ public class DateUtils {
             dateBuilder.append(mS).append("分");
         } else {
             dateBuilder.append(hS).append(":");
-            dateBuilder.append(mS).append(":");
+            dateBuilder.append(mS);
         }
         return dateBuilder.toString();
+    }
+
+    /**
+     * 格式化指定时间毫秒数为 时、分 两个值格式，默认格式为 00时00分。
+     *
+     * @param countTime 总时间戳（毫秒值）
+     * @param format 格式化类型,，例如：%s时%s分，则返回结果例如：00时00分
+     * @return 返回如: 00时00分
+     */
+    public static String formatHHmm(long countTime, String format) {
+        StringBuilder dateBuilder = new StringBuilder();
+        // 因为不显示秒，避免显示00时00分(后面我59秒之后不显示)，所以分+1，秒去掉。
+        Date date = new Date(countTime+60*1000);
+        date.setSeconds(0);
+        long diff = date.getTime();
+        long hour = diff % ND / NH + diff / ND * 24;//时
+        long min = diff % ND % NH / NM;             //分
+        if (hour + min < 0) {
+            return null;
+        }
+        String hS = hour < 10 ? "0" + hour : "" + hour;
+        String mS = min < 10 ? "0" + min : "" + min;
+        if (TextUtils.isEmpty(format)) {
+            dateBuilder.append(hS).append("时");
+            dateBuilder.append(mS).append("分");
+            return dateBuilder.toString();
+        } else {
+            return String.format(format, hS, mS);
+        }
     }
 
     /**
