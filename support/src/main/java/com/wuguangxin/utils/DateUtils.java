@@ -52,7 +52,7 @@ public class DateUtils {
      * @return 短日期字符串
      */
     public static Date getDateShort() {
-        return formatDate(new Date());
+        return formatDateShort(new Date());
     }
 
     /**
@@ -185,7 +185,7 @@ public class DateUtils {
      * @param timeMillis 时间戳
      * @return Date，如果日期格式不传入不正确，则返回null。
      */
-    public static Date formatDate(long timeMillis) {
+    public static Date formatDateShort(long timeMillis) {
         if (timeMillis == 0) {
             return null;
         }
@@ -214,7 +214,7 @@ public class DateUtils {
      * @param date 日期对象
      * @return Date对象，如果日期格式不传入不正确，则返回null。
      */
-    public static Date formatDate(Date date) {
+    public static Date formatDateShort(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         try {
             return format.parse(format.format(date));
