@@ -4,17 +4,17 @@ apply plugin: 'com.novoda.bintray-release' // bintray
 
 // 20171128
 def mModulesName = "support"
-def mVersionCode = 33
-def mVersionName = "1.1.8"
-def mDescription = "修复DateUtils.formatHHmm()类，避免出现剩余时间小于1分钟时，显示00时00分，其实后面还有秒数在倒计时，所以分+1,秒去除。"
+def mVersionCode = 34
+def mVersionName = "1.1.9"
+def mDescription = "优化"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
-        minSdkVersion 11
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 27
         versionCode mVersionCode
         versionName mVersionName
         description mDescription
@@ -40,10 +40,10 @@ android {
 
 dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-annotations:25.3.1'
-    compile 'com.wuguangxin:pull-to-refresh:1.0.0'
+    compile 'com.android.support:support-v4:27.1.0'
+    compile 'com.android.support:appcompat-v7:27.1.0'
+    compile 'com.android.support:support-annotations:27.1.0'
+    compile 'com.wuguangxin:pull-to-refresh:1.1.0'
 }
 
 // 配置 bintray

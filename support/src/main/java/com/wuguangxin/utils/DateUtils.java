@@ -52,7 +52,7 @@ public class DateUtils {
      * @return 短日期字符串
      */
     public static Date getDateShort() {
-        return formatDateShort(new Date());
+        return formatDate(new Date());
     }
 
     /**
@@ -185,7 +185,7 @@ public class DateUtils {
      * @param timeMillis 时间戳
      * @return Date，如果日期格式不传入不正确，则返回null。
      */
-    public static Date formatDateShort(long timeMillis) {
+    public static Date formatDate(long timeMillis) {
         if (timeMillis == 0) {
             return null;
         }
@@ -214,7 +214,7 @@ public class DateUtils {
      * @param date 日期对象
      * @return Date对象，如果日期格式不传入不正确，则返回null。
      */
-    public static Date formatDateShort(Date date) {
+    public static Date formatDate(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         try {
             return format.parse(format.format(date));
@@ -231,10 +231,10 @@ public class DateUtils {
      * @param pattern 参考：yyyy-MM-dd HH:mm:ss
      * @return Date，发生异常会返回null。
      */
-    public static Date formatDateShort(long timeMillis, String pattern) {
+    public static Date formatDate(long timeMillis, String pattern) {
         try {
             String dateString = new SimpleDateFormat(pattern).format(new Date(timeMillis));
-            return formatDateShort(dateString, pattern);
+            return formatDate(dateString, pattern);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -248,7 +248,7 @@ public class DateUtils {
      * @param pattern 参考：yyyy-MM-dd HH:mm:ss
      * @return Date，发生异常返回null。
      */
-    public static Date formatDateShort(String dateString, String pattern) {
+    public static Date formatDate(String dateString, String pattern) {
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.CHINA);
             return simpleDateFormat.parse(dateString);

@@ -137,8 +137,8 @@
 
     <!-- 对话框从底部进入和退出的动画 -->
     <style name="xin_dialog_from_bottom_in_out" parent="android:Animation">
-        <item name="@android:windowEnterAnimation">@anim/xin_anim_dialog_in</item>
-        <item name="@android:windowExitAnimation">@anim/xin_anim_dialog_out</item>
+        <item name="android:windowEnterAnimation">@anim/xin_anim_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/xin_anim_dialog_out</item>
     </style>
     
     <!--

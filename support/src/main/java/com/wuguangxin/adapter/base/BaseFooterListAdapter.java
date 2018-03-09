@@ -18,7 +18,11 @@ import java.util.List;
 public abstract class BaseFooterListAdapter<T> extends BaseListAdapter<T> {
 	public BigDecimal zero = BigDecimal.ZERO;
 	private int minCountEnableFooterView; // 最少多少条数据才显示页脚信息View
-	
+
+	public BaseFooterListAdapter(Context context){
+		super(context);
+	}
+
 	public BaseFooterListAdapter(Context context, List<T> list){
 		super(context, list);
 	}
@@ -29,20 +33,20 @@ public abstract class BaseFooterListAdapter<T> extends BaseListAdapter<T> {
 	/**
 	 * 控制下拉刷新组件的刷新模式，当适配器已经显示了全部的数据后，不可在上拉加载。
 	 * 如果数据没有加载完全，则隐藏脚布局（附加如果第一页就显示完数据了，但数据小于5条的，也隐藏脚布局）。
-	 * @param mPullRefreshListView 下拉刷新组件
-	 * @param mFooterView 页脚信息View
+	 * @param listView 下拉刷新组件
+	 * @param footerView FootView
 	 * @param totalNumber 总数量
 	 * @param startIndex 开始索引（一般为0或1）
-	 * @param pageNumber 当前第几页
+	 * @param curPage 当前第几页
 	 */
-	public void notifyFooterView(PullToRefreshListView mPullRefreshListView, View mFooterView, int totalNumber, int startIndex, int pageNumber){
+	public void notifyFooterView(PullToRefreshListView listView, View footerView, int totalNumber, int startIndex, int curPage){
 		// 控制下拉刷新组件的刷新模式，当适配器已经显示了全部的数据后，不可在上拉加载
-		mPullRefreshListView.setMode(getList().size() < totalNumber ? Mode.BOTH : Mode.PULL_FROM_START);
+		listView.setMode(getList().size() < totalNumber ? Mode.BOTH : Mode.PULL_FROM_START);
 		// 如果数据没有加载完全，则隐藏脚布局（附加如果第一页就显示完数据了，但数据小于5条的，也隐藏脚布局）
-		if(pageNumber == startIndex && getCount() == totalNumber && getCount() < minCountEnableFooterView){
-			mFooterView.setVisibility(View.GONE);
+		if(curPage == startIndex && getCount() == totalNumber && getCount() < minCountEnableFooterView){
+			footerView.setVisibility(View.GONE);
 		} else {
-			mFooterView.setVisibility(View.VISIBLE);
+			footerView.setVisibility(View.VISIBLE);
 		}
 	}
 	

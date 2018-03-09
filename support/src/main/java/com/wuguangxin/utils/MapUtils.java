@@ -10,8 +10,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class MapUtils{
-	private static int MAP_KEY = 0;
-	private static int MAP_VALUE = 1;
+	private static final int MAP_KEY = 0;
+	private static final int MAP_VALUE = 1;
 	
 	/**
 	 * 根据value获取Map集合中的key

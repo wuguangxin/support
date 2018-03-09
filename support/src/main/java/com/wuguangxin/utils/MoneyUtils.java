@@ -23,6 +23,32 @@ public class MoneyUtils{
 	}
 
 	/**
+	 * 判断金额是否=0，如果=0，则返回默认值
+	 * @param number 金额
+	 * @param defValue 默认值
+	 * @return
+	 */
+	public static String isZero(BigDecimal number, String defValue){
+		if (number == null ||  number.compareTo(BigDecimal.ZERO) == 0) {
+			return defValue;
+		}
+		return clearZero(format(number, defValue));
+	}
+
+	/**
+	 * 转换成金额格式后，判断金额是否=0，如果=0，则返回默认值
+	 * @param number 金额
+	 * @param defValue 默认值
+	 * @return
+	 */
+	public static String isZero(String number, String defValue){
+		if (TextUtils.isEmpty(number) || "0".equals(number) || "0.0".equals(number)) {
+			return defValue;
+		}
+		return clearZero(format(new BigDecimal(number), defValue));
+	}
+
+	/**
 	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
 	 * @param moneyString String类型数据
 	 * @return 金额字符串
