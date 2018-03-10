@@ -43,7 +43,7 @@ public class SensorManagerHelper implements SensorEventListener{
 	 */
 	public void start(){
 		// 获得传感器管理器
-		sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+		sensorManager = (SensorManager) context.getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
 		if (sensorManager != null) {
 			// 获得重力传感器
 			sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

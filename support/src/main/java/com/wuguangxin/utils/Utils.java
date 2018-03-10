@@ -98,11 +98,11 @@ public class Utils{
 	public static void showInputMethodKeyboard(Context context, boolean isShow){
 		if (isShow) {
 			Logger.i(context, "显示软键盘");
-			InputMethodManager immShow = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+			InputMethodManager immShow = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 			immShow.toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
 		} else {
 			Logger.i(context, "隐藏软键盘");
-			InputMethodManager immHide = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+			InputMethodManager immHide = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 			immHide.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 		}
 	}
@@ -433,10 +433,10 @@ public class Utils{
 		// SDK= 11以下
 		if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.HONEYCOMB){
 			// 得到剪贴板管理器 
-			android.text.ClipboardManager cmb = (android.text.ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE); 
+			android.text.ClipboardManager cmb = (android.text.ClipboardManager)context.getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
 			cmb.setText(text);
 		} else {
-			android.content.ClipboardManager cmb = (android.content.ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE); 
+			android.content.ClipboardManager cmb = (android.content.ClipboardManager)context.getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
 			cmb.setText(text);
 		}
 	}

@@ -115,7 +115,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 	 */
 	@SuppressLint("InflateParams")
 	private void initView(){
-		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mDialogLayout = inflater.inflate(R.layout.xin_dialog_layout, null);
 		mDialogTitleLayout = (RelativeLayout) mDialogLayout.findViewById(R.id.df_dialog_title_layout);
 		mDialogBodyLayout = (ScrollView) mDialogLayout.findViewById(R.id.df_dialog_body_layout);
@@ -538,14 +538,14 @@ public class MyDialog extends Dialog implements DialogInterface{
 					if(Utils.isShowSoftKey(context)){
 						return;
 			        }
-					InputMethodManager immShow = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+					InputMethodManager immShow = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 					immShow.toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
 					break;
 				case View.GONE:
 					if(!Utils.isShowSoftKey(context)){
 						return;
 			        }
-					InputMethodManager immHide = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+					InputMethodManager immHide = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 					immHide.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 					break;
 			}
@@ -721,7 +721,7 @@ public class MyDialog extends Dialog implements DialogInterface{
 //		if(Utils.isShowSoftKey(context)){
 //			return;
 //        }
-		InputMethodManager immShow = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager immShow = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 		immShow.toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
 	}
 	// *****密码对话框e****************************************************************************************************************

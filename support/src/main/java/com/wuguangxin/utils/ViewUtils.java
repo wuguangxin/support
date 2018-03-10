@@ -67,7 +67,7 @@ public class ViewUtils{
 	 */
 	public static void setViewPagerHeight(ViewPager viewPager){
 		LayoutParams layoutParams = viewPager.getLayoutParams();
-		WindowManager wm = (WindowManager) viewPager.getContext().getSystemService(Context.WINDOW_SERVICE);
+		WindowManager wm = (WindowManager) viewPager.getContext().getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		layoutParams.height = dm.widthPixels >> 1;
@@ -82,7 +82,7 @@ public class ViewUtils{
 	 */
 	public static void setViewPagerHeight(Context context, ViewPager viewPager, int height){
 		LayoutParams layoutParams = viewPager.getLayoutParams();
-		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		layoutParams.height = height;

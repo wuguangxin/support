@@ -199,7 +199,7 @@ public class AndroidUtils {
      */
     public static ActivityManager getActivityManager(Context context) {
         if (mActivityManager == null) {
-            mActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            mActivityManager = (ActivityManager) context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
         }
         return mActivityManager;
     }
@@ -374,7 +374,7 @@ public class AndroidUtils {
             }
         }
         try {
-            TelephonyManager mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager mTelephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
             return mTelephonyManager.getDeviceId();
         } catch (SecurityException e) {
             e.printStackTrace();
@@ -461,7 +461,7 @@ public class AndroidUtils {
         String result = null;
         try {
             result = null;
-            wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             result = wifiInfo.getMacAddress();
         } catch (Exception e) {
@@ -509,7 +509,7 @@ public class AndroidUtils {
      * @return 本机号码
      */
     public static String getPhoneNumber(Context context) {
-        mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        mTelephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
         @SuppressLint("MissingPermission")
         String phoneString = mTelephonyManager.getLine1Number();
         if (phoneString != null) {
@@ -557,7 +557,7 @@ public class AndroidUtils {
      * @return 是否是WIFI网络
      */
     public static boolean isWifi(Context context) {
-        mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        mConnectivityManager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         @SuppressLint("MissingPermission")
         NetworkInfo activeNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
         if (activeNetworkInfo != null) {
@@ -576,7 +576,7 @@ public class AndroidUtils {
      * @return 单位:px
      */
     public static int getScreenWidth(Context context) {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
@@ -589,7 +589,7 @@ public class AndroidUtils {
      * @return 单位:px
      */
     public static int getScreenHeight(Context context) {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;
@@ -602,7 +602,7 @@ public class AndroidUtils {
      * @return 是否有任何可用的网络
      */
     public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         @SuppressLint("MissingPermission")
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         if (activeNetworkInfo != null) {
@@ -618,7 +618,7 @@ public class AndroidUtils {
      * @return 是否有可以连接的WIFI
      */
     public static boolean isWifiConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         @SuppressLint("MissingPermission")
         NetworkInfo wifiNetworkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         if (wifiNetworkInfo != null) {
@@ -634,7 +634,7 @@ public class AndroidUtils {
      * @return wifi的连接状态
      */
     public static boolean isWifiConnection(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager manager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         if (networkInfo != null) {
             return networkInfo.isConnected();
@@ -649,7 +649,7 @@ public class AndroidUtils {
      * @return 基站的连接状态
      */
     public static boolean isBaseStateConnection(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager manager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         if (networkInfo != null) {
             return networkInfo.isConnected();
@@ -1222,7 +1222,7 @@ public class AndroidUtils {
      * @return 是否亮着
      */
     public static boolean isScreenOn(Context context) {
-        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        PowerManager pm = (PowerManager) context.getApplicationContext().getSystemService(Context.POWER_SERVICE);
         return pm != null && pm.isScreenOn();
     }
 
@@ -1248,7 +1248,7 @@ public class AndroidUtils {
      * @return 是否开启锁屏功能
      */
     public static boolean isOpenKeyguard(Context context) {
-        KeyguardManager keyguardManager =(KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+        KeyguardManager keyguardManager =(KeyguardManager) context.getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
         if (keyguardManager == null) return false;
         return keyguardManager.isKeyguardSecure();
     }
@@ -1259,20 +1259,22 @@ public class AndroidUtils {
      * @param context context
      * @return 是否支持指纹识别
      */
+    @SuppressLint("MissingPermission")
     public static boolean isSupportFingerprint(Context context) {
         // Using the Android Support Library v4
         FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(context);
         // Using API level 23:
-//        FingerprintManager fingerprintManager = (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
+//        FingerprintManager fingerprintManager = (FingerprintManager) context.getApplicationContext().getSystemService(Context.FINGERPRINT_SERVICE);
         if (fingerprintManager == null) return false;
         return fingerprintManager.isHardwareDetected();
     }
 
     /**
-     * 检查设备中是否有注册过的指纹信息
+     * 检查设备中是否有注册过的指纹信息（需要权限）
      * @param context context
      * @return 是否有注册过的指纹信息
      */
+    @SuppressLint("MissingPermission")
     public static boolean hasEnrolledFingerprints(Context context) {
         FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(context);
         if (fingerprintManager == null) return false;
@@ -1321,7 +1323,7 @@ public class AndroidUtils {
      */
     public static boolean isServiceRunning(Context context, Class<? extends AccessibilityService> serviceClass) {
         if(context != null && serviceClass != null){
-            ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            ActivityManager am = (ActivityManager) context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
             List<ActivityManager.RunningServiceInfo> serviceList = am.getRunningServices(200);
             if (!serviceList.isEmpty()) {
                 String serviceClassName = serviceClass.getSimpleName();

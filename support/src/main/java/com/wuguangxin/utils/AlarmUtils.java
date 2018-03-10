@@ -29,7 +29,7 @@ public class AlarmUtils{
 		// PendingIntent.FLAG_UPDATE_CURRENT如果pendingIntent已存在，则更新数据
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		// 获取闹钟管理的实例
-		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE); 
+		AlarmManager am = (AlarmManager) context.getApplicationContext().getSystemService(Context.ALARM_SERVICE);
 		// 设置提醒
 		am.set(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent); 
 		// 设置周期提醒
@@ -44,7 +44,7 @@ public class AlarmUtils{
 	 */
 	public static void cancel(Context context, int requestCode, Intent intent){
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE );
-		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE); // 获取闹钟管理的实例
+		AlarmManager am = (AlarmManager) context.getApplicationContext().getSystemService(Context.ALARM_SERVICE); // 获取闹钟管理的实例
 		am.cancel(pendingIntent); // 取消
 	}
 }

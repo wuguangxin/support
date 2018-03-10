@@ -31,7 +31,7 @@ private static boolean isAudioUsable;
 	@SuppressWarnings("deprecation")
 	public static void send(Context context, Intent intent, int id, String title, String message, int icon){
 		//获取通知管理器
-		NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+		NotificationManager manager = (NotificationManager) context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 		// 创建通知
 		Notification notification = null;
 		if (android.os.Build.VERSION.SDK_INT >= 16) {

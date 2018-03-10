@@ -105,7 +105,7 @@ public class PhoneUtils{
 		if (context == null) {
 			return null;
 		}
-		phoneManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+		phoneManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
 		@SuppressLint("MissingPermission")
 		String phoneString = phoneManager.getLine1Number();
 		if (phoneString != null) {

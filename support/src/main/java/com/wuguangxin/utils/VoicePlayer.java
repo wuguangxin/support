@@ -25,7 +25,7 @@ public class VoicePlayer{
 
 	public VoicePlayer(Context context, OnPlayerChangeListener onPlayerChangeListener){
 		this.onPlayerChangeListener = onPlayerChangeListener;
-		telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+		telephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
 		telephonyManager.listen(new MyPhoneStateListener(), PhoneStateListener.LISTEN_CALL_STATE);	// 监听来电状态
 	}
 	

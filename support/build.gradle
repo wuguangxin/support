@@ -4,8 +4,8 @@ apply plugin: 'com.novoda.bintray-release' // bintray
 
 // 20171128
 def mModulesName = "support"
-def mVersionCode = 34
-def mVersionName = "1.1.9"
+def mVersionCode = 35
+def mVersionName = "1.2.0"
 def mDescription = "优化"
 
 android {
