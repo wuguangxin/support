@@ -1,12 +1,11 @@
 apply plugin: 'com.android.library'
 
-apply plugin: 'com.novoda.bintray-release' // bintray
+apply plugin: 'com.novoda.bintray-release'
 
-// 20171128
 def mModulesName = "support"
 def mVersionCode = 35
 def mVersionName = "1.2.0"
-def mDescription = "优化"
+def mDescription = "优化升级到gradle-4.1"
 
 android {
     compileSdkVersion 27
@@ -43,7 +42,7 @@ dependencies {
     compile 'com.android.support:support-v4:27.1.0'
     compile 'com.android.support:appcompat-v7:27.1.0'
     compile 'com.android.support:support-annotations:27.1.0'
-    compile 'com.wuguangxin:pull-to-refresh:1.1.0'
+    compile 'com.wuguangxin:pull-to-refresh:1.2.0'
 }
 
 // 配置 bintray
