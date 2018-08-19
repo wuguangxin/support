@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.wuguangxin.listener.OnItemClickListener;
+
 import java.util.List;
 
 /**
@@ -13,11 +15,13 @@ import java.util.List;
  * <p>Created by wuguangxin on 14/11/17 </p>
  */
 public abstract class BaseListAdapter<T> extends BaseAdapter{
-	public Context context;
+	private Context context;
 	/** 数据列表 */
 	protected List<T> list;
 	/** 列表类型（可用于标识列表的类型） */
 	protected int listType;
+	/** item点击监听器 */
+	protected OnItemClickListener<T> onItemClickListener;
 
 	public BaseListAdapter(Context context){
 		this.context = context;
@@ -26,6 +30,22 @@ public abstract class BaseListAdapter<T> extends BaseAdapter{
 	public BaseListAdapter(Context context, List<T> list){
 		this.context = context;
 		this.list = list;
+	}
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+
+	public OnItemClickListener<T> getOnItemClickListener() {
+		return onItemClickListener;
+	}
+
+	public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
+		this.onItemClickListener = onItemClickListener;
 	}
 
 	/**
@@ -81,6 +101,8 @@ public abstract class BaseListAdapter<T> extends BaseAdapter{
 	
 	@Override
 	public abstract View getView(int position, View convertView, ViewGroup parent);
+
+
 	
 	/**
 	 * 更新BaseAdapter适配器
