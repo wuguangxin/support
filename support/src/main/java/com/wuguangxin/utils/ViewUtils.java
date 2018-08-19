@@ -246,7 +246,7 @@ public class ViewUtils{
 		if (buttonName != null) {
 			mButton.setText(buttonName);
 			mButton.setVisibility(View.VISIBLE);
-			if (onClickListener == null) {
+			if (onClickListener != null) {
 				mButton.setOnClickListener(onClickListener);
 			}
 		}
