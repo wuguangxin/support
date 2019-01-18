@@ -23,39 +23,16 @@ public class MoneyUtils{
 	}
 
 	/**
-	 * 判断金额是否=0，如果=0，则返回默认值
-	 * @param number 金额
-	 * @param defValue 默认值
-	 * @return
-	 */
-	public static String isZero(BigDecimal number, String defValue){
-		if (number == null ||  number.compareTo(BigDecimal.ZERO) == 0) {
-			return defValue;
-		}
-		return clearZero(format(number, defValue));
-	}
-
-	/**
-	 * 转换成金额格式后，判断金额是否=0，如果=0，则返回默认值
-	 * @param number 金额
-	 * @param defValue 默认值
-	 * @return
-	 */
-	public static String isZero(String number, String defValue){
-		if (TextUtils.isEmpty(number) || "0".equals(number) || "0.0".equals(number)) {
-			return defValue;
-		}
-		return clearZero(format(new BigDecimal(number), defValue));
-	}
-
-	/**
 	 * 格式化金额 保留两位小数点，四舍五入，如 1,234.56
 	 * @param moneyString String类型数据
 	 * @return 金额字符串
 	 */
-	public static String format(String moneyString){
+	public static String format(String moneyString) {
+		if (checkArgumentFormat(moneyString)) {
+			throw new IllegalArgumentException(moneyString + " 不是规范的金额格式！");
+		}
 		if (TextUtils.isEmpty(moneyString) || moneyString.split("\\.").length > 2) {
-			return clearZero("0.00");
+			throw new IllegalArgumentException(moneyString + " 不是规范的金额格式！");
 		}
 		return clearZero(format(new BigDecimal(moneyString).doubleValue()));
 	}
@@ -294,14 +271,15 @@ public class MoneyUtils{
 
 	/*
 	BigDecimal bd = new BigDecimal(123456789);
-	System.out.println(formatString(",###,###", bd)); 	//out: 123,456,789
-	System.out.println(formatString("##,####,###", bd));	//out: 123,456,789
-	System.out.println(formatString("######,###", bd));	//out: 123,456,789
+	System.out.println(formatString(",###,###", bd)); 	  //out: 123,456,789
+	System.out.println(formatString("##,####,###", bd));  //out: 123,456,789
+	System.out.println(formatString("######,###", bd));	  //out: 123,456,789
 	System.out.println(formatString("#,##,###,###", bd)); //out: 123,456,789
-	System.out.println(formatString(",###,###.00", bd));	//out: 123,456,789.00
-	System.out.println(formatString(",###,##0.00", bd));	//out: 123,456,789.00
+	System.out.println(formatString(",###,###.00", bd));  //out: 123,456,789.00
+	System.out.println(formatString(",###,##0.00", bd));  //out: 123,456,789.00
+
 	BigDecimal bd1 = new BigDecimal(0);
-	System.out.println(formatString(",###,###", bd1)); 	//out: 0
+	System.out.println(formatString(",###,###", bd1)); 	  //out: 0
 	System.out.println(formatString(",###,###.00", bd1)); //out: .00
 	System.out.println(formatString(",###,##0.00", bd1)); //out: 0.00
 	*/
@@ -319,5 +297,43 @@ public class MoneyUtils{
 		case 4: return ",###,##0.0000";
 		default: return ",###,##0.00";
 		}
+	}
+
+	/**
+	 * 判断金额是否=0，如果=0，则返回默认值
+	 * @param number 金额
+	 * @param defValue 默认值
+	 * @return
+	 */
+	public static String isZero(BigDecimal number, String defValue){
+		if (number == null ||  number.compareTo(BigDecimal.ZERO) == 0) {
+			return defValue;
+		}
+		return clearZero(format(number, defValue));
+	}
+
+	/**
+	 * 转换成金额格式后，判断金额是否=0，如果=0，则返回默认值
+	 * @param number 金额
+	 * @param defValue 默认值
+	 * @return
+	 */
+	public static String isZero(String number, String defValue){
+		if (TextUtils.isEmpty(number) || "0".equals(number) || "0.0".equals(number)) {
+			return defValue;
+		}
+		return clearZero(format(new BigDecimal(number), defValue));
+	}
+
+	/**
+	 * 校验字符串是否是规范的金额格式字符串
+	 * @param str
+	 * @return
+	 */
+	private static boolean checkArgumentFormat(String str) {
+		if (!TextUtils.isEmpty(str) && str.split("\\.").length > 2) {
+			throw new IllegalArgumentException(str + " 不是规范的金额格式！");
+		}
+		return true;
 	}
 }

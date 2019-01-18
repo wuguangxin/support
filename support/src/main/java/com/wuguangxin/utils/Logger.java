@@ -1,7 +1,12 @@
 package com.wuguangxin.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
 
 /**
  * 日志打印工具类
@@ -109,5 +114,119 @@ public class Logger{
 			Log.e(tag, msg);
 			break;
 		}
+
+		if (logCacheList == null) {
+			logCacheList = new LogCacheList();
+		}
+		String time = formatStringLong(System.currentTimeMillis(), "MM-dd HH:mm:ss.SSS");
+		LogBean logBean = new LogBean(time + " " + tag+":", msg);
+		logCacheList.addLast(logBean);
+
+		if (onLogChangeListener != null) {
+			onLogChangeListener.onChanged(logBean, logCacheList);
+		}
 	}
+
+	private static final SimpleDateFormat FORMAT_DATE_LONG = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	/**
+	 * 格式化为长日期字符串，如 2014-01-01 00:00:00。
+	 * @param timestamp 时间戳
+	 * @param format 格式化样式 yyyy-MM-dd HH:mm:ss
+	 * @return 长日期字符串
+	 */
+	public static String formatStringLong(long timestamp, String format) {
+		if (timestamp <= 0) {
+			return null;
+		}
+		if (!TextUtils.isEmpty(format)) {
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+			return sdf.format(timestamp);
+		}
+		return FORMAT_DATE_LONG.format(new Date(timestamp));
+	}
+
+	private static LogCacheList logCacheList = new LogCacheList();
+
+	public static LinkedList<LogBean> getLogCacheList() {
+		return logCacheList;
+	}
+
+	private static OnLogChangeListener onLogChangeListener;
+
+	public static void setOnLogChangeListener(OnLogChangeListener onLogChangeListener) {
+		Logger.onLogChangeListener = onLogChangeListener;
+	}
+
+	public interface OnLogChangeListener {
+		/**
+		 * 日志变化时回调
+		 * @param newLogBean 新增加的日志
+		 * @param logList 最新的日志列表
+		 */
+		void onChanged(LogBean newLogBean, LinkedList<LogBean> logList);
+	}
+
+	public static class LogBean {
+		public String tag;
+		public String msg;
+
+		public LogBean(String tag, String msg) {
+			this.tag = tag;
+			this.msg = msg;
+		}
+
+		@Override
+		public String toString() {
+			final StringBuilder sb = new StringBuilder("LogBean{");
+			sb.append("tag='").append(tag).append('\'');
+			sb.append(", msg='").append(msg).append('\'');
+			sb.append('}');
+			return sb.toString();
+		}
+	}
+
+	/**
+	 * ${DESC}
+	 * Created by wuguangxin on 2019/1/10.
+	 */
+	public static class LogCacheList extends LinkedList<LogBean> {
+		private int maxSize = 0;
+
+		@Override
+		public boolean add(LogBean logBean) {
+			checkSize();
+			return super.add(logBean);
+		}
+
+		@Override
+		public void addFirst(LogBean logBean) {
+			checkSize();
+			super.addFirst(logBean);
+		}
+
+		@Override
+		public void addLast(LogBean logBean) {
+			checkSize();
+			super.addLast(logBean);
+		}
+
+		public void addFirst(String tag, String log) {
+			addFirst(new LogBean(tag, log));
+		}
+
+		public void addLast(String tag, String log) {
+			addLast(new LogBean(tag, log));
+		}
+
+		private void checkSize() {
+			int size = size();
+			if (maxSize > 0 && size > maxSize) {
+				System.out.println("缓存数量："+ size + " | " + maxSize);
+				System.out.println("缓存数量过大，正在释放部分数据");
+				super.removeFirst();
+			}
+		}
+	}
+
 }
