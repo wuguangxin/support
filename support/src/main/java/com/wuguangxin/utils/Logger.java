@@ -187,11 +187,19 @@ public class Logger{
 	}
 
 	/**
-	 * ${DESC}
+	 * 日志缓存列表。默认缓存list的size为1024*10字节（10Kb）
 	 * Created by wuguangxin on 2019/1/10.
 	 */
 	public static class LogCacheList extends LinkedList<LogBean> {
-		private int maxSize = 0;
+		private int maxSize = 1024*10;
+
+		public int getMaxSize() {
+			return maxSize;
+		}
+
+		public void setMaxSize(int maxSize) {
+			this.maxSize = maxSize;
+		}
 
 		@Override
 		public boolean add(LogBean logBean) {
