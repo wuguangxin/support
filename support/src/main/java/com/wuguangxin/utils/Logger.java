@@ -148,7 +148,7 @@ public class Logger{
 
 	private static LogCacheList logCacheList = new LogCacheList();
 
-	public static LinkedList<LogBean> getLogCacheList() {
+	public static LogCacheList getLogCacheList() {
 		return logCacheList;
 	}
 
@@ -164,7 +164,7 @@ public class Logger{
 		 * @param newLogBean 新增加的日志
 		 * @param logList 最新的日志列表
 		 */
-		void onChanged(LogBean newLogBean, LinkedList<LogBean> logList);
+		void onChanged(LogBean newLogBean, LogCacheList logList);
 	}
 
 	public static class LogBean {
