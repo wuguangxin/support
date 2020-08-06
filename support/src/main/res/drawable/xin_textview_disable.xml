@@ -7,7 +7,7 @@
     <corners android:radius="1dip" />
 
     <stroke
-        android:width="@dimen/xin_text_view_border_size_disabled"
-        android:color="@color/xin_text_view_border_color_disabled" />
+        android:width="@dimen/xin_text_view_border_size_disable"
+        android:color="@color/xin_text_view_border_color_disable" />
 
 </shape>

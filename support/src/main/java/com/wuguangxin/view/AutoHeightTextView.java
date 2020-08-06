@@ -35,7 +35,7 @@ public class AutoHeightTextView extends TextView {
 //		if(compoundDrawables.length > 2){
 //			Drawable compoundDrawable = compoundDrawables[1];
 //			if(compoundDrawable != null){
-//				Bitmap bitmap = IOFormat.getInstance().drawable2Bitmap(compoundDrawable);
+//				Bitmap bitmap = IOFormat.getInstance().drawableToBitmap(compoundDrawable);
 //				if(bitmap != null){
 //					imageHeight = bitmap.getHeight();
 //				}

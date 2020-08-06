@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/xin_toast_bg"
-    android:gravity="center"
-    android:minWidth="100dip"
+    android:minWidth="100dp"
+    app:cardBackgroundColor="@color/xin_toast_bg_color"
+    app:cardCornerRadius="@dimen/xin_toast_layout_radius"
+    app:cardElevation="20dp"
+    app:cardMaxElevation="50dp">
 
-    android:minHeight="60dip"
-    android:paddingBottom="5dip"
-    android:paddingLeft="20dip"
-    android:paddingRight="20dip"
-    android:paddingTop="5dip"
-    android:text="@string/toast_warn_text_default"
-    android:textColor="@color/white"
-    android:textSize="@dimen/font_M"
-    android:visibility="visible" />
+    <TextView
+        android:id="@+id/xin_toast_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:drawableStart="@drawable/xin_toast_icon"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/xin_toast_layout_height"
+        android:paddingStart="15dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/xin_toast_text_color"
+        android:textSize="@dimen/xin_toast_text_size"
+        tools:text="这是一条调皮的消息" />
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true"
+    android:fillEnabled="true"
+    android:shareInterpolator="true" >
+
+    <!--
+    Activity 关闭后退出的动画
+
+    注意：
+    软键盘有自己的显示和隐藏动画，且各个设备因为硬件不同，导致在视觉上动画延时也不同，低端设备看起来会比较慢，
+    如果 Activity 使用了finish时的过度动画，这个动画和软键盘的动画是独立的，所以当finish时，
+    两个动画同时执行，会导致动画重叠，视觉混乱，所以必须合理调整Activity的动画延时来匹配软键盘的动画延时。
+
+    所以
+    translate 的 duration 应该 > 200，
+    alpha     的 duration 应该 < 200
+    -->
+    <translate
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:duration="250"
+        android:repeatCount="0"
+        android:fromYDelta="0%"
+        android:toYDelta="100%p" />
+
+    <alpha
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:duration="150"
+        android:repeatCount="0"
+        android:fromAlpha="1"
+        android:toAlpha="0" />
+
+</set>

@@ -93,8 +93,9 @@ public class TimerHandler extends TimerTask {
 		return super.cancel();
 	}
 	
-	public void setOnTimerListener(OnTimerListener onTimerListener){
+	public TimerHandler setOnTimerListener(OnTimerListener onTimerListener){
 		this.mListener = onTimerListener;
+		return this;
 	}
 	
 	public interface OnTimerListener {

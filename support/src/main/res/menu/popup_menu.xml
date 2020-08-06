@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-	<item android:id="@+id/customer_list_state_all" android:icon="@android:drawable/ic_menu_share" android:title="全部" />
-	<item android:id="@+id/customer_list_state_ok" android:icon="@android:drawable/ic_menu_add" android:title="已开户" />
-	<item android:id="@+id/customer_list_state_ing" android:icon="@android:drawable/ic_menu_edit" android:title="开户中" />
-	<item android:id="@+id/customer_list_state_no" android:icon="@android:drawable/ic_menu_edit" android:title="未开户" />
+	<item android:id="@+id/menu_type_0" android:icon="@android:drawable/ic_menu_share" android:title="Menu1" />
+	<item android:id="@+id/menu_type_1" android:icon="@android:drawable/ic_menu_add" android:title="Menu2" />
+	<item android:id="@+id/menu_type_2" android:icon="@android:drawable/ic_menu_edit" android:title="Menu3" />
+	<item android:id="@+id/menu_type_3" android:icon="@android:drawable/ic_menu_edit" android:title="Menu4" />
 </menu>
 
-<!-- <menu xmlns:android="http://schemas.android.com/apk/res/android"> -->
-<!-- 	<item android:id="@+id/customer_list_state_all" android:icon="@android:drawable/ic_menu_search" android:title="全部" /> -->
-<!-- 	<item android:id="@+id/customer_list_state_ok" android:icon="@android:drawable/ic_menu_add" android:title="已开户" /> -->
-<!-- 	<item android:id="@+id/customer_list_state_ing" android:icon="@android:drawable/ic_menu_edit" android:title="开户中"/> -->
-<!-- 	<item android:id="@+id/customer_list_state_no" android:icon="@android:drawable/ic_menu_edit" android:title="未开户"> -->
-<!-- 		<menu> -->
-<!-- 			<item android:id="@+id/childmenu1" android:title="子菜单1" /> -->
-<!-- 			<item android:id="@+id/childmenu2" android:title="子菜单2" /> -->
-<!-- 			<item android:id="@+id/childmenu3" android:title="子菜单3" /> -->
-<!-- 		</menu> -->
-<!-- 	</item> -->
-<!-- </menu> -->
+	<!-- <menu xmlns:android="http://schemas.android.com/apk/res/android"> -->
+	<!-- 	<item android:id="@+id/menu_type_0" android:icon="@android:drawable/ic_menu_search" android:title="菜单1" /> -->
+	<!-- 	<item android:id="@+id/menu_type_1" android:icon="@android:drawable/ic_menu_add" android:title="菜单2" /> -->
+	<!-- 	<item android:id="@+id/menu_type_2" android:icon="@android:drawable/ic_menu_edit" android:title="菜单3"/> -->
+	<!-- 	<item android:id="@+id/menu_type_3" android:icon="@android:drawable/ic_menu_edit" android:title="菜单4"> -->
+	<!-- 		<menu> -->
+	<!-- 			<item android:id="@+id/child_menu_type_0" android:title="子菜单1" /> -->
+	<!-- 			<item android:id="@+id/child_menu_type_1" android:title="子菜单2" /> -->
+	<!-- 			<item android:id="@+id/child_menu_type_2" android:title="子菜单3" /> -->
+	<!-- 		</menu> -->
+	<!-- 	</item> -->
+	<!-- </menu> -->

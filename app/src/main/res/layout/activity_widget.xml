@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F3F5"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F2F3F5"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/tabHost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TabHost"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/okhttp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OkHttp"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/ItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ItemView"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/CircleProgressView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CircleProgressView"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/ToastUtils"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ToastUtils"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/XinDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XinDialog"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/GestureView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="手势密码"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/permission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6.0动态权限"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+</ScrollView>

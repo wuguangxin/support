@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     
     <!-- Activity进入和退出动画 -->
-    <style name="xin_ActivityInOutAnimation" parent="@android:style/Animation.Activity">
+    <style name="xin_ActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/xin_anim_activity_open_enter</item>
         <item name="android:activityOpenExitAnimation">@anim/xin_anim_activity_open_exit</item>
         <item name="android:activityCloseEnterAnimation">@anim/xin_anim_activity_close_enter</item>
@@ -80,16 +80,25 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <style name="XinDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
     
     <!-- **********************************************按钮样式start*********************************************** -->
     <!-- 按钮样式-基本 -->
     <style name="xin_button_base">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">45dip</item>
-        <item name="android:paddingLeft">15dip</item>
-        <item name="android:paddingRight">15dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:paddingLeft">20dip</item>
+        <item name="android:paddingRight">20dip</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/font_LL</item>
+        <item name="android:textSize">@dimen/font_M</item>
     </style>
     
     <!-- 按钮样式-灰色 -->
@@ -155,20 +164,33 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
-    <!-- 手机号码EditView样式 -->
-    <style name="xin_editText_base">
-        <item name="android:textCursorDrawable" tools:targetApi="12">@drawable/xin_edittext_cursor_style</item>
+    <!-- 基础EditView样式 -->
+    <style name="xin_edit_base">
+        <item name="android:textCursorDrawable">@drawable/xin_cursor_style</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+    <!-- 数值EditView样式 -->
+    <style name="xin_edit_number" parent="xin_edit_base">
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLength">10</item>
     </style>
 
 	<!-- 手机号码EditView样式 -->
-    <style name="xin_editText_phone_number" parent="xin_editText_base">
-        <item name="android:inputType">number</item>
+    <style name="xin_edit_phone" parent="xin_edit_base">
+        <item name="android:inputType">phone</item>
         <item name="android:maxLength">13</item>
-        <item name="android:digits">1234567890</item>
+    </style>
+
+    <!-- 电子邮箱EditView样式 -->
+    <style name="xin_edit_email" parent="xin_edit_base">
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:maxLength">30</item>
     </style>
 
     <!-- 身份证号码EditView样式 -->
-    <style name="xin_editText_idCard" parent="xin_editText_base">
+    <style name="xin_edit_idCard" parent="xin_edit_base">
         <item name="android:digits">1234567890Xx</item>
         <item name="android:inputType">numberSigned</item>
         <item name="android:singleLine">true</item>
@@ -176,28 +198,27 @@
     </style>
 
     <!-- 真实姓名EditView样式 -->
-    <style name="xin_editText_realName" parent="xin_editText_base">
+    <style name="xin_edit_realName" parent="xin_edit_base">
         <item name="android:inputType">text</item>
         <item name="android:singleLine">true</item>
         <item name="android:maxLength">15</item>
     </style>
 
     <!-- 验证码EditView样式 -->
-    <style name="xin_editText_verify_code" parent="xin_editText_base">
+    <style name="xin_edit_verify_code" parent="xin_edit_base">
         <item name="android:inputType">number</item>
         <item name="android:maxLength">6</item>
         <item name="android:digits">1234567890</item>
     </style>
 
     <!-- 登录账号EditView样式 -->
-    <style name="xin_editText_username" parent="xin_editText_base">
-        <item name="android:inputType">text</item>
+    <style name="xin_edit_login_username" parent="xin_edit_base">
+        <item name="android:inputType">text|phone</item>
         <item name="android:maxLength">20</item>
     </style>
 
     <!-- 登录密码框EditView样式 -->
-    <style name="xin_editText_login_password" parent="xin_editText_base">
-<!--         <item name="android:digits">@string/xin_digits_0_9a_zA_Z_sign</item> 登录密码不在做digits限制 -->
+    <style name="xin_edit_login_password" parent="xin_edit_base">
         <item name="android:longClickable">false</item>
         <item name="android:inputType">textPassword</item>
         <item name="android:singleLine">true</item>
@@ -205,7 +226,7 @@
     </style>
     
     <!-- 交易密码EditView样式 -->
-    <style name="xin_editText_pay_password" parent="xin_editText_base">
+    <style name="xin_edit_pay_password" parent="xin_edit_base">
         <item name="android:digits">@string/xin_digits_0_9</item>
         <item name="android:longClickable">false</item>
         <item name="android:inputType">numberPassword</item>
@@ -214,7 +235,7 @@
     </style>
     
     <!-- 对话框中支付密码EditView样式 -->
-    <style name="xin_dialog_editText_pay_password">
+    <style name="xin_dialog_edit_pay_password">
         <item name="android:layout_width">0dip</item>
         <item name="android:digits">@string/xin_digits_0_9</item>
         <item name="android:layout_height">50dip</item>
@@ -230,7 +251,7 @@
     </style>
         
     <!-- 对话框中支付密码显示6个点的textView样式 -->
-    <style name="xin_dialog_editText_pay_password_textView">
+    <style name="xin_dialog_edit_pay_password_textView">
         <item name="android:layout_width">0dip</item>
         <item name="android:layout_height">45dip</item>
         <item name="android:layout_weight">1</item>
@@ -244,12 +265,14 @@
     </style>
     
      <!-- EditText清除按钮样式 -->
-     <style name="xin_button_textDel">
+     <style name="xin_button_edit_clear">
         <item name="android:layout_width">45dip</item>
         <item name="android:layout_height">45dip</item>
+        <item name="android:layout_gravity">right|center_vertical</item>
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:padding">15dip</item>
-        <item name="android:src">@drawable/xin_text_del</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">8dip</item>
+        <item name="android:src">@drawable/xin_edit_clear</item>
         <item name="android:visibility">gone</item>
     </style>
     
@@ -265,20 +288,6 @@
         <item name="android:textColor">@drawable/xin_menu_font_color</item>
         <item name="android:textSize">@dimen/font_M</item>
     </style>
-    
-    <!-- Base refreshview -->
-    <style name="xin_refreshView_base" >
-         <!--<item name="com.ephwealth.financing:ptrDrawable">@drawable/xin_refreshview_lable_icon</item>-->
-         <!--<item name="com.ephwealth.financing:ptrAnimationStyle">flip</item>-->
-         <!--<item name="com.ephwealth.financing:ptrHeaderBackground">@color/xeeeeee</item>-->
-         <!--<item name="com.ephwealth.financing:ptrHeaderTextColor">#333333</item>-->
-	</style>
 
-    <!--在按钮所在同层加上该RadioButton,即可实现按下动画效果-->
-    <style name="xin_radioButton_anim_bg">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:button">@null</item>
-        <item name="android:gravity">center</item>
-    </style>
+
 </resources>

@@ -2,14 +2,13 @@ package com.wuguangxin.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 /**
  * 根据宽度自动缩放高度的IamgeView
  *
  * <p>Created by wuguangxin on 16/11/10 </p>
  */
-public class AutoHeightImageView extends ImageView{
+public class AutoHeightImageView extends androidx.appcompat.widget.AppCompatImageView {
 
 	public AutoHeightImageView(Context context) {
 		super(context);
@@ -30,6 +29,9 @@ public class AutoHeightImageView extends ImageView{
 		if(getDrawable() != null){
 			sizeHeight = sizeWidth * getDrawable().getIntrinsicHeight() / getDrawable().getIntrinsicWidth();
 		}
+//		if (sizeWidth == 0) {
+//			sizeHeight = 0;
+//		}
 		setMeasuredDimension(sizeWidth, sizeHeight);
 	}
 }

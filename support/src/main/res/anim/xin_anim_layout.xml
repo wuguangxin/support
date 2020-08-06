@@ -1,0 +1,20 @@
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animation="@anim/xin_anim_left_in_fade_in"
+    android:animationOrder="normal"
+    android:delay="25%">
+
+    <!--
+    一、Java代码实现方式：
+    LayoutAnimationController anim = AnimationUtils.loadLayoutAnimation(context, R.anim.xin_anim_left_in_alpha);
+    viewGroup.setLayoutAnimation(anim);
+
+    二、参数说明：
+    android:animation="@anim/anim" 具体实现方式
+    android:delay="15%" 动画延迟,总长时间15%
+    android:animationOrder="normal"
+        可以选择三种类型：normal, reverse random。它控制内容动画的顺序。
+        Normal：遵循direction和delay所定义的顺序；
+        Reverse：顺序恰好跟Normal相反；
+        Random：为随机的顺序。
+    -->
+</layoutAnimation>

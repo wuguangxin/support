@@ -15,7 +15,7 @@
         android:layout_margin="5dip"
         android:background="@drawable/xin_button_default_bg_color"
         android:gravity="center"
-        android:text="@string/dialog_top_left_text_default"
+        android:text="@string/xin_dialog_close_text"
         android:textColor="#1b82de"
         android:textSize="@dimen/font_M"
         android:visibility="gone" />
@@ -29,9 +29,9 @@
         android:layout_centerInParent="true"
         android:gravity="center_vertical"
         android:paddingTop="2dip"
-        android:text="@string/dialog_top_title_text_default"
-        android:textColor="@color/x333333"
-        android:textSize="@dimen/font_LL"
+        android:text="@string/xin_dialog_title_text"
+        android:textColor="@color/xin_dialog_title_text"
+        android:textSize="@dimen/xin_dialog_title_text"
         android:visibility="visible" />
     
     <ImageView
@@ -40,7 +40,7 @@
         android:layout_height="18dip"
         android:layout_centerVertical="true"
         android:layout_marginRight="5dip"
-        android:layout_toLeftOf="@+id/dialog_top_title"
+        android:layout_toLeftOf="@id/dialog_top_title"
         android:src="@drawable/xin_loading_01"
         android:visibility="gone"
         tools:ignore="ContentDescription" />
@@ -57,7 +57,7 @@
         android:layout_margin="5dip"
         android:background="@drawable/xin_button_default_bg_color"
         android:gravity="center"
-        android:text="@string/dialog_top_right_text_default"
+        android:text="@string/xin_dialog_setting_text"
         android:textColor="#1b82de"
         android:textSize="@dimen/font_M"
         android:visibility="gone" />

@@ -1,0 +1,166 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/xin_titlebar_height"
+    android:background="@color/xin_titlebar_background"
+    android:minHeight="@dimen/xin_titlebar_height"
+    tools:ignore="MissingConstraints">
+
+    <!--左边区域-->
+    <LinearLayout
+        android:id="@+id/xin_titlebar_left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="0dip"
+        android:minWidth="@dimen/xin_titlebar_menu_minWidth"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--左边返回按钮-->
+        <ImageView
+            android:id="@+id/xin_titlebar_left_back_view"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:minWidth="@dimen/xin_titlebar_menu_minWidth"
+            android:scaleType="centerInside"
+            android:src="@drawable/xin_titlebar_back_white"
+            android:visibility="visible" />
+
+        <!--左边关闭按钮-->
+        <ImageView
+            android:id="@+id/xin_titlebar_left_close_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:minWidth="@dimen/xin_titlebar_menu_minWidth"
+            android:src="@drawable/xin_titlebar_close_white"
+            android:visibility="gone" />
+
+        <!--左边文本按钮-->
+        <TextView
+            android:id="@+id/xin_titlebar_left_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="5dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:minWidth="@dimen/xin_titlebar_menu_minWidth"
+            android:singleLine="true"
+            android:textColor="@color/xin_titlebar_title_color"
+            android:textSize="@dimen/xin_titlebar_title_size"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- 中间区域 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/xin_titlebar_center_layout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xin_titlebar_height"
+        android:paddingLeft="@dimen/xin_titlebar_menu_minWidth"
+        android:paddingRight="@dimen/xin_titlebar_menu_minWidth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--界面在网络加载时的动画-->
+        <ImageView
+            android:id="@+id/xin_titlebar_load_view"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:padding="2dp"
+            android:src="@drawable/xin_loading_anim"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/xin_titlebar_title_view"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
+
+        <!--显示标题名称-->
+        <TextView
+            android:id="@+id/xin_titlebar_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/xin_titlebar_title_color"
+            android:textSize="@dimen/xin_titlebar_title_size"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="标题" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--右边区域-->
+    <LinearLayout
+        android:id="@+id/xin_titlebar_right_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="0dip"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--设置按钮-->
+        <TextView
+            android:id="@+id/xin_titlebar_right_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:minWidth="@dimen/xin_titlebar_menu_minWidth"
+            android:padding="10dip"
+            android:text=""
+            android:textColor="@color/xin_titlebar_setting_color"
+            android:textSize="@dimen/xin_titlebar_setting_size"
+            android:visibility="gone" />
+
+        <!--右边菜单按钮-->
+        <ImageView
+            android:id="@+id/xin_titlebar_right_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="@dimen/xin_titlebar_menu_minWidth"
+            android:paddingLeft="10dip"
+            android:paddingRight="15dip"
+            android:scaleType="centerInside"
+            android:src="@drawable/xin_titlebar_share_white"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!--标题栏底部分割线-->
+    <View
+        android:id="@+id/xin_titlebar_divider"
+        android:layout_width="0dip"
+        android:layout_height="@dimen/xin_titlebar_divider_size"
+        android:background="@color/xin_titlebar_divider_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <!--加载进度条-->
+    <ProgressBar
+        android:id="@+id/xin_titlebar_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dip"
+        android:layout_height="2dip"
+        android:max="100"
+        android:progress="00"
+        android:progressDrawable="@drawable/xin_web_progress_bg"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

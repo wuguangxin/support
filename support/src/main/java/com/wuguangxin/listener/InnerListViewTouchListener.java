@@ -1,6 +1,5 @@
 package com.wuguangxin.listener;
 
-import android.annotation.SuppressLint;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
@@ -21,7 +20,6 @@ public class InnerListViewTouchListener implements View.OnTouchListener {
 		this.mScrollView = scrollView;
 	}
 
-	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public boolean onTouch(View v, MotionEvent event){
 		int eventAction = event.getActionMasked();
@@ -31,7 +29,6 @@ public class InnerListViewTouchListener implements View.OnTouchListener {
 		case MotionEvent.ACTION_MOVE:
 			break;
 		case MotionEvent.ACTION_UP:
-			;
 		case MotionEvent.ACTION_CANCEL:
 			mScrollView.requestDisallowInterceptTouchEvent(false);
 			break;

@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,16 +27,40 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TabHost0_Activity"/>
-        <activity android:name=".TabHost1_Activity"/>
-        <activity android:name=".TabHost2_Activity"/>
-        <activity android:name=".TabHostDemoActivity"/>
+        <activity android:name=".ui.TabHost0_Activity"/>
+        <activity android:name=".ui.TabHost1_Activity"/>
+        <activity android:name=".ui.TabHost2_Activity"/>
+        <activity android:name=".ui.TabHostDemoActivity"/>
 
-        <activity android:name=".ToastUtilsActivity"/>
-        <activity android:name=".MyDialogActivity"/>
-        <activity android:name=".ItemViewActivity"/>
-        <activity android:name=".CircleProgressViewActivity"/>
-        <activity android:name=".GestureViewActivity"/>
+        <activity android:name=".ui.ToastUtilsActivity"/>
+        <activity android:name=".ui.MyDialogActivity"/>
+        <activity android:name=".ui.ItemViewActivity"/>
+        <activity android:name=".ui.CircleProgressViewActivity"/>
+        <activity android:name=".ui.GestureViewActivity"/>
+
+        <activity android:name=".ui.call.CallActivity" android:screenOrientation="portrait" >
+            <!-- 提供打电话的UI -->
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <data android:scheme="tel" />
+            </intent-filter>
+            <!-- region provides dial UI -->
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".ui.call.PhoneCallService"
+            android:permission="android.permission.BIND_INCALL_SERVICE">
+            <meta-data
+                android:name="android.telecom.IN_CALL_SERVICE_UI"
+                android:value="true" />
+            <intent-filter>
+                <action android:name="android.telecom.InCallService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

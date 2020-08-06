@@ -16,36 +16,36 @@ import android.widget.EditText;
 
 import com.wuguangxin.utils.MoneyUtils;
 
+import java.math.BigDecimal;
+
 /**
  * EditText内容变化监听类，当文本框获得输入焦点并输入了内容时，显示你定义的清除内容的按钮，
  * 当失去输入焦点，则隐藏按钮，当点击清除按钮时，清空文本框的内容
  *
  * <p>Created by wuguangxin on 15/4/14 </p>
  */
-public class TextChangeListener implements TextWatcher, OnClickListener, OnFocusChangeListener{
+public class TextChangeListener implements TextWatcher, OnClickListener, OnFocusChangeListener {
+	private static final int DEF_PRECISION = 2;
+	private int precision = DEF_PRECISION; // 小数点位数
 	private EditText mEditText;
 	private View mClearBtn;
 	private EditTextCallBack callBack;
 	/**
 	 * 输入的数据类型
 	 */
-	private int textType = TextType.TEXT;
+	private int textType;
 	private StringBuffer stringBuffer;
-	private StringBuffer strs;
-	private int bankNumberSpance = 4;
+	private int bankNumberSpace = 4;
 	private Context context;
 	private Animation fade_in;
 	private Animation fade_out;
+	private BigDecimal maxNumber = BigDecimal.valueOf(Double.MAX_VALUE); // 允许输入的最大数
 
-	/**
-	 * 构造1
-	 */
 	public TextChangeListener(){
 		this(null);
 	}
 
 	/**
-	 * 构造2
 	 * @param editText 要监听的EditText
 	 */
 	public TextChangeListener(EditText editText){
@@ -53,7 +53,6 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
-	 * 构造3
 	 * @param editText 要监听的EditText
 	 * @param clearViewId 清除按钮ViewId
 	 */
@@ -62,7 +61,6 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
-	 * 构造4
 	 * @param editText 要监听的EditText
 	 * @param clearViewId 清除按钮ViewId
 	 */
@@ -71,7 +69,6 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
-	 * 构造5
 	 * @param editText 要监听的EditText
 	 * @param clearViewId 清除按钮ViewId
 	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
@@ -81,7 +78,6 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
-	 * 构造6
 	 * @param editText 要监听的EditText
 	 * @param clearBtn 清除按钮
 	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
@@ -91,28 +87,72 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
-	 * 构造7
+	 * @param editText 要监听的EditText
+	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
+	 * @param callBack 回调
+	 */
+	public TextChangeListener(EditText editText, int textType, EditTextCallBack callBack){
+		this(editText, null, textType, DEF_PRECISION, callBack);
+	}
+
+	/**
 	 * @param editText 要监听的EditText
 	 * @param clearBtn 清除按钮
 	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
 	 * @param callBack 回调
 	 */
 	public TextChangeListener(EditText editText, View clearBtn, int textType, EditTextCallBack callBack){
-        this.context = getActivityFromView(editText);
+		this(editText, clearBtn, textType, DEF_PRECISION, callBack);
+	}
+
+	/**
+	 * @param editText 要监听的EditText
+	 * @param clearBtn 清除按钮
+	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
+	 * @param precision 小数点位数
+	 */
+	public TextChangeListener(EditText editText, View clearBtn, int textType, int precision){
+		this(editText, clearBtn, textType, precision, null);
+	}
+
+	/**
+	 * @param editText 要监听的EditText
+	 * @param clearBtn 清除按钮
+	 * @param textType 输入文本类型如，看TextChangeListener.TextType类（有手机号码、金额等类型）
+	 * @param precision 小数位数最大长多
+	 * @param callBack 回调
+	 */
+	public TextChangeListener(EditText editText, View clearBtn, int textType, int precision, EditTextCallBack callBack){
+		this.context = getActivityFromView(editText);
 		this.mEditText = editText;
 		this.mClearBtn = clearBtn;
 		this.textType = textType;
+		this.precision = precision;
 		this.callBack  = callBack;
 		if (clearBtn != null && editText.isEnabled()) {
 			mClearBtn.setOnClickListener(this);
 		}
-		if (editText != null) {
-			mEditText.setOnFocusChangeListener(this);
-		}
+		mEditText.setOnFocusChangeListener(this);
 		if(textType < 0){
 			this.textType = TextType.TEXT;
 		}
 		init();
+	}
+
+	public static TextChangeListener withText(EditText editText) {
+		return new TextChangeListener(editText, null, TextType.TEXT, null);
+	}
+
+	public static TextChangeListener withNumber(EditText editText) {
+		return new TextChangeListener(editText, null, TextType.NUMBER, null);
+	}
+
+	public static TextChangeListener withText(EditText editText, EditTextCallBack callBack) {
+		return new TextChangeListener(editText, null, TextType.TEXT, callBack);
+	}
+
+	public static TextChangeListener withNumber(EditText editText, EditTextCallBack callBack) {
+		return new TextChangeListener(editText, null, TextType.NUMBER, callBack);
 	}
 
 	public static Activity getActivityFromView(View view) {
@@ -140,6 +180,21 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 		}
 	}
 
+	public BigDecimal getMaxNumber() {
+		return maxNumber;
+	}
+
+	/**
+	 * 设置允许输入的最大数值（生效于类型：{@link TextType#NUMBER}）
+	 * @param maxNumber
+	 */
+	public void setMaxNumber(BigDecimal maxNumber) {
+		this.maxNumber = maxNumber;
+		if (textType == TextType.NUMBER && mEditText != null && maxNumber != null) {
+			formatNumber(mEditText.getText());
+		}
+	}
+
 	/**
 	 * 设置EditText最大长度
 	 * @param maxLength
@@ -155,7 +210,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 		mEditText.setText("");
 		mEditText.requestFocus();
 		setClearViewVisibility(View.GONE);
-		bankNumberSpance = 0;
+		bankNumberSpace = 0;
 	}
 
 	@Override
@@ -164,9 +219,9 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 			stringBuffer.delete(0, stringBuffer.length() - 1);
 			stringBuffer = null;
 		}
-		//如果是金额类型
-		if (textType == TextType.MONEY) {
-			formatMoney(s);
+		//如果是数字类型
+		if (textType == TextType.NUMBER) {
+			formatNumber(s);
 		}
 	}
 
@@ -178,7 +233,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 		setClearViewVisibility(TextUtils.isEmpty(s) ? View.GONE : View.VISIBLE);
 		if (textType == TextType.PHONE) {
 			// 格式化手机号码
-			formatPhone(s, start, count); 
+			formatPhone(s, start, count);
 		} else if (textType == TextType.BANK_CARD) {
 			// 银行卡
 			formatBankCard(s, start, count);
@@ -192,14 +247,15 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	public void onFocusChange(View v, boolean hasFocus){
 		setClearViewVisibility(hasFocus ? View.VISIBLE : View.GONE);
 		if(!hasFocus){
-			if (textType == TextType.MONEY  && mEditText != null) {
+			if (textType == TextType.NUMBER && mEditText != null) {
 				String money = mEditText.getText().toString().trim();
 				if(!TextUtils.isEmpty(money)){
 					if(money.endsWith(".")){
-						mEditText.setText(MoneyUtils.format2bit(money));
+						mEditText.setText(MoneyUtils.format(money));
 					} else {
 						mEditText.setText(money);
 					}
+					mEditText.setSelection(mEditText.getText().length());
 				}
 			}
 		}
@@ -248,33 +304,64 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	}
 
 	/**
-	 * 格式化为金额
+	 * 格式化为数字
 	 * @param s
 	 */
-	private void formatMoney(Editable s){
+	private void formatNumber(Editable s){
 		if(s == null){
 			return;
 		}
-		String money = s.toString();
-		if (!TextUtils.isEmpty(money)) {
-			int dotPosition = money.indexOf("."); // 点的位置
+		String number = s.toString();
+
+		if (!TextUtils.isEmpty(number)) {
+
+			if (maxNumber != null) {
+				BigDecimal bigDecimal = toBigDecimal(number);
+				if (bigDecimal.compareTo(maxNumber) > 0) {
+					number = bigDecimal.toString();
+
+					TextWatcher textWatcher = this;
+					mEditText.removeTextChangedListener(this);
+					s.clear();
+					s.append(String.format("%."+precision+"f", maxNumber));
+					mEditText.addTextChangedListener(textWatcher);
+				}
+			}
+
+			int dotPosition = number.indexOf("."); // 点的位置
 			if (dotPosition == 0) {
 				s.delete(0, 1);
 			}
-			if (dotPosition > 0) {
-				if (money.subSequence(dotPosition + 1, money.length()).toString().length() > 2) {
-					s.delete(dotPosition + 3, money.length());
+			if (dotPosition > 0) { // 0.123456789
+				int length = number.subSequence(dotPosition + 1, number.length()).toString().length();
+				if (precision == 0) {
+					s.delete(dotPosition + precision, number.length());
+				} else if (length > precision) {
+					s.delete(dotPosition + 1 + precision, number.length());
 				}
 			}
-			if (money.length() >= 2) {
-				if(money.length() == 2 && money.subSequence(0, 1).equals("0") && !"0.".equals(money)){
+			if (number.length() >= 2) {
+				if(number.length() == 2 && number.subSequence(0, 1).equals("0") && !"0.".equals(number)){
 					s.delete(0, 1);
-				} else if (money.subSequence(0, 2).equals("00")) { // =00
+				} else if (number.subSequence(0, 2).equals("00")) { // =00
 					s.delete(1, 2);
-				} else if (money.subSequence(0, 1).toString().contains("0") && !money.subSequence(1, 2).toString().contains(".")) { // =0.
+				} else if (number.subSequence(0, 1).toString().contains("0") && !number.subSequence(1, 2).toString().contains(".")) { // =0.
 					s.delete(1, 2);
 				}
 			}
+		}
+	}
+
+	private BigDecimal toBigDecimal(String value) {
+		if(TextUtils.isEmpty(value)) {
+			return BigDecimal.ZERO;
+		}
+		value = value.trim();
+		value = value.replace(",", "");
+		try {
+			return new BigDecimal(value);
+		} catch (Exception e) {
+			return BigDecimal.ZERO;
 		}
 	}
 
@@ -284,13 +371,13 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	 * @return
 	 */
 	private String formatPhoneNumber(String string){
-		strs = new StringBuffer(string.replaceAll(" ", ""));
+		StringBuffer sb = new StringBuffer(string.replaceAll(" ", ""));
 		for (int i = 0; i < string.length(); i++) {
 			if (i == 3 || i == 8) {
-				strs.insert(i, " ");
+				sb.insert(i, " ");
 			}
 		}
-		return strs.toString();
+		return sb.toString();
 	}
 
 	/**
@@ -300,7 +387,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 	private void formatBankCard(CharSequence s, int start, int count){
 		if (count == 1) {
 			stringBuffer = new StringBuffer(s);
-			if (start > 0 && start % bankNumberSpance == 0) {
+			if (start > 0 && start % bankNumberSpace == 0) {
 				for (int i = 0; i < stringBuffer.length(); i++) {
 					if (i > 0 && i % 4 == 0) {
 						stringBuffer.insert(i, " ");
@@ -315,15 +402,24 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 		}
 	}
 
+	public int getPrecision() {
+		return precision;
+	}
+
+	public TextChangeListener setPrecision(int precision) {
+		this.precision = precision;
+		return this;
+	}
+
 	private void setValue(String s){
 		mEditText.setText(s);
 		mEditText.setSelection(mEditText.getText().toString().length());
 	}
-	
+
 	public interface EditTextCallBack {
 		void onTextSet(String str);
 	}
-	
+
 	private static View findViewById(Activity activity, int clearViewId){
 		if(clearViewId == 0 || clearViewId == -1 || activity == null){
 			return null;
@@ -335,7 +431,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 		}
 		return null;
 	}
-	
+
 	/**
 	 * EditText输入的文本内容类型
 	 *
@@ -346,24 +442,24 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 		 * 普通文本类型（默认）
 		 */
 		public static int TEXT = 0;
-		
+
 		/**
-		 * 金额(如 100.01)（保留2位小数）
+		 * 数字(如 100.01)（默认保留2位小数）
 		 */
-		public static int MONEY = 1;
-		
+		public static int NUMBER = 1;
+
 		/**
 		 * 手机号码类型。
 		 *  将格式化为如 186 1111 2222样式，并在输入过程中自动格式化；
 		 *  当调用getText()时，务必调用.replaceAll(" ", "")，去掉所有空格。
 		 */
 		public static int PHONE = 2;
-		
+
 		/**
 		 * 银行卡号码 （4位空一格，如xxxx xxxx xxxx xxxx xxx）
 		 */
 		public static int BANK_CARD = 3;
-		
+
 		/**
 		 * 身份证号码 （如xxxxxx xxxx xxxx xxxx )
 		 */

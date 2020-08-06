@@ -8,7 +8,7 @@
     android:orientation="vertical" >
 
     <ImageView
-        android:id="@+id/voice_amplitude"
+        android:id="@+id/xin_voice_amplitude"
         android:layout_width="150dip"
         android:layout_height="100dip"
         android:background="@drawable/voice_mic"
@@ -17,7 +17,7 @@
         tools:ignore="ContentDescription" />
 
     <Chronometer
-        android:id="@+id/voice_chronometer"
+        android:id="@+id/xin_voice_chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -27,23 +27,23 @@
         android:visibility="visible" />
 
     <TextView
-        android:id="@+id/voice_move_msg"
+        android:id="@+id/xin_voice_cancel_slither_msg"
         android:layout_width="150dip"
         android:layout_height="100dip"
         android:background="@color/transparent"
         android:gravity="center_horizontal|bottom"
-        android:text="@string/voice_move_msg"
+        android:text="@string/xin_voice_cancel_slither_msg"
         android:textColor="#cccccc"
         android:textSize="@dimen/font_12"
         android:visibility="visible" />
 
     <TextView
-        android:id="@+id/voice_cancel_msg"
+        android:id="@+id/xin_voice_cancel_loosen_msg"
         android:layout_width="150dip"
         android:layout_height="100dip"
         android:background="@drawable/xin_voice_dialog_bg"
         android:gravity="center_horizontal|bottom"
-        android:text="@string/voice_cancel_msg"
+        android:text="@string/xin_voice_cancel_loosen_msg"
         android:textColor="#ffffff"
         android:textSize="@dimen/font_12"
         android:visibility="gone" />

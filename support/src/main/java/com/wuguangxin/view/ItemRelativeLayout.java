@@ -16,14 +16,15 @@ import com.wuguangxin.R;
  * <p>Created by wuguangxin on 15/7/10 </p>
  */
 public class ItemRelativeLayout extends RelativeLayout {
-	private int topPaddingLeft;
-	private int topPaddingRight;
-	private int bottomPaddingLeft;
-	private int bottomPaddingRight;
+	private int topMarginLeft;
+	private int topMarginRight;
+	private int bottomMarginLeft;
+	private int bottomMarginRight;
 	private int width;
 	private int height;
 	private int dividerSize;
 	private Drawable divider;
+	private int dividerHeight;
 	private DividerMode dividerMode = DividerMode.Both;
 
 	public ItemRelativeLayout(Context context) {
@@ -37,18 +38,21 @@ public class ItemRelativeLayout extends RelativeLayout {
 	public ItemRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		if(attrs != null){
-			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemTextView);
+			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemRelativeLayout);
 			if(a != null){
-				divider = a.getDrawable(R.styleable.ItemTextView_divider);
-				dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemTextView_dividerMode, DividerMode.Both.value));
-				topPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingLeft, topPaddingLeft);
-				topPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_topPaddingRight, topPaddingRight);
-				bottomPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingLeft, bottomPaddingLeft);
-				bottomPaddingRight = a.getDimensionPixelSize(R.styleable.ItemTextView_bottomPaddingRight, bottomPaddingRight);
+				divider = a.getDrawable(R.styleable.ItemRelativeLayout_divider);
+				dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemRelativeLayout_dividerMode, dividerMode.value));
+				dividerHeight = a.getDimensionPixelSize(R.styleable.ItemRelativeLayout_dividerHeight, dividerHeight);
+				topMarginLeft = a.getDimensionPixelSize(R.styleable.ItemRelativeLayout_dividerTop_marginLeft, topMarginLeft);
+				topMarginRight = a.getDimensionPixelSize(R.styleable.ItemRelativeLayout_dividerTop_marginRight, topMarginRight);
+				bottomMarginLeft = a.getDimensionPixelSize(R.styleable.ItemRelativeLayout_dividerBottom_marginLeft, bottomMarginLeft);
+				bottomMarginRight = a.getDimensionPixelSize(R.styleable.ItemRelativeLayout_dividerBottom_marginRight, bottomMarginRight);
+
 				a.recycle();
 			}
 		}
 		dividerSize = divider != null ? divider.getIntrinsicHeight() : 0;
+//		dividerSize = dividerHeight;
 
 		// 不设置颜色，就看不到线条，待解决（暂时判断未设置颜色时，使用透明色）
 		if (getBackground() == null) {
@@ -88,7 +92,7 @@ public class ItemRelativeLayout extends RelativeLayout {
 	 */
 	private void drawDividerTop(Canvas canvas) {
 		if(divider != null){
-			divider.setBounds(topPaddingLeft, 0, width - topPaddingRight, dividerSize);
+			divider.setBounds(topMarginLeft, 0, width - topMarginRight, dividerSize);
 			divider.draw(canvas);
 		}
 	}
@@ -99,7 +103,7 @@ public class ItemRelativeLayout extends RelativeLayout {
 	 */
 	private void drawDividerBottom(Canvas canvas) {
 		if(divider != null){
-			divider.setBounds(bottomPaddingLeft, height - dividerSize, width - bottomPaddingRight, width);
+			divider.setBounds(bottomMarginLeft, height - dividerSize, width - bottomMarginRight, width);
 			divider.draw(canvas);
 		}
 	}

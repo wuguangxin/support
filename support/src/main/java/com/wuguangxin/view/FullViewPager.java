@@ -7,8 +7,7 @@ import android.view.View;
 /**
  * 垂直自适应ViewPager。取最高的Child View作为父ViewPager的高度
  */
-public class FullViewPager extends android.support.v4.view.ViewPager {
-    private int position;
+public class FullViewPager extends androidx.viewpager.widget.ViewPager {
 
     public FullViewPager(Context context) {
         super(context);
@@ -33,11 +32,6 @@ public class FullViewPager extends android.support.v4.view.ViewPager {
         }
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-        invalidate();
     }
 
 }

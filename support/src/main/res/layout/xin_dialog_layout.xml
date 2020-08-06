@@ -143,7 +143,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/xin_dialog_bottom_button_left"
                     android:gravity="center"
-                    android:text="@string/dialog_button_negative_text_default"
+                    android:text="@string/xin_dialog_negative_text"
                     android:textColor="@drawable/xin_dialog_button_font_color"
                     android:textSize="@dimen/xin_dialog_button_font_size"
                     android:visibility="visible"/>
@@ -155,7 +155,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/xin_dialog_bottom_button_right"
                     android:gravity="center"
-                    android:text="@string/dialog_button_positive_text_default"
+                    android:text="@string/xin_dialog_positive_text"
                     android:textColor="@drawable/xin_dialog_button_font_color"
                     android:textSize="@dimen/xin_dialog_button_font_size"
                     android:visibility="visible"/>

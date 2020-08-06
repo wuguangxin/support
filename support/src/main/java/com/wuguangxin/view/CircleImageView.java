@@ -16,11 +16,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import com.wuguangxin.R;
 
-public class CircleImageView extends ImageView{
+import androidx.appcompat.widget.AppCompatImageView;
+
+/**
+ * 显示圆形\圆角ImageView
+ */
+public class CircleImageView extends AppCompatImageView {
 	private static final ScaleType SCALE_TYPE = ScaleType.CENTER_INSIDE;
 	private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
 	private static final int COLORDRAWABLE_DIMENSION = 2;

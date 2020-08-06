@@ -123,16 +123,16 @@ public class CircleProgressView extends View {
          */
 //        linearGradient = new LinearGradient(0, 0, 400, 0, new int[]{startColor, endColor}, null, Shader.TileMode.CLAMP);
         // 扇形渐变渲染
-        sweepGradient = new SweepGradient(width / 2, width / 2,
+        sweepGradient = new SweepGradient(width >> 1, width >> 1,
                 new int[]{startColor, endColor, endColor}, null);
         //扇形渐变默认从0度开始，这里需要旋转到90度
         android.graphics.Matrix matrix = new android.graphics.Matrix();
-        matrix.setRotate(startAngle, width / 2, width / 2);
+        matrix.setRotate(startAngle, width >> 1, width >> 1);
         sweepGradient.setLocalMatrix(matrix);
 
         // 顶部圆环参数
-        float radius = (width - strokeWidth / 2) / 2;
-        float left = strokeWidth / 2;
+        float radius = (width - (strokeWidth >> 1)) >> 1;
+        float left = strokeWidth >> 1;
         float leftTop = left / 2;
         oval = new RectF(left, left, radius * 2, radius * 2);
         ovalTop = new RectF(leftTop, leftTop, radius * 2 + leftTop, radius * 2 + leftTop);

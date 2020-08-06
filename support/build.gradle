@@ -3,17 +3,16 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 def mModulesName = "support"
-def mVersionCode = 37
-def mVersionName = "1.3.3"
-def mDescription = "优化Logger，增加设置log缓存的大小（也就是list的大小）"
+def mVersionCode = 38
+def mVersionName = "2.0.0"
+def mDescription = "大改动，优化一些代码，更新到androidX，删除了部分类，新增了部分类"
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode mVersionCode
         versionName mVersionName
         description mDescription
@@ -24,6 +23,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        // 当该项目以导入代码到主项目中作为module时，主项目有几个type就同样添加几个
+//        alpha {
+//            debuggable true
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+//        }
     }
 
     lintOptions {
@@ -35,14 +40,37 @@ android {
         options.addStringOption('encoding', 'UTF-8')
         options.addStringOption('charSet', 'UTF-8')
     }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.android.support:support-v4:27.1.0'
-    compile 'com.android.support:appcompat-v7:27.1.0'
-    compile 'com.android.support:support-annotations:27.1.0'
-    compile 'com.wuguangxin:pull-to-refresh:1.2.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // 工具库
+    implementation 'com.wuguangxin:utils:1.0.1'
+
+    // 注解
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
+    // 腾讯 MMKV 替代 SP (https://github.com/Tencent/MMKV/blob/master/readme_cn.md)
+    implementation 'com.tencent:mmkv-static:1.2.1'
+
+    // 二维码
+    implementation 'com.google.zxing:core:3.4.0'
+
+    // 下拉刷新布局 SmartRefreshLayout（文档 https://github.com/scwang90/SmartRefreshLayout）
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'  // 1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'  // 没有使用特殊Header，可以不加这行
 }
 
 // 配置 bintray

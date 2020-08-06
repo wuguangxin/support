@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dip"
-        android:layout_toRightOf="@+id/xin_item_bank_icon"
+        android:layout_toRightOf="@id/xin_item_bank_icon"
         android:text=""
         android:textColor="#666666"
         android:textSize="@dimen/font_M" />

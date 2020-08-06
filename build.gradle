@@ -7,8 +7,10 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.novoda:bintray-release:0.5.0' // 添加bintray插件
+        classpath 'com.android.tools.build:gradle:3.5.4'
+
+        // 添加 bintray 插件
+        classpath 'com.novoda:bintray-release:0.9.2'
     }
 
     // 上传到 bintray 报编码异常时的解决
@@ -20,14 +22,17 @@ buildscript {
         }
     }
 }
-
+// allprojects 是项目本身需要的依赖，比如我现在要依赖我自己maven库的toastutils库，
+// 那么我应该将maven {url 'https://dl.bintray.com/wuguangxin/maven'}写在这里，
+// 而不是buildscript中，不然找不到。
 allprojects {
     repositories {
+        google()
         jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
+
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://www.jitpack.io' }
+        maven { url "https://maven.google.com" }
     }
 }
 

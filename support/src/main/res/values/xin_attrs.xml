@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- ================== 公共属性区域 ======================================================= -->
-    <!--进度百分比0.0~1.0-->
-    <attr name="progress" format="float"/>
+    <!-- ================== 公共属性区域 start ================================================= -->
+    <!-- ================== 公共属性区域 start ================================================= -->
+    <!-- ================== 公共属性区域 start ================================================= -->
+    <!--进度百分比 0.0F~1.0F-->
+    <attr name="progress" format="float" />
 
-    <attr name="startAngle" format="integer"/>
-    <attr name="sweepAngle" format="integer"/>
-    <attr name="circleRadius" format="reference|dimension"/>	<!--圆半径-->
+    <attr name="startAngle" format="reference|integer" />
+    <attr name="sweepAngle" format="reference|integer" />
+    <!--圆半径-->
+    <attr name="circleRadius" format="reference|dimension" />
 
-    <!--key 文本-->
-    <attr name="key" format="reference|string" />
-    <!--value 文本-->
-    <attr name="value" format="reference|string" />
-    <!--指示器 Drawable-->
-    <attr name="divider" format="reference" />
+    <!--指示器 drawable/color-->
+    <!--    <attr name="divider" format="reference|color" />-->
+    <!--指示器 大小-->
+    <attr name="dividerHeight" format="reference|dimension" />
     <!--指示器样式，none没有，both上下有，top上有，bottom下有-->
     <attr name="dividerMode" format="enum">
         <!--没有线条-->
@@ -27,131 +28,232 @@
         <enum name="bottom" value="3" />
     </attr>
 
-    <!-- ================== 私有属性区域 ======================================================== -->
+    <!--指示器颜色-正常的-->
+    <attr name="dividerNormalColor" format="reference|color" />
+    <!--指示器颜色-聚焦的-->
+    <attr name="dividerFocusedColor" format="reference|color" />
+
+    <!--上指示器距上-->
+    <attr name="dividerTop_marginTop" format="reference|dimension" />
+    <!--上指示器距左-->
+    <attr name="dividerTop_marginLeft" format="reference|dimension" />
+    <!--上指示器距右-->
+    <attr name="dividerTop_marginRight" format="reference|dimension" />
+    <!--下指示器距左-->
+    <attr name="dividerBottom_marginLeft" format="reference|dimension" />
+    <!--下指示器距右-->
+    <attr name="dividerBottom_marginRight" format="reference|dimension" />
+    <!--下指示器距下-->
+    <attr name="dividerBottom_marginBottom" format="reference|dimension" />
+
+
+    <!--key 文本-->
+    <attr name="key" format="reference|string" localization="suggested" />
+    <attr name="keySize" format="reference|dimension" />
+    <attr name="keyColor" format="reference|color" />
+    <attr name="keyWidth" format="reference|dimension" />
+    <attr name="keyHeight" format="reference|dimension" />
+    <attr name="keyWeight" format="reference|float" />
+    <attr name="keyHint" format="reference|string" />
+    <attr name="keyHintColor" format="reference|color" />
+    <attr name="keyBackground" format="reference|color" />
+    <attr name="keySingleLine" format="boolean" />
+    <attr name="keyLineSpacingExtra" format="reference|dimension" />
+    <!--key margin-->
+    <attr name="keyMargin" format="reference|dimension" />
+    <attr name="keyMarginTop" format="reference|dimension" />
+    <attr name="keyMarginLeft" format="reference|dimension" />
+    <attr name="keyMarginRight" format="reference|dimension" />
+    <attr name="keyMarginBottom" format="reference|dimension" />
+    <!--key-padding-->
+    <attr name="keyPadding" format="reference|dimension" />
+    <attr name="keyPaddingTop" format="reference|dimension" />
+    <attr name="keyPaddingLeft" format="reference|dimension" />
+    <attr name="keyPaddingRight" format="reference|dimension" />
+    <attr name="keyPaddingBottom" format="reference|dimension" />
+    <!--key-drawable-->
+    <attr name="keyDrawableLeft" format="reference" />
+    <attr name="keyDrawableRight" format="reference" />
+    <attr name="keyDrawablePadding" format="reference|dimension" />
+
+    <!--value-->
+    <attr name="value" format="reference|string" />
+    <attr name="valueSize" format="reference|dimension" />
+    <attr name="valueColor" format="reference|color" />
+    <attr name="valueWidth" format="reference|dimension" />
+    <attr name="valueHeight" format="reference|dimension" />
+    <attr name="valueWeight" format="reference|float" />
+    <attr name="valueHint" format="reference|string" />
+    <attr name="valueHintColor" format="reference|color" />
+    <attr name="valueBackground" format="reference|color" />
+    <attr name="valueSingleLine" format="boolean" />
+    <attr name="valueLineSpacingExtra" format="reference|dimension" />
+    <!--value margin-->
+    <attr name="valueMargin" format="reference|dimension" />
+    <attr name="valueMarginTop" format="reference|dimension" />
+    <attr name="valueMarginLeft" format="reference|dimension" />
+    <attr name="valueMarginRight" format="reference|dimension" />
+    <attr name="valueMarginBottom" format="reference|dimension" />
+    <!--value-padding-->
+    <attr name="valuePadding" format="reference|dimension" />
+    <attr name="valuePaddingTop" format="reference|dimension" />
+    <attr name="valuePaddingLeft" format="reference|dimension" />
+    <attr name="valuePaddingRight" format="reference|dimension" />
+    <attr name="valuePaddingBottom" format="reference|dimension" />
+    <!--value-drawable-->
+    <attr name="valueDrawableLeft" format="reference" />
+    <attr name="valueDrawableRight" format="reference" />
+    <attr name="valueDrawablePadding" format="reference|dimension" />
+
+    <!--左边icon-->
+    <attr name="leftIcon" format="reference" />
+    <attr name="leftIconSize" format="reference|dimension" />
+    <attr name="leftIconMarginLeft" format="reference|dimension" />
+    <!--右边icon-->
+    <attr name="rightIcon" format="reference" />
+    <attr name="rightIconSize" format="reference|dimension" />
+    <attr name="rightIconMarginRight" format="reference|dimension" />
+
+    <!--key文字内部对齐-->
+    <attr name="keyGravity">
+        <flag name="left" value="3" /> <!--左对齐-->
+        <flag name="top" value="48" /> <!--上对齐-->
+        <flag name="right" value="5" /> <!--右对齐-->
+        <flag name="bottom" value="80" /> <!--下对齐-->
+        <flag name="center" value="17" /> <!--居中-->
+        <flag name="center_horizontal" value="1" /> <!--水平居中-->
+        <flag name="center_vertical" value="16" /> <!--垂直居中-->
+    </attr>
+
+    <!--value文字内部对齐-->
+    <attr name="valueGravity">
+        <flag name="left" value="3" /> <!--左对齐-->
+        <flag name="top" value="48" /> <!--上对齐-->
+        <flag name="right" value="5" /> <!--右对齐-->
+        <flag name="bottom" value="80" /> <!--下对齐-->
+        <flag name="center" value="17" /> <!--居中-->
+        <flag name="center_horizontal" value="1" /> <!--水平居中-->
+        <flag name="center_vertical" value="16" /> <!--垂直居中-->
+    </attr>
+
+    <!--key字体样式.-->
+    <attr name="keyStyle">
+        <!--正常-->
+        <flag name="normal" value="0" />
+        <!--粗体-->
+        <flag name="bold" value="1" />
+    </attr>
+
+    <!-- value字体样式. -->
+    <attr name="valueStyle">
+        <!--正常-->
+        <flag name="normal" value="0" />
+        <!--粗体-->
+        <flag name="bold" value="1" />
+    </attr>
+
+    <!-- ================== 公共属性区域 end =================================================== -->
+    <!-- ================== 公共属性区域 end =================================================== -->
+    <!-- ================== 公共属性区域 end =================================================== -->
+
     <declare-styleable name="MyCheckBox">
-        <attr name="value"/>
+        <attr name="value" />
     </declare-styleable>
-    
+
     <declare-styleable name="CircleImageView">
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
         <attr name="border_overlay" format="boolean" />
     </declare-styleable>
-    
+
+    <!--一个组合的空间-->
     <declare-styleable name="ItemView">
         <!--key-->
         <attr name="key" />
-        <attr name="keySize" format="reference|dimension" />
-        <attr name="keyColor" format="reference|color" />
-        <attr name="keyLineSpacingExtra" format="reference|dimension" />
-        <attr name="keySingleLines" format="boolean" />
-        <!--key-hint-->
-        <attr name="keyHint" format="string"/>
-        <attr name="keyHintColor" format="reference|color" />
-
-        <attr name="keyWidth" format="reference|dimension" />
-        <attr name="keyHeight" format="reference|dimension" />
-        <attr name="keyWeight" format="float" />
-        <attr name="keyBackground" format="reference|color" />
+        <attr name="keySize" />
+        <attr name="keyColor" />
+        <attr name="keyWidth" />
+        <attr name="keyHeight" />
+        <attr name="keyWeight" />
+        <attr name="keyHint" />
+        <attr name="keyHintColor" />
+        <attr name="keyBackground" />
+        <attr name="keySingleLine" />
+        <attr name="keyLineSpacingExtra" />
         <!--key margin-->
-        <attr name="keyMargin" format="reference|dimension" />
-        <attr name="keyMarginLeft" format="reference|dimension" />
-        <attr name="keyMarginTop" format="reference|dimension" />
-        <attr name="keyMarginRight" format="reference|dimension" />
-        <attr name="keyMarginBottom" format="reference|dimension" />
+        <attr name="keyMargin" />
+        <attr name="keyMarginTop" />
+        <attr name="keyMarginLeft" />
+        <attr name="keyMarginRight" />
+        <attr name="keyMarginBottom" />
         <!--key-padding-->
-        <attr name="keyPadding" format="reference|dimension" />
-        <attr name="keyPaddingLeft" format="reference|dimension" />
-        <attr name="keyPaddingTop" format="reference|dimension" />
-        <attr name="keyPaddingRight" format="reference|dimension" />
-        <attr name="keyPaddingBottom" format="reference|dimension" />
+        <attr name="keyPadding" />
+        <attr name="keyPaddingTop" />
+        <attr name="keyPaddingLeft" />
+        <attr name="keyPaddingRight" />
+        <attr name="keyPaddingBottom" />
         <!--key-drawable-->
-        <attr name="keyDrawableLeft" format="reference" />
-        <attr name="keyDrawableRight" format="reference" />
-        <attr name="keyDrawablePadding" format="reference|dimension" />
+        <attr name="keyDrawableLeft" />
+        <attr name="keyDrawableRight" />
+        <attr name="keyDrawablePadding" />
 
         <!--value-->
         <attr name="value" />
-        <attr name="valueSize" format="reference|dimension" />
-        <attr name="valueColor" format="reference|color" />
-        <attr name="valueLineSpacingExtra" format="reference|dimension" />
-        <attr name="valueSingleLine" format="boolean" />
-        <!--value-hint-->
-        <attr name="valueHint" format="string"/>
-        <attr name="valueHintColor" format="reference|color" />
-
-        <attr name="valueWidth" format="reference|dimension" />
-        <attr name="valueHeight" format="reference|dimension" />
-        <attr name="valueWeight" format="float" />
-        <attr name="valueBackground" format="reference|color" />
+        <attr name="valueSize" />
+        <attr name="valueColor" />
+        <attr name="valueWidth" />
+        <attr name="valueHeight" />
+        <attr name="valueWeight" />
+        <attr name="valueHint" />
+        <attr name="valueHintColor" />
+        <attr name="valueBackground" />
+        <attr name="valueSingleLine" />
+        <attr name="valueLineSpacingExtra" />
         <!--value margin-->
-        <attr name="valueMargin" format="reference|dimension" />
-        <attr name="valueMarginLeft" format="reference|dimension" />
-        <attr name="valueMarginTop" format="reference|dimension" />
-        <attr name="valueMarginRight" format="reference|dimension" />
-        <attr name="valueMarginBottom" format="reference|dimension" />
+        <attr name="valueMargin" />
+        <attr name="valueMarginTop" />
+        <attr name="valueMarginLeft" />
+        <attr name="valueMarginRight" />
+        <attr name="valueMarginBottom" />
         <!--value-padding-->
-        <attr name="valuePadding" format="reference|dimension" />
-        <attr name="valuePaddingLeft" format="reference|dimension" />
-        <attr name="valuePaddingTop" format="reference|dimension" />
-        <attr name="valuePaddingRight" format="reference|dimension" />
-        <attr name="valuePaddingBottom" format="reference|dimension" />
+        <attr name="valuePadding" />
+        <attr name="valuePaddingTop" />
+        <attr name="valuePaddingLeft" />
+        <attr name="valuePaddingRight" />
+        <attr name="valuePaddingBottom" />
         <!--value-drawable-->
-        <attr name="valueDrawableLeft" format="reference" />
-        <attr name="valueDrawableRight" format="reference" />
-        <attr name="valueDrawablePadding" format="reference|dimension" />
+        <attr name="valueDrawableLeft" />
+        <attr name="valueDrawableRight" />
+        <attr name="valueDrawablePadding" />
 
         <!--key文字内部对齐-->
-        <attr name="keyGravity">
-            <flag name="left" value="3" /> <!--左对齐-->
-            <flag name="top" value="48" /> <!--上对齐-->
-            <flag name="right" value="5" /> <!--右对齐-->
-            <flag name="bottom" value="80" /> <!--下对齐-->
-            <flag name="center" value="17" /> <!--居中-->
-            <flag name="center_horizontal" value="1" /> <!--水平居中-->
-            <flag name="center_vertical" value="16" /> <!--垂直居中-->
-        </attr>
+        <attr name="keyGravity" />
 
         <!--value文字内部对齐-->
-        <attr name="valueGravity">
-            <flag name="left" value="3" /> <!--左对齐-->
-            <flag name="top" value="48" /> <!--上对齐-->
-            <flag name="right" value="5" /> <!--右对齐-->
-            <flag name="bottom" value="80" /> <!--下对齐-->
-            <flag name="center" value="17" /> <!--居中-->
-            <flag name="center_horizontal" value="1" /> <!--水平居中-->
-            <flag name="center_vertical" value="16" /> <!--垂直居中-->
-        </attr>
+        <attr name="valueGravity" />
 
         <!--key字体样式.-->
-        <attr name="keyStyle">
-            <!--正常-->
-            <flag name="normal" value="0" />
-            <!--粗体-->
-            <flag name="bold" value="1" />
-        </attr>
-
+        <attr name="keyStyle" />
         <!-- value字体样式. -->
-        <attr name="valueStyle">
-            <!--正常-->
-            <flag name="normal" value="0" />
-            <!--粗体-->
-            <flag name="bold" value="1" />
-        </attr>
-
+        <attr name="valueStyle" />
         <!--线条图标-->
-        <attr name="divider"/>
+        <attr name="divider" />
         <!--间隔线样式，none没有，both上下有，top上有，bottom下有-->
         <attr name="dividerMode" />
 
+        <!--上指示器距上-->
+        <attr name="dividerTop_marginTop" />
         <!--上指示器距左-->
-        <attr name="dividerTop_marginLeft" format="reference|dimension" />
+        <attr name="dividerTop_marginLeft" />
         <!--上指示器距右-->
-        <attr name="dividerTop_marginRight" format="reference|dimension" />
+        <attr name="dividerTop_marginRight" />
         <!--下指示器距左-->
-        <attr name="dividerBottom_marginLeft" format="reference|dimension" />
+        <attr name="dividerBottom_marginLeft" />
         <!--下指示器距右-->
-        <attr name="dividerBottom_marginRight" format="reference|dimension" />
+        <attr name="dividerBottom_marginRight" />
+        <!--下指示器距下-->
+        <attr name="dividerBottom_marginBottom" />
+
 
         <attr name="iconLeft" format="reference" />
         <attr name="iconLeft_width" format="reference|dimension" />
@@ -168,7 +270,120 @@
         <attr name="iconRight_marginRight" format="reference|dimension" />
         <attr name="iconRight_marginBottom" format="reference|dimension" />
     </declare-styleable>
-    
+
+    <!--三个相同-->
+    <!--ItemBuilder-->
+    <!--ItemTextView-->
+    <!--ItemEditText-->
+    <declare-styleable name="ItemBuilder">
+        <!--key-->
+        <attr name="key" />
+        <attr name="keySize" />
+        <attr name="keyWidth" />
+        <attr name="keyColor" />
+        <attr name="keyMarginLeft" />
+        <!--divider-->
+        <attr name="dividerMode" />
+        <attr name="dividerHeight" />
+        <attr name="dividerNormalColor" />
+        <attr name="dividerFocusedColor" />
+        <attr name="dividerTop_marginTop" />
+        <attr name="dividerTop_marginLeft" />
+        <attr name="dividerTop_marginRight" />
+        <attr name="dividerBottom_marginLeft" />
+        <attr name="dividerBottom_marginRight" />
+        <attr name="dividerBottom_marginBottom" />
+        <!-- leftIcon-->
+        <attr name="leftIcon" />
+        <attr name="leftIconSize" />
+        <attr name="leftIconMarginLeft" />
+        <attr name="rightIcon" />
+        <attr name="rightIconSize" />
+        <attr name="rightIconMarginRight" />
+    </declare-styleable>
+
+    <!--三个相同-->
+    <!--ItemBuilder-->
+    <!--ItemTextView-->
+    <!--ItemEditText-->
+    <declare-styleable name="ItemTextView">
+        <!--key-->
+        <attr name="key" />
+        <attr name="keySize" />
+        <attr name="keyWidth" />
+        <attr name="keyColor" />
+        <attr name="keyMarginLeft" />
+        <!--divider-->
+        <attr name="dividerMode" />
+        <attr name="dividerHeight" />
+        <attr name="dividerNormalColor" />
+        <attr name="dividerFocusedColor" />
+        <attr name="dividerTop_marginTop" />
+        <attr name="dividerTop_marginLeft" />
+        <attr name="dividerTop_marginRight" />
+        <attr name="dividerBottom_marginLeft" />
+        <attr name="dividerBottom_marginRight" />
+        <attr name="dividerBottom_marginBottom" />
+        <!-- leftIcon-->
+        <attr name="leftIcon" />
+        <attr name="leftIconSize" />
+        <attr name="leftIconMarginLeft" />
+        <attr name="rightIcon" />
+        <attr name="rightIconSize" />
+        <attr name="rightIconMarginRight" />
+    </declare-styleable>
+
+    <!--三个相同-->
+    <!--ItemBuilder-->
+    <!--ItemTextView-->
+    <!--ItemEditText-->
+    <declare-styleable name="ItemEditText">
+        <!--key-->
+        <attr name="key" />
+        <attr name="keySize" />
+        <attr name="keyWidth" />
+        <attr name="keyColor" />
+        <attr name="keyMarginLeft" />
+        <!--divider-->
+        <attr name="dividerMode" />
+        <attr name="dividerHeight" />
+        <attr name="dividerNormalColor" />
+        <attr name="dividerFocusedColor" />
+        <attr name="dividerTop_marginTop" />
+        <attr name="dividerTop_marginLeft" />
+        <attr name="dividerTop_marginRight" />
+        <attr name="dividerBottom_marginLeft" />
+        <attr name="dividerBottom_marginRight" />
+        <attr name="dividerBottom_marginBottom" />
+        <!-- leftIcon-->
+        <attr name="leftIcon" />
+        <attr name="leftIconSize" />
+        <attr name="leftIconMarginLeft" />
+        <attr name="rightIcon" />
+        <attr name="rightIconSize" />
+        <attr name="rightIconMarginRight" />
+    </declare-styleable>
+
+    <declare-styleable name="ItemLinearLayout">
+        <attr name="divider" />
+        <attr name="dividerMode" />
+        <attr name="dividerHeight" />
+        <attr name="dividerTop_marginLeft" />
+        <attr name="dividerTop_marginRight" />
+        <attr name="dividerBottom_marginLeft" />
+        <attr name="dividerBottom_marginRight" />
+    </declare-styleable>
+
+    <declare-styleable name="ItemRelativeLayout">
+        <attr name="divider" />
+        <attr name="dividerMode" />
+        <attr name="dividerHeight" />
+        <attr name="dividerTop_marginLeft" />
+        <attr name="dividerTop_marginRight" />
+        <attr name="dividerBottom_marginLeft" />
+        <attr name="dividerBottom_marginRight" />
+    </declare-styleable>
+
     <declare-styleable name="PerCircleView">
         <attr name="maxValue" format="reference|integer" />
         <attr name="currentValue" format="reference|integer" />
@@ -181,61 +396,61 @@
         <!-- 底圆的大小 -->
         <attr name="bottomCircleSize" format="reference|dimension" />
     </declare-styleable>
-    
+
     <declare-styleable name="WaveView2">
-		<attr name="above_wave_color" format="color"/>
-		<attr name="blow_wave_color" format="color"/>
-        <attr name="progress"/>
+        <attr name="above_wave_color" format="color" />
+        <attr name="blow_wave_color" format="color" />
+        <attr name="progress" />
         <attr name="wave_length" format="enum">
-            <enum name="large" value="1"/>
-            <enum name="middle" value="2"/>
-            <enum name="little" value="3"/>
+            <enum name="large" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="little" value="3" />
         </attr>
         <attr name="wave_height" format="enum">
-            <enum name="large" value="1"/>
-            <enum name="middle" value="2"/>
-            <enum name="little" value="3"/>
+            <enum name="large" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="little" value="3" />
         </attr>
         <attr name="wave_hz" format="enum">
-            <enum name="fast" value="1"/>
-            <enum name="normal" value="2"/>
-            <enum name="slow" value="3"/>
+            <enum name="fast" value="1" />
+            <enum name="normal" value="2" />
+            <enum name="slow" value="3" />
         </attr>
-	</declare-styleable>
-	
+    </declare-styleable>
+
     <declare-styleable name="Themes">
-		<attr name="waveViewStyle" format="reference"/>
-	</declare-styleable>
-	
+        <attr name="waveViewStyle" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="SwitchButton">
-		<attr name="kswThumbDrawable" format="reference"/>
-		<attr name="kswThumbColor" format="color|reference"/>
-		<attr name="kswThumbMargin" format="dimension|reference"/>
-		<attr name="kswThumbMarginTop" format="dimension|reference"/>
-		<attr name="kswThumbMarginBottom" format="dimension|reference"/>
-		<attr name="kswThumbMarginLeft" format="dimension|reference"/>
-		<attr name="kswThumbMarginRight" format="dimension|reference"/>
-		<attr name="kswThumbWidth" format="dimension|reference"/>
-		<attr name="kswThumbHeight" format="dimension|reference"/>
-		<attr name="kswThumbRadius" format="dimension|reference"/>
-		<attr name="kswBackRadius" format="dimension|reference"/>
-		<attr name="kswBackDrawable" format="reference"/>
-		<attr name="kswBackColor" format="color|reference"/>
-		<attr name="kswFadeBack" format="boolean"/>
-		<attr name="kswBackMeasureRatio" format="float"/>
-		<attr name="kswAnimationDuration" format="integer"/>
-		<attr name="kswTintColor" format="color|reference"/>
-	</declare-styleable>
-	
+        <attr name="kswThumbDrawable" format="reference" />
+        <attr name="kswThumbColor" format="color|reference" />
+        <attr name="kswThumbMargin" format="dimension|reference" />
+        <attr name="kswThumbMarginTop" format="dimension|reference" />
+        <attr name="kswThumbMarginBottom" format="dimension|reference" />
+        <attr name="kswThumbMarginLeft" format="dimension|reference" />
+        <attr name="kswThumbMarginRight" format="dimension|reference" />
+        <attr name="kswThumbWidth" format="dimension|reference" />
+        <attr name="kswThumbHeight" format="dimension|reference" />
+        <attr name="kswThumbRadius" format="dimension|reference" />
+        <attr name="kswBackRadius" format="dimension|reference" />
+        <attr name="kswBackDrawable" format="reference" />
+        <attr name="kswBackColor" format="color|reference" />
+        <attr name="kswFadeBack" format="boolean|reference"/>
+        <attr name="kswBackMeasureRatio" format="float" />
+        <attr name="kswAnimationDuration" format="integer" />
+        <attr name="kswTintColor" format="color|reference" />
+    </declare-styleable>
+
     <declare-styleable name="NoticeTextView">
         <attr name="text_size" format="reference|dimension" />
         <attr name="text_color" format="reference|color" />
         <!-- 左边的Icon -->
-        <attr name="icon_resid" format="reference" /> 
+        <attr name="icon_resid" format="reference" />
     </declare-styleable>
 
 
-    <declare-styleable name="DynamicWave" >
+    <declare-styleable name="DynamicWave">
         <!-- 进度百分比 也是水波纹的高度 废弃，用progress -->
         <attr name="dw_progress" format="reference|integer" />
     </declare-styleable>
@@ -258,11 +473,11 @@
         <attr name="showTopOval" format="boolean" />
 
         <!--圆环开始角度-->
-        <attr name="startAngle"/>
+        <attr name="startAngle" />
         <!--圆环跨度角度-->
-        <attr name="sweepAngle"/>
+        <attr name="sweepAngle" />
         <!--进度值0-1-->
-        <attr name="progress"/>
+        <attr name="progress" />
         <!--比例为宽:高，格式"100:50" -->
         <attr name="ratio" format="string" />
     </declare-styleable>
@@ -270,79 +485,71 @@
     <!--半圆形仪表进度组件 - 仿微信芝麻信用分-->
     <declare-styleable name="RoundIndicatorView">
         <!--最大数值-->
-        <attr name="maxNum" format="reference|integer"/>
+        <attr name="maxNum" format="reference|integer" />
         <!--圆盘起始角度-->
-        <attr name="startAngle"/>
+        <attr name="startAngle" />
         <!--圆盘扫过的角度-->
-        <attr name="sweepAngle"/>
+        <attr name="sweepAngle" />
     </declare-styleable>
 
     <declare-styleable name="ProgressWaveView">
-        <attr name="behindColor" format="reference|color"/>
-        <attr name="aboveColor" format="reference|color"/>
-        <attr name="waveProgress" format="reference|float"/>
+        <attr name="behindColor" format="reference|color" />
+        <attr name="aboveColor" format="reference|color" />
+        <attr name="waveProgress" format="reference|float" />
         <attr name="shapeType" format="enum">
-            <enum name="square" value="0"/>
-            <enum name="circle" value="1"/>
+            <enum name="square" value="0" />
+            <enum name="circle" value="1" />
         </attr>
     </declare-styleable>
 
     <!--手势密码-->
     <declare-styleable name="GestureView">
-        <attr name="circleNum" format="reference|integer"/>		    <!--水平的圆圈个数，3X3就是3，4X4就是4-->
-        <attr name="limitNum" format="reference|integer"/>		    <!--设置最少绘制数量-->
-        <attr name="circleSpace" format="reference|dimension"/>		<!--圆与圆的间隔距离-->
-        <attr name="circleRadius"/>	                                <!--圆半径-->
-        <attr name="touchShake" format="boolean"/>	                <!--是否触摸震动-->
+        <attr name="circleNum" format="reference|integer" />            <!--水平的圆圈个数，3X3就是3，4X4就是4-->
+        <attr name="limitNum" format="reference|integer" />            <!--设置最少绘制数量-->
+        <attr name="circleSpace" format="reference|dimension" />        <!--圆与圆的间隔距离-->
+        <attr name="circleRadius" />                                    <!--圆半径-->
+        <attr name="touchShake" format="boolean" />                    <!--是否触摸震动-->
         <!--背景-->
-        <attr name="backgroundColorNormal" format="reference|color"/>   <!--背景颜色 正常-->
-        <attr name="backgroundColorTouch" format="reference|color"/>    <!--背景颜色 触摸-->
-        <attr name="backgroundColorError" format="reference|color"/>    <!--背景颜色 错误-->
+        <attr name="backgroundColorNormal" format="reference|color" />   <!--背景颜色 正常-->
+        <attr name="backgroundColorTouch" format="reference|color" />    <!--背景颜色 触摸-->
+        <attr name="backgroundColorError" format="reference|color" />    <!--背景颜色 错误-->
         <!--外圆-->
-        <attr name="outerCycleColorNormal" format="reference|color"/>	<!--外圆颜色 正常-->
-        <attr name="outerCycleColorTouch" format="reference|color"/>	<!--外圆颜色 触摸-->
-        <attr name="outerCycleColorError" format="reference|color"/>	<!--外圆颜色 错误-->
+        <attr name="outerCycleColorNormal" format="reference|color" />    <!--外圆颜色 正常-->
+        <attr name="outerCycleColorTouch" format="reference|color" />    <!--外圆颜色 触摸-->
+        <attr name="outerCycleColorError" format="reference|color" />    <!--外圆颜色 错误-->
         <!--内圆-->
-        <attr name="innerCycleColorNormal" format="reference|color"/>	<!--内圆颜色 正常-->
-        <attr name="innerCycleColorTouch" format="reference|color"/>	<!--内圆颜色 触摸-->
-        <attr name="innerCycleColorError" format="reference|color"/>	<!--内圆颜色 错误-->
+        <attr name="innerCycleColorNormal" format="reference|color" />    <!--内圆颜色 正常-->
+        <attr name="innerCycleColorTouch" format="reference|color" />    <!--内圆颜色 触摸-->
+        <attr name="innerCycleColorError" format="reference|color" />    <!--内圆颜色 错误-->
         <!--连接线-->
-        <attr name="linkLineColorNormal" format="reference|color"/>		<!--线条颜色 正常-->
-        <attr name="linkLineColorError" format="reference|color"/>		<!--线条颜色 错误-->
+        <attr name="linkLineColorNormal" format="reference|color" />        <!--线条颜色 正常-->
+        <attr name="linkLineColorError" format="reference|color" />        <!--线条颜色 错误-->
         <!-- #其他# -->
-        <attr name="outerCycleStrokeSizeError" format="reference|dimension"/>	<!--外圆边框大小 错误时-->
-        <attr name="outerCycleStrokeSize" format="reference|dimension"/>		<!--外圆边框大小-->
-        <attr name="innerCycleStrokeSize" format="reference|dimension"/>		<!--内圆边框大小-->
-        <attr name="linkLineStrokeSize" format="reference|dimension"/>		    <!--连接线条大小-->
+        <attr name="outerCycleStrokeSizeError" format="reference|dimension" />    <!--外圆边框大小 错误时-->
+        <attr name="outerCycleStrokeSize" format="reference|dimension" />        <!--外圆边框大小-->
+        <attr name="innerCycleStrokeSize" format="reference|dimension" />        <!--内圆边框大小-->
+        <attr name="linkLineStrokeSize" format="reference|dimension" />            <!--连接线条大小-->
         <!--<attr name="backgroundStrokeSiformatStringrmat="reference|dimension"/>		&lt;!&ndash;背景边框大小&ndash;&gt;-->
     </declare-styleable>
 
-    <declare-styleable name="ItemTextView">
-        <attr name="divider"/>
-        <attr name="dividerMode" />
-        <attr name="topPaddingLeft" format="reference|dimension"/>
-        <attr name="topPaddingRight" format="reference|dimension"/>
-        <attr name="bottomPaddingLeft" format="reference|dimension"/>
-        <attr name="bottomPaddingRight" format="reference|dimension"/>
-    </declare-styleable>
 
     <declare-styleable name="ViewPagerIndicator">
         <!--正常颜色-->
-        <attr name="colorNormal" format="reference|color"/>
+        <attr name="colorNormal" format="reference|color" />
         <!--选中颜色-->
-        <attr name="colorSelected" format="reference|color"/>
-        <attr name="lineSize" format="reference|dimension"/>
-        <attr name="circleRadius"/>
-        <attr name="spaceWidth" format="reference|dimension"/>
-        <attr name="rectWidth" format="reference|dimension"/>
-        <attr name="rectHeight" format="reference|dimension"/>
-        <attr name="indicatorCount" format="integer"/>
-        <attr name="currentItem" format="reference|integer"/>
+        <attr name="colorSelected" format="reference|color" />
+        <attr name="lineSize" format="reference|dimension" />
+        <attr name="circleRadius" />
+        <attr name="spaceWidth" format="reference|dimension" />
+        <attr name="rectWidth" format="reference|dimension" />
+        <attr name="rectHeight" format="reference|dimension" />
+        <attr name="indicatorCount" format="integer" />
+        <attr name="currentItem" format="reference|integer" />
         <attr name="indicatorType" format="enum">
             <!--圆形-->
-            <enum name="circle" value="0"/>
+            <enum name="circle" value="0" />
             <!--矩形-->
-            <enum name="rect" value="1"/>
+            <enum name="rect" value="1" />
         </attr>
     </declare-styleable>
 

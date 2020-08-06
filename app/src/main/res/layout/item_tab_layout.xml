@@ -1,8 +1,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal|bottom"
+    android:layout_height="60dp"
+    android:gravity="center"
     android:paddingBottom="2dip"
     android:orientation="vertical">
 
@@ -19,5 +19,5 @@
         android:layout_marginTop="3dip"
         android:text="首页"
         android:textColor="#0251c3"
-        android:textSize="9.5dip"/>
+        android:textSize="11sp"/>
 </LinearLayout>

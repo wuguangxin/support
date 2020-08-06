@@ -16,10 +16,10 @@ import java.util.Map;
  * <p>Created by wuguangxin on 15/1/9 </p>
  */
 public class CityDao {
-	private MyHelper helper;
+	private DBHelper helper;
 	
 	public CityDao(Context context) {
-		helper = new MyHelper(context);
+		helper = new DBHelper(context);
 		helper.openDatabase();
 	}
 	
