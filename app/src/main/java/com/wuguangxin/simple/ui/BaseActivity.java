@@ -77,6 +77,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         mLoadingDialog = new LoadingDialog(this); // 加载对话框
         mSlidingFinishHelper = new SlidingFinishHelper(this);
 
+        setTitle("title");
+
         StatusBarUtils.setImmersionStatusBar(this, getResources().getColor(R.color.xin_titlebar_background));
         StatusBarUtils.setStatusBarFontColor(this, false);
         SoftHideKeyBoardUtil.assistActivity(this);
@@ -160,8 +162,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
      */
     protected SmartRefreshLayout getRefreshLayout() {
         if (mRefreshLayout == null) {
-            LayoutInflater inflater = LayoutInflater.from(this);
-            mRefreshLayout = (SmartRefreshLayout) inflater.inflate(R.layout.xin_def_refresh_layout, null);
+            mRefreshLayout = (SmartRefreshLayout) LayoutInflater.from(this).inflate(R.layout.xin_def_refresh_layout, null);
         }
         return mRefreshLayout;
     }

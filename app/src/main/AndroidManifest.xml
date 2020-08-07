@@ -28,12 +28,9 @@
         </activity>
 
         <activity android:name=".ui.TabHost0_Activity"/>
-        <activity android:name=".ui.TabHost1_Activity"/>
-        <activity android:name=".ui.TabHost2_Activity"/>
         <activity android:name=".ui.TabHostDemoActivity"/>
 
-        <activity android:name=".ui.ToastUtilsActivity"/>
-        <activity android:name=".ui.MyDialogActivity"/>
+        <activity android:name=".ui.XinDialogActivity"/>
         <activity android:name=".ui.ItemViewActivity"/>
         <activity android:name=".ui.CircleProgressViewActivity"/>
         <activity android:name=".ui.GestureViewActivity"/>

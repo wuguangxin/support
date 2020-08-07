@@ -108,18 +108,8 @@ public class TitleBar {
     }
 
     private void setListener(){
-        mBackView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                mActivity.finish();
-            }
-        });
-        mCloseView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                mActivity.finish();
-            }
-        });
+        mBackView.setOnClickListener(v -> mActivity.finish());
+        mCloseView.setOnClickListener(v -> mActivity.finish());
     }
 
     /**

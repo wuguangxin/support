@@ -35,6 +35,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        setTitle("SupportDemo");
+        getTitleBar().setBackVisibility(false);
     }
 
     @Override
@@ -50,7 +52,6 @@ public class MainActivity extends BaseActivity {
     @OnClick({
             R.id.tabHost,
             R.id.okhttp,
-            R.id.ToastUtils,
             R.id.XinDialog,
             R.id.ItemView,
             R.id.CircleProgressView,
@@ -70,11 +71,8 @@ public class MainActivity extends BaseActivity {
         case R.id.okhttp:
             testOkHttp();
             break;
-        case R.id.ToastUtils:
-            openActivity(ToastUtilsActivity.class);
-            break;
         case R.id.XinDialog:
-            openActivity(MyDialogActivity.class);
+            openActivity(XinDialogActivity.class);
             break;
         case R.id.ItemView:
             openActivity(ItemViewActivity.class);

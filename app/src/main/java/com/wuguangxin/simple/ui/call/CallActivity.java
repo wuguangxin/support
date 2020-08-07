@@ -41,18 +41,10 @@ public class CallActivity extends BaseActivity {
     }
 
     @OnClick({
-            R.id.call_0,
-            R.id.call_1,
-            R.id.call_2,
-            R.id.call_3,
-            R.id.call_4,
-            R.id.call_5,
-            R.id.call_6,
-            R.id.call_7,
-            R.id.call_8,
-            R.id.call_9,
-            R.id.call_x,
-            R.id.call_j,
+            R.id.call_0, R.id.call_1, R.id.call_2,
+            R.id.call_3, R.id.call_4, R.id.call_5,
+            R.id.call_6, R.id.call_7, R.id.call_8,
+            R.id.call_9, R.id.call_x, R.id.call_j,
             R.id.call_commit,
             R.id.call_delete,
             R.id.call_set,

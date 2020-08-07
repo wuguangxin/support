@@ -5,16 +5,9 @@ import android.view.View;
 
 import com.wuguangxin.simple.R;
 
-public class WidgetActivity extends BaseActivity implements View.OnClickListener {
+import butterknife.OnClick;
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-        case R.id.permission:
-            break;
-        }
-    }
+public class WidgetActivity extends BaseActivity {
 
     @Override
     public int getLayoutRes() {
@@ -23,11 +16,20 @@ public class WidgetActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void initView(Bundle savedInstanceState) {
-
+        setTitle("动态权限");
     }
 
     @Override
     public void initListener() {
+    }
+
+    @OnClick({R.id.permission})
+    public void onClicked(View v) {
+        int id = v.getId();
+        switch (id) {
+        case R.id.permission:
+            break;
+        }
     }
 
     @Override

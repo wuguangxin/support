@@ -8,20 +8,35 @@ import android.util.Log;
 
 import com.wuguangxin.simple.R;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class GestureViewActivity extends AppCompatActivity {
+public class GestureViewActivity extends BaseActivity {
 
     private static final String TAG = "GestureViewActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gesture_view);
-        setTitle("手势密码");
+    public int getLayoutRes() {
+        return R.layout.activity_gesture_view;
+    }
 
+    @Override
+    public void initView(Bundle savedInstanceState) {
+        setTitle("手势密码");
         TelephonyManager telephonyManager = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
         telephonyManager.listen(new MyPhoneStateListener(), PhoneStateListener.LISTEN_CALL_STATE);    // 监听来电状态
+    }
+
+    @Override
+    public void initListener() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void setData() {
+
     }
 
 

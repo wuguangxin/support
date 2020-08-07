@@ -3,6 +3,7 @@ package com.wuguangxin.base;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -106,7 +107,11 @@ public class LayoutManager {
      * @param drawable
      */
     public LayoutManager setBackground(Drawable drawable) {
-        mRootLayout.setBackground(drawable);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mRootLayout.setBackground(drawable);
+        } else {
+            mRootLayout.setBackgroundDrawable(drawable);
+        }
         return this;
     }
 
