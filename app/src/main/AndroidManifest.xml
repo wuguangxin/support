@@ -12,14 +12,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".App"
+        android:name="com.wuguangxin.simple.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".ui.MainActivity">
+        <activity android:name="com.wuguangxin.simple.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,15 +27,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.TabHost0_Activity"/>
-        <activity android:name=".ui.TabHostDemoActivity"/>
+        <activity android:name="com.wuguangxin.simple.ui.TabHost0_Activity"/>
+        <activity android:name="com.wuguangxin.simple.ui.TabHost1_Activity"/>
+        <activity android:name="com.wuguangxin.simple.ui.TabHost2_Activity"/>
+        <activity android:name="com.wuguangxin.simple.ui.TabHostDemoActivity"/>
 
-        <activity android:name=".ui.XinDialogActivity"/>
-        <activity android:name=".ui.ItemViewActivity"/>
-        <activity android:name=".ui.CircleProgressViewActivity"/>
-        <activity android:name=".ui.GestureViewActivity"/>
+        <activity android:name="com.wuguangxin.simple.ui.ToastUtilsActivity"/>
+        <activity android:name="com.wuguangxin.simple.ui.MyDialogActivity"/>
+        <activity android:name="com.wuguangxin.simple.ui.ItemViewActivity"/>
+        <activity android:name="com.wuguangxin.simple.ui.CircleProgressViewActivity"/>
+        <activity android:name="com.wuguangxin.simple.ui.GestureViewActivity"/>
 
-        <activity android:name=".ui.call.CallActivity" android:screenOrientation="portrait" >
+        <activity android:name="com.wuguangxin.simple.ui.call.CallActivity" android:screenOrientation="portrait" >
             <!-- 提供打电话的UI -->
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
@@ -49,7 +52,7 @@
         </activity>
 
         <service
-            android:name=".ui.call.PhoneCallService"
+            android:name="com.wuguangxin.simple.ui.call.PhoneCallService"
             android:permission="android.permission.BIND_INCALL_SERVICE">
             <meta-data
                 android:name="android.telecom.IN_CALL_SERVICE_UI"

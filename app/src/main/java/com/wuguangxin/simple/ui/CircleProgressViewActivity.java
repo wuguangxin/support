@@ -6,24 +6,24 @@ import android.widget.SeekBar;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.view.CircleProgressView;
 
-public class CircleProgressViewActivity extends BaseActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CircleProgressViewActivity extends AppCompatActivity {
     private CircleProgressView mCircleProgressView;
     private SeekBar mSeekBarSweepAngle; // 跨度
     private SeekBar mSeekBarProgress;   // 进度
 
-    @Override
-    public int getLayoutRes() {
-        return R.layout.activity_circleprogressview;
-    }
 
     @Override
-    public void initView(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_circleprogressview);
         setTitle("圆形进度条");
 
-        mCircleProgressView = findViewById(R.id.home_CircleProgressView);
+        mCircleProgressView = (CircleProgressView) findViewById(R.id.home_CircleProgressView);
         mCircleProgressView.setUseAnim(false);
 
-        mSeekBarSweepAngle= findViewById(R.id.seekBar_sweepAngle);
+        mSeekBarSweepAngle= (SeekBar) findViewById(R.id.seekBar_sweepAngle);
         mSeekBarSweepAngle.setProgress((int) mCircleProgressView.getSweepAngle());
         mSeekBarSweepAngle.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -43,7 +43,7 @@ public class CircleProgressViewActivity extends BaseActivity {
         });
 
 
-        mSeekBarProgress= findViewById(R.id.seekBar_progress);
+        mSeekBarProgress= (SeekBar) findViewById(R.id.seekBar_progress);
         mSeekBarProgress.setProgress((int) (mCircleProgressView.getProgress() * 100));
         mSeekBarProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -61,20 +61,5 @@ public class CircleProgressViewActivity extends BaseActivity {
 
             }
         });
-    }
-
-    @Override
-    public void initListener() {
-
-    }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void setData() {
-
     }
 }

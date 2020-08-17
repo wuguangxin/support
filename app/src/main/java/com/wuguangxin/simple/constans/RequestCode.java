@@ -1,7 +1,7 @@
 package com.wuguangxin.simple.constans;
 
 /**
- * requestCode分类表。 <br/>
+ * requestCode分类表。
  *
  * Created by wuguangxin on 2016/09/20
  */

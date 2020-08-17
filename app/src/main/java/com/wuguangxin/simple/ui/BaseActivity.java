@@ -22,9 +22,9 @@ import com.wuguangxin.base.LayoutManager;
 import com.wuguangxin.base.TitleBar;
 import com.wuguangxin.dialog.LoadingDialog;
 import com.wuguangxin.dialog.XinDialog;
+import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.base.BaseInterface;
 import com.wuguangxin.simple.constans.Constants;
-import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.constans.RequestCode;
 import com.wuguangxin.utils.AndroidUtils;
 import com.wuguangxin.utils.AnimUtil;
@@ -162,7 +162,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
      */
     protected SmartRefreshLayout getRefreshLayout() {
         if (mRefreshLayout == null) {
-            mRefreshLayout = (SmartRefreshLayout) LayoutInflater.from(this).inflate(R.layout.xin_def_refresh_layout, null);
+            LayoutInflater inflater = LayoutInflater.from(this);
+            mRefreshLayout = (SmartRefreshLayout) inflater.inflate(R.layout.xin_def_refresh_layout, null);
         }
         return mRefreshLayout;
     }

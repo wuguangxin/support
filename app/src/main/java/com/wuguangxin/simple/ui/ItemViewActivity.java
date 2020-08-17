@@ -1,39 +1,47 @@
 package com.wuguangxin.simple.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.wuguangxin.simple.R;
 import com.wuguangxin.view.ItemView;
 
-import butterknife.BindView;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class ItemViewActivity extends BaseActivity {
-    @BindView(R.id.itemView) ItemView mItemView;
-
-    @Override
-    public int getLayoutRes() {
-        return R.layout.activity_itemview;
-    }
+public class ItemViewActivity extends AppCompatActivity implements View.OnClickListener{
+    private ItemView mItemView;
 
     @Override
-    public void initView(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_itemview);
         setTitle("列表Item组件");
+
+        mItemView = (ItemView) findViewById(R.id.itemView);
+        mItemView.setOnClickListener(this);
+
+        mItemView.getKeyView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ItemViewActivity.this, "点了 Key", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mItemView.getValueView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ItemViewActivity.this, "点了 Value", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
-    public void initListener() {
-        mItemView.setOnClickListener(v -> showToast("点了 ItemView"));
-        mItemView.getKeyView().setOnClickListener(v -> showToast("点了 Key"));
-        mItemView.getValueView().setOnClickListener(v -> showToast("点了 Value"));
-    }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void setData() {
-
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+        case R.id.itemView:
+            Toast.makeText(this, "点了 ItemView", Toast.LENGTH_SHORT).show();
+            break;
+        }
     }
 }

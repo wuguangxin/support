@@ -1,39 +1,19 @@
 package com.wuguangxin.simple.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import butterknife.BindView;
 
 /**
  * Tab 1
  */
-public class TabHost1_Activity extends BaseActivity {
-
-	@BindView(android.R.id.text1) TextView mTextView;
+public class TabHost1_Activity extends Activity {
 
 	@Override
-	public int getLayoutRes() {
-		return android.R.layout.simple_list_item_1;
-	}
-
-	@Override
-	public void initView(Bundle savedInstanceState) {
-		mTextView.setText(getClass().getSimpleName());
-	}
-
-	@Override
-	public void initListener() {
-
-	}
-
-	@Override
-	public void initData() {
-
-	}
-
-	@Override
-	public void setData() {
-
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		TextView textView = new TextView(this);
+		textView.setText(getClass().getSimpleName());
+		setContentView(textView);
 	}
 }
