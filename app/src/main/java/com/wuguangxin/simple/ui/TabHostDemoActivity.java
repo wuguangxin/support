@@ -21,7 +21,6 @@ public class TabHostDemoActivity extends XinTabActivity {
 
     @Override
     public void onCreateView(){
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.xin_tab_layout);
     }
 
@@ -39,9 +38,9 @@ public class TabHostDemoActivity extends XinTabActivity {
     public ArrayList<Tab> getTabList(){
         ArrayList<Tab> tabList = new ArrayList<>();
         tabList.add(new Tab("首页", R.drawable.main_tab_home, TabHost0_Activity.class));
-        tabList.add(new Tab("标的", R.drawable.main_tab_product, TabHost1_Activity.class));
+        tabList.add(new Tab("产品", R.drawable.main_tab_product, TabHost1_Activity.class));
         tabList.add(new Tab("发现", R.drawable.main_tab_product, TabHost1_Activity.class));
-        tabList.add(new Tab("我", R.drawable.main_tab_assets, TabHost2_Activity.class));
+        tabList.add(new Tab("我的", R.drawable.main_tab_assets, TabHost2_Activity.class));
         return tabList;
     }
 

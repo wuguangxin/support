@@ -21,7 +21,7 @@ import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * SwitchButton

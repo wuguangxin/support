@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * ViewPager 指示器

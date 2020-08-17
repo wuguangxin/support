@@ -17,7 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 import androidx.appcompat.widget.AppCompatImageView;
 

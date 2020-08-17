@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * 水波纹圆形进度，形状为正方形的两层水波纹，无法实现圆形形状

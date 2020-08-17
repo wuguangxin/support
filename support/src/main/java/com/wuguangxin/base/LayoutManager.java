@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 import com.wuguangxin.utils.AnimUtil;
 
 import java.util.ArrayList;
@@ -57,12 +57,14 @@ public class LayoutManager {
      * @param layoutRes
      */
     public LayoutManager setContentView(@LayoutRes int layoutRes) {
-        // 这种方式会导致有下拉刷新界面布局高度测量有问题。
-        // View view = View.inflate(mActivity, layoutRes, null);
-        // return setContentView(view);
+        if (layoutRes != 0) {
+            // 这种方式会导致有下拉刷新界面布局高度测量有问题。
+            // View view = View.inflate(mActivity, layoutRes, null);
+            // return setContentView(view);
 
-        // 完美解决
-        View.inflate(mActivity, layoutRes, mBodyLayout);
+            // 完美解决
+            View.inflate(mActivity, layoutRes, mBodyLayout);
+        }
         return this;
     }
 

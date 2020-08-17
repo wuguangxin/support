@@ -18,7 +18,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

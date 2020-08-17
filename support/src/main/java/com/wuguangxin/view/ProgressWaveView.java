@@ -17,7 +17,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * 水波纹进度组件

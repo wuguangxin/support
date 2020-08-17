@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * 耗时操作时显示的对话框

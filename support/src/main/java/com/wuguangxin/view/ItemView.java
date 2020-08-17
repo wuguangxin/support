@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * Item项使用的View（LinearLayout+TextView的组合控件，水平排列 key-value）
@@ -139,107 +139,106 @@ public class ItemView extends LinearLayout {
     public ItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         defFontSize = dip2px(context, 14);
+        valueDrawablePadding = dip2px(context, 10);
         keySize = defFontSize;
         valueSize = defFontSize;
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemView);
-        if (a != null) {
-            // 线
-            divider = a.getDrawable(R.styleable.ItemView_divider);
-            dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemView_dividerMode, dividerMode.value));
-            dividerTopMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginTop, dividerTopMarginTop);
-            dividerTopMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginLeft, dividerTopMarginLeft);
-            dividerTopMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginRight, dividerTopMarginRight);
-            dividerBottomMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginLeft, dividerBottomMarginLeft);
-            dividerBottomMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginRight, dividerBottomMarginRight);
-            dividerBottomMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginBottom, dividerBottomMarginBottom);
+        // 线
+        divider = a.getDrawable(R.styleable.ItemView_divider);
+        dividerMode = DividerMode.fromValue(a.getInteger(R.styleable.ItemView_dividerMode, dividerMode.value));
+        dividerTopMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginTop, dividerTopMarginTop);
+        dividerTopMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginLeft, dividerTopMarginLeft);
+        dividerTopMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerTop_marginRight, dividerTopMarginRight);
+        dividerBottomMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginLeft, dividerBottomMarginLeft);
+        dividerBottomMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginRight, dividerBottomMarginRight);
+        dividerBottomMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_dividerBottom_marginBottom, dividerBottomMarginBottom);
 
-            // 左图标
-            iconLeft = a.getDrawable(R.styleable.ItemView_iconLeft);
-            iconLeftWidth = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_width, iconLeftWidth);
-            iconLeftHeight = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_height, iconLeftHeight);
-            iconLeftMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginLeft, iconLeftMarginLeft);
-            iconLeftMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginTop, iconLeftMarginTop);
-            iconLeftMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginRight, iconLeftMarginRight);
-            iconLeftMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginBottom, iconLeftMarginBottom);
+        // 左图标
+        iconLeft = a.getDrawable(R.styleable.ItemView_iconLeft);
+        iconLeftWidth = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_width, iconLeftWidth);
+        iconLeftHeight = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_height, iconLeftHeight);
+        iconLeftMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginLeft, iconLeftMarginLeft);
+        iconLeftMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginTop, iconLeftMarginTop);
+        iconLeftMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginRight, iconLeftMarginRight);
+        iconLeftMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_iconLeft_marginBottom, iconLeftMarginBottom);
 
-            // 右图标
-            iconRight = a.getDrawable(R.styleable.ItemView_iconRight);
-            iconRightWidth = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_width, iconRightWidth);
-            iconRightHeight = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_height, iconRightHeight);
-            iconRightMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginLeft, iconRightMarginLeft);
-            iconRightMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginTop, iconRightMarginTop);
-            iconRightMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginRight, iconRightMarginRight);
-            iconRightMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginBottom, iconRightMarginBottom);
+        // 右图标
+        iconRight = a.getDrawable(R.styleable.ItemView_iconRight);
+        iconRightWidth = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_width, iconRightWidth);
+        iconRightHeight = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_height, iconRightHeight);
+        iconRightMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginLeft, iconRightMarginLeft);
+        iconRightMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginTop, iconRightMarginTop);
+        iconRightMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginRight, iconRightMarginRight);
+        iconRightMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_iconRight_marginBottom, iconRightMarginBottom);
 
-            // key
-            key = a.getString(R.styleable.ItemView_key);
-            keySize = a.getDimensionPixelSize(R.styleable.ItemView_keySize, keySize);
-            keyColor = a.getColor(R.styleable.ItemView_keyColor, keyColor);
-            keyStyle = a.getInt(R.styleable.ItemView_keyStyle, keyStyle);
-            keyLineSpacingExtra = a.getDimensionPixelSize(R.styleable.ItemView_keyLineSpacingExtra, keyLineSpacingExtra);
-            keySingleLine = a.getBoolean(R.styleable.ItemView_keySingleLine, keySingleLine);
-            keyBackground = a.getDrawable(R.styleable.ItemView_keyBackground);
-            keyGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_keyGravity, keyGravity.value));
-            // key-hint
-            keyHint = a.getString(R.styleable.ItemView_keyHint);
-            keyHintColor = a.getColor(R.styleable.ItemView_keyHintColor, keyHintColor);
-            // key-width-height
-            keyWeight = a.getFloat(R.styleable.ItemView_keyWeight, keyWeight);
-            keyWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyWidth, keyWidth);
-            keyHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyHeight, keyHeight);
-            // key-margin
-            keyMargin = a.getDimensionPixelSize(R.styleable.ItemView_keyMargin, keyMargin);
-            keyMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginLeft, keyMarginLeft);
-            keyMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginTop, keyMarginTop);
-            keyMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginRight, keyMarginRight);
-            keyMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginBottom, keyMarginBottom);
-            // key-padding
-            keyPadding = a.getDimensionPixelSize(R.styleable.ItemView_keyPadding, keyPadding);
-            keyPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingLeft, keyPaddingLeft);
-            keyPaddingTop = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingTop, keyPaddingTop);
-            keyPaddingRight = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingRight, keyPaddingRight);
-            keyPaddingBottom = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingBottom, keyPaddingBottom);
-            // key-drawable
-            keyDrawablePadding = a.getDimensionPixelSize(R.styleable.ItemView_keyDrawablePadding, keyDrawablePadding);
-            keyDrawableLeft = a.getDrawable(R.styleable.ItemView_keyDrawableLeft);
-            keyDrawableRight = a.getDrawable(R.styleable.ItemView_keyDrawableRight);
+        // key
+        key = a.getString(R.styleable.ItemView_key);
+        keySize = a.getDimensionPixelSize(R.styleable.ItemView_keySize, keySize);
+        keyColor = a.getColor(R.styleable.ItemView_keyColor, keyColor);
+        keyStyle = a.getInt(R.styleable.ItemView_keyStyle, keyStyle);
+        keyLineSpacingExtra = a.getDimensionPixelSize(R.styleable.ItemView_keyLineSpacingExtra, keyLineSpacingExtra);
+        keySingleLine = a.getBoolean(R.styleable.ItemView_keySingleLine, keySingleLine);
+        keyBackground = a.getDrawable(R.styleable.ItemView_keyBackground);
+        keyGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_keyGravity, keyGravity.value));
+        // key-hint
+        keyHint = a.getString(R.styleable.ItemView_keyHint);
+        keyHintColor = a.getColor(R.styleable.ItemView_keyHintColor, keyHintColor);
+        // key-width-height
+        keyWeight = a.getFloat(R.styleable.ItemView_keyWeight, keyWeight);
+        keyWidth = a.getDimensionPixelSize(R.styleable.ItemView_keyWidth, keyWidth);
+        keyHeight = a.getDimensionPixelSize(R.styleable.ItemView_keyHeight, keyHeight);
+        // key-margin
+        keyMargin = a.getDimensionPixelSize(R.styleable.ItemView_keyMargin, keyMargin);
+        keyMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginLeft, keyMarginLeft);
+        keyMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginTop, keyMarginTop);
+        keyMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginRight, keyMarginRight);
+        keyMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_keyMarginBottom, keyMarginBottom);
+        // key-padding
+        keyPadding = a.getDimensionPixelSize(R.styleable.ItemView_keyPadding, keyPadding);
+        keyPaddingLeft = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingLeft, keyPaddingLeft);
+        keyPaddingTop = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingTop, keyPaddingTop);
+        keyPaddingRight = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingRight, keyPaddingRight);
+        keyPaddingBottom = a.getDimensionPixelSize(R.styleable.ItemView_keyPaddingBottom, keyPaddingBottom);
+        // key-drawable
+        keyDrawablePadding = a.getDimensionPixelSize(R.styleable.ItemView_keyDrawablePadding, keyDrawablePadding);
+        keyDrawableLeft = a.getDrawable(R.styleable.ItemView_keyDrawableLeft);
+        keyDrawableRight = a.getDrawable(R.styleable.ItemView_keyDrawableRight);
 
-            // value
-            value = a.getString(R.styleable.ItemView_value);
-            valueSize = a.getDimensionPixelSize(R.styleable.ItemView_valueSize, valueSize);
-            valueColor = a.getColor(R.styleable.ItemView_valueColor, valueColor);
-            valueStyle = a.getInt(R.styleable.ItemView_valueStyle, valueStyle);
-            valueSingleLine = a.getBoolean(R.styleable.ItemView_valueSingleLine, valueSingleLine);
-            valueLineSpacingExtra = a.getDimensionPixelSize(R.styleable.ItemView_valueLineSpacingExtra, valueLineSpacingExtra);
-            valueBackground = a.getDrawable(R.styleable.ItemView_valueBackground);
-            valueGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_valueGravity, valueGravity.value));
-            // value-hint
-            valueHint = a.getString(R.styleable.ItemView_valueHint);
-            valueHintColor = a.getColor(R.styleable.ItemView_valueHintColor, valueHintColor);
-            // value-width-height
-            valueWeight = a.getFloat(R.styleable.ItemView_valueWeight, valueWeight);
-            valueWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueWidth, valueWidth);
-            valueHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueHeight, valueHeight);
-            // value-margin
-            valueMargin = a.getDimensionPixelSize(R.styleable.ItemView_valueMargin, valueMargin);
-            valueMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginLeft, valueMarginLeft);
-            valueMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginTop, valueMarginTop);
-            valueMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginRight, valueMarginRight);
-            valueMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginBottom, valueMarginBottom);
-            // value-padding
-            valuePadding = a.getDimensionPixelSize(R.styleable.ItemView_valuePadding, valuePadding);
-            valuePaddingLeft = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingLeft, valuePaddingLeft);
-            valuePaddingTop = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingTop, valuePaddingTop);
-            valuePaddingRight = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingRight, valuePaddingRight);
-            valuePaddingBottom = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingBottom, valuePaddingBottom);
+        // value
+        value = a.getString(R.styleable.ItemView_value);
+        valueSize = a.getDimensionPixelSize(R.styleable.ItemView_valueSize, valueSize);
+        valueColor = a.getColor(R.styleable.ItemView_valueColor, valueColor);
+        valueStyle = a.getInt(R.styleable.ItemView_valueStyle, valueStyle);
+        valueSingleLine = a.getBoolean(R.styleable.ItemView_valueSingleLine, valueSingleLine);
+        valueLineSpacingExtra = a.getDimensionPixelSize(R.styleable.ItemView_valueLineSpacingExtra, valueLineSpacingExtra);
+        valueBackground = a.getDrawable(R.styleable.ItemView_valueBackground);
+        valueGravity = GravityMode.fromValue(a.getInteger(R.styleable.ItemView_valueGravity, valueGravity.value));
+        // value-hint
+        valueHint = a.getString(R.styleable.ItemView_valueHint);
+        valueHintColor = a.getColor(R.styleable.ItemView_valueHintColor, valueHintColor);
+        // value-width-height
+        valueWeight = a.getFloat(R.styleable.ItemView_valueWeight, valueWeight);
+        valueWidth = a.getDimensionPixelSize(R.styleable.ItemView_valueWidth, valueWidth);
+        valueHeight = a.getDimensionPixelSize(R.styleable.ItemView_valueHeight, valueHeight);
+        // value-margin
+        valueMargin = a.getDimensionPixelSize(R.styleable.ItemView_valueMargin, valueMargin);
+        valueMarginLeft = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginLeft, valueMarginLeft);
+        valueMarginTop = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginTop, valueMarginTop);
+        valueMarginRight = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginRight, valueMarginRight);
+        valueMarginBottom = a.getDimensionPixelSize(R.styleable.ItemView_valueMarginBottom, valueMarginBottom);
+        // value-padding
+        valuePadding = a.getDimensionPixelSize(R.styleable.ItemView_valuePadding, valuePadding);
+        valuePaddingLeft = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingLeft, valuePaddingLeft);
+        valuePaddingTop = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingTop, valuePaddingTop);
+        valuePaddingRight = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingRight, valuePaddingRight);
+        valuePaddingBottom = a.getDimensionPixelSize(R.styleable.ItemView_valuePaddingBottom, valuePaddingBottom);
 
-            // value-drawable
-            valueDrawablePadding = a.getDimensionPixelSize(R.styleable.ItemView_valueDrawablePadding, valueDrawablePadding);
-            valueDrawableLeft = a.getDrawable(R.styleable.ItemView_valueDrawableLeft);
-            valueDrawableRight = a.getDrawable(R.styleable.ItemView_valueDrawableRight);
+        // value-drawable
+        valueDrawablePadding = a.getDimensionPixelSize(R.styleable.ItemView_valueDrawablePadding, valueDrawablePadding);
+        valueDrawableLeft = a.getDrawable(R.styleable.ItemView_valueDrawableLeft);
+        valueDrawableRight = a.getDrawable(R.styleable.ItemView_valueDrawableRight);
 
-            a.recycle();
-        }
+        a.recycle();
 
         // 不设置颜色，就看不到线条，待解决（暂时判断未设置颜色时，使用透明色）
         if (getBackground() == null) {

@@ -8,6 +8,13 @@ import android.Manifest;
 public class Constants {
 	public static boolean DEBUG	= true;
 
+	// 6.0动态请求的权限-所有，存储空间和手机状态
+	public static final String[] PERMISSION_ALL = {
+			Manifest.permission.READ_EXTERNAL_STORAGE,    // 读存储卡
+			Manifest.permission.WRITE_EXTERNAL_STORAGE,    // 写存储卡
+			Manifest.permission.READ_PHONE_STATE,        // 手机状态
+			Manifest.permission.ACCESS_WIFI_STATE        // WIFI状态
+	};
 
 	/**
 	 * 6.0动态请求的权限-拍照需要的权限

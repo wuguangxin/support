@@ -14,59 +14,17 @@
         android:visibility="visible">
 
         <Button
-            android:id="@+id/tabHost"
+            android:id="@+id/widget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TabHost"
+            android:text="Widget"
             android:textAllCaps="false"/>
 
-        <Button
-            android:id="@+id/okhttp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OkHttp"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/ItemView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ItemView"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/CircleProgressView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CircleProgressView"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/ToastUtils"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ToastUtils"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/XinDialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="XinDialog"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/GestureView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="手势密码"
-            android:textAllCaps="false"/>
         <Button
             android:id="@+id/permission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6.0动态权限"
             android:textAllCaps="false"/>
-
     </LinearLayout>
 </LinearLayout>

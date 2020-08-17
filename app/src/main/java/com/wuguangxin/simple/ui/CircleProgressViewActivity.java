@@ -6,25 +6,28 @@ import android.widget.SeekBar;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.view.CircleProgressView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import butterknife.BindView;
 
-public class CircleProgressViewActivity extends AppCompatActivity {
-    private CircleProgressView mCircleProgressView;
-    private SeekBar mSeekBarSweepAngle; // 跨度
-    private SeekBar mSeekBarProgress;   // 进度
-
+public class CircleProgressViewActivity extends BaseActivity {
+    @BindView(R.id.home_CircleProgressView) CircleProgressView mCircleProgressView;
+    @BindView(R.id.seekBar_sweepAngle) SeekBar mSeekBarSweepAngle; // 跨度
+    @BindView(R.id.seekBar_progress)  SeekBar mSeekBarProgress;   // 进度
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_circleprogressview);
+    public int getLayoutRes() {
+        return R.layout.activity_circleprogressview;
+    }
+
+    @Override
+    public void initView(Bundle savedInstanceState) {
         setTitle("圆形进度条");
-
-        mCircleProgressView = (CircleProgressView) findViewById(R.id.home_CircleProgressView);
         mCircleProgressView.setUseAnim(false);
-
-        mSeekBarSweepAngle= (SeekBar) findViewById(R.id.seekBar_sweepAngle);
         mSeekBarSweepAngle.setProgress((int) mCircleProgressView.getSweepAngle());
+        mSeekBarProgress.setProgress((int) (mCircleProgressView.getProgress() * 100));
+    }
+
+    @Override
+    public void initListener() {
         mSeekBarSweepAngle.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -42,9 +45,6 @@ public class CircleProgressViewActivity extends AppCompatActivity {
             }
         });
 
-
-        mSeekBarProgress= (SeekBar) findViewById(R.id.seekBar_progress);
-        mSeekBarProgress.setProgress((int) (mCircleProgressView.getProgress() * 100));
         mSeekBarProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -61,5 +61,15 @@ public class CircleProgressViewActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void setData() {
+
     }
 }

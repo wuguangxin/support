@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * 仿QQ5.5的滑动开关

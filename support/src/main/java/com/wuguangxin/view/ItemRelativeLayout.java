@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * 带有上分割线、下分割线的 RelativeLayout

@@ -6,34 +6,45 @@ import android.view.View;
 import com.wuguangxin.dialog.XinDialog;
 import com.wuguangxin.simple.R;
 
-import androidx.appcompat.app.AppCompatActivity;
+import butterknife.OnClick;
 
-public class MyDialogActivity extends AppCompatActivity implements View.OnClickListener {
+public class MyDialogActivity extends BaseActivity {
     private XinDialog mDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mydialog);
-        setTitle("对话框");
-        findViewById(R.id.dialog).setOnClickListener(this);
+    public int getLayoutRes() {
+        return R.layout.activity_mydialog;
     }
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.dialog) {
-            if (mDialog != null) {
-                mDialog.dismiss();
-            }
-            mDialog = new XinDialog(this);
-            mDialog.setTitle("标题");
-            mDialog.setMessage("这里是内容");
-            mDialog.setPositiveButton("确认", null);
-            mDialog.setNegativeButton("取消", null);
-            mDialog.show();
-        }
+    public void initView(Bundle savedInstanceState) {
+        setTitle("对话框");
     }
+
+    @Override
+    public void initListener() {
+    }
+
+    @OnClick({R.id.dialog})
+    public void onClick(View v) {
+        mDialog = XinDialog.with(this, mDialog);
+        mDialog.setTitle("标题");
+        mDialog.setMessage("这里是内容");
+        mDialog.setPositiveButton("确认");
+        mDialog.setNegativeButton("取消");
+        mDialog.show();
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void setData() {
+
+    }
+
 
     @Override
     protected void onDestroy() {

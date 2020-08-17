@@ -21,8 +21,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.wuguangxin.R;
-import com.wuguangxin.utils.AndroidUtils;
+import com.wuguangxin.support.R;
+import com.wuguangxin.utils.PermissionUtils;
 import com.wuguangxin.utils.ToastUtils;
 
 import java.io.File;
@@ -112,9 +112,9 @@ public class RecordManger {
      * @return 是否播放成功
      */
     public boolean start() {
-        boolean permission = AndroidUtils.checkPermission(context, Manifest.permission.RECORD_AUDIO);
+        boolean permission = PermissionUtils.checkPermission(context, Manifest.permission.RECORD_AUDIO);
         if (!permission) {
-            AndroidUtils.requestPermissions((Activity) context, new String[]{Manifest.permission.RECORD_AUDIO}, 0);
+            PermissionUtils.requestPermissions((Activity) context, new String[]{Manifest.permission.RECORD_AUDIO}, 0);
             ToastUtils.showToast(context, "需要\"麦克风\"权限");
             return false;
         }

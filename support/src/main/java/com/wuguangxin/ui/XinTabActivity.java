@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

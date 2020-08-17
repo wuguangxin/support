@@ -12,7 +12,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * 显示百分比的圆环

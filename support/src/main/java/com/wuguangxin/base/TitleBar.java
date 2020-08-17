@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 import com.wuguangxin.utils.AndroidUtils;
 
 import androidx.annotation.StringRes;

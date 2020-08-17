@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 /**
  * 动态水波纹效果View

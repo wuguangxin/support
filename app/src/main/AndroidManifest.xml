@@ -32,11 +32,11 @@
         <activity android:name="com.wuguangxin.simple.ui.TabHost2_Activity"/>
         <activity android:name="com.wuguangxin.simple.ui.TabHostDemoActivity"/>
 
-        <activity android:name="com.wuguangxin.simple.ui.ToastUtilsActivity"/>
         <activity android:name="com.wuguangxin.simple.ui.MyDialogActivity"/>
         <activity android:name="com.wuguangxin.simple.ui.ItemViewActivity"/>
         <activity android:name="com.wuguangxin.simple.ui.CircleProgressViewActivity"/>
         <activity android:name="com.wuguangxin.simple.ui.GestureViewActivity"/>
+        <activity android:name="com.wuguangxin.simple.ui.WidgetActivity"/>
 
         <activity android:name="com.wuguangxin.simple.ui.call.CallActivity" android:screenOrientation="portrait" >
             <!-- 提供打电话的UI -->

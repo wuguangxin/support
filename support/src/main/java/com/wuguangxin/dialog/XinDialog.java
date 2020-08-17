@@ -30,9 +30,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 
-import com.wuguangxin.R;
-import com.wuguangxin.utils.AndroidUtils;
-import com.wuguangxin.utils.Utils;
+import com.wuguangxin.support.R;
 import com.wuguangxin.view.MyGridView;
 import com.wuguangxin.view.MyListView;
 
@@ -271,6 +269,15 @@ public class XinDialog extends Dialog implements DialogInterface {
     }
 
     /**
+     * 设置对话框的取消按钮监听器，点击按钮默认调用dismiss()。
+     * @param text 按钮文字
+     * @return XinDialog
+     */
+    public XinDialog setNegativeButton(CharSequence text) {
+        return setNegativeButton(text, null);
+    }
+
+    /**
      * 设置对话框的取消按钮监听器 <br>
      * 当text不为null但onClickListener为null时，点击按钮默认调用dismiss()。<br>
      * 注：想要在点击按钮时自动关闭对话框，则在监听器的onClick()方法中利用返回的dialog调用.dismiss()，否则对话框仍然存在。<br>
@@ -328,6 +335,15 @@ public class XinDialog extends Dialog implements DialogInterface {
      */
     public XinDialog setPositiveButton(CharSequence text, boolean isFinish) {
         return setPositiveButton(text, isFinish, null);
+    }
+
+    /**
+     * 设置对话框确认按钮监听器。点击按钮默认调用dismiss()。<br>
+     * @param text 按钮文字
+     * @return XinDialog
+     */
+    public XinDialog setPositiveButton(CharSequence text) {
+        return setPositiveButton(text, null);
     }
 
     /**
@@ -623,18 +639,16 @@ public class XinDialog extends Dialog implements DialogInterface {
             super.handleMessage(msg);
             switch (msg.what) {
             case View.VISIBLE:
-                if (isShowSoftKey(context)) {
-                    return;
+                if (!isShowSoftKey(context)) {
+                    InputMethodManager immShow = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    immShow.toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
                 }
-                InputMethodManager immShow = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                immShow.toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
                 break;
             case View.GONE:
-                if (!Utils.isShowSoftKey(context)) {
-                    return;
+                if (isShowSoftKey(context)) {
+                    InputMethodManager immHide = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    immHide.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 }
-                InputMethodManager immHide = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                immHide.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 break;
             }
         }
@@ -1128,7 +1142,7 @@ public class XinDialog extends Dialog implements DialogInterface {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (AndroidUtils.isPressedKeycodeBack(keyCode, event)) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if (isCancelable) {
                 this.cancel();
             }

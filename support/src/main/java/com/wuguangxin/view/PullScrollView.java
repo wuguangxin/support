@@ -12,7 +12,7 @@ import android.view.animation.Transformation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ScrollView;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 import com.wuguangxin.utils.Logger;
 
 

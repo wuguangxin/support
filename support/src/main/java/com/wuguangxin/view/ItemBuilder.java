@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 import com.wuguangxin.utils.Logger;
 import com.wuguangxin.utils.ObjectUtils;
 import com.wuguangxin.utils.Utils;

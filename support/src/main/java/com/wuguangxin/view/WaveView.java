@@ -9,7 +9,7 @@ import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 import com.wuguangxin.listener.SensorManagerHelper;
 import com.wuguangxin.listener.SensorManagerHelper.OnShakeListener;
 import com.wuguangxin.utils.NumberUtils;

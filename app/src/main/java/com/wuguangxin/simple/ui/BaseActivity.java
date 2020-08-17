@@ -29,6 +29,7 @@ import com.wuguangxin.simple.constans.RequestCode;
 import com.wuguangxin.utils.AndroidUtils;
 import com.wuguangxin.utils.AnimUtil;
 import com.wuguangxin.utils.Logger;
+import com.wuguangxin.utils.PermissionUtils;
 import com.wuguangxin.utils.SlidingFinishHelper;
 import com.wuguangxin.utils.SoftHideKeyBoardUtil;
 import com.wuguangxin.utils.StatusBarUtils;
@@ -73,11 +74,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
 
         mLayoutManager.setErrorLayoutListener(v -> onClickErrorLayout());
 
-//        mPresenter = newPresenter();
+        initPresenter();
         mLoadingDialog = new LoadingDialog(this); // 加载对话框
         mSlidingFinishHelper = new SlidingFinishHelper(this);
 
-        setTitle("title");
+        setTitle(getClass().getSimpleName());
 
         StatusBarUtils.setImmersionStatusBar(this, getResources().getColor(R.color.xin_titlebar_background));
         StatusBarUtils.setStatusBarFontColor(this, false);
@@ -86,6 +87,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         initArguments(getIntent());
         initView(savedInstanceState);
         initListener();
+    }
+
+    // 初始化Presenter
+    private void initPresenter() {
+        // mPresenter = newPresenter();
     }
 
     /**
@@ -193,16 +199,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         setContentView(view);
     }
 
-    @Override
-    public void setContentView(int layoutRes) {
-        getLayoutManager().setContentView(layoutRes);
-        mUnBinder = ButterKnife.bind(this, this);
-    }
+//    @Override
+//    public void setContentView(int layoutRes) {
+//        getLayoutManager().setContentView(layoutRes);
+//        mUnBinder = ButterKnife.bind(this, this);
+//    }
 
 //    @Override
 //    public void setContentView(View view) {
 //        getLayoutManager().setContentView(view);
-////        mUnBinder = ButterKnife.bind(this, this);
+//        mUnBinder = ButterKnife.bind(this, this);
 //    }
 
     @Override
@@ -250,17 +256,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
 
     @Override
     public void showToast(String text) {
-        ToastUtils.showToast(getContext(), text, false);
-    }
-
-    @Override
-    public void showToastLong(String text) {
-        ToastUtils.showToast(getContext(), text, true);
-    }
-
-    @Override
-    public void showToastShort(String text) {
-        ToastUtils.showToast(getContext(), text, false);
+        ToastUtils.showToast(getContext(), text);
     }
 
     @Override
@@ -454,10 +450,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     public boolean checkPermission(String... permission) {
         if (Build.VERSION.SDK_INT >= 23) {
             // 检查未授权的权限
-            String[] permissions = AndroidUtils.checkUnAcceptPermission(this, permission);
+            String[] permissions = PermissionUtils.checkUnAcceptPermission(this, permission);
             if (permissions != null && permissions.length > 0) {
                 printLogI("未获取的权限 = " + Arrays.toString(permissions));
-                AndroidUtils.requestPermissions(this, permissions, RequestCode.REQUEST_PERMISSIONS);
+                PermissionUtils.requestPermissions(this, permissions, RequestCode.REQUEST_PERMISSIONS);
                 return false;
             }
         }

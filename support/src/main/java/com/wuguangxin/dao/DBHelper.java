@@ -3,7 +3,7 @@ package com.wuguangxin.dao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

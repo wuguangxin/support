@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wuguangxin">
+    package="com.wuguangxin.support">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- ACCESS_WIFI_STATE 权限在 AndroidUtils.getMac()用到-->

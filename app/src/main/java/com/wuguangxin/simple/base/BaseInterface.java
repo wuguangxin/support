@@ -61,17 +61,17 @@ public interface BaseInterface extends LoadingListener {
      */
     void showToast(String text);
 
-    /**
-     * 显示消息（3.5秒后消失）
-     * @param text 文本信息
-     */
-    void showToastLong(String text);
-
-    /**
-     * 显示消息（2.5秒后消失）
-     * @param text 文本信息
-     */
-    void showToastShort(String text);
+//    /**
+//     * 显示消息（3.5秒后消失）
+//     * @param text 文本信息
+//     */
+//    void showToastLong(String text);
+//
+//    /**
+//     * 显示消息（2秒后消失）
+//     * @param text 文本信息
+//     */
+//    void showToastShort(String text);
 
     /**
      * 打印日志

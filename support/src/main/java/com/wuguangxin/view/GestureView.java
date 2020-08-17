@@ -13,7 +13,7 @@ import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.wuguangxin.R;
+import com.wuguangxin.support.R;
 
 import java.util.ArrayList;
 import java.util.List;
