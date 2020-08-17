@@ -7,9 +7,12 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
+        // 插件版本的对应关系：https://developer.android.google.cn/studio/releases/gradle-plugin#updating-gradle
+        classpath 'com.android.tools.build:gradle:3.4.0'
 
-        // 添加 bintray 插件
+        // 添加bintray插件，注意版本对应：
+        // 0.9.1：gradle:3.4.0 >> gradle-5.4.1-all.zip   该版本是目前bintray支持的最高版本
+        // gradle:4.0.0 尚未支持
         classpath 'com.novoda:bintray-release:0.9.2'
     }
 
