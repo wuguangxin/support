@@ -14,7 +14,6 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -22,6 +21,8 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.wuguangxin.R;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by Administrator on 2016/11/17.

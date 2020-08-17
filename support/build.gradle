@@ -5,7 +5,7 @@ apply plugin: 'com.novoda.bintray-release'
 def mModulesName = "support"
 def mVersionCode = 38
 def mVersionName = "2.0.0"
-def mDescription = "大改动，优化一些代码，更新到androidX，com.wuguangxin.utils已删除，并独立为一个library（com.wuguangxin:utils:1.0.0）"
+def mDescription = "大改动，优化一些代码，更新到androidX，删除了部分类，新增了部分类"
 
 android {
     compileSdkVersion 29

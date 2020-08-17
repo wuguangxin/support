@@ -11,8 +11,8 @@ import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.wuguangxin.R;
 import com.wuguangxin.base.TimerHandler;
+import com.wuguangxin.R;
 
 /**
  * 圆形进度View

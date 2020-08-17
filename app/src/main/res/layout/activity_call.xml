@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="15dp">
@@ -17,8 +17,8 @@
         android:inputType="phone"
         android:maxLength="13"
         android:padding="15dp"
-        android:textSize="30dp"
-        tools:text="18612569758" />
+        tools:text="18612569758"
+        android:textSize="30dp" />
 
 
     <LinearLayout style="@style/call_layout">
@@ -99,10 +99,10 @@
             style="@style/call_button"
             android:background="@null"
             android:text="" />
-        <!--        //有边界-->
-        <!--        ?android:attr/selectableItemBackground-->
-        <!--        //无边界 （要求API21以上）-->
-        <!--        ?android:attr/selectableItemBackgroundBorderless-->
+<!--        //有边界-->
+<!--        ?android:attr/selectableItemBackground-->
+<!--        //无边界 （要求API21以上）-->
+<!--        ?android:attr/selectableItemBackgroundBorderless-->
         <ImageView
             android:id="@+id/call_commit"
             style="@style/call_button"
@@ -123,6 +123,6 @@
         android:id="@+id/call_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="设置" />
+        android:text="设置"/>
 
 </LinearLayout>

@@ -1,7 +1,5 @@
 package com.wuguangxin.simple.listener;
 
-import android.app.Dialog;
-
 /**
  * 加载对话框监听接口
  *
@@ -51,5 +49,5 @@ public interface LoadingListener {
      * 关闭对话框
      * @param dialogs 对话框集
      */
-    void dismissDialog(Dialog... dialogs);
+    void dismissDialog(android.app.Dialog... dialogs);
 }
