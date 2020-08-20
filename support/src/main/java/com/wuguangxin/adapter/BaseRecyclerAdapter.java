@@ -12,7 +12,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
+public abstract class BaseRecyclerAdapter<T, V extends BaseViewHolder> extends RecyclerView.Adapter<V> {
     protected Context context;
     /** 数据列表 */
     private List<T> list;
@@ -28,21 +28,21 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     @NonNull
     @Override
-    final public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    final public V onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = View.inflate(viewGroup.getContext(), getLayoutId(), null);
         return createViewHolder(view, i);
     }
 
     @Override
-    final public void onBindViewHolder(@NonNull BaseViewHolder viewHolder, int i) {
+    final public void onBindViewHolder(@NonNull V viewHolder, int i) {
         bindViewData(viewHolder, list.get(i), i, getListType());
     }
 
     public abstract int getLayoutId();
 
-    public abstract void bindViewData(BaseViewHolder vewHolder, T t, int position, int type);
+    public abstract V createViewHolder(View view, int position);
 
-    public abstract BaseViewHolder createViewHolder(View view, int position);
+    public abstract void bindViewData(V vewHolder, T t, int position, int type);
 
     @Override
     public int getItemCount() {

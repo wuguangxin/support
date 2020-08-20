@@ -19,7 +19,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     public BaseViewHolder(View view) {
         super(view);
         this.itemView = view;
-        ButterKnife.bind(this, view);
+        ButterKnife.bind(this, itemView);
     }
 
     public View getItemView() {
