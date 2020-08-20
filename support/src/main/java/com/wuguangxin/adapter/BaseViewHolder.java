@@ -14,9 +14,9 @@ import butterknife.ButterKnife;
 public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     private SparseArray<View> sparseArray = new SparseArray<>();
-    private View itemView;
+    protected View itemView;
 
-    BaseViewHolder(View view) {
+    public BaseViewHolder(View view) {
         super(view);
         this.itemView = view;
         ButterKnife.bind(this, view);

@@ -28,20 +28,21 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     @NonNull
     @Override
-    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = View.inflate(context, getLayoutId(), null);
-        BaseViewHolder baseViewHolder = new BaseViewHolder(view);
-        return baseViewHolder;
+    final public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = View.inflate(viewGroup.getContext(), getLayoutId(), null);
+        return createViewHolder(view, i);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseViewHolder viewHolder, int i) {
+    final public void onBindViewHolder(@NonNull BaseViewHolder viewHolder, int i) {
         bindViewData(viewHolder, list.get(i), i, getListType());
     }
 
     public abstract int getLayoutId();
 
     public abstract void bindViewData(BaseViewHolder vewHolder, T t, int position, int type);
+
+    public abstract BaseViewHolder createViewHolder(View view, int position);
 
     @Override
     public int getItemCount() {
