@@ -3,6 +3,7 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 import android.view.View;
 
+import com.wuguangxin.base.BaseActivity;
 import com.wuguangxin.dialog.XinDialog;
 import com.wuguangxin.simple.R;
 

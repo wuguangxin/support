@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.wuguangxin.base.BaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.constans.Constants;
 import com.wuguangxin.utils.AndroidUtils;

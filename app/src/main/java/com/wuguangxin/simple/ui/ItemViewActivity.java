@@ -2,6 +2,7 @@ package com.wuguangxin.simple.ui;
 
 import android.os.Bundle;
 
+import com.wuguangxin.base.BaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.view.ItemView;
 

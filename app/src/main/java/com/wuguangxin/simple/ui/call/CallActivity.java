@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wuguangxin.simple.R;
-import com.wuguangxin.simple.ui.BaseActivity;
+import com.wuguangxin.base.BaseActivity;
 import com.wuguangxin.utils.PhoneUtils;
 
 import butterknife.BindView;

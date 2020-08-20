@@ -1,11 +1,9 @@
-package com.wuguangxin.simple.base;
+package com.wuguangxin.base;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-
-import com.wuguangxin.simple.listener.LoadingListener;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;

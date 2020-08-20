@@ -3,6 +3,7 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 import android.widget.SeekBar;
 
+import com.wuguangxin.base.BaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.view.CircleProgressView;
 

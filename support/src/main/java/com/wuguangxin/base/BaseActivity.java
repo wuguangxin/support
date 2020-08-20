@@ -1,4 +1,4 @@
-package com.wuguangxin.simple.ui;
+package com.wuguangxin.base;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -17,15 +17,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.wuguangxin.base.FragmentTask;
-import com.wuguangxin.base.LayoutManager;
-import com.wuguangxin.base.TitleBar;
 import com.wuguangxin.dialog.LoadingDialog;
 import com.wuguangxin.dialog.XinDialog;
-import com.wuguangxin.simple.R;
-import com.wuguangxin.simple.base.BaseInterface;
-import com.wuguangxin.simple.constans.Constants;
-import com.wuguangxin.simple.constans.RequestCode;
+import com.wuguangxin.support.R;
 import com.wuguangxin.utils.AndroidUtils;
 import com.wuguangxin.utils.AnimUtil;
 import com.wuguangxin.utils.Logger;
@@ -59,6 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     protected int screenWidth;
     private boolean slidingFinish;
     private SlidingFinishHelper mSlidingFinishHelper;
+    private int REQUEST_PERMISSIONS;
 
     @Override
     final protected void onCreate(Bundle savedInstanceState) {
@@ -453,7 +448,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
             String[] permissions = PermissionUtils.checkUnAcceptPermission(this, permission);
             if (permissions != null && permissions.length > 0) {
                 printLogI("未获取的权限 = " + Arrays.toString(permissions));
-                PermissionUtils.requestPermissions(this, permissions, RequestCode.REQUEST_PERMISSIONS);
+                PermissionUtils.requestPermissions(this, permissions, REQUEST_PERMISSIONS);
                 return false;
             }
         }
@@ -463,7 +458,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == RequestCode.REQUEST_PERMISSIONS) {
+        if (requestCode == REQUEST_PERMISSIONS) {
             if (Build.VERSION.SDK_INT >= 23) {
                 // 获得被拒绝的权限
                 String deniedPermission = null;
@@ -480,7 +475,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
                     boolean flag = shouldShowRequestPermissionRationale(deniedPermission);
                     if (!flag) {
                         // 被用户拒绝后系统不再提示，这里由APP弹出提示去设置
-                        showPermissionDialog(mContext, permissions);
+                        showPermissionDialog(mContext, "未授予必须权限，请先去授权");
                     } else {
 //                        finish();
                     }
@@ -493,19 +488,19 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
      * 弹出提示设置权限对话框
      *
      * @param context 上下文
-     * @param permissions 权限数组
+     * @param msg 消息
      */
-    public void showPermissionDialog(final Context context, final String... permissions) {
+    public void showPermissionDialog(final Context context, final String msg) {
         if (mDialog != null) {
             mDialog.dismiss();
         }
         mDialog = new XinDialog(context);
         mDialog.setTitle("提示");
-        StringBuilder sb = new StringBuilder("需要以下权限：\n");
-        for (String permission : permissions) {
-            sb.append("【").append(Constants.getPermissionDesc(permission)).append("】\n");
-        }
-        mDialog.setMessage(sb.toString().trim());
+//        StringBuilder sb = new StringBuilder("需要以下权限：\n");
+//        for (String permission : permissions) {
+//            sb.append("【").append(Constants.getPermissionDesc(permission)).append("】\n");
+//        }
+        mDialog.setMessage(msg);
         // 给权限名称加红色
 //        for (String permission : permissions) {
 //            FontUtils.setFontColor(mDialog.getMessageView(), Constants.getPermissionDesc(permission), Color.RED);

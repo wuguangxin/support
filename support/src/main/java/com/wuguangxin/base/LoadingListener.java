@@ -1,4 +1,4 @@
-package com.wuguangxin.simple.listener;
+package com.wuguangxin.base;
 
 /**
  * 加载对话框监听接口

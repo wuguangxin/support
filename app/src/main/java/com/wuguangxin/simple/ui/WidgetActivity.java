@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.wuguangxin.base.BaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.utils.ShakeUtils;
 import com.wuguangxin.view.ViewPagerIndicator;
