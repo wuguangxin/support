@@ -1,5 +1,6 @@
 package com.wuguangxin.simple.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +11,15 @@ import com.wuguangxin.simple.constans.Constants;
 import com.wuguangxin.utils.AndroidUtils;
 import com.wuguangxin.utils.Logger;
 
+import java.util.Map;
+
 import androidx.core.app.ActivityCompat;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
+    // 触发点击事件的ViewID/要打开的Activity Class
+    private Map<Integer, Class<? extends Activity>> mActivityMap;
 
     @Override
     public int getLayoutRes() {
@@ -33,6 +38,7 @@ public class MainActivity extends BaseActivity {
     @OnClick({
             R.id.widget,
             R.id.permission,
+            R.id.mvp,
     })
     public void onClick(View v) {
         int id = v.getId();
@@ -44,6 +50,9 @@ public class MainActivity extends BaseActivity {
             requestPermissions(Constants.PERMISSION_ALL);
 //            String deviceId = AndroidUtils.getDeviceId(this);
 //            Logger.e("onActivityResult", "deviceId：" + deviceId);
+            break;
+        case R.id.mvp:
+            openActivity(MvpActivity.class);
             break;
         }
     }

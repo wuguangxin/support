@@ -2,6 +2,12 @@ package com.wuguangxin.simple.constans;
 
 import android.Manifest;
 
+import com.wuguangxin.simple.bean.UserBean;
+import com.wuguangxin.utils.MD5;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 常量
  */
@@ -41,5 +47,11 @@ public class Constants {
 		if (Manifest.permission.READ_EXTERNAL_STORAGE.equals(permission)) return "存储空间";
 		if (Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permission)) return "存储空间";
 		return null;
+	}
+
+	public static List<UserBean> userList = new ArrayList<>();
+	static {
+		userList.add(new UserBean("18688888888", MD5.encode("123456"), "刘德华", 18, "男"));
+		userList.add(new UserBean("18699999999", MD5.encode("123456"), "张三丰", 20, "男"));
 	}
 }

@@ -27,16 +27,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.wuguangxin.simple.ui.TabHost0_Activity"/>
-        <activity android:name="com.wuguangxin.simple.ui.TabHost1_Activity"/>
-        <activity android:name="com.wuguangxin.simple.ui.TabHost2_Activity"/>
-        <activity android:name="com.wuguangxin.simple.ui.TabHostDemoActivity"/>
+        <activity android:name=".ui.TabHost0_Activity"/>
+        <activity android:name=".ui.TabHost1_Activity"/>
+        <activity android:name=".ui.TabHost2_Activity"/>
+        <activity android:name=".ui.TabHostDemoActivity"/>
 
-        <activity android:name="com.wuguangxin.simple.ui.MyDialogActivity"/>
-        <activity android:name="com.wuguangxin.simple.ui.ItemViewActivity"/>
-        <activity android:name="com.wuguangxin.simple.ui.CircleProgressViewActivity"/>
-        <activity android:name="com.wuguangxin.simple.ui.GestureViewActivity"/>
-        <activity android:name="com.wuguangxin.simple.ui.WidgetActivity"/>
+        <activity android:name=".ui.MyDialogActivity"/>
+        <activity android:name=".ui.ItemViewActivity"/>
+        <activity android:name=".ui.CircleProgressViewActivity"/>
+        <activity android:name=".ui.GestureViewActivity"/>
+        <activity android:name=".ui.WidgetActivity"/>
+        <activity android:name=".ui.MvpActivity" />
 
         <activity android:name="com.wuguangxin.simple.ui.call.CallActivity" android:screenOrientation="portrait" >
             <!-- 提供打电话的UI -->

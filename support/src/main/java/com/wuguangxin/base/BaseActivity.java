@@ -53,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
     protected int screenWidth;
     private boolean slidingFinish;
     private SlidingFinishHelper mSlidingFinishHelper;
-    private int REQUEST_PERMISSIONS;
+    private int REQUEST_PERMISSIONS = 100;
 
     @Override
     final protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
 
         mLayoutManager.setErrorLayoutListener(v -> onClickErrorLayout());
 
-        initPresenter();
         mLoadingDialog = new LoadingDialog(this); // 加载对话框
         mSlidingFinishHelper = new SlidingFinishHelper(this);
 
@@ -83,18 +82,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         initView(savedInstanceState);
         initListener();
     }
-
-    // 初始化Presenter
-    private void initPresenter() {
-        // mPresenter = newPresenter();
-    }
-
-    /**
-     * 创建 MVP 的 Presenter
-     */
-//    public P newPresenter() {
-//        return null;
-//    }
 
     /**
      * 初始化一些传参

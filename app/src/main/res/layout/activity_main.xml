@@ -24,7 +24,14 @@
             android:id="@+id/permission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6.0动态权限"
+            android:text="动态权限"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/mvp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MVP"
             android:textAllCaps="false"/>
     </LinearLayout>
 </LinearLayout>
