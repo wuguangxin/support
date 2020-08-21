@@ -3,13 +3,13 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 import android.view.View;
 
-import com.wuguangxin.base.BaseActivity;
+import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.dialog.XinDialog;
 import com.wuguangxin.simple.R;
 
 import butterknife.OnClick;
 
-public class MyDialogActivity extends BaseActivity {
+public class MyDialogActivity extends XinBaseActivity {
     private XinDialog mDialog;
 
     @Override

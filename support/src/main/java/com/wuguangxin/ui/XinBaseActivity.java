@@ -1,4 +1,4 @@
-package com.wuguangxin.base;
+package com.wuguangxin.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -17,6 +17,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.wuguangxin.base.BaseInterface;
+import com.wuguangxin.base.FragmentTask;
+import com.wuguangxin.base.LayoutManager;
+import com.wuguangxin.base.TitleBar;
 import com.wuguangxin.dialog.LoadingDialog;
 import com.wuguangxin.dialog.XinDialog;
 import com.wuguangxin.support.R;
@@ -42,7 +46,7 @@ import butterknife.Unbinder;
  * Activity基类
  * Created by wuguangxin on 2015/4/1
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseInterface {
+public abstract class XinBaseActivity extends AppCompatActivity implements BaseInterface {
     protected SmartRefreshLayout mRefreshLayout;
     protected LayoutManager mLayoutManager;
     protected LoadingDialog mLoadingDialog;
@@ -61,26 +65,34 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         TAG = getClass().getSimpleName();
         mContext = this;
         screenWidth = AndroidUtils.getScreenWidth(this);
+        mLoadingDialog = new LoadingDialog(this); // 加载对话框
+        mSlidingFinishHelper = new SlidingFinishHelper(this);
+
         mLayoutManager = new LayoutManager(this, R.layout.activity_base); // 布局管理器
         mLayoutManager.setContentView(getLayoutRes());
+        mLayoutManager.setErrorLayoutListener(v -> onClickErrorLayout());
 
         setContentView(mLayoutManager.getRootLayout());
         mUnBinder = ButterKnife.bind(this, this);
 
-        mLayoutManager.setErrorLayoutListener(v -> onClickErrorLayout());
-
-        mLoadingDialog = new LoadingDialog(this); // 加载对话框
-        mSlidingFinishHelper = new SlidingFinishHelper(this);
-
-        setTitle(getClass().getSimpleName());
-
-        StatusBarUtils.setImmersionStatusBar(this, getResources().getColor(R.color.xin_titlebar_background));
-        StatusBarUtils.setStatusBarFontColor(this, false);
+        getTitleBar().setTitle(getClass().getSimpleName());
         SoftHideKeyBoardUtil.assistActivity(this);
+
+        setImmersionStatusBar(this);
 
         initArguments(getIntent());
         initView(savedInstanceState);
         initListener();
+    }
+
+    /**
+     * 设置沉浸式状态栏
+     *
+     * @param activity
+     */
+    public void setImmersionStatusBar(Activity activity) {
+        StatusBarUtils.setImmersionStatusBar(activity, getResources().getColor(R.color.xin_titlebar_background));
+        StatusBarUtils.setStatusBarFontColor(activity, false);
     }
 
     /**
@@ -98,7 +110,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         this.slidingFinish = slidingFinish;
     }
 
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (slidingFinish) {
@@ -106,7 +117,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         }
         return super.dispatchTouchEvent(ev);
     }
-
 
     @Override
     protected void onStart() {
@@ -127,6 +137,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         if (mUnBinder != null) {
             mUnBinder.unbind();
             mUnBinder = null;
+        }
+        if (viewSparse != null) {
+            viewSparse.clear();
+            viewSparse= null;
         }
         super.onDestroy();
     }

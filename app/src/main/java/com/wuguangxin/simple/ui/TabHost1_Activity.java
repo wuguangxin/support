@@ -3,7 +3,7 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.wuguangxin.base.BaseActivity;
+import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.simple.R;
 
 import butterknife.BindView;
@@ -11,7 +11,7 @@ import butterknife.BindView;
 /**
  * Tab 1
  */
-public class TabHost1_Activity extends BaseActivity {
+public class TabHost1_Activity extends XinBaseActivity {
 	@BindView(R.id.text) TextView mText;
 
 	@Override

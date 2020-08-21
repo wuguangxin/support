@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.wuguangxin.base.BaseMvpActivity;
+import com.wuguangxin.mvp.ui.XinMVPActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.bean.UserBean;
 import com.wuguangxin.simple.mvp.LoginContract;
@@ -13,7 +13,7 @@ import com.wuguangxin.simple.mvp.LoginPresenter;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MvpActivity extends BaseMvpActivity<LoginPresenter> implements LoginContract.View {
+public class MvpActivity extends XinMVPActivity<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.username) EditText mUsername;
     @BindView(R.id.password) EditText mPassword;
 

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.wuguangxin.base.BaseActivity;
+import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.utils.MapUtils;
 import com.wuguangxin.utils.ShakeUtils;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 import butterknife.OnTouch;
 
-public class WidgetActivity extends BaseActivity implements View.OnClickListener {
+public class WidgetActivity extends XinBaseActivity implements View.OnClickListener {
 
     private static final String TAG = "WidgetActivity";
     private ViewPagerIndicator mViewPagerIndicator;

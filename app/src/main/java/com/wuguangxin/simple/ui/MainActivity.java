@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.wuguangxin.base.BaseActivity;
+import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.constans.Constants;
 import com.wuguangxin.utils.AndroidUtils;
@@ -16,7 +16,7 @@ import java.util.Map;
 import androidx.core.app.ActivityCompat;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends XinBaseActivity {
     private static final String TAG = "MainActivity";
     // 触发点击事件的ViewID/要打开的Activity Class
     private Map<Integer, Class<? extends Activity>> mActivityMap;
