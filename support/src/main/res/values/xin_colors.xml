@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="transparent">@android:color/transparent</color>
+
+    <color name="colorPrimaryDark">#009966</color>     <!--状态栏背景颜色-->
+    <color name="colorPrimary">#009966</color>         <!--标题栏背景颜色-->
+    <color name="colorAccent">#ffffff</color>          <!--控件被选中/按下等状态颜色-->
+    <color name="windowBackground">#f2f2f2</color>     <!--界面背景色-->
+    <color name="navigationBarColor">#ffffff</color>   <!--底部Tab导航背景色-->
+    <color name="textColorPrimary">#ffffff</color>     <!--标题栏title颜色-->
+    <color name="colorControlNormal">#ffffff</color>   <!--各个控制控件的默认颜色-->
+
+    <color name="transparent">#00000000</color>
     <color name="red">#ff0000</color>
     <color name="green">#00ff00</color>
     <color name="blue">#0000ff</color>
@@ -29,10 +38,10 @@
     <color name="xffffff">#ffffff</color>
 
     <!-- ******************* 标题栏配置 ******************************************************-->
-    <color name="xin_titlebar_background">#009966</color>         <!-- 标题栏背景 -->
-    <color name="xin_titlebar_title_color">#ffffff</color>        <!-- 标题文字 -->
-    <color name="xin_titlebar_setting_color">#ffffff</color>      <!-- 设置文字 -->
-    <color name="xin_titlebar_divider_color">#009966</color>      <!-- 标题栏指示器颜色 -->
+    <color name="xin_titlebar_background">@color/colorPrimaryDark</color>         <!-- 标题栏背景 -->
+    <color name="xin_titlebar_title_color">@color/textColorPrimary</color>        <!-- 标题文字 -->
+    <color name="xin_titlebar_setting_color">@color/textColorPrimary</color>      <!-- 设置文字 -->
+    <color name="xin_titlebar_divider_color">@color/colorPrimaryDark</color>      <!-- 标题栏指示器颜色 -->
     <drawable name="xin_titlebar_back_icon">@drawable/xin_titlebar_back_white</drawable>
     <drawable name="xin_titlebar_close_icon">@drawable/xin_titlebar_close_white</drawable>
     <drawable name="xin_titlebar_share_icon">@drawable/xin_titlebar_share_white</drawable>
@@ -85,19 +94,19 @@
 
     <!--橘色按钮-->
     <color name="xin_button_orange_bg_color_normal">#FF6600</color>
-    <color name="xin_button_orange_bg_color_pressed">#cc5302</color>
+    <color name="xin_button_orange_bg_color_pressed">#99FF6600</color>
     <color name="xin_button_orange_bg_color_disable">#cccccc</color>
     <!--红色按钮-->
-    <color name="xin_button_red_bg_color_normal">#EC1F29</color>
-    <color name="xin_button_red_bg_color_pressed">#CE1F29</color>
+    <color name="xin_button_red_bg_color_normal">#ff0000</color>
+    <color name="xin_button_red_bg_color_pressed">#99ff0000</color>
     <color name="xin_button_red_bg_color_disable">#cccccc</color>
     <!--绿色按钮-->
     <color name="xin_button_green_bg_color_normal">#009966</color>
     <color name="xin_button_green_bg_color_pressed">#007744</color>
     <color name="xin_button_green_bg_color_disable">#cccccc</color>
     <!--蓝色按钮-->
-    <color name="xin_button_blue_bg_color_normal">#079fff</color>
-    <color name="xin_button_blue_bg_color_pressed">#128cf3</color>
+    <color name="xin_button_blue_bg_color_normal">#0066ff</color>
+    <color name="xin_button_blue_bg_color_pressed">#990066ff</color>
     <color name="xin_button_blue_bg_color_disable">#cccccc</color>
     <!--灰色按钮-->
     <color name="xin_button_gray_bg_color_normal">#e8e8e8</color>

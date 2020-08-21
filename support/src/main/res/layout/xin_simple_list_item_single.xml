@@ -9,5 +9,5 @@
     android:paddingStart="15dip"
     android:singleLine="true"
     android:text=""
-    android:textColor="@color/x333333"
+    android:textColor="#333333"
     android:textSize="@dimen/font_M" />
