@@ -67,7 +67,7 @@
 
     <!-- ******************* 标题栏配置 **********************************************************-->
     <!--标题栏高度-->
-    <dimen name="xin_titlebar_height">44dp</dimen>
+    <dimen name="xin_titlebar_height">48dp</dimen>
     <!--标题栏按钮的最小宽度-->
     <dimen name="xin_titlebar_menu_minWidth">40dp</dimen>
     <!--标题栏距上高度，默认是0-->
