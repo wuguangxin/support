@@ -10,14 +10,13 @@ import android.content.IntentFilter;
  * <p>Created by wuguangxin on 15/3/31 </p>
  */
 public class HomeKeyReceiver {
-    private InnerReceiver mReceiver;
-    private Callback mCallback;
+    private Receiver mReceiver;
     private Context mContext;
     private boolean registered;
 
     public HomeKeyReceiver(Context context, Callback callback) {
         this.mContext = context;
-        this.mCallback = callback;
+        mReceiver = new Receiver(callback);
     }
 
     /**
@@ -26,7 +25,6 @@ public class HomeKeyReceiver {
     public void register() {
         if (!registered) {
             registered = true;
-            mReceiver = new InnerReceiver();
             IntentFilter filter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
             mContext.getApplicationContext().registerReceiver(mReceiver, filter);
         }
@@ -46,25 +44,28 @@ public class HomeKeyReceiver {
     /**
      * 广播接收者
      */
-    private class InnerReceiver extends BroadcastReceiver {
+    public static class Receiver extends BroadcastReceiver {
         final String REASON_KEY = "reason";
         final String REASON_GLOBAL_ACTIONS = "globalactions";
         final String REASON_RECENT_APPS = "recentapps";
         final String REASON_HOME_KEY = "homekey";
 
+        Callback callback;
+
+        public Receiver(Callback callback) {
+            this.callback = callback;
+        }
+
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
-                String reason = intent.getStringExtra(REASON_KEY);
-                if (reason != null) {
-                    if (mCallback != null) {
+            if (callback != null && intent != null) {
+                if (Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(intent.getAction())) {
+                    String reason = intent.getStringExtra(REASON_KEY);
+                    if (reason != null) {
                         if (reason.equals(REASON_HOME_KEY)) {
-                            mCallback.onHomePressed(); // 短按home键
-                        } else {
-                            if (reason.equals(REASON_RECENT_APPS)) {
-                                mCallback.onHomeLongPressed(); // 长按home键
-                            }
+                            callback.onHomePressed(); // 短按home键
+                        } else if (reason.equals(REASON_RECENT_APPS)) {
+                            callback.onHomeLongPressed(); // 长按home键
                         }
                     }
                 }

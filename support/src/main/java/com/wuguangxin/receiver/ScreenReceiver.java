@@ -10,29 +10,24 @@ import android.content.IntentFilter;
  * <p>Created by wuguangxin on 14/5/12 </p>
  */
 public class ScreenReceiver {
-    private MyReceiver mReceiver;
+    private Receiver mReceiver;
     private Context mContext;
-    private Callback mCallback;
     private boolean registered;
 
     public ScreenReceiver(Context context, Callback callback) {
         this.mContext = context;
-        this.mCallback = callback;
+        mReceiver = new Receiver(callback);
     }
 
-//		// 屏幕灭屏广播
-//		mIntentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-//		// 屏幕亮屏广播
-//		mIntentFilter.addAction(Intent.ACTION_SCREEN_ON);
-//		// 屏幕解锁广播
-//		mIntentFilter.addAction(Intent.ACTION_USER_PRESENT);
-//		// 当长按电源键弹出“关机”对话或者锁屏时系统会发出这个广播
-//		// example：有时候会用到系统对话框，权限可能很高，会覆盖在锁屏界面或者“关机”对话框之上，
-//		// 所以监听这个广播，当收到时就隐藏自己的对话，如点击pad右下角部分弹出的对话框
-//		mIntentFilter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
 
     /**
      * 注册屏幕状态监听
+     * Intent.ACTION_SCREEN_OFF 屏幕灭屏广播；
+     * Intent.ACTION_SCREEN_ON 屏幕亮屏广播；
+     * Intent.ACTION_USER_PRESENT 屏幕解锁广播；
+     * Intent.ACTION_CLOSE_SYSTEM_DIALOGS 当长按电源键弹出“关机”对话或者锁屏时系统会发出这个广播；
+     * example：有时候会用到系统对话框，权限可能很高，会覆盖在锁屏界面或者“关机”对话框之上，
+     * 所以监听这个广播，当收到时就隐藏自己的对话，如点击pad右下角部分弹出的对话框
      */
     public void register() {
         if (!registered) {
@@ -40,7 +35,6 @@ public class ScreenReceiver {
             IntentFilter filter = new IntentFilter();
             filter.addAction(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
-            mReceiver = new MyReceiver();
             mContext.getApplicationContext().registerReceiver(mReceiver, filter);
         }
     }
@@ -57,17 +51,23 @@ public class ScreenReceiver {
     }
 
     /**
-     * 屏幕状态广播接收者
+     * 屏幕开关广播接收者
      */
-    private class MyReceiver extends BroadcastReceiver {
+    public static class Receiver extends BroadcastReceiver {
+        Callback callback;
+
+        public Receiver(Callback callback) {
+            this.callback = callback;
+        }
+
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (mCallback != null && intent != null) {
+            if (callback != null && intent != null) {
                 String action = intent.getAction();
                 if (Intent.ACTION_SCREEN_ON.equals(action)) { // 屏幕开
-                    mCallback.onScreenON();
+                    callback.onScreenON();
                 } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {  // 屏幕关
-                    mCallback.onScreenOFF();
+                    callback.onScreenOFF();
                 }
             }
         }

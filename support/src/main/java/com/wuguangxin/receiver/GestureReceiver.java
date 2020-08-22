@@ -10,15 +10,13 @@ import android.content.IntentFilter;
  * <p>Created by wuguangxin on 15/3/31 </p>
  */
 public class GestureReceiver {
-    private Callback mCallback;
-    private InnerReceiver mReceiver;
+    private Receiver mReceiver;
     private Context mContext;
     private boolean registered; // 是否注册过
 
     public GestureReceiver(Context context, Callback callback) {
         this.mContext = context;
-        this.mCallback = callback;
-        this.mReceiver = new InnerReceiver();
+        mReceiver = new Receiver(callback);
     }
 
     /**
@@ -49,29 +47,35 @@ public class GestureReceiver {
     /**
      * 广播接收者
      */
-    public class InnerReceiver extends BroadcastReceiver {
+    public static class Receiver extends BroadcastReceiver {
+        Callback callback;
+
+        public Receiver(Callback callback) {
+            this.callback = callback;
+        }
+
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (mCallback == null || intent == null) {
+            if (callback == null || intent == null) {
                 return;
             }
             String action = intent.getAction();
             if (Intent.ACTION_SCREEN_ON.equals(action)) {
                 // 屏幕开
-                mCallback.onScreenON();
+                callback.onScreenON();
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 // 屏幕关
-                mCallback.onScreenOFF();
+                callback.onScreenOFF();
             } else if (Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(action)) {
                 // 按home键
                 String reason = intent.getStringExtra("reason");
                 if (reason != null) {
                     if ("recentapps".equals(reason)) {
                         // 长按Home按键 reason="recentapps"
-                        mCallback.onHomePressedLong();
+                        callback.onHomePressedLong();
                     } else {
                         // 按Home按键 reason="homekey"
-                        mCallback.onHomePressed();
+                        callback.onHomePressed();
                     }
                 }
             }
