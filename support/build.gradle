@@ -3,9 +3,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 def mModulesName = "support"
-def mVersionCode = 39
-def mVersionName = "2.0.1"
-def mDescription = "修改几个Receiver"
+def mVersionCode = 40
+def mVersionName = "2.0.2"
+def mDescription =
+        "增加两个类：\n" +
+        "BaseApplication.java用于初始化基础的工具类；\n" +
+        "SystemManager.java用于打印系统的一些信息；"
 
 android {
     compileSdkVersion 29
