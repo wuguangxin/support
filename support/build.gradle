@@ -2,13 +2,8 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release'
 
-def mModulesName = "support"
-def mVersionCode = 40
-def mVersionName = "2.0.2"
 def mDescription =
-        "增加两个类：\n" +
-        "BaseApplication.java用于初始化基础的工具类；\n" +
-        "SystemManager.java用于打印系统的一些信息；"
+
 
 android {
     compileSdkVersion 29
@@ -16,9 +11,9 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode mVersionCode
-        versionName mVersionName
-        description mDescription
+        versionCode 40
+        versionName "2.1.0"
+        description "迁移到github顺便做一些优化"
     }
 
     buildTypes {
@@ -54,19 +49,19 @@ dependencies {
     api 'androidx.appcompat:appcompat:1.2.0'
     api 'androidx.annotation:annotation:1.1.0'
     api 'androidx.recyclerview:recyclerview:1.1.0'
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'androidx.constraintlayout:constraintlayout:2.0.1'
     api 'androidx.cardview:cardview:1.0.0'
     api 'com.google.code.gson:gson:2.8.6'
 
     // 工具库
-    api 'com.wuguangxin:utils:1.0.1'
+    api 'com.github.wuguangxin:utils:1.0.0'
 
     // 注解
-    api 'com.jakewharton:butterknife:10.2.1'
+    api 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     // 腾讯 MMKV 替代 SP (https://github.com/Tencent/MMKV/blob/master/readme_cn.md)
-    api 'com.tencent:mmkv-static:1.2.1'
+    api 'com.tencent:mmkv-static:1.2.7'
 
     // 二维码
     api 'com.google.zxing:core:3.4.0'
@@ -75,19 +70,3 @@ dependencies {
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'  // 1.0.5及以前版本的老用户升级需谨慎，API改动过大
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'  // 没有使用特殊Header，可以不加这行
 }
-
-// 配置 bintray
-publish {
-    // 固定配置
-    bintrayUser = 'wuguangxin'              // 登陆账号
-    groupId = 'com.wuguangxin'              // 项目的包名
-    userOrg = 'wuguangxin'                  // bintray用户名
-    repoName = 'maven'                      // Repositories名，所有library都默认使用"maven"
-    // 可变配置
-    website = 'https://github.com/wuguangxin/' + mModulesName   // 项目的地址，不重要
-    artifactId = mModulesName               // 上传到bintray里的Package Name(这里填什么就显示什么)
-    publishVersion = mVersionName           // 引用版本号 (这里填什么就显示什么)
-    dryRun = false                          // false:上传，true：不上传
-    desc = mDescription                     // 版本描述（不重要）
-}
-

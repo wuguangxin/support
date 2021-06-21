@@ -27,11 +27,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.TabHost0_Activity"/>
-        <activity android:name=".ui.TabHost1_Activity"/>
-        <activity android:name=".ui.TabHost2_Activity"/>
-        <activity android:name=".ui.TabHostDemoActivity"/>
-
         <activity android:name=".ui.MyDialogActivity"/>
         <activity android:name=".ui.ItemViewActivity"/>
         <activity android:name=".ui.CircleProgressViewActivity"/>

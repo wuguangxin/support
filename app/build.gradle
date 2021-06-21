@@ -26,9 +26,9 @@ android {
 
     allprojects {
         repositories {
-            jcenter()
             // 自定义库
             maven { url 'https://jitpack.io' }
+//            jcenter()
         }
     }
 
@@ -41,20 +41,18 @@ android {
 dependencies {
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
-//    implementation 'androidx.appcompat:appcompat:1.2.0'
-//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 //    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     implementation project(':support')
-//    implementation 'com.wuguangxin:utils:1.0.1'
-//    implementation 'com.wuguangxin:support:1.3.3'
 
     // 注解
-//    implementation 'com.jakewharton:butterknife:10.2.1'
+    implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     // SmartRefreshLayout（文档 https://github.com/scwang90/SmartRefreshLayout）

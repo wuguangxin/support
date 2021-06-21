@@ -34,7 +34,6 @@ public class WidgetActivity extends XinBaseActivity implements View.OnClickListe
         getTitleBar().setBackVisibility(false);
 
         mActivityMap = new HashMap<>();
-        mActivityMap.put(R.id.tabHost, TabHostDemoActivity.class);
 //        mActivityMap.put(R.id.okhttp, OKHttpsUtilsActivity.class);
         mActivityMap.put(R.id.ItemView, ItemViewActivity.class);
         mActivityMap.put(R.id.CircleProgressView, CircleProgressViewActivity.class);
