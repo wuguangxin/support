@@ -9,7 +9,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 29
         versionCode 40
-        versionName "2.1.0"
+        versionName "2.0.2"
         description "迁移到github顺便做一些优化"
     }
 
