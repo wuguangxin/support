@@ -2,9 +2,6 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'com.novoda.bintray-release'
 
-def mDescription =
-
-
 android {
     compileSdkVersion 29
 
