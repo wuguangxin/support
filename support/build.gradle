@@ -6,9 +6,9 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 40
-        versionName "2.0.2"
-        description "迁移到github顺便做一些优化"
+        versionCode 42
+        versionName "2.1.0"
+        description "迁移到github顺便做一些优化，升级utils依赖库到1.1.0"
     }
 
     buildTypes {
@@ -46,14 +46,14 @@ dependencies {
     api 'androidx.recyclerview:recyclerview:1.1.0'
     api 'androidx.constraintlayout:constraintlayout:2.0.1'
     api 'androidx.cardview:cardview:1.0.0'
-    api 'com.google.code.gson:gson:2.8.6'
+    api 'com.google.code.gson:gson:2.8.7'
 
     // 工具库
-    api 'com.github.wuguangxin:utils:1.0.0'
+    api 'com.github.wuguangxin:utils:1.1.0'
 
     // 注解
     api 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     // 腾讯 MMKV 替代 SP (https://github.com/Tencent/MMKV/blob/master/readme_cn.md)
     api 'com.tencent:mmkv-static:1.2.7'

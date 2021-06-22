@@ -46,7 +46,7 @@ public class WidgetActivity extends XinBaseActivity implements View.OnClickListe
 
     @Override
     public void initListener() {
-        List<Integer> keyList = MapUtils.getKeyList(mActivityMap);
+        List<Integer> keyList = MapUtils.getKeys(mActivityMap);
         for (Integer id : keyList) findViewById(id).setOnClickListener(this);
     }
 
