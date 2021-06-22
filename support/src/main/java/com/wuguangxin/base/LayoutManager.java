@@ -3,6 +3,7 @@ package com.wuguangxin.base;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -98,7 +99,7 @@ public class LayoutManager {
      * @param drawable
      */
     public LayoutManager setBackgroundResource(Drawable drawable) {
-        mRootLayout.setBackgroundDrawable(drawable);
+        setBackground(drawable);
         return this;
     }
 
@@ -108,7 +109,11 @@ public class LayoutManager {
      * @param drawable
      */
     public LayoutManager setBackground(Drawable drawable) {
-        mRootLayout.setBackground(drawable);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mRootLayout.setBackground(drawable);
+        } else {
+            mRootLayout.setBackgroundDrawable(drawable);
+        }
         return this;
     }
 
@@ -260,10 +265,10 @@ public class LayoutManager {
             this.mMenuListView = activity.findViewById(R.id.xin_menu_listview);
             this.mMenuShadeView = activity.findViewById(R.id.xin_menu_shadeview);
             setViewAlign(mMenuLayout, RelativeLayout.BELOW, R.id.xin_titlebar_layout);
-            animationShow = AnimUtil.getTop_in();
-            animationHide = AnimUtil.getTop_out();
-            animationShadeShow = AnimUtil.getLeft_in();
-            animationShadeHide = AnimUtil.getLeft_out();
+            animationShow = AnimUtil.getTopIn();
+            animationHide = AnimUtil.getTopOut();
+            animationShadeShow = AnimUtil.getLeftIn();
+            animationShadeHide = AnimUtil.getLeftOut();
             adapter = new ArrayAdapter<>(activity, R.layout.xin_item_menu_list, list);
             mMenuListView.setAdapter(adapter);
             mMenuShadeView.setOnClickListener(v -> hide());
