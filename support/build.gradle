@@ -49,7 +49,7 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.7'
 
     // 工具库
-    api 'com.github.wuguangxin:utils:1.1.0'
+    api 'com.github.wuguangxin:utils:1.2.0'
 
     // 注解
     api 'com.jakewharton:butterknife:10.2.3'
