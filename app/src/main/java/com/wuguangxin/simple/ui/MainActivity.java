@@ -39,6 +39,7 @@ public class MainActivity extends XinBaseActivity {
             R.id.widget,
             R.id.permission,
             R.id.mvp,
+            R.id.game,
     })
     public void onClick(View v) {
         int id = v.getId();
@@ -52,6 +53,9 @@ public class MainActivity extends XinBaseActivity {
 //            Logger.e("onActivityResult", "deviceId：" + deviceId);
             break;
         case R.id.mvp:
+            openActivity(MvpActivity.class);
+            break;
+        case R.id.game:
             openActivity(MvpActivity.class);
             break;
         }
