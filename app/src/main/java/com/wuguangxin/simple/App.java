@@ -3,9 +3,11 @@ package com.wuguangxin.simple;
 import android.app.Application;
 import android.content.Context;
 
+import com.tencent.mmkv.MMKV;
 import com.wuguangxin.base.ActivityTask;
 import com.wuguangxin.simple.constans.Constants;
 import com.wuguangxin.utils.Logger;
+import com.wuguangxin.utils.mmkv.Config;
 
 /**
  * Application
@@ -26,6 +28,7 @@ public class App extends Application {
 		// 基本信息
 		Logger.setDebug(Constants.DEBUG);
 		Logger.setTagPrefix("wgx_");				// 设置日志Tag前缀，便于过滤
+		MMKV.initialize(this);
 	}
 
 	/**

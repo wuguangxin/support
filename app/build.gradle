@@ -50,6 +50,7 @@ dependencies {
 //    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     implementation project(':support')
+    implementation 'com.github.wuguangxin:utils:1.2.1'
 
     // 注解
     implementation 'com.jakewharton:butterknife:10.2.3'

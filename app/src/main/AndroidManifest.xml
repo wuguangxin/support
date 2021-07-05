@@ -33,6 +33,8 @@
         <activity android:name=".ui.GestureViewActivity"/>
         <activity android:name=".ui.WidgetActivity"/>
         <activity android:name=".ui.MvpActivity" />
+        <activity android:name=".ui.GameActivity" />
+        <activity android:name=".ui.GameRecordActivity" />
 
         <activity android:name="com.wuguangxin.simple.ui.call.CallActivity" android:screenOrientation="portrait" >
             <!-- 提供打电话的UI -->

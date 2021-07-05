@@ -56,7 +56,7 @@ public class MainActivity extends XinBaseActivity {
             openActivity(MvpActivity.class);
             break;
         case R.id.game:
-            openActivity(MvpActivity.class);
+            openActivity(GameActivity.class);
             break;
         }
     }
