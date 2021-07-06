@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.2'
+    buildToolsVersion '29.0.3'
 
     defaultConfig {
         applicationId "com.wuguangxin.simple"
@@ -20,15 +20,9 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
-
     allprojects {
         repositories {
-            // 自定义库
             maven { url 'https://jitpack.io' }
-//            jcenter()
         }
     }
 
@@ -43,6 +37,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -54,11 +49,6 @@ dependencies {
 
     // 注解
     implementation 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
-
-    // SmartRefreshLayout（文档 https://github.com/scwang90/SmartRefreshLayout）
-//    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'  // 1.0.5及以前版本的老用户升级需谨慎，API改动过大
-//    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'  // 没有使用特殊Header，可以不加这行
-
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
 }

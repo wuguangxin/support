@@ -8,11 +8,11 @@ public class FileModel implements FileContract.Model {
 
     @Override
     public void uploadFile(String filePath, FileContract.Callback callback) {
-        // http request..
+        // request..
     }
 
     @Override
     public void deleteFile(String fileUrl, FileContract.Callback callback) {
-        // http request..
+        // request..
     }
 }

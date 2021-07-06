@@ -1,4 +1,4 @@
-package com.wuguangxin.base;
+package com.wuguangxin.listener;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,24 +19,28 @@ public interface BaseInterface extends LoadingListener {
      */
     Context getContext();
 
+    /**
+     * 获取布局资源ID
+     * @return
+     */
     @LayoutRes int getLayoutRes();
 
     /**
      * 初始化View。
-     * 在 BaseActivity.onCreate() 中初始化基本数据后调用
+     * 在 BaseActivity.onCreate() 中初始化基本数据后被调用
      * @param savedInstanceState
      */
     void initView(Bundle savedInstanceState);
 
     /**
      * 初始化监听器。
-     * 在 BaseActivity.onCreate() 中 initView() 后调用
+     * 在 BaseActivity.onCreate() 中 initView() 后被调用
      */
     void initListener();
 
     /**
      * 初始化数据。
-     * 在 BaseActivity.onStart() 调用
+     * 在 BaseActivity.onStart() 被调用
      */
     void initData();
 
@@ -59,18 +63,6 @@ public interface BaseInterface extends LoadingListener {
      */
     void showToast(String text);
 
-//    /**
-//     * 显示消息（3.5秒后消失）
-//     * @param text 文本信息
-//     */
-//    void showToastLong(String text);
-//
-//    /**
-//     * 显示消息（2秒后消失）
-//     * @param text 文本信息
-//     */
-//    void showToastShort(String text);
-
     /**
      * 打印日志
      * @param text 文本信息
@@ -90,18 +82,4 @@ public interface BaseInterface extends LoadingListener {
      */
     void openActivity(Class<? extends Activity> clazz, Bundle bundle);
 
-    /**
-     * 打开APP WEB浏览器
-     * @param webTitle 浏览器标题
-     * @param webUrl 浏览器打开的URL
-     */
-    void openWeb(String webTitle, String webUrl);
-
-    /**
-     * 打开APP WEB浏览器，同时指定分享信息
-     * @param webTitle 浏览器标题
-     * @param webUrl 浏览器打开的URL
-     * @param shareConfig 分享配置。把URL分享到第三方平台(如微信、朋友圈、QQ好友等)
-     */
-//    void openWeb(String webTitle, String webUrl, ShareInfo shareConfig);
 }

@@ -15,10 +15,10 @@
         android:visibility="visible">
 
         <Button
-            android:id="@+id/tabHost"
+            android:id="@+id/coordinatorLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TabHost"
+            android:text="CoordinatorLayout + AppBarLayout"
             android:textAllCaps="false"/>
 
         <Button

@@ -2,12 +2,12 @@ package com.wuguangxin.mvp;
 
 /**
  * MVP架构的基础接口-Presenter
- * V: extends BaseView
- * M: extends BaseModel
+ * M: extends IModel
+ * V: extends IView
  *
  * Created by wuguangxin on 2016-08-26.
  */
-public interface BasePresenter<M extends BaseModel, V extends BaseView> {
+public interface IPresenter<M extends IModel, V extends IView> {
 
     /**
      * 创建M层的实现类实例，不能多次调用。如果一个P有多个model，可以在P的实现类里创建另外的model即可
@@ -38,7 +38,7 @@ public interface BasePresenter<M extends BaseModel, V extends BaseView> {
     default boolean isPull() { return true; }
 
     /**
-     * 是否有缓存数据
+     * 是否缓存了数据
      * @return
      */
     default boolean isCached() { return false; }
@@ -77,9 +77,9 @@ public interface BasePresenter<M extends BaseModel, V extends BaseView> {
     ////////////////////////////////////////////////////////////////////////
     /**
      * 设置加载对话框显示/隐藏
-     * @param httpState 网络请求结果（加载中、加载成功、加载失败、加载完成）
+     * @param loadingStatus 加载状态
      */
-    void setLoadingStatus(int httpState);
+    void setLoadingStatus(int loadingStatus);
 
     /**
      * 显示加载对话框

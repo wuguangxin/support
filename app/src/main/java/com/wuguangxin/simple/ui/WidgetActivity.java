@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.simple.R;
+import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.utils.MapUtils;
+import com.wuguangxin.utils.mmkv.MmkvUtils;
 import com.wuguangxin.utils.ShakeUtils;
 import com.wuguangxin.view.ViewPagerIndicator;
 
@@ -34,7 +35,7 @@ public class WidgetActivity extends XinBaseActivity implements View.OnClickListe
         getTitleBar().setBackVisibility(false);
 
         mActivityMap = new HashMap<>();
-//        mActivityMap.put(R.id.okhttp, OKHttpsUtilsActivity.class);
+        mActivityMap.put(R.id.coordinatorLayout, CoordinatorLayoutActivity.class);
         mActivityMap.put(R.id.ItemView, ItemViewActivity.class);
         mActivityMap.put(R.id.CircleProgressView, CircleProgressViewActivity.class);
         mActivityMap.put(R.id.XinDialog, MyDialogActivity.class);
@@ -63,7 +64,7 @@ public class WidgetActivity extends XinBaseActivity implements View.OnClickListe
 
     @Override
     public void initData() {
-
+        int aa = MmkvUtils.get("AA", 1);
     }
 
     @Override

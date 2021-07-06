@@ -1,9 +1,9 @@
 package com.wuguangxin.simple.mvp;
 
-import com.wuguangxin.mvp.BaseModel;
-import com.wuguangxin.mvp.BasePresenter;
-import com.wuguangxin.mvp.BaseView;
-import com.wuguangxin.mvp.callback.BaseModelCallback;
+import com.wuguangxin.mvp.IModel;
+import com.wuguangxin.mvp.IPresenter;
+import com.wuguangxin.mvp.IView;
+import com.wuguangxin.mvp.callback.IModelCallback;
 import com.wuguangxin.simple.bean.UserBean;
 
 /**
@@ -12,19 +12,19 @@ import com.wuguangxin.simple.bean.UserBean;
  * Created by wuguangxin on 2020-04-06.
  */
 public interface LoginContract {
-    interface Presenter extends BasePresenter<Model, View> {
+    interface Presenter extends IPresenter<Model, View> {
         void login(String username, String password);
     }
 
-    interface View extends BaseView {
+    interface View extends IView {
         void onSuccessLogin(UserBean userBean);
     }
 
-    interface Model extends BaseModel {
+    interface Model extends IModel {
         void login(String username, String password, Callback Callback);
     }
 
-    interface Callback extends BaseModelCallback<UserBean> {
+    interface Callback extends IModelCallback<UserBean> {
         void onSuccessLogin(UserBean userBean);
     }
 }

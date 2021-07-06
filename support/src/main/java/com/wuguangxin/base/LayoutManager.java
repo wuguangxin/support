@@ -29,7 +29,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
  * Created by wuguangxin on 14/10/16.
  */
 public class LayoutManager {
-    private static final String TAG = "LayoutManager";
+    private static final String TAG = LayoutManager.class.getSimpleName();
     private Activity mActivity;
     private Context mContext;
     private ConstraintLayout mRootLayout; // 界面根布局
@@ -192,7 +192,7 @@ public class LayoutManager {
         return this;
     }
 
-    /* ************************************ getter/setter updateSubscribe ******************************** */
+    /* ************************************ getter/setter ******************************** */
 
     /**
      * 获取跟布局

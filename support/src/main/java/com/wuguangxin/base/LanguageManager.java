@@ -39,9 +39,8 @@ public class LanguageManager {
     public static Context attachBaseContext(Context context, Lang lang) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return updateResources(context, lang);
-        } else {
-            return context;
         }
+        return context;
     }
 
     @TargetApi(Build.VERSION_CODES.N)

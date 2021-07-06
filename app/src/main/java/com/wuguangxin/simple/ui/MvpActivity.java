@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.wuguangxin.mvp.ui.XinMVPActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.bean.UserBean;
@@ -16,6 +17,8 @@ import butterknife.OnClick;
 public class MvpActivity extends XinMVPActivity<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.username) EditText mUsername;
     @BindView(R.id.password) EditText mPassword;
+
+    AppBarLayout.Behavior appBarLayoutBehavior;
 
     @Override
     public LoginPresenter newPresenter() {
@@ -66,4 +69,5 @@ public class MvpActivity extends XinMVPActivity<LoginPresenter> implements Login
     public void onFinish() {
 
     }
+
 }

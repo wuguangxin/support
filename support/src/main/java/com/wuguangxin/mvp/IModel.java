@@ -5,4 +5,4 @@ package com.wuguangxin.mvp;
  *
  * Created by wuguangxin on 2016-08-26.
  */
-public interface BaseModel { }
+public interface IModel { }

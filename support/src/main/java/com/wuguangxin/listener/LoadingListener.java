@@ -1,4 +1,4 @@
-package com.wuguangxin.base;
+package com.wuguangxin.listener;
 
 /**
  * 加载对话框监听接口
@@ -10,23 +10,13 @@ public interface LoadingListener {
     /**
      * 设置加载状态， <br>
      * 1.如果要加载的数据在本地没有缓存，则显示加载中的提示对话框，<br>
-     * 2.如果已有缓存，则加载时，只在标题左边显示转圈的动画。<br>
+     * 2.如果缓存了数据，则加载时，只在标题左边显示转圈的动画。<br>
      *
-     * @param state 请求服务器结果状态（START、SUCCESS、FAILURE）
-     * @param isCache 是否有缓存
+     * @param loadingStatus 加载状态，看@{@link com.wuguangxin.base.LoadingStatus}
+     * @param isPull 是否是获取数据
+     * @param isCached 是否缓存过数据
      */
-    void setLoadingStatus(int state, boolean isCache);
-
-    /**
-     * 设置加载状态， <br>
-     * 1.如果要加载的数据在本地没有缓存，则显示加载中的提示对话框，<br>
-     * 2.如果已有缓存，则加载时，只在标题左边显示转圈的动画。<br>
-     *
-     * @param state 请求服务器结果状态（START、SUCCESS、FAILURE）
-     * @param isGet 获取数据
-     * @param isEmpty 当前数据是否为空
-     */
-    void setLoadingStatus(int state, boolean isGet, boolean isEmpty);
+    void setLoadingStatus(int loadingStatus, boolean isPull, boolean isCached);
 
     /**
      * 控制“加载中”的对话框显示状态

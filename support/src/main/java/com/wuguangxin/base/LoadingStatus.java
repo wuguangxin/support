@@ -1,7 +1,7 @@
 package com.wuguangxin.base;
 
 /**
- * 状态。
+ * 加载状态。
  *
  * Created by wuguangxin on 16/10/13
  */

@@ -88,8 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="4"
-            tools:itemCount="24"
+            app:spanCount="5"
+            tools:itemCount="25"
             tools:listitem="@layout/item_game" />
 
         <Button

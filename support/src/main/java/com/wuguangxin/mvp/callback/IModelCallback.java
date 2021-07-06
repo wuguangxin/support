@@ -5,7 +5,7 @@ package com.wuguangxin.mvp.callback;
  * 泛型D：为返回的数据类型
  * Created by wuguangxin on 2016-10-08.
  */
-public interface BaseModelCallback<D> {
+public interface IModelCallback<D> {
 
     /**
      * 是否是拉取数据
@@ -13,7 +13,7 @@ public interface BaseModelCallback<D> {
     boolean isPull();
 
     /**
-     * 是否有缓存数据
+     * 是否缓存过数据
      */
     boolean isCached();
 

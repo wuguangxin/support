@@ -4,7 +4,7 @@ import com.wuguangxin.mvp.presenter.AbsBasePresenter;
 import com.wuguangxin.simple.bean.UserBean;
 
 /**
- * 登录P
+ * 登录
  * Created by wuguangxin on 17/5/9.
  */
 public class LoginPresenter extends AbsBasePresenter<LoginContract.Model, LoginContract.View>
@@ -12,12 +12,16 @@ public class LoginPresenter extends AbsBasePresenter<LoginContract.Model, LoginC
 
     public LoginPresenter(LoginContract.View view) {
         super(view);
-        this.view = view;
     }
 
     @Override
     public LoginContract.Model newModel() {
         return new LoginModel();
+    }
+
+    @Override
+    public boolean isPull() {
+        return true;
     }
 
     @Override

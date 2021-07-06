@@ -10,8 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.wuguangxin.base.BaseInterface;
+import com.wuguangxin.listener.BaseInterface;
 import com.wuguangxin.base.FragmentTask;
 import com.wuguangxin.base.LayoutManager;
 import com.wuguangxin.base.TitleBar;
@@ -34,7 +33,6 @@ public abstract class XinBaseFragment extends Fragment implements BaseInterface 
     protected Context mContext;
     protected XinDialog mDialog;
     protected ViewGroup mRootView; // 根布局
-    protected RefreshLayout mRefreshLayout;
     private Unbinder mUnBinder;
     private boolean isVisibleToUser; // 是否是用户可见的
     private SparseArray<View> viewSparse = new SparseArray<>();
@@ -120,21 +118,12 @@ public abstract class XinBaseFragment extends Fragment implements BaseInterface 
     }
 
     /**
-     * 创建 MVP 的 Presenter
-     */
-    // public abstract P newPresenter();
-
-    /**
      * 在初始化View之前处理通过 Bundle 传递过来的参数。
      *
      * @param arguments Bundle
      */
     public void initArguments(Bundle arguments) {
     }
-
-//    public AttrResources getAttrResources() {
-//        return mAttrResources;
-//    }
 
     public boolean isVisibleToUser() {
         return isVisibleToUser;
@@ -169,7 +158,6 @@ public abstract class XinBaseFragment extends Fragment implements BaseInterface 
         return bundle == null ? Bundle.EMPTY : bundle;
     }
 
-
     @Override
     public <T extends View> T findView(@IdRes int id) {
         View view = viewSparse.get(id);
@@ -200,23 +188,13 @@ public abstract class XinBaseFragment extends Fragment implements BaseInterface 
         if (mActivity != null) mActivity.openActivity(clazz, bundle);
     }
 
-    @Override
-    public void openWeb(String webTitle, String webUrl) {
-        if (mActivity != null) mActivity.openWeb(webTitle, webUrl);
-    }
-
     //========================== BaseListener ==================================================
 
-    //========================== LoadingListener ===================================================
+    //========================== LoadingListener ===============================================
 
     @Override
-    public void setLoadingStatus(int status, boolean isCache) {
-        if (mActivity != null) mActivity.setLoadingStatus(status, isCache);
-    }
-
-    @Override
-    public void setLoadingStatus(int status, boolean isGet, boolean isCache) {
-        if (mActivity != null) mActivity.setLoadingStatus(status, isGet, isCache);
+    public void setLoadingStatus(int loadingStatus, boolean isPull, boolean isCached) {
+        if (mActivity != null) mActivity.setLoadingStatus(loadingStatus, isPull, isCached);
     }
 
     @Override
@@ -241,11 +219,11 @@ public abstract class XinBaseFragment extends Fragment implements BaseInterface 
     //========================== LoadingListener end ===============================================
 
 
-    public final void setResult(int resultCode) {
+    final public void setResult(int resultCode) {
         setResult(resultCode, null);
     }
 
-    public final void setResult(int resultCode, Intent data) {
+    final public void setResult(int resultCode, Intent data) {
         if (mActivity != null) mActivity.setResult(resultCode, data);
     }
 

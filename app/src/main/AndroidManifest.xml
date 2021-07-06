@@ -33,6 +33,7 @@
         <activity android:name=".ui.GestureViewActivity"/>
         <activity android:name=".ui.WidgetActivity"/>
         <activity android:name=".ui.MvpActivity" />
+        <activity android:name=".ui.CoordinatorLayoutActivity" />
         <activity android:name=".ui.GameActivity" />
         <activity android:name=".ui.GameRecordActivity" />
 

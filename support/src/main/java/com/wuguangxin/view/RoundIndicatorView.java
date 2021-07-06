@@ -26,7 +26,6 @@ import androidx.annotation.RequiresApi;
 
 /**
  * Created by Administrator on 2016/11/17.
- * 陈朝勇
  * 仿支付宝芝麻信用圆形仪表盘
  */
 public class RoundIndicatorView extends View {

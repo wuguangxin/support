@@ -46,9 +46,9 @@ public class GameAdapter extends BaseRecyclerAdapter<GameDataBean, BaseViewHolde
     }
 
     @Override
-    public void bindViewData(BaseViewHolder vewHolder, GameDataBean gameDataBean, int position, int type) {
-
-        SquareCheckBox checkBox = (SquareCheckBox) vewHolder.getItemView();
+    public void bindViewData(BaseViewHolder viewHolder, GameDataBean gameDataBean, int position, int type) {
+        viewHolder.setIsRecyclable(false); // false: view不重复利用，降低性能
+        SquareCheckBox checkBox = (SquareCheckBox) viewHolder.getItemView();
         if (gameDataBean.checked) {
             checkBox.setBackgroundColor(gameDataBean.color);
             checkBox.setOnCheckedChangeListener(null);

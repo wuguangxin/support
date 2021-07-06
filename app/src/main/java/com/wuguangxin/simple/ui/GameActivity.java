@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wuguangxin.simple.AppConfig;
@@ -20,7 +17,6 @@ import com.wuguangxin.simple.bean.GameRecordBean;
 import com.wuguangxin.simple.view.SpacesItemDecoration;
 import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.utils.Utils;
-import com.wuguangxin.utils.mmkv.MmkvUtils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -31,6 +27,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
 /**
@@ -83,9 +80,9 @@ public class GameActivity extends XinBaseActivity {
             String gameRecordListJson = AppConfig.getInstance().getGameRecordList();
             if (!TextUtils.isEmpty(gameRecordListJson)) {
                 gameRecordList = gson.fromJson(gameRecordListJson, type);
-                if (gameRecordList == null) {
-                    gameRecordList = new LinkedList<>();
-                }
+            }
+            if (gameRecordList == null) {
+                gameRecordList = new LinkedList<>();
             }
 
             // 保存新数据
@@ -160,6 +157,7 @@ public class GameActivity extends XinBaseActivity {
             list.add(new GameDataBean("绿", Color.GREEN));
             list.add(new GameDataBean("蓝", Color.BLUE));
         }
+        list.add(new GameDataBean("蓝", Color.BLUE));
         return list;
     }
 

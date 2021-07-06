@@ -49,8 +49,6 @@ public class MainActivity extends XinBaseActivity {
             break;
         case R.id.permission:
             requestPermissions(Constants.PERMISSION_ALL);
-//            String deviceId = AndroidUtils.getDeviceId(this);
-//            Logger.e("onActivityResult", "deviceId：" + deviceId);
             break;
         case R.id.mvp:
             openActivity(MvpActivity.class);

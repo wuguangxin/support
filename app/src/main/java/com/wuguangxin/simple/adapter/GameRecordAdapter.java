@@ -30,9 +30,9 @@ public class GameRecordAdapter extends BaseRecyclerAdapter<GameRecordBean, BaseV
     @Override
     public void bindViewData(BaseViewHolder vewHolder, GameRecordBean bean, int position, int type) {
         vewHolder.setText(R.id.time, DateUtils.formatStringLong(bean.createTime));
-        vewHolder.setText(R.id.textRed, "红：" +bean.r + "");
-        vewHolder.setText(R.id.textGreen, "绿：" +bean.g + "");
-        vewHolder.setText(R.id.textBlue, "蓝：" +bean.b + "");
+        vewHolder.setText(R.id.textRed, "红:" +bean.r + "");
+        vewHolder.setText(R.id.textGreen, "绿:" +bean.g + "");
+        vewHolder.setText(R.id.textBlue, "蓝:" +bean.b + "");
         vewHolder.setText(R.id.result, bean.result);
     }
 

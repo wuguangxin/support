@@ -6,9 +6,13 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
+        multiDexEnabled true // dex突破65535的限制
         versionCode 42
-        versionName "2.1.0"
-        description "迁移到github顺便做一些优化，升级utils依赖库到1.1.0"
+        versionName "2.1.2"
+        description "1.优化部分基础类\n" +
+                "2.升级utils依赖版本到1.2.1\n" +
+                "3.增加吸顶布局demo；\n" +
+                "4.增加一个随机数小游戏（抖音）；"
     }
 
     buildTypes {
@@ -28,12 +32,6 @@ android {
         abortOnError false
     }
 
-    tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
-        options.addStringOption('encoding', 'UTF-8')
-        options.addStringOption('charSet', 'UTF-8')
-    }
-
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
@@ -49,7 +47,7 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.7'
 
     // 工具库
-    api 'com.github.wuguangxin:utils:1.2.0'
+    api 'com.github.wuguangxin:utils:1.2.1'
 
     // 注解
     api 'com.jakewharton:butterknife:10.2.3'
@@ -62,6 +60,7 @@ dependencies {
     api 'com.google.zxing:core:3.4.0'
 
     // 下拉刷新布局 SmartRefreshLayout（文档 https://github.com/scwang90/SmartRefreshLayout）
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'  // 1.0.5及以前版本的老用户升级需谨慎，API改动过大
-    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'  // 没有使用特殊Header，可以不加这行
+    api  'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
+    api  'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
+    api  'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
 }
