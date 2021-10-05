@@ -104,7 +104,7 @@
     <dimen name="xin_voice_progress_padding_bottom">10dp</dimen>
     
     <!-- 按钮配置 -->
-    <dimen name="xin_button_radius_size">3dp</dimen>
+    <dimen name="xin_button_radius_size">5dp</dimen>
 
     <dimen name="xin_dialog_title_text">18sp</dimen>
 

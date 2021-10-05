@@ -2,13 +2,12 @@ package com.wuguangxin.simple.ui;
 
 import android.os.Bundle;
 
-import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.view.ItemView;
 
 import butterknife.BindView;
 
-public class ItemViewActivity extends XinBaseActivity {
+public class ItemViewActivity extends BaseActivity {
     @BindView(R.id.itemView) ItemView mItemView;
 
     @Override

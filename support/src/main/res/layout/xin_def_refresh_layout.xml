@@ -1,4 +1,4 @@
-<com.scwang.smartrefresh.layout.SmartRefreshLayout
+<com.scwang.smart.refresh.layout.SmartRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/def_smart_refresh_layout"
     android:layout_width="match_parent"

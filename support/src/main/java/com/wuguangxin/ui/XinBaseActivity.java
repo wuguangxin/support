@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.wuguangxin.base.FragmentTask;
 import com.wuguangxin.base.LayoutManager;
@@ -53,7 +54,6 @@ public abstract class XinBaseActivity extends AppCompatActivity implements BaseI
         super.onCreate(savedInstanceState);
         TAG = getClass().getSimpleName();
         mContext = this;
-        screenWidth = AndroidUtils.getScreenWidth(this);
         mLoadingDialog = new LoadingDialog(this); // 加载对话框
         mSlidingFinishHelper = new SlidingFinishHelper(this);
 
@@ -97,14 +97,6 @@ public abstract class XinBaseActivity extends AppCompatActivity implements BaseI
      */
     public void setSlidingFinish(boolean slidingFinish) {
         this.slidingFinish = slidingFinish;
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (slidingFinish) {
-            return mSlidingFinishHelper.dispatchTouchEvent(ev);
-        }
-        return super.dispatchTouchEvent(ev);
     }
 
     @Override

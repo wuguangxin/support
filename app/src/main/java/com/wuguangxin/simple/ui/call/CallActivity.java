@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wuguangxin.simple.R;
-import com.wuguangxin.ui.XinBaseActivity;
+import com.wuguangxin.simple.ui.BaseActivity;
 import com.wuguangxin.utils.PhoneUtils;
 
 import butterknife.BindView;
@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * 拨号界面
  * Created by wuguangxin on 2020-03-18.
  */
-public class CallActivity extends XinBaseActivity {
+public class CallActivity extends BaseActivity {
 
     @BindView(R.id.call_number) TextView mNumber;
     @BindView(R.id.call_commit) View mCommit;

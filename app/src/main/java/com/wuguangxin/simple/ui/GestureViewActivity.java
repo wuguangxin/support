@@ -6,10 +6,9 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.simple.R;
 
-public class GestureViewActivity extends XinBaseActivity {
+public class GestureViewActivity extends BaseActivity {
 
     private static final String TAG = "GestureViewActivity";
 

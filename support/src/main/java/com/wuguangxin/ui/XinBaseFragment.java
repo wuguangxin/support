@@ -10,15 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wuguangxin.listener.BaseInterface;
 import com.wuguangxin.base.FragmentTask;
 import com.wuguangxin.base.LayoutManager;
 import com.wuguangxin.base.TitleBar;
 import com.wuguangxin.dialog.XinDialog;
+import com.wuguangxin.listener.BaseInterface;
 import com.wuguangxin.utils.Logger;
+
+import org.jetbrains.annotations.NotNull;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -62,6 +65,7 @@ public abstract class XinBaseFragment extends Fragment implements BaseInterface 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // super.onCreateView(inflater, container, savedInstanceState);
         this.mRootView = container;
         this.TAG = getClass().getSimpleName();
         mRootView = (ViewGroup) inflater.inflate(getLayoutRes(), null);
@@ -72,6 +76,26 @@ public abstract class XinBaseFragment extends Fragment implements BaseInterface 
         initListener();                          // 设置监听器
         setErrorLayoutListener();
         return mRootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     /**

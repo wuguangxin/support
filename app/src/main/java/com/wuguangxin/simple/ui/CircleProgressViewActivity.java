@@ -3,13 +3,12 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 import android.widget.SeekBar;
 
-import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.view.CircleProgressView;
 
 import butterknife.BindView;
 
-public class CircleProgressViewActivity extends XinBaseActivity {
+public class CircleProgressViewActivity extends BaseActivity {
     @BindView(R.id.home_CircleProgressView) CircleProgressView mCircleProgressView;
     @BindView(R.id.seekBar_sweepAngle) SeekBar mSeekBarSweepAngle; // 跨度
     @BindView(R.id.seekBar_progress)  SeekBar mSeekBarProgress;   // 进度
@@ -22,6 +21,7 @@ public class CircleProgressViewActivity extends XinBaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         setTitle("圆形进度条");
+
         mCircleProgressView.setUseAnim(false);
         mSeekBarSweepAngle.setProgress((int) mCircleProgressView.getSweepAngle());
         mSeekBarProgress.setProgress((int) (mCircleProgressView.getProgress() * 100));

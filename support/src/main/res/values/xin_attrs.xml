@@ -553,4 +553,11 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="FlowLayout">
+        <attr name="lineSpace" format="dimension|reference"/> <!--垂直间距-->
+        <attr name="itemSpace" format="dimension|reference"/> <!--横向间距-->
+        <attr name="maxSize" format="integer|reference"/> <!--最多显示label个数-->
+        <attr name="singleLine" format="boolean|reference"/> <!--是否只显示一行-->
+    </declare-styleable>
+
 </resources>

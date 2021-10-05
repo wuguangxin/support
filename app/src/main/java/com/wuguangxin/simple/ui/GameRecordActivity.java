@@ -3,8 +3,6 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wuguangxin.simple.AppConfig;
@@ -12,21 +10,19 @@ import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.adapter.GameRecordAdapter;
 import com.wuguangxin.simple.bean.GameRecordBean;
 import com.wuguangxin.simple.view.SpacesItemDecoration;
-import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.utils.Utils;
-import com.wuguangxin.utils.mmkv.MmkvUtils;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
 /**
  * <p>游戏记录
  * <p>Created by wuguangxin on 2021-07-06
  */
-public class GameRecordActivity extends XinBaseActivity {
+public class GameRecordActivity extends BaseActivity {
     @BindView(R.id.game_record_recycler_view) RecyclerView mRecyclerView;
     GameRecordAdapter mGameRecordAdapter;
 

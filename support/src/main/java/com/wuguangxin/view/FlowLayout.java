@@ -1,233 +1,243 @@
 package com.wuguangxin.view;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Handler;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.wuguangxin.support.R;
 
 /**
- * 流布局 布局中添加多个view，当其中某几个view的总宽度大于父view的宽度时，自动换行显示
+ * 流布局，自动换行显示，可设置是否单行显示,最多显示item个数
+ * 
+ * Created by wuguangxin on 2017/9/12.
  */
-public class FlowLayout extends ViewGroup{
-	public static final int DEFAULT_SPACING = 20;
-	/** 横向间隔 */
-	private int mHorizontalSpacing = DEFAULT_SPACING;
-	/** 纵向间隔 */
-	private int mVerticalSpacing = DEFAULT_SPACING;
-	/** 是否需要布局，只用于第一次 */
-	boolean mNeedLayout = true;
-	/** 当前行已用的宽度，由子View宽度加上横向间隔 */
-	private int mUsedWidth = 0;
-	/** 代表每一行的集合 */
-	private final List<Line> mLines = new ArrayList<Line>();
-	private Line mLine = null;
-	/** 最大的行数 */
-	private int mMaxLinesCount = Integer.MAX_VALUE;
-	private Handler handler = new Handler();
+public class FlowLayout extends ViewGroup {
+    private int lineSpace; // 行间距
+    private int itemSpace; // 列间距
+    private int maxSize; // 最多显示标签个数，0默认显示全部
+    private boolean singleLine; // 是否单行显示
 
-	public FlowLayout(Context context){
-		super(context);
-	}
+    public FlowLayout(Context context) {
+        this(context, null);
+    }
 
-	public FlowLayout(Context context, AttributeSet paramAttributeSet){
-		super(context, paramAttributeSet);
-	}
+    public FlowLayout(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
 
-	public void setHorizontalSpacing(int spacing){
-		if (mHorizontalSpacing != spacing) {
-			mHorizontalSpacing = spacing;
-			requestLayoutInner();
-		}
-	}
+    public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        this.initAttr(context, attrs);
+    }
 
-	public void setVerticalSpacing(int spacing){
-		if (mVerticalSpacing != spacing) {
-			mVerticalSpacing = spacing;
-			requestLayoutInner();
-		}
-	}
+    @TargetApi(21)
+    public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        this.initAttr(context, attrs);
+    }
 
-	public void setMaxLines(int count){
-		if (mMaxLinesCount != count) {
-			mMaxLinesCount = count;
-			requestLayoutInner();
-		}
-	}
+    private void initAttr(Context context, AttributeSet attrs) {
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.FlowLayout, 0, 0);
+        this.lineSpace = array.getDimensionPixelSize(R.styleable.FlowLayout_lineSpace, 0);
+        this.itemSpace = array.getDimensionPixelSize(R.styleable.FlowLayout_itemSpace, 0);
+        this.singleLine = array.getBoolean(R.styleable.FlowLayout_singleLine, singleLine);
+        this.maxSize = array.getInteger(R.styleable.FlowLayout_maxSize, maxSize);
+        array.recycle();
+    }
 
-	/**
-	 * 在主线程执行
-	 */
-	private void requestLayoutInner(){
-		handler.post(new Runnable(){
-			@Override
-			public void run(){
-				requestLayout();
-			}
-		});
-	}
+    public int getMaxSize() {
+        return maxSize;
+    }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
-		int sizeWidth = MeasureSpec.getSize(widthMeasureSpec) - getPaddingRight() - getPaddingLeft();
-		int sizeHeight = MeasureSpec.getSize(heightMeasureSpec) - getPaddingTop() - getPaddingBottom();
-		int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
-		int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
-		restoreLine();// 还原数据，以便重新记录
-		final int count = getChildCount();
-		for (int i = 0; i < count; i++) {
-			final View child = getChildAt(i);
-			if (child.getVisibility() == GONE) {
-				continue;
-			}
-			int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(sizeWidth, modeWidth == MeasureSpec.EXACTLY ? MeasureSpec.AT_MOST : modeWidth);
-			int childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(sizeHeight, modeHeight == MeasureSpec.EXACTLY ? MeasureSpec.AT_MOST : modeHeight);
-			// 测量child
-			child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
-			if (mLine == null) {
-				mLine = new Line();
-			}
-			int childWidth = child.getMeasuredWidth();
-			mUsedWidth += childWidth;// 增加使用的宽度
-			if (mUsedWidth <= sizeWidth) {// 使用宽度小于总宽度，该child属于这一行。
-				mLine.addView(child);// 添加child
-				mUsedWidth += mHorizontalSpacing;// 加上间隔
-				if (mUsedWidth >= sizeWidth) {// 加上间隔后如果大于等于总宽度，需要换行
-					if (!newLine()) {
-						break;
-					}
-				}
-			} else {// 使用宽度大于总宽度。需要换行
-				if (mLine.getViewCount() == 0) {// 如果这行一个child都没有，即使占用长度超过了总长度，也要加上去，保证每行都有至少有一个child
-					mLine.addView(child);// 添加child
-					if (!newLine()) {// 换行
-						break;
-					}
-				} else {// 如果该行有数据了，就直接换行
-					if (!newLine()) {// 换行
-						break;
-					}
-					// 在新的一行，不管是否超过长度，先加上去，因为这一行一个child都没有，所以必须满足每行至少有一个child
-					mLine.addView(child);
-					mUsedWidth += childWidth + mHorizontalSpacing;
-				}
-			}
-		}
-		if (mLine != null && mLine.getViewCount() > 0 && !mLines.contains(mLine)) {
-			// 由于前面采用判断长度是否超过最大宽度来决定是否换行，则最后一行可能因为还没达到最大宽度，所以需要验证后加入集合中
-			mLines.add(mLine);
-		}
-		int totalWidth = MeasureSpec.getSize(widthMeasureSpec);
-		int totalHeight = 0;
-		final int linesCount = mLines.size();
-		for (int i = 0; i < linesCount; i++) {// 加上所有行的高度
-			totalHeight += mLines.get(i).mHeight;
-		}
-		totalHeight += mVerticalSpacing * (linesCount - 1);// 加上所有间隔的高度
-		totalHeight += getPaddingTop() + getPaddingBottom();// 加上padding
-		// 设置布局的宽高，宽度直接采用父view传递过来的最大宽度，而不用考虑子view是否填满宽度，因为该布局的特性就是填满一行后，再换行
-		// 高度根据设置的模式来决定采用所有子View的高度之和还是采用父view传递过来的高度
-		setMeasuredDimension(totalWidth, resolveSize(totalHeight, heightMeasureSpec));
-	}
+    public void setMaxSize(int maxSize) {
+        if (this.maxSize != maxSize) {
+            this.maxSize = maxSize;
+            requestLayout();
+        }
+    }
 
-	@Override
-	protected void onLayout(boolean changed, int l, int t, int r, int b){
-		if (!mNeedLayout || changed) {//没有发生改变就不重新布局
-			mNeedLayout = false;
-			int left = getPaddingLeft();//获取最初的左上点
-			int top = getPaddingTop();
-			final int linesCount = mLines.size();
-			for (int i = 0; i < linesCount; i++) {
-				final Line oneLine = mLines.get(i);
-				oneLine.layoutView(left, top);//布局每一行
-				top += oneLine.mHeight + mVerticalSpacing;//为下一行的top赋值
-			}
-		}
-	}
+    public float getLineSpace() {
+        return this.lineSpace;
+    }
 
-	/** 还原所有数据 */
-	private void restoreLine(){
-		mLines.clear();
-		mLine = new Line();
-		mUsedWidth = 0;
-	}
+    /**
+     * 设置行间距（垂直间距）
+     * @param lineSpace 行间距 dp
+     */
+    public void setLineSpace(int lineSpace) {
+        if (this.lineSpace != lineSpace) {
+            this.lineSpace = lineSpace;
+            requestLayout();
+        }
+    }
 
-	/** 新增加一行 */
-	private boolean newLine(){
-		mLines.add(mLine);
-		if (mLines.size() < mMaxLinesCount) {
-			mLine = new Line();
-			mUsedWidth = 0;
-			return true;
-		}
-		return false;
-	}
+    public float getItemSpace() {
+        return this.itemSpace;
+    }
 
-	// ==========================================================================
-	// Inner/Nested Classes
-	// ==========================================================================
-	/**
-	 * 代表着一行，封装了一行所占高度，该行子View的集合，以及所有View的宽度总和
-	 */
-	class Line{
-		int mWidth = 0;// 该行中所有的子View累加的宽度
-		int mHeight = 0;// 该行中所有的子View中高度的那个子View的高度
-		List<View> views = new ArrayList<View>();
+    /**
+     * 设置item的间距（水平间距）
+     * @param itemSpace Item间距 dp
+     */
+    protected void setItemSpace(int itemSpace) {
+        if (this.itemSpace != itemSpace) {
+            this.itemSpace = itemSpace;
+            requestLayout();
+        }
+    }
 
-		public void addView(View view){// 往该行中添加一个
-			views.add(view);
-			mWidth += view.getMeasuredWidth();
-			int childHeight = view.getMeasuredHeight();
-			mHeight = mHeight < childHeight ? childHeight : mHeight;//高度等于一行中最高的View
-		}
+    public boolean isSingleLine() {
+        return this.singleLine;
+    }
 
-		public int getViewCount(){
-			return views.size();
-		}
+    /**
+     * 设置是否只显示一行
+     * @param singleLine 单行则true，否则false
+     */
+    public void setSingleLine(boolean singleLine) {
+        if (this.singleLine != singleLine) {
+            this.singleLine = singleLine;
+            requestLayout();
+        }
+    }
 
-		public void layoutView(int l, int t){// 布局
-			int left = l;
-			int top = t;
-			int count = getViewCount();
-			//总宽度
-			int layoutWidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
-			//剩余的宽度，是除了View和间隙的剩余空间
-			int surplusWidth = layoutWidth - mWidth - mHorizontalSpacing * (count - 1);
-			if (surplusWidth >= 0) {// 剩余空间
-				// 采用float类型数据计算后四舍五入能减少int类型计算带来的误差
-				int splitSpacing = (int) (surplusWidth / count + 0.5);
-				for (int i = 0; i < count; i++) {
-					final View view = views.get(i);
-					int childWidth = view.getMeasuredWidth();
-					int childHeight = view.getMeasuredHeight();
-					//计算出每个View的顶点，是由最高的View和该View高度的差值除以2
-					int topOffset = (int) ((mHeight - childHeight) / 2.0 + 0.5);
-					if (topOffset < 0) {
-						topOffset = 0;
-					}
-					//把剩余空间平均到每个View上
-//					childWidth = childWidth + splitSpacing;
-					view.getLayoutParams().width = childWidth;
-					if (splitSpacing > 0) {//View的长度改变了，需要重新measure
-						int widthMeasureSpec = MeasureSpec.makeMeasureSpec(childWidth, MeasureSpec.EXACTLY);
-						int heightMeasureSpec = MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY);
-						view.measure(widthMeasureSpec, heightMeasureSpec);
-					}
-					//布局View
-					view.layout(left, top + topOffset, left + childWidth, top + topOffset + childHeight);
-					left += childWidth + mHorizontalSpacing; //为下一个View的left赋值
-				}
-			} else {
-				if (count == 1) {
-					View view = views.get(0);
-					view.layout(left, top, left + view.getMeasuredWidth(), top + view.getMeasuredHeight());
-				} else {
-					// 走到这里来，应该是代码出问题了，目前按照逻辑来看，是不可能走到这一步
-				}
-			}
-		}
-	}
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        int maxWidth = widthMode != MeasureSpec.AT_MOST && widthMode != MeasureSpec.EXACTLY ? Integer.MAX_VALUE : width;
+        int childLeft = this.getPaddingLeft();
+        int childTop = this.getPaddingTop();
+        int childBottom = this.getPaddingBottom();
+        int maxChildRight = 0;
+        int maxRight = maxWidth - this.getPaddingRight();
+
+        for (int i = 0; i < this.getChildCount(); ++i) {
+            View child = this.getChildAt(i);
+            if (child.getVisibility() != View.GONE) {
+                this.measureChild(child, widthMeasureSpec, heightMeasureSpec);
+                String text = "";
+                if (child instanceof TextView) {
+                    text = ((TextView) child).getText().toString();
+                }
+                Log.e("WGXIN", text + " -----parent width="+getMeasuredWidth() + "----------");
+                Log.e("WGXIN", text + " width="+child.getMeasuredWidth());
+                Log.e("WGXIN", text + " height="+child.getMeasuredHeight());
+                LayoutParams lp = child.getLayoutParams();
+                int leftMargin = 0;
+                int rightMargin = 0;
+                if (lp instanceof MarginLayoutParams) {
+                    MarginLayoutParams marginLp = (MarginLayoutParams) lp;
+                    leftMargin += marginLp.leftMargin;
+                    rightMargin += marginLp.rightMargin;
+                }
+
+                int childRight = childLeft + leftMargin + child.getMeasuredWidth();
+                // 设置限制大小时，超出个数不再显示
+                if (maxSize > 0 && maxSize < i + 1) {
+                    break;
+                }
+                if (childRight > maxRight && !this.singleLine) {
+                    childLeft = this.getPaddingLeft();
+                    childTop = childBottom + this.lineSpace;
+                }
+
+                childRight = childLeft + leftMargin + child.getMeasuredWidth();
+                childBottom = childTop + child.getMeasuredHeight();
+                if (childRight > maxChildRight) {
+                    maxChildRight = childRight;
+                }
+
+                childLeft += leftMargin + rightMargin + child.getMeasuredWidth() + this.itemSpace;
+            }
+        }
+
+        int finalWidth = getMeasuredDimension(width, widthMode, maxChildRight);
+        int finalHeight = getMeasuredDimension(height, heightMode, childBottom);
+        this.setMeasuredDimension(finalWidth, finalHeight);
+    }
+
+    private static int getMeasuredDimension(int size, int mode, int childrenEdge) {
+        switch (mode) {
+        case MeasureSpec.AT_MOST:
+            return Math.min(childrenEdge, size);
+        case MeasureSpec.EXACTLY:
+            return size;
+        default:
+            return childrenEdge;
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean sizeChanged, int left, int top, int right, int bottom) {
+//        if (this.getChildCount() != 0) {
+//            boolean isRtl = ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL;
+//            int paddingStart = isRtl ? this.getPaddingRight() : this.getPaddingLeft();
+//            int paddingEnd = isRtl ? this.getPaddingLeft() : this.getPaddingRight();
+//            int childStart = paddingStart;
+//            int childTop = this.getPaddingTop();
+//            int childBottom = childTop;
+//            int maxChildEnd = right - left - paddingEnd;
+//
+//            int childCount = this.getChildCount();
+//            for (int i = 0; i < childCount; ++i) {
+//                View child = this.getChildAt(i);
+//                if (child.getVisibility() != View.GONE) {
+//                    LayoutParams lp = child.getLayoutParams();
+//                    int startMargin = 0;
+//                    int endMargin = 0;
+//                    if (lp instanceof MarginLayoutParams) {
+//                        MarginLayoutParams marginLp = (MarginLayoutParams) lp;
+//                        startMargin = MarginLayoutParamsCompat.getMarginStart(marginLp);
+//                        endMargin = MarginLayoutParamsCompat.getMarginEnd(marginLp);
+//                    }
+//
+//                    int childEnd = childStart + startMargin + child.getMeasuredWidth();
+//                    if (childEnd > maxChildEnd) {
+//                        childStart = paddingStart;
+//                        childTop = childBottom + this.lineSpace;
+//                    }
+//
+//                    childEnd = childStart + startMargin + child.getMeasuredWidth();
+//                    childBottom = childTop + child.getMeasuredHeight();
+//
+//                    int l, r;
+//                    if (isRtl) {
+//                        l = maxChildEnd - childEnd;
+//                        r = maxChildEnd - childStart - startMargin;
+//                    } else {
+//                        l = childStart + startMargin;
+//                        r = childEnd;
+//                    }
+//                    child.layout(l, childTop, r, childBottom);
+//
+//                    childStart += startMargin + endMargin + child.getMeasuredWidth() + this.itemSpace;
+//                }
+//            }
+//
+//        }
+
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if (child instanceof TextView) {
+                TextView textView = (TextView) child;
+                textView.setTextSize(6);
+
+                DisplayMetrics dm = getResources().getDisplayMetrics();
+
+//                    String wh = child.getMeasuredWidth() + "x" + child.getMeasuredHeight();
+                String wh = child.getWidth() + "x" + child.getHeight();
+                textView.setText(String.format("%s\n%s\n%s\n%s\n%s  %s",
+                        wh, dm.density, dm.densityDpi, dm.scaledDensity, dm.xdpi, dm.ydpi));
+            }
+        }
+    }
 }

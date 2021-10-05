@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        <!--1. Activity-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="dispatchTouchEvent()"
+            android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+
+            <CheckBox
+                android:id="@+id/activity_dispatch_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:enabled="false"
+                android:text="super" />
+
+            <CheckBox
+                android:id="@+id/activity_dispatch_return_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return super" />
+
+            <CheckBox
+                android:id="@+id/activity_dispatch_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return true" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="onTouchEvent()"
+            android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+
+            <CheckBox
+                android:id="@+id/activity_touch_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="super" />
+
+            <CheckBox
+                android:id="@+id/activity_touch_return_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return super" />
+
+            <CheckBox
+                android:id="@+id/activity_touch_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return true" />
+        </LinearLayout>
+
+        <!--2. ViewGroup-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="ViewGroup"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="dispatchTouchEvent()"
+            android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+
+            <CheckBox
+                android:id="@+id/group_dispatch_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="super" />
+
+            <CheckBox
+                android:id="@+id/groupDispatchReturnSuper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return super" />
+
+            <CheckBox
+                android:id="@+id/group_dispatch_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return true" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="onInterceptTouchEvent()"
+            android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+
+            <CheckBox
+                android:id="@+id/group_intercept_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="super" />
+
+            <CheckBox
+                android:id="@+id/group_intercept_return_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return super" />
+
+            <CheckBox
+                android:id="@+id/group_intercept_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return true" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="onTouchEvent()"
+            android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+
+            <CheckBox
+                android:id="@+id/group_touch_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="super" />
+
+            <CheckBox
+                android:id="@+id/group_touch_return_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return super" />
+
+            <CheckBox
+                android:id="@+id/group_touch_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return true" />
+        </LinearLayout>
+
+        <!--3. View-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="View"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="dispatchTouchEvent()"
+            android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+
+            <CheckBox
+                android:id="@+id/view_dispatch_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="super" />
+
+            <CheckBox
+                android:id="@+id/view_dispatch_return_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return super" />
+
+            <CheckBox
+                android:id="@+id/view_dispatch_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return true" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="onTouchEvent()"
+            android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+
+            <CheckBox
+                android:id="@+id/view_touch_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="super" />
+
+            <CheckBox
+                android:id="@+id/view_touch_return_super"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return super" />
+
+            <CheckBox
+                android:id="@+id/view_touch_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="return true" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/setting_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="确定" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#99000000" />
+</LinearLayout>

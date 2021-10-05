@@ -1,116 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="#999"
-                android:gravity="center_vertical"
-                android:hint="输入搜索内容"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="14dp" />
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="#999"
+                    android:gravity="center_vertical"
+                    android:hint="输入搜索内容"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
 
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbar_layout"
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#F2F3F5">
+                android:layout_height="match_parent">
 
-                <LinearLayout
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/appbar_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#999"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                    android:background="#F2F3F5">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#fff"
-                        android:gravity="center"
-                        android:text="内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容"
-                        android:textSize="18dp" />
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/topRecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_marginHorizontal="12dp"
+                            android:orientation="horizontal"
+                            android:overScrollMode="always"
+                            android:scrollbarFadeDuration="0"
+                            android:scrollbarStyle="outsideInset"
+                            android:scrollbars="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="2"
+                            tools:itemCount="99" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:background="#fff"
+                            android:gravity="center"
+                            android:text="内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容\n内容内容内容内容\n内容内容内容内容内容内容内容"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/home_tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/gray"
+                        app:tabBackground="@color/red"
+                        app:tabMaxWidth="0dp"
+                        app:tabPaddingEnd="0dp"
+                        app:tabPaddingStart="0dp"
+                        app:tabRippleColor="@color/transparent" />
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
                 <LinearLayout
-                    android:id="@+id/button_layout"
+                    android:id="@+id/menu_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#999"
+                    android:layout_height="400dp"
+                    android:background="#99000000"
                     android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:visibility="gone"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                     <TextView
-                        android:id="@+id/button1"
+                        android:id="@+id/menu_1"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:gravity="center"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:text="选项1"
+                        android:text="这里是遮罩层"
                         android:textColor="#fff"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
-            </com.google.android.material.appbar.AppBarLayout>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </LinearLayout>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-            <LinearLayout
-                android:id="@+id/menu_layout"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="#99000000"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-                <TextView
-                    android:id="@+id/menu_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:text="这里是遮罩层"
-                    android:textColor="#fff"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    </LinearLayout>
-</com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    <Button
+        android:id="@+id/back_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="顶部" />
+</RelativeLayout>

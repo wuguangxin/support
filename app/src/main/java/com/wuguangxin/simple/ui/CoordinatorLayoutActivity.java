@@ -5,29 +5,33 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.tabs.TabLayout;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.adapter.StringAdapter;
-import com.wuguangxin.ui.XinBaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
-public class CoordinatorLayoutActivity extends XinBaseActivity {
+public class CoordinatorLayoutActivity extends BaseActivity {
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    @BindView(R.id.appbar_layout) AppBarLayout appBarLayout;
-    @BindView(R.id.button_layout) LinearLayout buttonLayout;
-    @BindView(R.id.button1) TextView mButton1;
+    @BindView(R.id.appbar_layout) AppBarLayout mAppBarLayout;
     @BindView(R.id.menu_layout) LinearLayout menuLayout;
     @BindView(R.id.menu_1) TextView menu_1;
+    @BindView(R.id.home_tab_layout) TabLayout mHomeTabLayout;
+    @BindView(R.id.back_top) Button mBackTop;
+    @BindView(R.id.topRecyclerView) RecyclerView mTopRecyclerView;
 
     AppBarLayout.Behavior appBarLayoutBehavior;
 
@@ -45,47 +49,69 @@ public class CoordinatorLayoutActivity extends XinBaseActivity {
         StringAdapter simpleAdapter = new StringAdapter(this, list);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(simpleAdapter);
+        mRecyclerView.setFocusableInTouchMode(false);
+
+        mTopRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.HORIZONTAL, false));
+        mTopRecyclerView.setAdapter(simpleAdapter);
+        mTopRecyclerView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_INSET);
+        mTopRecyclerView.setOverScrollMode(View.OVER_SCROLL_ALWAYS); // 滑到头/尾时的效果，never会不显示滑动条
+        mTopRecyclerView.setScrollBarFadeDuration(Integer.MAX_VALUE);
+        mTopRecyclerView.requestFocus();
+
+//        mHomeTabLayout.addTab(new TabLayout.Tab().setText("菜单1"));
+
+        FixAppBarLayoutBehavior fixAppBarLayoutBehavior = new FixAppBarLayoutBehavior();
+        fixAppBarLayoutBehavior.stopAnimation();
+    }
+
+    public void backTop() {
+        CoordinatorLayout.Behavior behavior = ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
+        if (behavior instanceof AppBarLayout.Behavior) {
+            AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
+            int topAndBottomOffset = appBarLayoutBehavior.getTopAndBottomOffset();
+            if (topAndBottomOffset != 0) {
+                appBarLayoutBehavior.setTopAndBottomOffset(0);
+            }
+        }
+        mRecyclerView.smoothScrollToPosition(0);
+        mBackTop.setVisibility(View.GONE);
     }
 
     @Override
     public void initListener() {
-//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.BaseOnOffsetChangedListener() {
-//            @Override
-//            public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
-//                printLogI("offset = " + offset);
-//            }
-//        });
-        mButton1.setOnClickListener(new View.OnClickListener() {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onClick(View v) {
-                if (appBarLayoutBehavior == null) {
-                    CoordinatorLayout.Behavior behavior = ((CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams()).getBehavior();
-                    if (behavior instanceof AppBarLayout.Behavior) {
-                        appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
-                    }
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) { // 向下滚动
+                    mBackTop.setVisibility(View.VISIBLE);
                 }
-                if (appBarLayoutBehavior != null) {
-                    int height = appBarLayout.getHeight() - buttonLayout.getHeight();
-                    appBarLayoutBehavior.setTopAndBottomOffset(-height);
-                }
-
-                //menuLayout.setVisibility(menuLayout.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
-//                if (menuLayout.getVisibility() == View.GONE) {
-//                    menuLayout.startAnimation(getTopIn());
-//                    menuLayout.setVisibility(View.VISIBLE);
-//                } else {
-//                    menuLayout.startAnimation(AnimUtil.getTopOut());
-//                    menuLayout.setVisibility(View.GONE);
-//                }
             }
         });
 
-//        menu_1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                menuLayout.setVisibility(View.GONE);
-//            }
-//        });
+        mHomeTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                backTop();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        mBackTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backTop();
+            }
+        });
     }
 
     private Animation getTopIn() {
@@ -110,5 +136,8 @@ public class CoordinatorLayoutActivity extends XinBaseActivity {
     public void setData() {
 
     }
+
+
+
 
 }

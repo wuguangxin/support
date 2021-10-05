@@ -68,12 +68,13 @@
     <!-- **********************************************按钮样式start*********************************************** -->
     <!-- 按钮样式-基本 -->
     <style name="xin_button_base">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">40dip</item>
         <item name="android:paddingLeft">20dip</item>
         <item name="android:paddingRight">20dip</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/font_M</item>
+        <item name="android:textAllCaps">false</item>
     </style>
     
     <!-- 按钮样式-灰色 -->

@@ -15,7 +15,6 @@ import com.wuguangxin.simple.adapter.GameAdapter;
 import com.wuguangxin.simple.bean.GameDataBean;
 import com.wuguangxin.simple.bean.GameRecordBean;
 import com.wuguangxin.simple.view.SpacesItemDecoration;
-import com.wuguangxin.ui.XinBaseActivity;
 import com.wuguangxin.utils.Utils;
 
 import java.lang.reflect.Type;
@@ -34,7 +33,7 @@ import butterknife.BindView;
  * <p>抖音上看到的一个地摊小游戏
  * <p>Created by wuguangxin on 2021-07-05
  */
-public class GameActivity extends XinBaseActivity {
+public class GameActivity extends BaseActivity {
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.text1) TextView mText1;
     @BindView(R.id.text2) TextView mText2;
