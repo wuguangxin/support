@@ -41,9 +41,6 @@ public class MainActivity extends BaseActivity {
         mActivityMap.put(R.id.mvp, MvpActivity.class);
         mActivityMap.put(R.id.game, GameActivity.class);
         mActivityMap.put(R.id.test1, TestActivity.class);
-        mActivityMap.put(R.id.retrofit, RetrofitActivity.class);
-
-//        openActivity(Test1Activity.class);
     }
 
     @Override
@@ -56,7 +53,6 @@ public class MainActivity extends BaseActivity {
             R.id.mvp,
             R.id.game,
             R.id.test1,
-            R.id.retrofit,
     })
     public void onClick(View v) {
         int id = v.getId();

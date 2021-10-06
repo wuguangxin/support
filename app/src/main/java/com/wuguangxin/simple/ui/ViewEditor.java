@@ -26,6 +26,7 @@ public class ViewEditor {
     public static ViewEditor with(View view) {
         return with(view, 0);
     }
+
     public static ViewEditor with(View view, long delayMillis) {
         return new ViewEditor(view, delayMillis);
     }

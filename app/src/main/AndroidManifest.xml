@@ -43,7 +43,6 @@
         <activity android:name=".ui.GameActivity" />
         <activity android:name=".ui.GameRecordActivity" />
         <activity android:name=".ui.TestActivity" />
-        <activity android:name=".ui.RetrofitActivity" />
         <activity android:name=".ui.TestTouchEventActivity" />
 
         <activity android:name="com.wuguangxin.simple.ui.call.CallActivity" android:screenOrientation="portrait" >
