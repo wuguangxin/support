@@ -5,14 +5,12 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.adapter.StringAdapter;
+import com.wuguangxin.simple.databinding.ActivityCoordinatorBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +20,13 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
 
-public class CoordinatorLayoutActivity extends BaseActivity {
-    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    @BindView(R.id.appbar_layout) AppBarLayout mAppBarLayout;
-    @BindView(R.id.menu_layout) LinearLayout menuLayout;
-    @BindView(R.id.menu_1) TextView menu_1;
-    @BindView(R.id.home_tab_layout) TabLayout mHomeTabLayout;
-    @BindView(R.id.back_top) Button mBackTop;
-    @BindView(R.id.topRecyclerView) RecyclerView mTopRecyclerView;
+public class CoordinatorLayoutActivity extends BaseActivity<ActivityCoordinatorBinding> {
 
     AppBarLayout.Behavior appBarLayoutBehavior;
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_coordinator;
     }
 
@@ -47,25 +37,25 @@ public class CoordinatorLayoutActivity extends BaseActivity {
         for (int i = 0; i < 100; i++) list.add(String.valueOf(i));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         StringAdapter simpleAdapter = new StringAdapter(this, list);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(simpleAdapter);
-        mRecyclerView.setFocusableInTouchMode(false);
+        binding.recyclerView.setLayoutManager(layoutManager);
+        binding.recyclerView.setAdapter(simpleAdapter);
+        binding.recyclerView.setFocusableInTouchMode(false);
 
-        mTopRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.HORIZONTAL, false));
-        mTopRecyclerView.setAdapter(simpleAdapter);
-        mTopRecyclerView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_INSET);
-        mTopRecyclerView.setOverScrollMode(View.OVER_SCROLL_ALWAYS); // 滑到头/尾时的效果，never会不显示滑动条
-        mTopRecyclerView.setScrollBarFadeDuration(Integer.MAX_VALUE);
-        mTopRecyclerView.requestFocus();
+        binding.topRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.HORIZONTAL, false));
+        binding.topRecyclerView.setAdapter(simpleAdapter);
+        binding.topRecyclerView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_INSET);
+        binding.topRecyclerView.setOverScrollMode(View.OVER_SCROLL_ALWAYS); // 滑到头/尾时的效果，never会不显示滑动条
+        binding.topRecyclerView.setScrollBarFadeDuration(Integer.MAX_VALUE);
+        binding.topRecyclerView.requestFocus();
 
-//        mHomeTabLayout.addTab(new TabLayout.Tab().setText("菜单1"));
+//        binding.homeTabLayout.addTab(new TabLayout.Tab().setText("菜单1"));
 
         FixAppBarLayoutBehavior fixAppBarLayoutBehavior = new FixAppBarLayoutBehavior();
         fixAppBarLayoutBehavior.stopAnimation();
     }
 
     public void backTop() {
-        CoordinatorLayout.Behavior behavior = ((CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams()).getBehavior();
+        CoordinatorLayout.Behavior behavior = ((CoordinatorLayout.LayoutParams) binding.appbarLayout.getLayoutParams()).getBehavior();
         if (behavior instanceof AppBarLayout.Behavior) {
             AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
             int topAndBottomOffset = appBarLayoutBehavior.getTopAndBottomOffset();
@@ -73,23 +63,23 @@ public class CoordinatorLayoutActivity extends BaseActivity {
                 appBarLayoutBehavior.setTopAndBottomOffset(0);
             }
         }
-        mRecyclerView.smoothScrollToPosition(0);
-        mBackTop.setVisibility(View.GONE);
+        binding.recyclerView.smoothScrollToPosition(0);
+        binding.backTop.setVisibility(View.GONE);
     }
 
     @Override
     public void initListener() {
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0) { // 向下滚动
-                    mBackTop.setVisibility(View.VISIBLE);
+                    binding.backTop.setVisibility(View.VISIBLE);
                 }
             }
         });
 
-        mHomeTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        binding.homeTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 backTop();
@@ -106,7 +96,7 @@ public class CoordinatorLayoutActivity extends BaseActivity {
             }
         });
 
-        mBackTop.setOnClickListener(new View.OnClickListener() {
+        binding.backTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 backTop();

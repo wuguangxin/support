@@ -14,9 +14,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
-import com.wuguangxin.utils.MoneyUtils;
-
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 /**
  * EditText内容变化监听类，当文本框获得输入焦点并输入了内容时，显示你定义的清除内容的按钮，
@@ -251,7 +250,7 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 				String money = mEditText.getText().toString().trim();
 				if(!TextUtils.isEmpty(money)){
 					if(money.endsWith(".")){
-						mEditText.setText(MoneyUtils.format(money));
+						mEditText.setText(formatMoney(money));
 					} else {
 						mEditText.setText(money);
 					}
@@ -430,6 +429,15 @@ public class TextChangeListener implements TextWatcher, OnClickListener, OnFocus
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	/**
+	 * 格式化金额
+	 */
+	public static String formatMoney(String value) {
+		if (TextUtils.isEmpty(value)) return "";
+		BigDecimal bigDecimal = new BigDecimal(value.replaceAll(",", ""));
+		return new DecimalFormat("#######.######").format(bigDecimal.toString());
 	}
 
 	/**

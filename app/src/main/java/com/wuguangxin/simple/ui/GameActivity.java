@@ -4,8 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -14,6 +12,7 @@ import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.adapter.GameAdapter;
 import com.wuguangxin.simple.bean.GameDataBean;
 import com.wuguangxin.simple.bean.GameRecordBean;
+import com.wuguangxin.simple.databinding.ActivityGameBinding;
 import com.wuguangxin.simple.view.SpacesItemDecoration;
 import com.wuguangxin.utils.Utils;
 
@@ -26,41 +25,31 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-
 /**
  * <p>抖音上看到的一个地摊小游戏
  * <p>Created by wuguangxin on 2021-07-05
  */
-public class GameActivity extends BaseActivity {
-    @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
-    @BindView(R.id.text1) TextView mText1;
-    @BindView(R.id.text2) TextView mText2;
-    @BindView(R.id.text3) TextView mText3;
-    @BindView(R.id.result) TextView mResult;
-    @BindView(R.id.game_over) Button mGameOver;
-    @BindView(R.id.game_replay) View mGameReplay;
+public class GameActivity extends BaseActivity<ActivityGameBinding> {
     int red, green, blue;
     GameAdapter mGameAdapter;
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_game;
     }
 
     @Override
     public void initView(Bundle savedInstanceState) {
         setTitle("抖音小游戏");
-        mGameOver.setVisibility(View.GONE);
+        binding.gameOver.setVisibility(View.GONE);
         setData();
-        mRecyclerView.addItemDecoration(new SpacesItemDecoration(Utils.dip2px(this, 5)));
+        binding.recyclerView.addItemDecoration(new SpacesItemDecoration(Utils.dip2px(this, 5)));
     }
 
     private void updateResult() {
-        mText1.setText("红：" + red);
-        mText2.setText("绿：" + green);
-        mText3.setText("蓝：" + blue);
+        binding.text1.setText("红：" + red);
+        binding.text2.setText("绿：" + green);
+        binding.text3.setText("蓝：" + blue);
         int count = red+green+blue;
         if (count >= 12) {
             Integer[] arr = {red, green, blue};
@@ -68,8 +57,8 @@ public class GameActivity extends BaseActivity {
             StringBuilder sb = new StringBuilder();
             for(int num : arr) sb.append(num);
             String result = sb.reverse().toString();
-            mResult.setText(result);
-            mGameOver.setVisibility(View.VISIBLE);
+            binding.result.setText(result);
+            binding.gameOver.setVisibility(View.VISIBLE);
 
             Gson gson = new Gson();
             Type type = new TypeToken<LinkedList<GameRecordBean>>() {}.getType();
@@ -99,11 +88,11 @@ public class GameActivity extends BaseActivity {
         red = 0;
         green = 0;
         blue = 0;
-        mText1.setText("红：0");
-        mText2.setText("绿：0");
-        mText3.setText("蓝：0");
-        mResult.setText("");
-        mGameOver.setVisibility(View.GONE);
+        binding.text1.setText("红：0");
+        binding.text2.setText("绿：0");
+        binding.text3.setText("蓝：0");
+        binding.result.setText("");
+        binding.gameOver.setVisibility(View.GONE);
         List<GameDataBean> list = sort(sort(createData())); // 两次随机排序
         mGameAdapter.setList(list);
 //        setData();
@@ -111,7 +100,7 @@ public class GameActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        mGameReplay.setOnClickListener(new View.OnClickListener() {
+        binding.gameReplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replay();
@@ -134,19 +123,16 @@ public class GameActivity extends BaseActivity {
     public void setData() {
         List<GameDataBean> list = sort(sort(createData())); // 两次随机排序
         mGameAdapter = new GameAdapter(this, list);
-        mGameAdapter.setOnStatusListener(new GameAdapter.OnStatusListener() {
-            @Override
-            public void onChecked(GameDataBean gameDataBean) {
-                switch (gameDataBean.text) {
-                    case "红": red++; break;
-                    case "绿": green++; break;
-                    case "蓝": blue++; break;
-                }
-                updateResult();
+        mGameAdapter.setOnStatusListener(gameDataBean -> {
+            switch (gameDataBean.getText()) {
+                case "红": red++; break;
+                case "绿": green++; break;
+                case "蓝": blue++; break;
             }
+            updateResult();
         });
 
-        mRecyclerView.setAdapter(mGameAdapter);
+        binding.recyclerView.setAdapter(mGameAdapter);
     }
 
     private List<GameDataBean> createData() {
@@ -162,9 +148,10 @@ public class GameActivity extends BaseActivity {
 
     // 随机排序
     private List<GameDataBean> sort(List<GameDataBean> list) {
-        Collections.sort(list, new Comparator<GameDataBean>(){
-            private final int[] vs = {-1,0,1};
+        Collections.sort(list, new Comparator<>() {
+            private final int[] vs = {-1, 0, 1};
             private final Random rnd = new Random(System.currentTimeMillis());
+
             @Override
             public int compare(GameDataBean o, GameDataBean t1) {
                 return vs[rnd.nextInt(vs.length)];

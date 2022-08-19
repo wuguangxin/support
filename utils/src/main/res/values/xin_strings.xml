@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Toast -->
+    <string name="xin_toast_text_error">提示</string>
+    <string name="xin_toast_text_warn">提示</string>
+    <string name="xin_toast_text_flow">0kb</string>
+</resources>

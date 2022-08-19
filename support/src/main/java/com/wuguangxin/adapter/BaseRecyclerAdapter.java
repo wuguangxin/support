@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import com.wuguangxin.listener.OnItemClickListener;
 import com.wuguangxin.utils.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -15,38 +16,52 @@ import androidx.recyclerview.widget.RecyclerView;
 public abstract class BaseRecyclerAdapter<T, V extends BaseViewHolder> extends RecyclerView.Adapter<V> {
     protected Context context;
     /** 数据列表 */
-    private List<T> list;
+    private final List<T> mData = new ArrayList<>();
     /** 列表类型（可用于标识列表的类型） */
     private int listType;
 
     private OnItemClickListener<T> onItemClickListener;
 
-    public BaseRecyclerAdapter(Context context, List<T> list) {
+    public BaseRecyclerAdapter(Context context) {
         this.context = context;
-        this.list = list;
+    }
+
+    public BaseRecyclerAdapter(Context context, List<T> data) {
+        this.context = context;
+        this.mData.clear();
+        if (data != null) {
+            this.mData.addAll(data);
+        }
     }
 
     @NonNull
     @Override
-    final public V onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    final public V onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         View view = View.inflate(viewGroup.getContext(), getLayoutId(), null);
-        return createViewHolder(view, i);
+        view.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(v, getItem(position), position, listType);
+            }
+        });
+        return createViewHolder(view, position);
     }
 
     @Override
-    final public void onBindViewHolder(@NonNull V viewHolder, int i) {
-        bindViewData(viewHolder, list.get(i), i, getListType());
+    public void onBindViewHolder(@NonNull V holder, int position) {
+        bindViewData(holder, mData.get(position), position, getListType());
     }
 
     public abstract int getLayoutId();
 
-    public abstract V createViewHolder(View view, int position);
+    public V createViewHolder(View view, int position) {
+        return (V) new BaseViewHolder(view);
+    }
 
-    public abstract void bindViewData(V vewHolder, T t, int position, int type);
+    public abstract void bindViewData(V holder, T data, int position, int type);
 
     @Override
     public int getItemCount() {
-        return list == null ? 0 : list.size();
+        return mData.size();
     }
 
     public Context getContext() {
@@ -54,7 +69,7 @@ public abstract class BaseRecyclerAdapter<T, V extends BaseViewHolder> extends R
     }
 
     public List<T> getList() {
-        return list;
+        return mData;
     }
 
     public void setListType(int listType) {
@@ -66,7 +81,7 @@ public abstract class BaseRecyclerAdapter<T, V extends BaseViewHolder> extends R
     }
 
     public T getItem(int position) {
-        return list == null ? null : list.get(position);
+        return mData.get(position);
     }
 
     public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
@@ -77,8 +92,11 @@ public abstract class BaseRecyclerAdapter<T, V extends BaseViewHolder> extends R
         return onItemClickListener;
     }
 
-    public void setList(List<T> list) {
-        this.list = list;
+    public void setList(List<T> data) {
+        this.mData.clear();
+        if (data != null) {
+            this.mData.addAll(data);
+        }
         notifyAdapter();
     }
 

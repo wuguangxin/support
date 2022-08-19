@@ -1,10 +1,11 @@
 package com.wuguangxin.simple.ui
 
+import androidx.databinding.ViewDataBinding
 import com.wuguangxin.simple.retrofit.ApiService
 import com.wuguangxin.simple.retrofit.RetrofitUtils
 import com.wuguangxin.ui.XinBaseActivity
 
-abstract class BaseActivity : XinBaseActivity() {
+abstract class BaseActivity<B: ViewDataBinding> : XinBaseActivity<B>() {
 
     fun getService(): ApiService {
         return RetrofitUtils.getService()
@@ -19,4 +20,5 @@ abstract class BaseActivity : XinBaseActivity() {
     }
 
     fun println(s: String) = this.printLogI(s)
+    fun log(s: String) = this.printLogI(s)
 }

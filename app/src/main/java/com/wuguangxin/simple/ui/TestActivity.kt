@@ -16,10 +16,9 @@ import com.wuguangxin.utils.Utils
 import java.lang.StringBuilder
 import java.util.concurrent.CompletableFuture
 
-class TestActivity : BaseActivity() {
-    lateinit var binding: ActivityTestBinding
+class TestActivity : BaseActivity<ActivityTestBinding>() {
 
-    override fun getLayoutRes(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.activity_test
     }
 
@@ -28,15 +27,20 @@ class TestActivity : BaseActivity() {
     override fun setData() {}
 
     override fun initView(savedInstanceState: Bundle?) {
-        binding = ActivityTestBinding.bind(layoutManager.bodyLayout)
         titleBar.setBackVisibility(false)
+
+        binding.addView.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                showToast("哈哈")
+            }
+        })
 
         binding.testGroup.removeAllViews()
         addTest("test3 TimeUtils", ::test3) // 系统TimeUtils
         addTest("test4 布局加载", ::test4) // 测试布局加载方式
 
         val hashMap = hashMapOf<String, String>()
-        hashMap.put("a","b")
+        hashMap["a"] = "b"
     }
 
 
@@ -117,7 +121,7 @@ class TestActivity : BaseActivity() {
         println("$name addTest width = $width")
         println("$name addTest height = $height")
         button.layoutParams = ViewGroup.LayoutParams(width, height)
-        binding.testGroup.addView(button)
+        binding.testGroup.addView(button, 0)
     }
 
 

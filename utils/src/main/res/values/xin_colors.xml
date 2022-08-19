@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Toast-->
+    <color name="xin_toast_text_color">#009966</color>
+    <color name="xin_toast_icon_color">#000000</color>
+    <color name="xin_toast_bg_color">#ffffff</color>
+
+</resources>

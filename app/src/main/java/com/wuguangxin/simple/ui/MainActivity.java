@@ -1,7 +1,6 @@
 package com.wuguangxin.simple.ui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,25 +10,28 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.wuguangxin.simple.R;
-import com.wuguangxin.simple.constans.Constants;
-import com.wuguangxin.utils.AndroidUtils;
-import com.wuguangxin.utils.Logger;
+import com.wuguangxin.simple.adapter.TempPagerAdapter;
+import com.wuguangxin.simple.databinding.ActivityMainBinding;
+import com.wuguangxin.simple.view.LineGraphicView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import androidx.core.app.ActivityCompat;
-import butterknife.OnClick;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
-public class MainActivity extends BaseActivity {
-    private static final String TAG = "MainActivity";
+public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     private Map<Integer, Class<? extends Activity>> mActivityMap;
     private PopupWindow popupWindow;
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_main;
     }
 
@@ -41,26 +43,50 @@ public class MainActivity extends BaseActivity {
         mActivityMap.put(R.id.mvp, MvpActivity.class);
         mActivityMap.put(R.id.game, GameActivity.class);
         mActivityMap.put(R.id.test1, TestActivity.class);
+        mActivityMap.put(R.id.apps, ApplicationsActivity.class);
+
+        initTabLayout();
+
+        LineGraphicView LineGraphicView = findViewById(R.id.lineGraphicView);
+
+        ArrayList<Long> times = new ArrayList<>();
+        times.add(2000L);
+        times.add(1743L);
+        times.add(1660L);
+        times.add(1308L);
+        times.add(2432L);
+        times.add(2120L);
+        times.add(1520L);
+        times.add(2150L);
+        times.add(2150L);
+        times.add(2510L);
+        times.add(2450L);
+        times.add(2150L);
+        times.add(2350L);
+
+        ArrayList<String> dates = new ArrayList<>();
+        dates.add("05-19");
+        dates.add("05-20");
+        dates.add("05-21");
+        dates.add("05-22");
+        dates.add("05-23");
+        dates.add("05-24");
+        dates.add("05-25");
+        dates.add("05-26");
+        dates.add("05-27");
+        dates.add("05-28");
+        dates.add("05-29");
+        dates.add("05-30");
+        dates.add("05-31");
+        LineGraphicView.setData(times, dates);
     }
 
     @Override
     public void initListener() {
     }
 
-    @OnClick({
-            R.id.permission,
-            R.id.widget,
-            R.id.mvp,
-            R.id.game,
-            R.id.test1,
-    })
     public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.permission) {
-            requestPermissions(Constants.PERMISSION_ALL);
-        } else {
-            openActivity(mActivityMap.get(id));
-        }
+        openActivity(mActivityMap.get(v.getId()));
     }
 
     private void testPopupWindow(View v) {
@@ -95,6 +121,40 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    private void initTabLayout() {
+        final List<Fragment> fragments = new ArrayList<>();
+        final List<String> titles = Arrays.asList("张三", "李四", "王五", "马六", "阿甘", "大师", "大神", "刘德华", "张学友", "刘若英");
+        for (String title : titles) {
+            fragments.add(TestEmptyFragment.newInstance(title));
+        }
+        binding.viewPager.setAdapter(new TempPagerAdapter(getSupportFragmentManager(), fragments, titles));
+        binding.tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                binding.viewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+            }
+        });
+        binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+        binding.tabLayout.setViewPager(binding.viewPager);
+        binding.viewPager.setCurrentItem(3);
+    }
+
     @Override
     public void initData() {
 
@@ -103,27 +163,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setData() {
 
-    }
-
-    /**
-     * 请求获取权限
-     *
-     * @param permissions 权限
-     */
-    public void requestPermissions(String... permissions) {
-        ActivityCompat.requestPermissions(this, permissions, 1);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Logger.e("onActivityResult", "requestCode = " + requestCode);
-        if (requestCode == 1) {
-            Logger.e("onActivityResult", "resultCode = " + resultCode);
-            Logger.e("onActivityResult", "data = " + data.toString());
-            String deviceId = AndroidUtils.getDeviceId(this);
-            Logger.e("onActivityResult", "deviceId：" + deviceId);
-        }
     }
 
 }

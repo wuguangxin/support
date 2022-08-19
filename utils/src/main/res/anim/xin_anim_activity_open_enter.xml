@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+
+    <!-- open时进入的动画 -->
+<!--    <translate-->
+<!--        android:duration="400"-->
+<!--        android:fromXDelta="100%p"-->
+<!--        android:interpolator="@android:anim/decelerate_interpolator"-->
+<!--        android:toXDelta="0" />-->
+
+    <!--     <scale -->
+    <!--         android:duration="400" -->
+    <!--         android:fromXScale="0.7" -->
+    <!--        	android:fromYScale="0.7" -->
+    <!--        	android:pivotX="100%" -->
+    <!--        	android:pivotY="50%" -->
+    <!--         android:repeatCount="0" -->
+    <!--         android:toXScale="1" -->
+    <!--         android:toYScale="1" /> -->
+
+</set>

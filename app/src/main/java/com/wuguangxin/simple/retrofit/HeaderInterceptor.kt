@@ -1,7 +1,6 @@
 package com.wuguangxin.simple.retrofit
 
-import com.wuguangxin.simple.App
-import com.wuguangxin.utils.AndroidUtils
+import com.wuguangxin.base.SystemManager
 import okhttp3.Interceptor
 import okhttp3.Response
 import org.json.JSONObject
@@ -16,13 +15,13 @@ class HeaderInterceptor : Interceptor {
     }
 
     private fun getHeaderJson(): String {
-        val obj = JSONObject()
-        return obj.apply {
-            obj.put("platform", "android")
-            obj.put("sessionId", UUID.randomUUID().toString())
-            obj.put("deviceId", AndroidUtils.getDeviceId(App.getContext()))
-            obj.put("versionCode", AndroidUtils.getVersionCode(App.getContext()))
-            obj.put("versionName", AndroidUtils.getVersionName(App.getContext()))
-        }.toString()
+        val info = SystemManager.getSystemInfo()
+        return JSONObject()
+            .put("platform", "android")
+            .put("sessionId", UUID.randomUUID().toString())
+            .put("deviceId", info.deviceId)
+            .put("versionCode", info.build)
+            .put("versionName", info.version)
+            .toString()
     }
 }

@@ -6,9 +6,7 @@ import android.view.MotionEvent;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.databinding.ActivityTestTouchEventBinding;
 
-public class TestTouchEventActivity extends BaseActivity {
-    private ActivityTestTouchEventBinding mRootBinding;
-
+public class TestTouchEventActivity extends BaseActivity<ActivityTestTouchEventBinding> {
     // activity
     private boolean activityDispatchSuper = true;
     private boolean activityDispatchReturn;
@@ -44,150 +42,149 @@ public class TestTouchEventActivity extends BaseActivity {
     }
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_test_touch_event;
     }
 
     @Override
     public void initView(Bundle savedInstanceState) {
         getTitleBar().setBackVisibility(false);
-        mRootBinding = ActivityTestTouchEventBinding.bind(getLayoutManager().getBodyLayout());
 
-        mRootBinding.viewGroup.setOnClickListener(v -> printLogI("点击了 " + v.getTag()));
-        mRootBinding.childView.setOnClickListener(v -> printLogI("点击了 " + v.getTag()));
+        binding.viewGroup.setOnClickListener(v -> printLogI("点击了 " + v.getTag()));
+        binding.childView.setOnClickListener(v -> printLogI("点击了 " + v.getTag()));
 
         // activity
         // ----dispatchTouchEvent()
-        mRootBinding.activityDispatchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.activityDispatchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
             activityDispatchSuper = isChecked;
-            mRootBinding.activityDispatchReturnSuper.setEnabled(isChecked);
-            if (!isChecked) mRootBinding.activityDispatchReturnSuper.setChecked(false);
+            binding.activityDispatchReturnSuper.setEnabled(isChecked);
+            if (!isChecked) binding.activityDispatchReturnSuper.setChecked(false);
         });
-        mRootBinding.activityDispatchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.activityDispatchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
             activityDispatchReturnSuper = isChecked;
-            if (isChecked) mRootBinding.activityDispatchReturn.setChecked(false);
+            if (isChecked) binding.activityDispatchReturn.setChecked(false);
         });
-        mRootBinding.activityDispatchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.activityDispatchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
             activityDispatchReturn = isChecked;
-            if (isChecked) mRootBinding.activityDispatchReturnSuper.setChecked(false);
+            if (isChecked) binding.activityDispatchReturnSuper.setChecked(false);
         });
         // ----onTouchEvent()
-        mRootBinding.activityTouchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.activityTouchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
             activityTouchSuper = isChecked;
-            mRootBinding.activityTouchReturnSuper.setEnabled(isChecked);
-            if (!isChecked) mRootBinding.activityTouchReturnSuper.setChecked(false);
+            binding.activityTouchReturnSuper.setEnabled(isChecked);
+            if (!isChecked) binding.activityTouchReturnSuper.setChecked(false);
         });
-        mRootBinding.activityTouchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.activityTouchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
             activityTouchReturnSuper = isChecked;
-            if (isChecked) mRootBinding.activityTouchReturn.setChecked(false);
+            if (isChecked) binding.activityTouchReturn.setChecked(false);
         });
-        mRootBinding.activityTouchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.activityTouchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
             activityTouchReturn = isChecked;
-            if (isChecked) mRootBinding.activityTouchReturnSuper.setChecked(false);
+            if (isChecked) binding.activityTouchReturnSuper.setChecked(false);
         });
 
         // ViewGroup
         // ----dispatchTouchEvent()
-        mRootBinding.groupDispatchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupDispatchSuper = isChecked;
-            mRootBinding.groupDispatchReturnSuper.setEnabled(isChecked);
-            if (!isChecked) mRootBinding.groupDispatchReturnSuper.setChecked(false);
+        binding.groupDispatchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupDispatchSuper = isChecked;
+            binding.groupDispatchReturnSuper.setEnabled(isChecked);
+            if (!isChecked) binding.groupDispatchReturnSuper.setChecked(false);
         });
-        mRootBinding.groupDispatchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupDispatchReturnSuper = isChecked;
-            if (isChecked) mRootBinding.groupDispatchReturn.setChecked(false);
+        binding.groupDispatchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupDispatchReturnSuper = isChecked;
+            if (isChecked) binding.groupDispatchReturn.setChecked(false);
         });
-        mRootBinding.groupDispatchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupDispatchReturn = isChecked;
-            if (isChecked) mRootBinding.groupDispatchReturnSuper.setChecked(false);
+        binding.groupDispatchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupDispatchReturn = isChecked;
+            if (isChecked) binding.groupDispatchReturnSuper.setChecked(false);
         });
         // ----onInterceptTouchEvent()
-        mRootBinding.groupInterceptSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupInterceptSuper = isChecked;
-            mRootBinding.groupInterceptReturnSuper.setEnabled(isChecked);
-            if (!isChecked) mRootBinding.groupInterceptReturnSuper.setChecked(false);
+        binding.groupInterceptSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupInterceptSuper = isChecked;
+            binding.groupInterceptReturnSuper.setEnabled(isChecked);
+            if (!isChecked) binding.groupInterceptReturnSuper.setChecked(false);
         });
-        mRootBinding.groupInterceptReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupInterceptReturnSuper = isChecked;
-            if (isChecked) mRootBinding.groupInterceptReturn.setChecked(false);
+        binding.groupInterceptReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupInterceptReturnSuper = isChecked;
+            if (isChecked) binding.groupInterceptReturn.setChecked(false);
         });
-        mRootBinding.groupInterceptReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupInterceptReturn = isChecked;
-            if (isChecked) mRootBinding.groupInterceptReturnSuper.setChecked(false);
+        binding.groupInterceptReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupInterceptReturn = isChecked;
+            if (isChecked) binding.groupInterceptReturnSuper.setChecked(false);
         });
 
         // ----onTouchEvent()
-        mRootBinding.groupTouchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupTouchSuper = isChecked;
-            mRootBinding.groupTouchReturnSuper.setEnabled(isChecked);
-            if (!isChecked) mRootBinding.groupTouchReturnSuper.setChecked(false);
+        binding.groupTouchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupTouchSuper = isChecked;
+            binding.groupTouchReturnSuper.setEnabled(isChecked);
+            if (!isChecked) binding.groupTouchReturnSuper.setChecked(false);
         });
-        mRootBinding.groupTouchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupTouchReturn = isChecked;
-            if (isChecked) mRootBinding.groupTouchReturnSuper.setChecked(false);
+        binding.groupTouchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupTouchReturn = isChecked;
+            if (isChecked) binding.groupTouchReturnSuper.setChecked(false);
         });
-        mRootBinding.groupTouchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.viewGroup.groupTouchReturnSuper = isChecked;
-            if (isChecked) mRootBinding.groupTouchReturn.setChecked(false);
+        binding.groupTouchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.viewGroup.groupTouchReturnSuper = isChecked;
+            if (isChecked) binding.groupTouchReturn.setChecked(false);
         });
 
         // View
 
         // ----dispatchTouchEvent()
-        mRootBinding.viewDispatchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.childView.viewDispatchSuper = isChecked;
-            mRootBinding.viewDispatchReturnSuper.setEnabled(isChecked);
-            if (!isChecked) mRootBinding.viewDispatchReturnSuper.setChecked(false);
+        binding.viewDispatchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.childView.viewDispatchSuper = isChecked;
+            binding.viewDispatchReturnSuper.setEnabled(isChecked);
+            if (!isChecked) binding.viewDispatchReturnSuper.setChecked(false);
         });
-        mRootBinding.viewDispatchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.childView.viewDispatchReturnSuper = isChecked;
-            if (isChecked) mRootBinding.viewDispatchReturn.setChecked(false);
+        binding.viewDispatchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.childView.viewDispatchReturnSuper = isChecked;
+            if (isChecked) binding.viewDispatchReturn.setChecked(false);
         });
-        mRootBinding.viewDispatchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.childView.viewDispatchReturn = isChecked;
-            if (isChecked) mRootBinding.viewDispatchReturnSuper.setChecked(false);
+        binding.viewDispatchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.childView.viewDispatchReturn = isChecked;
+            if (isChecked) binding.viewDispatchReturnSuper.setChecked(false);
         });
 
         // ----onTouchEvent()
-        mRootBinding.viewTouchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.childView.viewTouchSuper = isChecked;
-            mRootBinding.viewTouchReturnSuper.setEnabled(isChecked);
-            if (!isChecked) mRootBinding.viewTouchReturnSuper.setChecked(false);
+        binding.viewTouchSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.childView.viewTouchSuper = isChecked;
+            binding.viewTouchReturnSuper.setEnabled(isChecked);
+            if (!isChecked) binding.viewTouchReturnSuper.setChecked(false);
         });
-        mRootBinding.viewTouchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.childView.viewTouchReturnSuper = isChecked;
-            if (isChecked) mRootBinding.viewTouchReturn.setChecked(false);
+        binding.viewTouchReturnSuper.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.childView.viewTouchReturnSuper = isChecked;
+            if (isChecked) binding.viewTouchReturn.setChecked(false);
         });
-        mRootBinding.viewTouchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mRootBinding.childView.viewTouchReturn = isChecked;
-            if (isChecked) mRootBinding.viewTouchReturnSuper.setChecked(false);
+        binding.viewTouchReturn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            binding.childView.viewTouchReturn = isChecked;
+            if (isChecked) binding.viewTouchReturnSuper.setChecked(false);
         });
 
 
         // activity
-        mRootBinding.activityDispatchSuper.setChecked(activityDispatchSuper);
-        mRootBinding.activityDispatchReturn.setChecked(activityDispatchReturn);
-        mRootBinding.activityDispatchReturnSuper.setChecked(activityDispatchReturnSuper);
-        mRootBinding.activityTouchSuper.setChecked(activityTouchSuper);
-        mRootBinding.activityTouchReturn.setChecked(activityTouchReturn);
-        mRootBinding.activityTouchReturnSuper.setChecked(activityTouchReturnSuper);
+        binding.activityDispatchSuper.setChecked(activityDispatchSuper);
+        binding.activityDispatchReturn.setChecked(activityDispatchReturn);
+        binding.activityDispatchReturnSuper.setChecked(activityDispatchReturnSuper);
+        binding.activityTouchSuper.setChecked(activityTouchSuper);
+        binding.activityTouchReturn.setChecked(activityTouchReturn);
+        binding.activityTouchReturnSuper.setChecked(activityTouchReturnSuper);
         // ViewGroup
-        mRootBinding.groupDispatchSuper.setChecked(groupDispatchSuper);
-        mRootBinding.groupDispatchReturn.setChecked(groupDispatchReturn);
-        mRootBinding.groupDispatchReturnSuper.setChecked(groupDispatchReturnSuper);
-        mRootBinding.groupInterceptSuper.setChecked(groupInterceptSuper);
-        mRootBinding.groupInterceptReturn.setChecked(groupInterceptReturn);
-        mRootBinding.groupInterceptReturnSuper.setChecked(groupInterceptReturnSuper);
-        mRootBinding.groupTouchSuper.setChecked(groupTouchSuper);
-        mRootBinding.groupTouchReturn.setChecked(groupTouchReturn);
-        mRootBinding.groupTouchReturnSuper.setChecked(groupTouchReturnSuper);
+        binding.groupDispatchSuper.setChecked(groupDispatchSuper);
+        binding.groupDispatchReturn.setChecked(groupDispatchReturn);
+        binding.groupDispatchReturnSuper.setChecked(groupDispatchReturnSuper);
+        binding.groupInterceptSuper.setChecked(groupInterceptSuper);
+        binding.groupInterceptReturn.setChecked(groupInterceptReturn);
+        binding.groupInterceptReturnSuper.setChecked(groupInterceptReturnSuper);
+        binding.groupTouchSuper.setChecked(groupTouchSuper);
+        binding.groupTouchReturn.setChecked(groupTouchReturn);
+        binding.groupTouchReturnSuper.setChecked(groupTouchReturnSuper);
         // View
-        mRootBinding.viewDispatchSuper.setChecked(viewDispatchSuper);
-        mRootBinding.viewDispatchReturn.setChecked(viewDispatchReturn);
-        mRootBinding.viewDispatchReturnSuper.setChecked(viewDispatchReturnSuper);
-        mRootBinding.viewTouchSuper.setChecked(viewTouchSuper);
-        mRootBinding.viewTouchReturn.setChecked(viewTouchReturn);
-        mRootBinding.viewTouchReturnSuper.setChecked(viewTouchReturnSuper);
+        binding.viewDispatchSuper.setChecked(viewDispatchSuper);
+        binding.viewDispatchReturn.setChecked(viewDispatchReturn);
+        binding.viewDispatchReturnSuper.setChecked(viewDispatchReturnSuper);
+        binding.viewTouchSuper.setChecked(viewTouchSuper);
+        binding.viewTouchReturn.setChecked(viewTouchReturn);
+        binding.viewTouchReturnSuper.setChecked(viewTouchReturnSuper);
     }
 
     @Override

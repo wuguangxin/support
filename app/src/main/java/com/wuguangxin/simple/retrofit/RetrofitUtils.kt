@@ -13,15 +13,15 @@ enum class RetrofitUtils {
     private var retrofit: Retrofit? = null
 
     init {
-        retrofit = buildRetrofit();
+        retrofit = buildRetrofit(null)
     }
 
-    private fun buildRetrofit(baseUrl: String? = null): Retrofit {
+    private fun buildRetrofit(baseUrl: String?): Retrofit {
         val url = baseUrl ?: ApiService.baseUrl
         val gson = GsonBuilder().setLenient().create()
         return Retrofit.Builder().apply {
             baseUrl(url)
-            client(OkHttpUtils.INSTANCE.client)
+            client(OkHttpUtils.getClient())
             addConverterFactory(GsonConverterFactory.create(gson))
         }.build()
     }

@@ -1,75 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="1dp"
-    android:paddingBottom="1dp"
-    android:gravity="center_vertical" >
+<layout>
+    <data>
 
-    <LinearLayout
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/item_game_record_bg"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:gravity="center_vertical" >
 
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="000"
-            android:textColor="#ff0000" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/item_game_record_bg"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:orientation="horizontal">
 
-        <Space
-            android:layout_width="0dp"
-            android:minWidth="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="000"
+                android:textColor="#ff0000" />
 
-        <TextView
-            android:id="@+id/textRed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:textColor="#666666"
-            android:text="红：0" />
+            <Space
+                android:layout_width="0dp"
+                android:minWidth="15dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
-        <TextView
-            android:id="@+id/textGreen"
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:textColor="#666666"
-            android:text="绿：0"  />
+            <TextView
+                android:id="@+id/textRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#666666"
+                android:text="红：0" />
 
-        <TextView
-            android:id="@+id/textBlue"
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:textColor="#666666"
-            android:text="蓝：0"  />
+            <TextView
+                android:id="@+id/textGreen"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#666666"
+                android:text="绿：0"  />
 
-        <Space
-            android:layout_width="0dp"
-            android:minWidth="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/textBlue"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#666666"
+                android:text="蓝：0"  />
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:textColor="#333333"
-            android:text="2020-01-01 10:20:20" />
+            <Space
+                android:layout_width="0dp"
+                android:minWidth="15dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#333333"
+                android:text="2020-01-01 10:20:20" />
 
 
-    </LinearLayout>
-</RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
 

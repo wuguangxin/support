@@ -7,13 +7,14 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.wuguangxin.simple.R;
+import com.wuguangxin.simple.databinding.ActivityGestureViewBinding;
 
-public class GestureViewActivity extends BaseActivity {
+public class GestureViewActivity extends BaseActivity<ActivityGestureViewBinding> {
 
     private static final String TAG = "GestureViewActivity";
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_gesture_view;
     }
 

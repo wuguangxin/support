@@ -1,0 +1,10 @@
+<resources>
+
+    <!--Toast-->
+    <dimen name="xin_toast_layout_height">35dp</dimen>
+    <dimen name="xin_toast_layout_radius">18dp</dimen>
+    <dimen name="xin_toast_text_size">14sp</dimen>
+    <dimen name="xin_toast_icon_width">20dp</dimen>
+    <dimen name="xin_toast_icon_height">20dp</dimen>
+
+</resources>

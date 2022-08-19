@@ -49,10 +49,10 @@ public class GameAdapter extends BaseRecyclerAdapter<GameDataBean, BaseViewHolde
     public void bindViewData(BaseViewHolder viewHolder, GameDataBean gameDataBean, int position, int type) {
         viewHolder.setIsRecyclable(false); // false: view不重复利用，降低性能
         SquareCheckBox checkBox = (SquareCheckBox) viewHolder.getItemView();
-        if (gameDataBean.checked) {
-            checkBox.setBackgroundColor(gameDataBean.color);
+        if (gameDataBean.getChecked()) {
+            checkBox.setBackgroundColor(gameDataBean.getColor());
             checkBox.setOnCheckedChangeListener(null);
-        } else if (!gameDataBean.enable) {
+        } else if (!gameDataBean.getEnable()) {
             checkBox.setBackgroundColor(grayColor);
             checkBox.setOnCheckedChangeListener(null);
         } else {
@@ -62,17 +62,17 @@ public class GameAdapter extends BaseRecyclerAdapter<GameDataBean, BaseViewHolde
                         return;
                     }
                     resultData.add(gameDataBean);
-                    gameDataBean.checked = true;
-                    gameDataBean.enable = false;
-                    checkBox.setBackgroundColor(gameDataBean.color);
-                    checkBox.setEnabled(gameDataBean.enable);
+                    gameDataBean.setChecked(true);
+                    gameDataBean.setEnable(false);
+                    checkBox.setBackgroundColor(gameDataBean.getColor());
+                    checkBox.setEnabled(gameDataBean.getEnable());
                     if (onStatusListener != null) {
                         onStatusListener.onChecked(gameDataBean);
                     }
                     if (resultData.size() >= 12) {
                         int itemCount = getItemCount();
                         for (int i = 0; i < itemCount; i++) {
-                            getItem(i).enable = false;
+                            getItem(i).setEnable(false);
                         }
                         full = true;
                         notifyDataSetChanged();
@@ -81,9 +81,9 @@ public class GameAdapter extends BaseRecyclerAdapter<GameDataBean, BaseViewHolde
             });
         }
 
-        checkBox.setChecked(gameDataBean.checked);
-        checkBox.setEnabled(gameDataBean.enable || resultData.size() >= 12);
-        checkBox.setText(gameDataBean.text);
+        checkBox.setChecked(gameDataBean.getChecked());
+        checkBox.setEnabled(gameDataBean.getEnable() || resultData.size() >= 12);
+        checkBox.setText(gameDataBean.getText());
     }
 
     private OnStatusListener onStatusListener;

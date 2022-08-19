@@ -8,26 +8,26 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by wuguangxin on 2021/9/8.
  */
-enum class OkHttpUtils {
-    INSTANCE;
+object OkHttpUtils {
+    private val client: OkHttpClient = build()
 
-    val client: OkHttpClient
+    fun getClient(): OkHttpClient = client
 
-    init {
-        client = OkHttpClient.Builder()
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .readTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS)
-                .callTimeout(15, TimeUnit.SECONDS)
-                .addInterceptor(HeaderInterceptor())
-                .addInterceptor(getLoggingInterceptor())
-                .build()
+    private fun build(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .callTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor(HeaderInterceptor())
+            .addInterceptor(getLoggingInterceptor())
+            .build()
     }
 
     // 日志拦截
     private fun getLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor { message ->
-            Logger.e(OkHttpUtils::class.java, message)
+            Logger.e(OkHttpUtils::class.simpleName, message)
         }.setLevel(HttpLoggingInterceptor.Level.BODY);
     }
 }

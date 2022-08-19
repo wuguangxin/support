@@ -1,52 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F2F3F5"
-    android:orientation="vertical">
+<layout>
 
-    <LinearLayout
+    <data>
+
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F2F3F5"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/widget"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Widget"
-            android:textAllCaps="false"/>
+            android:orientation="vertical"
+            android:visibility="visible">
 
-        <Button
-            android:id="@+id/permission"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="动态权限"
-            android:visibility="gone"
-            android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/widget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Widget"
+                android:onClick="onClick"
+                android:textAllCaps="false"/>
 
-        <Button
-            android:id="@+id/mvp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MVP"
-            android:visibility="gone"
-            android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:text="动态权限"
+                android:onClick="onClick"
+                android:textAllCaps="false"/>
 
-        <Button
-            android:id="@+id/game"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Game"
-            android:textAllCaps="false"/>
-        <Button
-            android:id="@+id/test1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test1"
-            android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/mvp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:text="MVP"
+                android:onClick="onClick"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Game"
+                android:onClick="onClick"
+                android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/test1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test1"
+                android:onClick="onClick"
+                android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/apps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="应用列表"
+                android:onClick="onClick"
+                android:textAllCaps="false"/>
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/text_blue"
+                app:tl_indicator_style="BLOCK" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray"
+                android:visibility="visible"
+                android:alpha="0"
+                app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
+
+            <com.wuguangxin.simple.view.LineGraphicView
+                android:id="@+id/lineGraphicView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>

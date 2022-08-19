@@ -1,42 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+<layout>
+    <data>
 
-    <com.wuguangxin.view.FlowLayout
-        android:id="@+id/test_group"
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#999999"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:itemSpace="5dp"
-        app:lineSpace="5dp">
-
-    </com.wuguangxin.view.FlowLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <com.wuguangxin.view.FlowLayout
-            android:id="@+id/test6Layout"
+            android:id="@+id/test_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#0066ff"
+            android:background="#999999"
+            android:orientation="vertical"
             android:padding="10dp"
-            app:itemSpace="10dp"
-            app:lineSpace="10dp" >
+            app:itemSpace="5dp"
+            app:lineSpace="5dp">
 
-            <TextView android:text="动态添加1" android:layout_width="100dp" android:layout_height="50dp" android:background="#00ff00" android:gravity="center" />
-            <TextView android:text="动态添加2" android:layout_width="100dp" android:layout_height="50dp" android:background="#00ff00" android:gravity="center" />
-            <TextView android:text="动态添加3" android:visibility="visible" android:layout_width="100dp" android:layout_height="50dp" android:background="#00ff00" android:gravity="center" />
+            <TextView
+                android:id="@+id/add_view"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="#00ff00"
+                android:gravity="center"
+                android:text="添加View" />
+
 
         </com.wuguangxin.view.FlowLayout>
 
-    </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <com.wuguangxin.view.FlowLayout
+                android:id="@+id/test6Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0066ff"
+                android:padding="10dp"
+                app:itemSpace="10dp"
+                app:lineSpace="10dp" >
+
+                <TextView android:text="原始添加1" android:layout_width="100dp" android:layout_height="50dp" android:background="#00ff00" android:gravity="center" />
+                <TextView android:text="原始添加2" android:layout_width="100dp" android:layout_height="50dp" android:background="#00ff00" android:gravity="center" />
+                <TextView android:text="原始添加3" android:visibility="visible" android:layout_width="100dp" android:layout_height="50dp" android:background="#00ff00" android:gravity="center" />
+
+            </com.wuguangxin.view.FlowLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>
+

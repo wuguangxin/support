@@ -11,6 +11,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "support"
 include ':app'
+include ':utils'
 include ':support'
 
 
+include ':myapplication'

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="100dp"
+    app:cardBackgroundColor="@color/xin_toast_bg_color"
+    app:cardCornerRadius="@dimen/xin_toast_layout_radius"
+    app:cardElevation="10dp">
+
+    <TextView
+        android:id="@+id/xin_toast_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/xin_toast_icon2"
+        android:drawablePadding="2dp"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/xin_toast_layout_height"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/xin_toast_text_color"
+        android:textSize="@dimen/xin_toast_text_size"
+        tools:text="这是一条调皮的消息" />
+
+</androidx.cardview.widget.CardView>

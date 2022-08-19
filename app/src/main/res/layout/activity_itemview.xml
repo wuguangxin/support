@@ -1,253 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
+    <data>
 
-    <LinearLayout
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.wuguangxin.view.ItemLinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
-            android:background="@color/white"
-            android:orientation="vertical"
-            app:divider="@drawable/divider"
-            app:dividerMode="both">
+            android:orientation="vertical">
+
+            <com.wuguangxin.view.ItemLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:divider="@drawable/divider"
+                app:dividerMode="both">
+
+                <com.wuguangxin.view.ItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dip"
+                    android:paddingRight="15dip"
+                    app:divider="@drawable/divider"
+                    app:dividerBottom_marginLeft="15dip"
+                    app:dividerMode="bottom"
+                    app:key="用户1："
+                    app:keyColor="#454545"
+                    app:keySize="@dimen/font_14"
+                    app:value="张三"
+                    app:valueColor="#454545"
+                    app:valueMarginLeft="10dip"
+                    app:valueSize="@dimen/font_14" />
+
+                <com.wuguangxin.view.ItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dip"
+                    android:paddingRight="15dip"
+                    app:divider="@drawable/divider"
+                    app:dividerBottom_marginLeft="15dip"
+                    app:dividerMode="bottom"
+                    app:key="用户2："
+                    app:keyColor="#454545"
+                    app:keySize="@dimen/font_14"
+                    app:value="李四"
+                    app:valueColor="#454545"
+                    app:valueMarginLeft="10dip"
+                    app:valueSize="@dimen/font_14"
+                    app:valueStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dip"
+                        android:paddingRight="15dip"
+                        android:text="用户3：   王五"
+                        android:textColor="#454545"
+                        android:textSize="14dip"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dividerSize"
+                        android:layout_marginStart="15dip"
+                        android:layout_marginLeft="15dip"
+                        android:background="@drawable/divider" />
+
+                </LinearLayout>
+
+                <com.wuguangxin.view.ItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dip"
+                    android:paddingRight="15dip"
+                    app:divider="@drawable/divider"
+                    app:dividerBottom_marginLeft="15dip"
+                    app:dividerMode="bottom"
+                    app:key="用户4："
+                    app:keyColor="#454545"
+                    app:keySize="@dimen/font_14"
+                    app:value="马六"
+                    app:valueColor="#454545"
+                    app:valueMarginLeft="10dip"
+                    app:valueSize="@dimen/font_14"
+                    app:valueStyle="normal" />
+            </com.wuguangxin.view.ItemLinearLayout>
+
+            <com.wuguangxin.view.ItemRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="15dip"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                app:divider="@drawable/divider"
+                app:dividerMode="both">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dip"
+                    android:text="ItemRelativeLayout" />
+            </com.wuguangxin.view.ItemRelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:text="ItemView：" />
+
+            <com.wuguangxin.view.ItemView
+                android:id="@+id/itemView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:baselineAligned="false"
+                android:padding="15dip"
+                app:divider="@drawable/divider"
+                app:dividerMode="both"
+                app:key="用户5："
+                app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
+                app:valueColor="#000000"
+                app:valueDrawableRight="@drawable/arrow"
+                app:valueGravity="right"
+                app:valueSize="14dip"
+                app:valueStyle="normal"
+                app:valueWeight="1" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="15dp" />
 
             <com.wuguangxin.view.ItemView
                 android:layout_width="match_parent"
-                android:layout_height="40dip"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dip"
-                android:paddingRight="15dip"
+                android:baselineAligned="false"
+                android:padding="15dip"
                 app:divider="@drawable/divider"
-                app:dividerBottom_marginLeft="15dip"
-                app:dividerMode="bottom"
-                app:key="用户1："
-                app:keyColor="#454545"
-                app:keySize="@dimen/font_14"
-                app:value="张三"
-                app:valueColor="#454545"
-                app:valueMarginLeft="10dip"
-                app:valueSize="@dimen/font_14" />
+                app:dividerMode="both"
+                app:key="用户5："
+                app:keyColor="#000000"
+                app:keySize="14dip"
+                app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
+                app:valueColor="#000000"
+                app:valueDrawableRight="@drawable/arrow"
+                app:valueGravity="left"
+                app:valueSize="14dip"
+                app:valueStyle="normal"
+                app:valueWeight="1" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="15dp" />
 
             <com.wuguangxin.view.ItemView
                 android:layout_width="match_parent"
-                android:layout_height="40dip"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dip"
-                android:paddingRight="15dip"
+                android:baselineAligned="false"
+                android:padding="15dip"
                 app:divider="@drawable/divider"
-                app:dividerBottom_marginLeft="15dip"
-                app:dividerMode="bottom"
-                app:key="用户2："
-                app:keyColor="#454545"
-                app:keySize="@dimen/font_14"
-                app:value="李四"
-                app:valueColor="#454545"
-                app:valueMarginLeft="10dip"
-                app:valueSize="@dimen/font_14"
-                app:valueStyle="bold" />
+                app:dividerMode="both"
+                app:key="用户5："
+                app:keyColor="#000000"
+                app:keySize="14dip"
+                app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
+                app:valueColor="#000000"
+                app:valueDrawableRight="@drawable/arrow"
+                app:valueGravity="center"
+                app:valueSize="14dip"
+                app:valueStyle="normal"
+                app:valueWeight="1" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="15dp" />
+
+            <com.wuguangxin.view.ItemView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:padding="15dip"
+                app:divider="@drawable/divider"
+                app:dividerMode="both"
+                app:key="用户5："
+                app:keyColor="#000000"
+                app:keySize="14dip"
+                app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
+                app:valueColor="#000000"
+                app:valueDrawableRight="@drawable/arrow"
+                app:valueGravity="center_vertical"
+                app:valueSize="14dip"
+                app:valueStyle="normal"
+                app:valueWeight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:text="普通组合控件：" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical">
-
+                android:baselineAligned="false"
+                android:divider="@color/line"
+                android:orientation="horizontal"
+                android:padding="15dip">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="15dip"
-                    android:paddingRight="15dip"
-                    android:text="用户3：   王五"
-                    android:textColor="#454545"
-                    android:textSize="14dip"
-                    tools:ignore="HardcodedText,SpUsage" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="用户："
+                    android:textColor="@color/black"
+                    android:textSize="14dip" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dividerSize"
-                    android:layout_marginStart="15dip"
-                    android:layout_marginLeft="15dip"
-                    android:background="@drawable/divider" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/arrow"
+                    android:drawablePadding="10dp"
+                    android:gravity="right"
+                    android:text="2张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
+                    android:textColor="#000000"
+                    android:textSize="14dip" />
 
             </LinearLayout>
 
-            <com.wuguangxin.view.ItemView
-                android:layout_width="match_parent"
-                android:layout_height="40dip"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dip"
-                android:paddingRight="15dip"
-                app:divider="@drawable/divider"
-                app:dividerBottom_marginLeft="15dip"
-                app:dividerMode="bottom"
-                app:key="用户4："
-                app:keyColor="#454545"
-                app:keySize="@dimen/font_14"
-                app:value="马六"
-                app:valueColor="#454545"
-                app:valueMarginLeft="10dip"
-                app:valueSize="@dimen/font_14"
-                app:valueStyle="normal" />
-        </com.wuguangxin.view.ItemLinearLayout>
-
-        <com.wuguangxin.view.ItemRelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:layout_marginTop="15dip"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            app:divider="@drawable/divider"
-            app:dividerMode="both">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dip"
-                android:text="ItemRelativeLayout" />
-        </com.wuguangxin.view.ItemRelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
-            android:text="ItemView：" />
-
-        <com.wuguangxin.view.ItemView
-            android:id="@+id/itemView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:baselineAligned="false"
-            android:padding="15dip"
-            app:divider="@drawable/divider"
-            app:dividerMode="both"
-            app:key="用户5："
-            app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
-            app:valueColor="#000000"
-            app:valueDrawableRight="@drawable/arrow"
-            app:valueGravity="right"
-            app:valueSize="14dip"
-            app:valueStyle="normal"
-            app:valueWeight="1" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="15dp" />
-
-        <com.wuguangxin.view.ItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:baselineAligned="false"
-            android:padding="15dip"
-            app:divider="@drawable/divider"
-            app:dividerMode="both"
-            app:key="用户5："
-            app:keyColor="#000000"
-            app:keySize="14dip"
-            app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
-            app:valueColor="#000000"
-            app:valueDrawableRight="@drawable/arrow"
-            app:valueGravity="left"
-            app:valueSize="14dip"
-            app:valueStyle="normal"
-            app:valueWeight="1" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="15dp" />
-
-        <com.wuguangxin.view.ItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:baselineAligned="false"
-            android:padding="15dip"
-            app:divider="@drawable/divider"
-            app:dividerMode="both"
-            app:key="用户5："
-            app:keyColor="#000000"
-            app:keySize="14dip"
-            app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
-            app:valueColor="#000000"
-            app:valueDrawableRight="@drawable/arrow"
-            app:valueGravity="center"
-            app:valueSize="14dip"
-            app:valueStyle="normal"
-            app:valueWeight="1" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="15dp" />
-
-        <com.wuguangxin.view.ItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:baselineAligned="false"
-            android:gravity="center_vertical"
-            android:padding="15dip"
-            app:divider="@drawable/divider"
-            app:dividerMode="both"
-            app:key="用户5："
-            app:keyColor="#000000"
-            app:keySize="14dip"
-            app:value="刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华"
-            app:valueColor="#000000"
-            app:valueDrawableRight="@drawable/arrow"
-            app:valueGravity="center_vertical"
-            app:valueSize="14dip"
-            app:valueStyle="normal"
-            app:valueWeight="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
-            android:text="普通组合控件：" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:baselineAligned="false"
-            android:divider="@color/line"
-            android:orientation="horizontal"
-            android:padding="15dip">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:text="用户："
-                android:textColor="@color/black"
-                android:textSize="14dip" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/arrow"
-                android:drawablePadding="10dp"
-                android:gravity="right"
-                android:text="2张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰张三丰"
-                android:textColor="#000000"
-                android:textSize="14dip" />
 
         </LinearLayout>
-
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</layout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true"
+    android:fillEnabled="true"
+    android:shareInterpolator="true" >
+
+
+    <!--
+    速率说明：https://blog.csdn.net/lgaojiantong/article/details/39451243
+
+    Interpolator 通常在动画中使用，主要来改变动画变化率。常用的有下面几种Interpolator,下面图文解说下：
+
+    AccelerateDecelerateInterpolator    开始与结束的地方速率改变比较慢，在中间的时候加速
+    AccelerateInterpolator              开始的地方速率改变比较慢，然后开始加速
+    DecelerateInterpolator              开始的地方速率改变比较慢，然后开始减速
+    AnticipateInterpolator              开始的时候向后然后向前甩
+    AnticipateOvershootInterpolator     开始的时候向后然后向前甩一定值后返回最后的值
+    BounceInterpolator                  动画结束的时候弹起
+    CycleInterpolator                   循环播放特定的次数，速率改变沿着正弦曲线
+    创建的时候，可以传factor值，如 DecelerateInterpolator(2f)：
+    LinearInterpolator                  以常量速率改变
+    OvershootInterpolator               向前甩一定值后再回到原来位置
+    创建的时候，可以传tension值，OvershootInterpolator(0.8f)：
+
+
+    -->
+</set>

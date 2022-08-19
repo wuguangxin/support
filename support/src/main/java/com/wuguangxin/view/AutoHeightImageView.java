@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 /**
- * 根据宽度自动缩放高度的IamgeView
+ * 根据宽度自动缩放高度的ImageView
  *
  * <p>Created by wuguangxin on 16/11/10 </p>
  */

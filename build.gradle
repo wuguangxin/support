@@ -1,13 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext.kotlinVersion = '1.5.31'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -16,12 +18,12 @@ task clean(type: Delete) {
 }
 
 ext {
-    jdkVersion = JavaVersion.VERSION_1_8
+    javaVersion = JavaVersion.VERSION_11
     compileSdkVersion = 30
     targetSdkVersion = 30
-    minSdkVersion = 17
+    minSdkVersion = 16
     retrofitVersion = "2.9.0"
-    kotlinVersion = '1.5.20'
+    kotlinVersion = '1.5.31'
     jvmTarget = '1.8'
 }
 

@@ -5,14 +5,15 @@ import android.view.View;
 
 import com.wuguangxin.dialog.XinDialog;
 import com.wuguangxin.simple.R;
+import com.wuguangxin.simple.databinding.ActivityMydialogBinding;
 
 import butterknife.OnClick;
 
-public class MyDialogActivity extends BaseActivity {
+public class MyDialogActivity extends BaseActivity<ActivityMydialogBinding> {
     private XinDialog mDialog;
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_mydialog;
     }
 

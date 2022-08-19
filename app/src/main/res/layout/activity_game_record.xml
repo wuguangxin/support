@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#eeeeee"
-    android:orientation="vertical"
-    android:padding="15dp">
+<layout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/game_record_recycler_view"
+    <data>
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:spanCount="4"
-        tools:itemCount="24"
-        tools:listitem="@layout/item_game_record" />
+        android:layout_height="match_parent"
+        android:background="#eeeeee"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/game_record_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="4"
+            tools:itemCount="24"
+            tools:listitem="@layout/item_game_record" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>

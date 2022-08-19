@@ -1,55 +1,53 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/root_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--标题布局-->
-    <include
-        android:id="@+id/xin_titlebar_layout"
-        layout="@layout/xin_titlebar_layout"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <data>
 
-    <!--内容布局-->
-    <LinearLayout
-        android:id="@+id/body_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/xin_titlebar_layout"/>
+    </data>
 
-    <!--菜单布局-->
-    <include
-        android:id="@+id/menu_layout"
-        layout="@layout/xin_menu_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/xin_titlebar_layout"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <!--错误布局-->
-    <include
-        android:id="@+id/error_layout"
-        layout="@layout/xin_error_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/xin_titlebar_layout"/>
+        <!--标题布局-->
+        <include
+            android:id="@+id/xin_titlebar_layout"
+            layout="@layout/xin_titlebar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!--内容布局-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/xin_titlebar_layout" />
+
+        <!--菜单布局-->
+        <include
+            android:id="@+id/menu_layout"
+            layout="@layout/xin_menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/xin_titlebar_layout" />
+
+        <!--错误布局-->
+        <include
+            android:id="@+id/error_layout"
+            layout="@layout/xin_error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/xin_titlebar_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -11,23 +11,18 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wuguangxin.simple.R;
+import com.wuguangxin.simple.databinding.ActivityCallBinding;
 import com.wuguangxin.simple.ui.BaseActivity;
 import com.wuguangxin.utils.PhoneUtils;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * 拨号界面
  * Created by wuguangxin on 2020-03-18.
  */
-public class CallActivity extends BaseActivity {
-
-    @BindView(R.id.call_number) TextView mNumber;
-    @BindView(R.id.call_commit) View mCommit;
+public class CallActivity extends BaseActivity<ActivityCallBinding> {
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_call;
     }
 
@@ -40,23 +35,6 @@ public class CallActivity extends BaseActivity {
     public void initListener() {
     }
 
-    @OnClick({
-            R.id.call_0,
-            R.id.call_1,
-            R.id.call_2,
-            R.id.call_3,
-            R.id.call_4,
-            R.id.call_5,
-            R.id.call_6,
-            R.id.call_7,
-            R.id.call_8,
-            R.id.call_9,
-            R.id.call_x,
-            R.id.call_j,
-            R.id.call_commit,
-            R.id.call_delete,
-            R.id.call_set,
-    })
     public void onViewClicked(View view) {
         int viewId = view.getId();
         switch (viewId) {
@@ -117,19 +95,19 @@ public class CallActivity extends BaseActivity {
                 number = number.substring(0, number.length() - 1);
             }
         }
-        mNumber.setText(number);
+        binding.callNumber.setText(number);
     }
 
     private void setNumber(View view) {
         if (view instanceof TextView) {
             TextView textView = (TextView) view;
             String s = textView.getText().toString();
-            mNumber.setText(mNumber.getText() + s);
+            binding.callNumber.setText(binding.callNumber.getText() + s);
         }
     }
 
     private String getNumber() {
-        CharSequence charSequence = mNumber.getText();
+        CharSequence charSequence = binding.callNumber.getText();
         if (charSequence != null) {
             return charSequence.toString();
         }

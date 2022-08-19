@@ -2,30 +2,21 @@ package com.wuguangxin.simple.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.wuguangxin.simple.R;
+import com.wuguangxin.simple.databinding.ActivityWidgetBinding;
 import com.wuguangxin.utils.MapUtils;
-import com.wuguangxin.utils.ShakeUtils;
-import com.wuguangxin.utils.mmkv.MmkvUtils;
-import com.wuguangxin.view.ViewPagerIndicator;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.OnTouch;
-
-public class WidgetActivity extends BaseActivity implements View.OnClickListener {
-
-    private static final String TAG = "WidgetActivity";
-    private ViewPagerIndicator mViewPagerIndicator;
-    // 触发点击事件的ViewID/要打开的Activity Class
+public class WidgetActivity extends BaseActivity<ActivityWidgetBinding> implements View.OnClickListener {
     private Map<Integer, Class<? extends Activity>> mActivityMap;
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_widget;
     }
 
@@ -39,9 +30,6 @@ public class WidgetActivity extends BaseActivity implements View.OnClickListener
         mActivityMap.put(R.id.CircleProgressView, CircleProgressViewActivity.class);
         mActivityMap.put(R.id.XinDialog, MyDialogActivity.class);
         mActivityMap.put(R.id.GestureView, GestureViewActivity.class);
-
-        // 直接跳转
-//        openActivity(DialogUtilsActivity.class);
     }
 
     @Override
@@ -55,21 +43,13 @@ public class WidgetActivity extends BaseActivity implements View.OnClickListener
         openActivity(mActivityMap.get(view.getId()));
     }
 
-    @OnTouch(R.id.GestureView)
-    public boolean onTouch(View v, MotionEvent event) {
-        ShakeUtils.shake(v);
-        return false;
-    }
-
     @Override
     public void initData() {
-        int aa = MmkvUtils.get("AA", 1);
+
     }
 
     @Override
     public void setData() {
 
     }
-
-
 }

@@ -3,15 +3,12 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 
 import com.wuguangxin.simple.R;
-import com.wuguangxin.view.ItemView;
+import com.wuguangxin.simple.databinding.ActivityItemviewBinding;
 
-import butterknife.BindView;
-
-public class ItemViewActivity extends BaseActivity {
-    @BindView(R.id.itemView) ItemView mItemView;
+public class ItemViewActivity extends BaseActivity<ActivityItemviewBinding> {
 
     @Override
-    public int getLayoutRes() {
+    public int getLayoutId() {
         return R.layout.activity_itemview;
     }
 
@@ -22,9 +19,9 @@ public class ItemViewActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        mItemView.getKeyView().setOnClickListener(v -> showToast("点了 Key"));
-        mItemView.getValueView().setOnClickListener(v -> showToast("点了 Value"));
-        mItemView.setOnClickListener(v -> showToast("点了 ItemView"));
+        binding.itemView.getKeyView().setOnClickListener(v -> showToast("点了 Key"));
+        binding.itemView.getValueView().setOnClickListener(v -> showToast("点了 Value"));
+        binding.itemView.setOnClickListener(v -> showToast("点了 ItemView"));
     }
 
     @Override

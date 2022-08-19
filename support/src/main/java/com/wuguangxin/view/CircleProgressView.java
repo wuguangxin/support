@@ -225,19 +225,19 @@ public class CircleProgressView extends View {
         canvas.drawArc(oval, startAngle, sweepAngle, false, paint);
 
         // 画进度圆环
-        float currentParent = sweepAngle * progress;
-        // 进度大于0时才绘画，不然会360度绘制
-        if (currentParent > 0) {
-            //把渐变设置到笔刷
-            paint.setShader(sweepGradient);
-            canvas.drawArc(oval, startAngle, currentParent, false, paint);
-            paint.setShader(null);
-        }
-
-        // 顶部圆环
-        if (showTopOval) {
-            canvas.drawArc(ovalTop, startAngle, sweepAngle, false, paintTop);
-        }
+//        float currentParent = sweepAngle * progress;
+//        // 进度大于0时才绘画，不然会360度绘制
+//        if (currentParent > 0) {
+//            //把渐变设置到笔刷
+//            paint.setShader(sweepGradient);
+//            canvas.drawArc(oval, startAngle, currentParent, false, paint);
+//            paint.setShader(null);
+//        }
+//
+//        // 顶部圆环
+//        if (showTopOval) {
+//            canvas.drawArc(ovalTop, startAngle, sweepAngle, false, paintTop);
+//        }
         canvas.restore();
     }
 
