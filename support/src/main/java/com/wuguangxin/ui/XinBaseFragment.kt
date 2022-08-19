@@ -65,7 +65,7 @@ abstract class XinBaseFragment<B : ViewDataBinding> : Fragment(), BaseInterface 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // super.onCreateView(inflater, container, savedInstanceState);
         rootView = container
-        TAG = javaClass.simpleName
+        TAG = this::class.simpleName
         rootView = inflater.inflate(getLayoutId(), null) as ViewGroup
         initArguments(arguments) // 接收参数
         initView(savedInstanceState) // 初始化界面
@@ -115,7 +115,7 @@ abstract class XinBaseFragment<B : ViewDataBinding> : Fragment(), BaseInterface 
     /**
      * 获取当前使用的 SmartRefreshLayout
      */
-    private val refreshLayout: SmartRefreshLayout?
+    private val refreshLayout: SmartRefreshLayout
         get() {
             return LayoutInflater.from(context).inflate(R.layout.xin_def_refresh_layout, null) as SmartRefreshLayout
         }

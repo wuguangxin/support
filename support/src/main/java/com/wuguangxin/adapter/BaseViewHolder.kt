@@ -7,10 +7,8 @@ import android.util.SparseArray
 import android.view.View
 import android.widget.Checkable
 import android.widget.ImageView
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.*
-import butterknife.ButterKnife
 
 /**
  * 基础ViewHolder，为了统一加入 ButterKnife.bind(this, view);

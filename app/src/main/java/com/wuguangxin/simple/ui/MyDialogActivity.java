@@ -7,8 +7,6 @@ import com.wuguangxin.dialog.XinDialog;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.databinding.ActivityMydialogBinding;
 
-import butterknife.OnClick;
-
 public class MyDialogActivity extends BaseActivity<ActivityMydialogBinding> {
     private XinDialog mDialog;
 
@@ -24,9 +22,10 @@ public class MyDialogActivity extends BaseActivity<ActivityMydialogBinding> {
 
     @Override
     public void initListener() {
+
     }
 
-    @OnClick({R.id.dialog})
+//    @OnClick({R.id.dialog})
     public void onClick(View v) {
         mDialog = XinDialog.with(this, mDialog);
         mDialog.setTitle("标题");

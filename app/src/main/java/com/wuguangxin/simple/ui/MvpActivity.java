@@ -1,7 +1,6 @@
 package com.wuguangxin.simple.ui;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.wuguangxin.mvp.ui.XinMVPActivity;
@@ -10,8 +9,6 @@ import com.wuguangxin.simple.bean.UserBean;
 import com.wuguangxin.simple.databinding.ActivityMvpBinding;
 import com.wuguangxin.simple.mvp.LoginContract;
 import com.wuguangxin.simple.mvp.LoginPresenter;
-
-import butterknife.OnClick;
 
 public class MvpActivity extends XinMVPActivity<ActivityMvpBinding, LoginPresenter> implements LoginContract.View {
     AppBarLayout.Behavior appBarLayoutBehavior;
@@ -33,6 +30,11 @@ public class MvpActivity extends XinMVPActivity<ActivityMvpBinding, LoginPresent
 
     @Override
     public void initListener() {
+        findViewById(R.id.login).setOnClickListener(v -> {
+            String username = binding.username.getText().toString().trim();
+            String password = binding.password.getText().toString().trim();
+            getPresenter().login(username, password);
+        });
     }
 
     @Override
@@ -43,13 +45,6 @@ public class MvpActivity extends XinMVPActivity<ActivityMvpBinding, LoginPresent
     @Override
     public void setData() {
 
-    }
-
-    @OnClick({ R.id.login, })
-    public void onClick(View v) {
-        String username = binding.username.getText().toString().trim();
-        String password = binding.password.getText().toString().trim();
-        getPresenter().login(username, password);
     }
 
     @Override

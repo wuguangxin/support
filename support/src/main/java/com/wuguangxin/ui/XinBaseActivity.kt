@@ -14,9 +14,6 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.view.View
-import android.view.ViewGroup
-import androidx.core.view.get
 import com.wuguangxin.base.TitleBar
 import com.wuguangxin.base.LoadingStatus
 import com.wuguangxin.base.FragmentTask
