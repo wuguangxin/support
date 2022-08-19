@@ -110,44 +110,44 @@ object AppUtils {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        try {
-            startAppWithPackageName(context, packageName);
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        startAppWithPackageName(context, packageName);
     }
 
     fun startAppWithPackageName(context: Context, packageName: String) {
-        // 通过包名获取此APP详细信息，包括Activities、services、versioncode、name等等
-        var packageInfo: PackageInfo? = null
         try {
-            packageInfo = context.applicationContext.packageManager.getPackageInfo(packageName, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
+            // 通过包名获取此APP详细信息，包括Activities、services、versioncode、name等等
+            var packageInfo: PackageInfo? = null
+            try {
+                packageInfo = context.applicationContext.packageManager.getPackageInfo(packageName, 0)
+            } catch (e: PackageManager.NameNotFoundException) {
+                e.printStackTrace()
+            }
+            if (packageInfo == null) {
+                return
+            }
+            val resolveIntent = Intent(Intent.ACTION_MAIN, null)
+            //resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);这个不能添加，否则和上面方法是一样的。
+            resolveIntent.setPackage(packageInfo.packageName)
+
+            // 通过getPackageManager()的queryIntentActivities方法遍历
+            val resolveInfoList: List<ResolveInfo> = context.packageManager.queryIntentActivities(resolveIntent, 0)
+            val resolveInfo = resolveInfoList.iterator().next()
+            // packagename = 参数packname
+            val pName = resolveInfo.activityInfo.packageName
+            // 这个就是我们要找的该APP的LAUNCHER的Activity[组织形式：packagename.mainActivityname]
+            val className = resolveInfo.activityInfo.name
+            // LAUNCHER Intent
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+
+            // 设置ComponentName参数1:packagename参数2:MainActivity路径
+            val cn = ComponentName(pName, className)
+            intent.component = cn
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        } catch (e: Exception) {
             e.printStackTrace()
         }
-        if (packageInfo == null) {
-            return
-        }
-        val resolveIntent = Intent(Intent.ACTION_MAIN, null)
-        //resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);这个不能添加，否则和上面方法是一样的。
-        resolveIntent.setPackage(packageInfo.packageName)
-
-        // 通过getPackageManager()的queryIntentActivities方法遍历
-        val resolveInfoList: List<ResolveInfo> = context.packageManager.queryIntentActivities(resolveIntent, 0)
-        val resolveInfo = resolveInfoList.iterator().next()
-        // packagename = 参数packname
-        val pName = resolveInfo.activityInfo.packageName
-        // 这个就是我们要找的该APP的LAUNCHER的Activity[组织形式：packagename.mainActivityname]
-        val className = resolveInfo.activityInfo.name
-        // LAUNCHER Intent
-        val intent = Intent(Intent.ACTION_MAIN)
-        intent.addCategory(Intent.CATEGORY_LAUNCHER)
-
-        // 设置ComponentName参数1:packagename参数2:MainActivity路径
-        val cn = ComponentName(pName, className)
-        intent.component = cn
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context.startActivity(intent)
     }
 
 }

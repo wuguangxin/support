@@ -34,6 +34,7 @@ class ApplicationsActivity : BaseActivity<ActivityApplicationBinding>() {
     override fun setData() {}
 
     override fun initView(savedInstanceState: Bundle?) {
+        title = "应用列表"
         titleBar.setBackVisibility(false)
 
         binding.etKeyword.doOnTextChanged { text, start, before, count ->
@@ -44,26 +45,6 @@ class ApplicationsActivity : BaseActivity<ActivityApplicationBinding>() {
 
         applicationList()
     }
-
-//    private fun requestAppPermissions() {
-//        val ps = arrayOf(Manifest.permission.QUERY_ALL_PACKAGES)
-//        val call = XXPermissions.with(this)
-//        call.permission(ps)
-//        call.request(object : OnPermissionCallback {
-//            override fun onGranted(permissions: MutableList<String>, all: Boolean) {
-//                if (all) {//权限通过
-//
-//                }
-//            }
-//
-//            override fun onDenied(permissions: MutableList<String>, never: Boolean) {
-//                if (never) {
-//                    // 如果是被永久拒绝就跳转到应用权限系统设置页面
-//                    showToast("授权失败，部分功能将无法使用")
-//                }
-//            }
-//        })
-//    }
 
     private fun initViewPager() {
         appsAdapter = ApplicationsAdapter(this)

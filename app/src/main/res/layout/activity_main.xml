@@ -64,13 +64,6 @@
                 android:onClick="onClick"
                 android:textAllCaps="false"/>
 
-            <com.flyco.tablayout.SlidingTabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/text_blue"
-                app:tl_indicator_style="BLOCK" />
-
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
@@ -79,11 +72,6 @@
                 android:visibility="visible"
                 android:alpha="0"
                 app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
-
-            <com.wuguangxin.simple.view.LineGraphicView
-                android:id="@+id/lineGraphicView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
         </LinearLayout>
     </LinearLayout>
