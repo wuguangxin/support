@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1' // 自动化maven打包插件
+        //classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1' // JitPack打包需要去掉
     }
 }
 
