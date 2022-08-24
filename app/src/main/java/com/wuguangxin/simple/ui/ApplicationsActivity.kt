@@ -50,7 +50,7 @@ class ApplicationsActivity : BaseActivity<ActivityApplicationBinding>() {
         appsAdapter = ApplicationsAdapter(this)
         binding.rvApps.adapter = appsAdapter
         binding.rvApps.layoutManager = LinearLayoutManager(getContext())
-        appsAdapter?.setOnItemClickListener { view, item, position, type ->
+        appsAdapter?.onItemClickListener = { view, item, position, type ->
             com.blankj.utilcode.util.AppUtils.launchApp(item.packageName)
 //            AppUtils.startApp(getContext(), item.packageName)
         }

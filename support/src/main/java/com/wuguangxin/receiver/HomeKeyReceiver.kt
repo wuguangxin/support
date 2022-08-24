@@ -10,8 +10,8 @@ import android.content.Context
  *
  * Created by wuguangxin on 15/3/31
  */
-class HomeKeyReceiver(private val context: Context, callback: Callback?) {
-    private var receiver: Receiver?
+class HomeKeyReceiver(private val context: Context, private val callback: Callback?) {
+    private var receiver: Receiver? = null
     private var registered = false
 
     companion object {
@@ -21,16 +21,13 @@ class HomeKeyReceiver(private val context: Context, callback: Callback?) {
         const val REASON_HOME_KEY = "homekey"
     }
 
-    init {
-        receiver = Receiver(callback)
-    }
-
     /**
      * 开始Home键监听
      */
     fun register() {
         if (!registered) {
             registered = true
+            receiver = Receiver(callback)
             val filter = IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
             context.applicationContext.registerReceiver(receiver, filter)
         }

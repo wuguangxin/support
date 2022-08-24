@@ -1,46 +1,42 @@
-package com.wuguangxin.adapter;
+package com.wuguangxin.adapter
 
-import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
+import android.view.View
+import androidx.viewpager.widget.PagerAdapter
+import android.view.ViewGroup
 
 /**
  * View的适配器
  * Created by wuguangxin on 2019/12/2.
  */
-public class BaseViewAdapter extends PagerAdapter {
-    private List<View> list;
+class BaseViewAdapter(val list: List<View>?) : PagerAdapter() {
+    private val mData = mutableListOf<View>()
 
-    public BaseViewAdapter(List<View> list) {
-        this.list = list;
+    init {
+        mData.clear()
+        list?.let {
+            mData.addAll(list)
+        }
     }
 
-    @Override
-    public int getCount() {
-        return list == null ? 0 : list.size();
+    override fun isViewFromObject(view: View, o: Any): Boolean {
+        return o === view
     }
 
-    @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-        return o == view;
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        val view = getItem(position)
+        container.addView(view)
+        return view
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        if (list == null)
-            return null;
-        container.addView(list.get(position));
-        return list.get(position);//View
-
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        container.removeView(getItem(position))
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView(list.get(position));
+    override fun getCount(): Int {
+        return mData.size
     }
 
+    fun getItem(position: Int): View {
+        return mData[position]
+    }
 }

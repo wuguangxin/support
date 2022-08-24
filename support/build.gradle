@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'maven-publish'
 }
+group = 'com.github.wuguangxin'
 
 android {
     compileSdk rootProject.ext.compileSdkVersion
@@ -14,36 +15,6 @@ android {
         versionCode 43
         versionName "2.1.3"
     }
-
-    // 自动打包
-    afterEvaluate {
-        publishing {
-            publications {
-                // Creates a Maven publication called "release".
-                release(MavenPublication) {
-                    // Applies the component for the release build variant.
-                    from components.release
-
-                    // You can then customize attributes of the publication as shown below.
-                    groupId = 'com.wuguangxin.support'
-                    artifactId = 'final'
-                    version = defaultConfig.versionCode
-                }
-            }
-        }
-    }
-
-//    buildTypes {
-//        debug {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-//        }
-//
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-//        }
-//    }
 
     compileOptions {
         sourceCompatibility rootProject.ext.javaVersion
@@ -58,12 +29,25 @@ android {
     }
 }
 
+// 自动打包
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.wuguangxin.support'
+                artifactId = 'final'
+                version = android.defaultConfig.versionCode
+            }
+        }
+    }
+}
 
 dependencies {
-    // 工具库
-//    api project(':utils')
-    api 'com.github.wuguangxin:utils:1.2.1'
-
     api 'androidx.appcompat:appcompat:1.3.1'
     api 'androidx.annotation:annotation:1.3.0'
     api 'androidx.constraintlayout:constraintlayout:2.1.3'
@@ -73,6 +57,8 @@ dependencies {
     api 'com.google.android.material:material:1.3.0'
     api 'com.google.code.gson:gson:2.8.7'
 
+    // 工具库
+    api 'com.github.wuguangxin:utils:1.3.0'
 
     // MMKV 文档 https://github.com/Tencent/MMKV/blob/master/readme_cn.md
     api 'com.tencent:mmkv-static:1.2.10'
@@ -92,8 +78,8 @@ dependencies {
     api 'com.google.zxing:core:3.4.0'
 
     // 文档 https://github.com/scwang90/SmartRefreshLayout
-    api  'com.scwang.smart:refresh-layout-kernel:2.0.3' //核心必须依赖
-    api  'com.scwang.smart:refresh-header-classics:2.0.3' //经典刷新头
-    api  'com.scwang.smart:refresh-footer-classics:2.0.3'
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.3' //核心必须依赖
+    api 'com.scwang.smart:refresh-header-classics:2.0.3' //经典刷新头
+    api 'com.scwang.smart:refresh-footer-classics:2.0.3'
 
 }

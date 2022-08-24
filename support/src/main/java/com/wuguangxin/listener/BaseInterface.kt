@@ -1,12 +1,7 @@
 package com.wuguangxin.listener
 
 import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import androidx.annotation.IdRes
-import androidx.annotation.LayoutRes
 
 /**
  * View的基本接口。（View指 Activity、Fragment）

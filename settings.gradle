@@ -2,8 +2,9 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        mavenCentral()
+        maven { url 'https://jitpack.io' }
         maven { url 'https://www.jitpack.io' }
+        mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://repo.huaweicloud.com/repository/maven' }
@@ -11,5 +12,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "support"
 include ':app'
-include ':utils'
 include ':support'

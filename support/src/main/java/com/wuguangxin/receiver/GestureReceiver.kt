@@ -10,13 +10,9 @@ import android.content.Context
  *
  * Created by wuguangxin on 15/3/31
  */
-class GestureReceiver(private val context: Context, callback: Callback?) {
-    private var receiver: Receiver?
+class GestureReceiver(private val context: Context, private val callback: Callback?) {
+    private var receiver: Receiver? = null
     private var registered = false // 是否注册过
-
-    init {
-        receiver = Receiver(callback)
-    }
 
     /**
      * 注册监听
@@ -24,6 +20,7 @@ class GestureReceiver(private val context: Context, callback: Callback?) {
     fun register() {
         if (!registered) {
             registered = true
+            receiver = Receiver(callback)
             val filter = IntentFilter()
             filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
             filter.addAction(Intent.ACTION_SCREEN_ON)

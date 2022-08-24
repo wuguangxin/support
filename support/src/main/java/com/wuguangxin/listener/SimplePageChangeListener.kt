@@ -1,17 +1,14 @@
-package com.wuguangxin.listener;
+package com.wuguangxin.listener
 
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 
-public class PageChangeListener implements ViewPager.OnPageChangeListener {
-    @Override
-    public void onPageScrollStateChanged(int arg0) {
+class SimplePageChangeListener : OnPageChangeListener {
+    override fun onPageScrollStateChanged(arg0: Int) {
     }
 
-    @Override
-    public void onPageScrolled(int arg0, float arg1, int arg2) {
+    override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
     }
 
-    @Override
-    public void onPageSelected(int arg0) {
+    override fun onPageSelected(arg0: Int) {
     }
 }
