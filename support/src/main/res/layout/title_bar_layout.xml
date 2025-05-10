@@ -1,0 +1,89 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_title_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/xin_titlebar_height"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:visibility="visible">
+
+    <LinearLayout
+        android:id="@+id/ll_title_center"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xin_titlebar_height"
+        android:layout_marginHorizontal="@dimen/xin_titlebar_height"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            tools:text="标题" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_title_left"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/xin_titlebar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_title_back"
+            android:layout_width="@dimen/xin_titlebar_menu_minWidth"
+            android:layout_height="@dimen/xin_titlebar_height"
+            android:paddingStart="16dp"
+            android:paddingEnd="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/title_back_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_title_right"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/xin_titlebar_height"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_title_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/xin_titlebar_height"
+            android:paddingStart="10dp"
+            android:paddingEnd="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/xin_titlebar_setting_black"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vi_title_divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.75dp"
+        android:background="@color/xin_titlebar_divider_color"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ public class WidgetActivity extends BaseActivity<ActivityWidgetBinding> implemen
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        getTitleBar().setBackVisibility(false);
+        setTitleLayout(R.id.titleLayout);
 
         mActivityMap = new HashMap<>();
         mActivityMap.put(R.id.coordinatorLayout, CoordinatorLayoutActivity.class);

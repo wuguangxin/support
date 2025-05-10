@@ -23,3 +23,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+# ANY RTC视频通话 ======================
+-keep class org.ar.**{*;}
+-keep class org.anyrtc.**{*;}
+-keep class org.webrtc.**{*;}

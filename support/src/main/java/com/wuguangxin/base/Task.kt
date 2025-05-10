@@ -5,7 +5,7 @@ import java.util.*
 
 abstract class Task<T> {
 
-    val taskList: LinkedList<T> get() = LinkedList<T>()
+    val taskList = LinkedList<T>()
 
     /**
      * 获取栈顶Activity

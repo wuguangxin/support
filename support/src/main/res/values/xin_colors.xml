@@ -8,6 +8,7 @@
     <color name="navigationBarColor">#ffffff</color>   <!--底部Tab导航背景色-->
     <color name="textColorPrimary">#ffffff</color>     <!--标题栏title颜色-->
     <color name="colorControlNormal">#ffffff</color>   <!--各个控制控件的默认颜色-->
+    <color name="cursorColor">#666666</color>          <!--输入框光标颜色-->
 
     <color name="transparent">#00000000</color>
     <color name="red">#ff0000</color>

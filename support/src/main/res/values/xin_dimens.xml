@@ -62,8 +62,14 @@
     <dimen name="font_S">@dimen/font_12</dimen> <!-- 小号 -->
     <dimen name="font_M">@dimen/font_14</dimen> <!-- 中号 -->
     <dimen name="font_L">@dimen/font_16</dimen> <!-- 大号 -->
-    <dimen name="font_LL">@dimen/font_18</dimen> <!-- 加大+1 -->
-    <dimen name="font_LLL">@dimen/font_20</dimen> <!-- 加大+2 -->
+    <dimen name="font_LL">@dimen/font_18</dimen> <!-- 大号+ -->
+    <dimen name="font_LLL">@dimen/font_20</dimen> <!-- 大号++ -->
+
+
+    <!-- 输入框光标大小 -->
+    <dimen name="cursorSize">1.5dp</dimen>
+
+
 
     <!-- ******************* 标题栏配置 **********************************************************-->
     <!--标题栏高度-->
@@ -71,13 +77,13 @@
     <!--标题栏按钮的最小宽度-->
     <dimen name="xin_titlebar_menu_minWidth">40dp</dimen>
     <!--标题栏距上高度，默认是0-->
-    <dimen name="xin_titlebar_padding_top">0dip</dimen>
+    <dimen name="xin_titlebar_padding_top">0dp</dimen>
     <!--标题栏标题文字大小-->
-    <dimen name="xin_titlebar_title_size">17dip</dimen>
+    <dimen name="xin_titlebar_title_size">17dp</dimen>
     <!--标题栏右侧文字大小-->
-    <dimen name="xin_titlebar_setting_size">15dip</dimen>
+    <dimen name="xin_titlebar_setting_size">15dp</dimen>
     <!--标题栏底部分割线高度-->
-    <dimen name="xin_titlebar_divider_size">1dip</dimen>
+    <dimen name="xin_titlebar_divider_size">1dp</dimen>
     <!-- ******************* 标题栏配置 end*******************************************************-->
     
 	<!-- 表格配置 -->

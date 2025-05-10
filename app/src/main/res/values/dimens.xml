@@ -1,5 +1,5 @@
 <resources>
 
-    <dimen name="dividerSize">0.6dip</dimen>
+    <dimen name="dividerSize">0.6dp</dimen>
 
 </resources>

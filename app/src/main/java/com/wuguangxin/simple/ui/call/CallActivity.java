@@ -28,7 +28,6 @@ public class CallActivity extends BaseActivity<ActivityCallBinding> {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        getTitleBar().setTitle("电话");
     }
 
     @Override

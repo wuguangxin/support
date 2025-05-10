@@ -11,14 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="20dip">
+        android:paddingBottom="20dp">
 
         <ImageView
             android:id="@+id/gesture_pic"
-            android:layout_width="86dip"
-            android:layout_height="86dip"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dip"
+            android:layout_marginTop="30dp"
             android:src="@drawable/icon_common_info"
             android:visibility="visible"/>
 
@@ -27,10 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="绘制解锁密码"
-            android:layout_marginBottom="20dip"
+            android:layout_marginBottom="20dp"
             android:textColor="#595959"
             android:textSize="19sp"/>
 
@@ -41,27 +41,27 @@
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:padding="15dip"
+            android:padding="15dp"
             app:circleNum="3"
-            app:circleRadius="35dip"
-            app:circleSpace="43dip"
+            app:circleRadius="35dp"
+            app:circleSpace="43dp"
             app:touchShake="true"
             app:innerCycleColorError="@color/red"
-            app:innerCycleStrokeSize="1.5dip"
+            app:innerCycleStrokeSize="1.5dp"
             app:linkLineColorError="@color/red"
-            app:linkLineStrokeSize="2.5dip"
+            app:linkLineStrokeSize="2.5dp"
             app:outerCycleColorError="@color/red"
-            app:outerCycleStrokeSize="1.5dip"/>
+            app:outerCycleStrokeSize="1.5dp"/>
 
         <TextView
             android:id="@+id/gesture_relogin"
             android:layout_width="wrap_content"
-            android:layout_height="35dip"
+            android:layout_height="35dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:layout_marginTop="20dip"
-            android:paddingLeft="15dip"
-            android:paddingRight="15dip"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:text="重新登录"
             android:textColor="#636363"
             android:textSize="15sp"

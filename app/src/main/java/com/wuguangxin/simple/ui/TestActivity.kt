@@ -1,19 +1,18 @@
 package com.wuguangxin.simple.ui
 
-import com.wuguangxin.simple.R
-import android.os.Bundle
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.util.TimeUtils
+import com.wuguangxin.simple.R
 import com.wuguangxin.simple.databinding.ActivityTestBinding
 import com.wuguangxin.utils.Utils
-import java.lang.StringBuilder
 import java.util.concurrent.CompletableFuture
 
 class TestActivity : BaseActivity<ActivityTestBinding>() {
@@ -27,8 +26,8 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
     override fun setData() {}
 
     override fun initView(savedInstanceState: Bundle?) {
-        titleBar.setBackVisibility(false)
-
+        setTitleLayout(R.id.titleLayout)
+        
         binding.addView.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 showToast("哈哈")
@@ -70,11 +69,11 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
     private fun test3(view: View) {
         val viewEditor = ViewEditor.with(view)
         val stringBuilder = StringBuilder("哈哈")
-        println("stringBuilder = $stringBuilder")
+        log("stringBuilder = $stringBuilder")
         for(i in 0..100000){
             TimeUtils.formatDuration(23423425, stringBuilder)
         }
-        println("stringBuilder = $stringBuilder")
+        log("stringBuilder = $stringBuilder")
         viewEditor.release()
     }
 
@@ -91,21 +90,21 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
         }
         val future1 = CompletableFuture.supplyAsync {
             Thread.sleep(2000)
-            println("接口1执行结束")
+            log("接口1执行结束")
             UserBean("张三")
         }
         val future2 = CompletableFuture.supplyAsync {
             Thread.sleep(1000)
-            println("接口2执行结束")
+            log("接口2执行结束")
             2
         }
         val future3 = CompletableFuture.supplyAsync {
             Thread.sleep(3000)
-            println("接口3执行结束")
+            log("接口3执行结束")
             "字符串数据"
         }
         CompletableFuture.allOf(future1, future2, future3).join()
-        println("全部执行结束")
+        log("全部执行结束")
         buttonInfo.release()
     }
 
@@ -118,8 +117,8 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
         button.setOnClickListener(listener)
         val width = Utils.dip2px(this, 100f)
         val height = Utils.dip2px(this, 50f)
-        println("$name addTest width = $width")
-        println("$name addTest height = $height")
+        log("$name addTest width = $width")
+        log("$name addTest height = $height")
         button.layoutParams = ViewGroup.LayoutParams(width, height)
         binding.testGroup.addView(button, 0)
     }

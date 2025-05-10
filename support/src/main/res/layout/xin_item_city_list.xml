@@ -6,7 +6,7 @@
     android:background="@drawable/xin_item_default_bg"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="10dip" >
+    android:padding="10dp" >
 
     <TextView
         android:id="@+id/xin_item_city_name"

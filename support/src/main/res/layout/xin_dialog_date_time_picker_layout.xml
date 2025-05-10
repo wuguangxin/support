@@ -4,15 +4,16 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dip" >
+    android:padding="10dp" >
 
     <DatePicker
         android:id="@+id/blog_datepicker"
         android:layout_width="wrap_content"
-        android:layout_height="150dip" />
-    <TimePicker
+        android:layout_height="150dp" />
+
+    <TimePicker
         android:id="@+id/blog_timepicker"
         android:layout_width="wrap_content"
-        android:layout_height="150dip" />
+        android:layout_height="150dp" />
 
 </LinearLayout>

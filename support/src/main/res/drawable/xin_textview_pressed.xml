@@ -4,7 +4,7 @@
     <!-- TextView 被按下时 -->
     <solid android:color="#fffff1" />
 
-    <corners android:radius="2dip" />
+    <corners android:radius="2dp" />
 
     <stroke
         android:width="@dimen/xin_text_view_border_size_pressed"

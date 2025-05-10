@@ -12,6 +12,13 @@
         android:background="#FFFFFF"
         android:orientation="vertical">
 
+        <com.wuguangxin.view.titlebar.TitleLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tl_theme="black"
+            app:tl_title="应用列表" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

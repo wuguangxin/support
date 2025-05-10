@@ -15,6 +15,7 @@ public class CircleProgressViewActivity extends BaseActivity<ActivityCircleprogr
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        setTitleLayout(R.id.titleLayout);
         setTitle("圆形进度条");
 
         binding.homeCircleProgressView.setUseAnim(false);
@@ -24,7 +25,7 @@ public class CircleProgressViewActivity extends BaseActivity<ActivityCircleprogr
         binding.seekBarSweepAngle.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                printLogI("seekBarSweepAngle progress = " + progress);
+                log("seekBarSweepAngle progress = " + progress);
                 binding.homeCircleProgressView.setSweepAngle(progress);
             }
 
@@ -42,7 +43,7 @@ public class CircleProgressViewActivity extends BaseActivity<ActivityCircleprogr
         binding.seekBarProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                printLogI("seekBarProgress progress = " + progress);
+                log("seekBarProgress progress = " + progress);
                 binding.homeCircleProgressView.setProgress(((float) progress) / 100);
             }
 

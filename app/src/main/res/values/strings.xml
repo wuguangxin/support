@@ -2,4 +2,8 @@
     <string name="app_name">SupportDemo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--ANY RTC视频通话-->
+    <string name="ar_app_id">3402b98285ac78cb3919f8fe665d19e4</string>
+    <string name="ar_token">demo</string>
 </resources>

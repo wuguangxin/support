@@ -5,10 +5,10 @@
     <!-- 红色按钮  获得焦点状态 -->
     <solid android:color="#C01805" />
 
-    <corners android:radius="2dip" />
+    <corners android:radius="2dp" />
 
     <!-- <stroke -->
-    <!-- android:width="3dip" -->
+    <!-- android:width="3dp" -->
     <!-- android:color="#ff7900" /> -->
 
 

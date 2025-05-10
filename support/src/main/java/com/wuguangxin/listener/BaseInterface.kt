@@ -7,7 +7,7 @@ import android.os.Bundle
  * View的基本接口。（View指 Activity、Fragment）
  * Created by wuguangxin on 17/5/19.
  */
-interface BaseInterface : LoadingListener {
+interface BaseInterface {
 
     /**
      * 获取布局资源ID
@@ -48,7 +48,7 @@ interface BaseInterface : LoadingListener {
      * 打印日志
      * @param text 文本信息
      */
-    fun printLogI(text: String)
+    fun log(text: String)
 
     /**
      * 打开Activity

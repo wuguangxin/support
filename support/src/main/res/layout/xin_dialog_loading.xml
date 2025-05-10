@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
-        android:padding="6dip"
+        android:padding="6dp"
         android:text="@string/xin_loading_message"
         android:textColor="#cccccc"
         android:textSize="@dimen/font_M"

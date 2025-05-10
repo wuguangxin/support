@@ -5,9 +5,9 @@
     <solid android:color="#BB000000" />
 
     <!-- 圆角的半径 -->
-    <corners android:radius="5dip" />
+    <corners android:radius="5dp" />
 
     <!-- 设置红色边框 -->
-    <stroke android:width="0dip" />
+    <stroke android:width="0dp" />
 
 </shape>

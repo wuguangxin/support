@@ -26,17 +26,6 @@ interface LoadingListener {
     fun setLoadingDialogVisible(visible: Boolean)
 
     /**
-     * 控制标题栏上的加载动画
-     * @param visible 是否显示
-     */
-    fun setTitleLoadingProgressVisible(visible: Boolean)
-
-    /**
-     * 关闭对话框
-     */
-    fun dismissDialog()
-
-    /**
      * 关闭对话框
      * @param dialogs 对话框集
      */

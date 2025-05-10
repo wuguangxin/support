@@ -32,11 +32,11 @@ public class CoordinatorLayoutActivity extends BaseActivity<ActivityCoordinatorB
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        getTitleBar().setBackVisibility(false);
+        setTitleLayout(R.id.titleLayout);
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 100; i++) list.add(String.valueOf(i));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        StringAdapter simpleAdapter = new StringAdapter(this, list);
+        StringAdapter simpleAdapter = new StringAdapter(list);
         binding.recyclerView.setLayoutManager(layoutManager);
         binding.recyclerView.setAdapter(simpleAdapter);
         binding.recyclerView.setFocusableInTouchMode(false);

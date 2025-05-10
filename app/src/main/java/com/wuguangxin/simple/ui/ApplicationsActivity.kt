@@ -1,29 +1,20 @@
 package com.wuguangxin.simple.ui
 
-import android.Manifest
 import com.wuguangxin.simple.R
 import android.os.Bundle
 import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import android.os.Build
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hjq.permissions.OnPermissionCallback
-import com.hjq.permissions.Permission
-import com.hjq.permissions.XXPermissions
 import com.wuguangxin.simple.adapter.ApplicationsAdapter
 import com.wuguangxin.simple.databinding.ActivityApplicationBinding
 import com.wuguangxin.simple.utils.AppUtils
-import com.wuguangxin.utils.AndroidUtils
-import com.wuguangxin.utils.PermissionUtils
-import java.util.*
 
 class ApplicationsActivity : BaseActivity<ActivityApplicationBinding>() {
 
     private val packageInfoList = mutableListOf<PackageInfo>()
     private val searchList = mutableListOf<PackageInfo>()
 
-    private var appsAdapter: ApplicationsAdapter? = null
+    private val appsAdapter by lazy { ApplicationsAdapter() }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_application
@@ -34,8 +25,9 @@ class ApplicationsActivity : BaseActivity<ActivityApplicationBinding>() {
     override fun setData() {}
 
     override fun initView(savedInstanceState: Bundle?) {
-        title = "应用列表"
-        titleBar.setBackVisibility(false)
+        setTitleLayout(R.id.titleLayout)
+//        title = "应用列表"
+//        titleBar.setBackVisibility(false)
 
         binding.etKeyword.doOnTextChanged { text, start, before, count ->
             search(text)
@@ -47,22 +39,20 @@ class ApplicationsActivity : BaseActivity<ActivityApplicationBinding>() {
     }
 
     private fun initViewPager() {
-        appsAdapter = ApplicationsAdapter(this)
         binding.rvApps.adapter = appsAdapter
         binding.rvApps.layoutManager = LinearLayoutManager(getContext())
-        appsAdapter?.onItemClickListener = { view, item, position, type ->
+        appsAdapter.setOnItemClickListener { adapter, _, position ->
+            val item = adapter.getItem(position) as PackageInfo
             com.blankj.utilcode.util.AppUtils.launchApp(item.packageName)
-//            AppUtils.startApp(getContext(), item.packageName)
+            // AppUtils.startApp(getContext(), item.packageName)
         }
     }
 
     private fun applicationList() {
         val apps = AppUtils.getInstalledPackages(this, 0)
         packageInfoList.clear()
-        packageInfoList.let {
-            packageInfoList.addAll(apps)
-        }
-        appsAdapter?.list = packageInfoList
+        packageInfoList.addAll(apps)
+        appsAdapter.setList(packageInfoList)
     }
 
     private fun search(text: CharSequence?) {
@@ -76,9 +66,9 @@ class ApplicationsActivity : BaseActivity<ActivityApplicationBinding>() {
                     searchList.add(it)
                 }
             }
-            appsAdapter?.list = searchList
+            appsAdapter.setList(searchList)
         } else {
-            appsAdapter?.list = packageInfoList
+            appsAdapter.setList(packageInfoList)
         }
     }
 }

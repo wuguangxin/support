@@ -4,33 +4,33 @@
     android:background="@color/transparent"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="30dip"
-    android:paddingRight="30dip" >
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp" >
 
     <TextView
         android:id="@+id/user_openCamera"
         style="@style/xin_button_style_blue"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="5dp"
         android:text="@string/xin_select_image_menu_camera" />
 
     <TextView
         android:id="@+id/user_openPhtots"
         style="@style/xin_button_style_blue"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="5dp"
         android:text="@string/xin_select_image_menu_photos" />
 
     <TextView
         android:id="@+id/user_openBigimg"
         style="@style/xin_button_style_blue"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="5dp"
         android:text="@string/xin_select_image_menu_display"
         android:visibility="gone"/>
 
     <TextView
         android:id="@+id/user_hideMenu"
         style="@style/xin_button_style_blue"
-        android:layout_marginBottom="5dip"
-        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:text="@string/xin_select_image_menu_cancel" />
 
 </LinearLayout>

@@ -18,7 +18,4 @@ abstract class BaseActivity<B: ViewDataBinding> : XinBaseActivity<B>() {
     fun <T> getService(baseUrl: String?, clazz: Class<T>): T {
         return RetrofitUtils.getService(baseUrl, clazz)
     }
-
-    fun println(s: String) = this.printLogI(s)
-    fun log(s: String) = this.printLogI(s)
 }

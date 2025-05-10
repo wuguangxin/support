@@ -11,7 +11,7 @@ import java.util.ArrayList
  *
  * Created by wuguangxin on 14/11/17
  */
-abstract class BasePagerAdapter<T>(var context: Context, var list: List<T>?) : PagerAdapter() {
+abstract class BasePagerAdapter<T>(var context: Context, var list: MutableList<T>?) : PagerAdapter() {
 
     private val mData = mutableListOf<T>()
 
@@ -19,7 +19,7 @@ abstract class BasePagerAdapter<T>(var context: Context, var list: List<T>?) : P
      * 更新PagerAdapter适配器
      * @param list 数据集
      */
-    fun notify(list: List<T>?) {
+    fun notify(list: MutableList<T>?) {
         mData.clear()
         list?.let {
             mData.addAll(it)

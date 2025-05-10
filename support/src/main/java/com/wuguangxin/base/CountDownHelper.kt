@@ -58,8 +58,10 @@ class CountDownHelper : CountDownTimer {
      * 计时完毕时触发
      */
     override fun onFinish() {
-        button?.isEnabled = true
-        button?.text = text
+        button?.let {
+            it.isEnabled = true
+            it.text = text
+        }
     }
 
     /**

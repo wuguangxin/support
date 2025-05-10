@@ -1,6 +1,7 @@
 package com.wuguangxin.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
@@ -30,8 +31,9 @@ abstract class BaseRecyclerAdapter<T, V : BaseViewHolder?> : RecyclerView.Adapte
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): V {
-        val view = View.inflate(viewGroup.context, layoutId, null)
+        val view = View.inflate(viewGroup.context, getLayoutId(), null)
         view.setOnClickListener {
+            Log.e("BaseRecyclerAdapter", "position = $position")
             onItemClickListener?.onItemClick(it, getItem(position), position, listType)
         }
         return createViewHolder(view, position)
@@ -41,7 +43,7 @@ abstract class BaseRecyclerAdapter<T, V : BaseViewHolder?> : RecyclerView.Adapte
         bindViewData(holder, mData[position], position, listType)
     }
 
-    abstract val layoutId: Int
+    abstract fun getLayoutId(): Int
 
     open fun createViewHolder(view: View, position: Int): V {
         return BaseViewHolder(view) as V

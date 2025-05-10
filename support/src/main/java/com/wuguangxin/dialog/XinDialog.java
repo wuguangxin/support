@@ -130,6 +130,16 @@ public class XinDialog extends Dialog implements DialogInterface {
      * 构建一个新的MyDialog实例，
      *
      * @param context 上下文
+     * @return
+     */
+    public static XinDialog with(Activity activity) {
+        return XinDialog.with(activity, null);
+    }
+
+    /**
+     * 构建一个新的MyDialog实例，
+     *
+     * @param context 上下文
      * @param needCancelOfDialog 传入需要关闭的MyDialog实例，在构建新的MyDialog之前会自动调用needCancelOfDialog的cancel()方法。
      * @return
      */

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
  * Created by wuguangxin on 2021/9/8.
  */
 object OkHttpUtils {
-    private val client: OkHttpClient = build()
+    private val client = build()
 
     fun getClient(): OkHttpClient = client
 

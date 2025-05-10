@@ -133,7 +133,7 @@ public class FlowLinearLayout extends LinearLayout {
             // 是否达到换行条件
             boolean newline = (visibleCount > 0 && spanCount > 0 && visibleCount % spanCount == 0);
             if (r > right || newline) {
-                //println("换行了");
+                //log("换行了");
                 lines++;
                 l = paddingLeft;
                 t = t + height + lineSpace;
@@ -231,7 +231,7 @@ public class FlowLinearLayout extends LinearLayout {
     }
 
     private void printInfo(int l, int t, int r, int b, int maxR, int i, int line, int width, int height) {
-        println("第" + line + "行------" + i + " " + width + "x" + height + "  maxR=" + maxR
+        Log.i("FlowLinearLayout", "第" + line + "行------" + i + " " + width + "x" + height + "  maxR=" + maxR
                 + " l=" + l
                 + " t=" + t
                 + " r=" + r

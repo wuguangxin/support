@@ -60,4 +60,7 @@ dependencies {
 
     implementation 'io.github.h07000223:flycoTabLayout:3.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // RTC视频通话 Android SDK
+    implementation 'io.anyrtc:rtc:4.3.0'
 }

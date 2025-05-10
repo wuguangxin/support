@@ -30,9 +30,9 @@ public class GameRecordActivity extends BaseActivity<ActivityGameRecordBinding> 
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        setTitle("游戏记录");
-        List<GameRecordBean> gameRecordList = getGameRecordList();
-        mGameRecordAdapter = new GameRecordAdapter(this, gameRecordList);
+        setTitleLayout(R.id.titleLayout);
+        List<GameRecordBean> list = getGameRecordList();
+        mGameRecordAdapter = new GameRecordAdapter(list);
         binding.gameRecordRecyclerView.setAdapter(mGameRecordAdapter);
         binding.gameRecordRecyclerView.addItemDecoration(new SpacesItemDecoration(Utils.dip2px(this, 1)));
     }

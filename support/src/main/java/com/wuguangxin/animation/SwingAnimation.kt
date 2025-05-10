@@ -60,7 +60,6 @@ class SwingAnimation @JvmOverloads constructor(
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
         val degrees = fromDegrees + (toDegrees - fromDegrees) * interpolatedTime // -10 + ((10+10) * -10) = -210
         val scale = scaleFactor
@@ -78,7 +77,9 @@ class SwingAnimation @JvmOverloads constructor(
     }
 
     override fun onAnimationStart(animation: Animation) {}
+    
     override fun onAnimationEnd(animation: Animation) {}
+
     override fun onAnimationRepeat(animation: Animation) {
         startOffset = 0
         currentCount--

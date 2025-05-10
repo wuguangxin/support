@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
@@ -207,7 +208,11 @@ public class ItemBuilder<T extends TextView> {
         int rightDrawablePadding = getRightDrawablePadding();
         textView.setCompoundDrawablePadding(rightDrawablePadding);
 
-        textView.setBackgroundColor(Color.WHITE);
+        // 当未设置背景时，EditText回出现一条默认的下划线，设置背景让它消失
+        // InsetDrawable xml中未配置background属性时，默认是这个类型
+        if (textView.getBackground() instanceof InsetDrawable) {
+            textView.setBackgroundColor(Color.TRANSPARENT);
+        }
 
 //        textView.setInputType();
 //        if (textView instanceof AppCompatEditText && isPasswordInputType(textView.getInputType())) {
@@ -261,7 +266,7 @@ public class ItemBuilder<T extends TextView> {
 
         // 自定义密码显示的符号 * ★ ♥ ☺ ☻
         public char charAt(int index) {
-            Logger.e("index = " + index);
+            Logger.d("index = " + index);
             return '☻';
         }
 
@@ -277,7 +282,7 @@ public class ItemBuilder<T extends TextView> {
 
     public void draw(Canvas canvas) {
         if (canvas == null) {
-            Logger.e(TAG, "canvas cannot be empty");
+            Logger.d(TAG, "canvas cannot be empty");
             return;
         }
         canvas.save();
@@ -395,9 +400,9 @@ public class ItemBuilder<T extends TextView> {
         dividerPaint.setColor(getDividerCurrentColor());
         dividerPaint.setStrokeWidth(dividerHeight);
         float startX = dividerTop_marginLeft;
-        float startY = dividerHeight + dividerTop_marginTop;
+        float startY = (dividerHeight >> 1) + dividerTop_marginTop;
         float stopX = itemViewWidth - dividerTop_marginRight;
-        float stopY = dividerHeight + dividerTop_marginTop;
+        float stopY = (dividerHeight >> 1) + dividerTop_marginTop;
         canvas.drawLine(startX, startY, stopX, stopY, dividerPaint);
     }
 
@@ -406,9 +411,9 @@ public class ItemBuilder<T extends TextView> {
         dividerPaint.setColor(getDividerCurrentColor());
         dividerPaint.setStrokeWidth(dividerHeight);
         float startX = dividerBottom_marginLeft;
-        float startY = itemViewHeight - dividerHeight - dividerBottom_marginBottom;
+        float startY = itemViewHeight - (dividerHeight >> 1) - dividerBottom_marginBottom;
         float stopX = itemViewWidth - dividerBottom_marginRight;
-        float stopY = itemViewHeight - dividerHeight - dividerBottom_marginBottom;
+        float stopY = itemViewHeight - (dividerHeight >> 1) - dividerBottom_marginBottom;
         canvas.drawLine(startX, startY, stopX, stopY, dividerPaint);
     }
 

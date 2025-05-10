@@ -15,9 +15,6 @@ interface ApiService {
 //        const val baseUrl = "https://earthquake.usgs.gov/"
     }
 
-    @GET("mobile/get")
-    fun getPhoneInfo(@QueryMap params: Map<String, String>): Call<Result<PhoneInfoBean>>
-
     @GET("fdsnws/event/1/query")
     fun query(@QueryMap params: HashMap<String?, Any?>): Call<JSONObject>
 

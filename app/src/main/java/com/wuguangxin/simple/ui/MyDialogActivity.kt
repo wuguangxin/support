@@ -1,57 +1,35 @@
-package com.wuguangxin.simple.ui;
+package com.wuguangxin.simple.ui
 
-import android.os.Bundle;
-import android.view.View;
+import com.wuguangxin.dialog.XinDialog
+import com.wuguangxin.simple.R
+import android.os.Bundle
+import com.wuguangxin.simple.databinding.ActivityMydialogBinding
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
-import com.wuguangxin.dialog.XinDialog;
-import com.wuguangxin.simple.R;
-import com.wuguangxin.simple.databinding.ActivityMydialogBinding;
 
-public class MyDialogActivity extends BaseActivity<ActivityMydialogBinding> {
-    private XinDialog mDialog;
+class MyDialogActivity : BaseActivity<ActivityMydialogBinding>() {
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_mydialog;
+    override fun getLayoutId(): Int {
+        return R.layout.activity_mydialog
     }
 
-    @Override
-    public void initView(Bundle savedInstanceState) {
-        setTitle("对话框");
+    override fun initView(savedInstanceState: Bundle?) {
+        setTitleLayout(R.id.titleLayout)
     }
 
-    @Override
-    public void initListener() {
+    override fun initData() {}
 
-    }
-
-//    @OnClick({R.id.dialog})
-    public void onClick(View v) {
-        mDialog = XinDialog.with(this, mDialog);
-        mDialog.setTitle("标题");
-        mDialog.setMessage("这里是内容");
-        mDialog.setPositiveButton("确认");
-        mDialog.setNegativeButton("取消");
-        mDialog.show();
-    }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void setData() {
-
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(mDialog != null){
-            mDialog.cancel();
-            mDialog = null;
+    override fun initListener() {
+        binding.dialog.onClick {
+            XinDialog.with(this@MyDialogActivity)
+                .setTitle("标题")
+                .setMessage("这里是内容")
+                .setPositiveButton("确认")
+                .setNegativeButton("取消")
+                .show()
         }
     }
+
+    override fun setData() {}
+
 }

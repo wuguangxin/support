@@ -48,10 +48,10 @@ public class TestTouchEventActivity extends BaseActivity<ActivityTestTouchEventB
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        getTitleBar().setBackVisibility(false);
+        setTitleLayout(R.id.titleLayout);
 
-        binding.viewGroup.setOnClickListener(v -> printLogI("点击了 " + v.getTag()));
-        binding.childView.setOnClickListener(v -> printLogI("点击了 " + v.getTag()));
+        binding.viewGroup.setOnClickListener(v -> log("点击了 " + v.getTag()));
+        binding.childView.setOnClickListener(v -> log("点击了 " + v.getTag()));
 
         // activity
         // ----dispatchTouchEvent()
@@ -191,12 +191,12 @@ public class TestTouchEventActivity extends BaseActivity<ActivityTestTouchEventB
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (activityDispatchSuper) {
             boolean b = super.dispatchTouchEvent(event);
-            println("super.dispatchTouchEvent() " + b);
+            log("super.dispatchTouchEvent() " + b);
             if (activityDispatchReturnSuper) {
                 activityDispatchReturn = b;
             }
         }
-        println("dispatchTouchEvent " + activityDispatchReturn);
+        log("dispatchTouchEvent " + activityDispatchReturn);
         return activityDispatchReturn;
     }
 
@@ -205,12 +205,12 @@ public class TestTouchEventActivity extends BaseActivity<ActivityTestTouchEventB
     public boolean onTouchEvent(MotionEvent event) {
         if (activityTouchSuper) {
             boolean b = super.onTouchEvent(event);
-            println("super.onTouchEvent() " + b);
+            log("super.onTouchEvent() " + b);
             if (activityTouchReturnSuper) {
                 activityTouchReturn = b;
             }
         }
-        println("onTouchEvent " + activityTouchReturn);
+        log("onTouchEvent " + activityTouchReturn);
         return activityTouchReturn;
     }
 

@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="45dip"
+    android:layout_height="45dp"
     android:background="@color/transparent" >
 
     <!-- 左边区域 -->
@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:padding="5dip"
-        android:layout_margin="5dip"
+        android:padding="5dp"
+        android:layout_margin="5dp"
         android:background="@drawable/xin_button_default_bg_color"
         android:gravity="center"
         android:text="@string/xin_dialog_close_text"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center_vertical"
-        android:paddingTop="2dip"
+        android:paddingTop="2dp"
         android:text="@string/xin_dialog_title_text"
         android:textColor="@color/xin_dialog_title_text"
         android:textSize="@dimen/xin_dialog_title_text"
@@ -36,10 +36,10 @@
     
     <ImageView
         android:id="@+id/dialog_top_animimg"
-        android:layout_width="18dip"
-        android:layout_height="18dip"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_centerVertical="true"
-        android:layout_marginRight="5dip"
+        android:layout_marginRight="5dp"
         android:layout_toLeftOf="@id/dialog_top_title"
         android:src="@drawable/xin_loading_01"
         android:visibility="gone"
@@ -53,8 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:padding="5dip"
-        android:layout_margin="5dip"
+        android:padding="5dp"
+        android:layout_margin="5dp"
         android:background="@drawable/xin_button_default_bg_color"
         android:gravity="center"
         android:text="@string/xin_dialog_setting_text"
@@ -65,7 +65,7 @@
     <View
         android:id="@+id/dialog_top_line"
         android:layout_width="match_parent"
-        android:layout_height="0.5dip"
+        android:layout_height="0.5dp"
         android:background="@color/xcccccc"
         android:layout_alignParentBottom="true"
         android:visibility="gone" />

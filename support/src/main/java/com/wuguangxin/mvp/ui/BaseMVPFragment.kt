@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
  * 基础Fragment
  * Created by wuguangxin on 16/8/26
  */
-abstract class XinMVPFragment<B : ViewDataBinding, P : BasePresenter<out IModel, out IView>?> : XinBaseFragment<B>() {
+abstract class BaseMVPFragment<B : ViewDataBinding, P : BasePresenter<out IModel, out IView>?> : XinBaseFragment() {
     val presenter: P? = newPresenter()
 
     /**

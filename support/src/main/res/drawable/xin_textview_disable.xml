@@ -4,7 +4,7 @@
     <!-- TextView 被禁用时 -->
     <solid android:color="#f5ffffff" />
 
-    <corners android:radius="1dip" />
+    <corners android:radius="1dp" />
 
     <stroke
         android:width="@dimen/xin_text_view_border_size_disable"

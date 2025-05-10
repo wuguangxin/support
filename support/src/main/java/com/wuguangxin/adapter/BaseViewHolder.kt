@@ -15,17 +15,17 @@ import androidx.annotation.*
  * Created by wuguangxin on 2018/10/16.
  */
 open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val sparseArray = SparseArray<View>()
+    private val viewSparse = SparseArray<View>()
 
     fun getItemView(): View {
         return itemView
     }
 
     fun <T> findView(@IdRes viewId: Int): T {
-        var view = sparseArray[viewId]
+        var view = viewSparse[viewId]
         if (view == null) {
             view = itemView.findViewById(viewId)
-            sparseArray.put(viewId, view)
+            viewSparse.put(viewId, view)
         }
         return view as T
     }

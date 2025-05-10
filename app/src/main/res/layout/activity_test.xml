@@ -10,6 +10,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <com.wuguangxin.view.titlebar.TitleLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tl_theme="black"
+            app:tl_title="" />
+
         <com.wuguangxin.view.FlowLayout
             android:id="@+id/test_group"
             android:layout_width="match_parent"

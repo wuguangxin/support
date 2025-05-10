@@ -40,9 +40,9 @@ public class GameActivity extends BaseActivity<ActivityGameBinding> {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        setTitle("抖音小游戏");
-        binding.gameOver.setVisibility(View.GONE);
+        setTitleLayout(R.id.titleLayout);
         setData();
+        binding.gameOver.setVisibility(View.GONE);
         binding.recyclerView.addItemDecoration(new SpacesItemDecoration(Utils.dip2px(this, 5)));
     }
 
@@ -93,20 +93,16 @@ public class GameActivity extends BaseActivity<ActivityGameBinding> {
         binding.text3.setText("蓝：0");
         binding.result.setText("");
         binding.gameOver.setVisibility(View.GONE);
-        List<GameDataBean> list = sort(sort(createData())); // 两次随机排序
-        mGameAdapter.setList(list);
+        mGameAdapter.reset();
+        mGameAdapter.setList(sort(sort(createData())));// 两次随机排序
 //        setData();
     }
 
     @Override
     public void initListener() {
-        binding.gameReplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replay();
-            }
-        });
-        getTitleBar().setSettingListener("记录", new View.OnClickListener() {
+        binding.gameReplay.setOnClickListener(view -> replay());
+
+        getTitleLayout().setMenuListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openActivity(GameRecordActivity.class);
@@ -122,12 +118,14 @@ public class GameActivity extends BaseActivity<ActivityGameBinding> {
     @Override
     public void setData() {
         List<GameDataBean> list = sort(sort(createData())); // 两次随机排序
-        mGameAdapter = new GameAdapter(this, list);
-        mGameAdapter.setOnStatusListener(gameDataBean -> {
-            switch (gameDataBean.getText()) {
+        mGameAdapter = new GameAdapter(list);
+        mGameAdapter.setOnStatusListener( bean -> {
+            if (bean != null) {
+                switch (bean.getText()) {
                 case "红": red++; break;
                 case "绿": green++; break;
                 case "蓝": blue++; break;
+                }
             }
             updateResult();
         });

@@ -5,11 +5,11 @@
     <solid android:color="#cc0099ff" />
 
     <!-- 圆角半径 -->
-    <corners android:radius="17.5dip" />
+    <corners android:radius="17.5dp" />
 
     <!-- 设置边框色 -->
     <stroke
-        android:width="0.5dip"
+        android:width="0.5dp"
         android:color="#ffffff" />
 
 </shape>

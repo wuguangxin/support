@@ -10,7 +10,7 @@ import com.wuguangxin.ui.XinBaseActivity
  * MVP 中 Activity基类
  * Created by wuguangxin on 2015/4/1
  */
-abstract class XinMVPActivity<B : ViewDataBinding, P : BasePresenter<out IModel, out IView>?> : XinBaseActivity<B>() {
+abstract class BaseMVPActivity<B : ViewDataBinding, P : BasePresenter<out IModel, out IView>?> : XinBaseActivity<B>() {
     val presenter: P? = newPresenter()
 
     /**

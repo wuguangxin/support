@@ -7,8 +7,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import com.wuguangxin.utils.Logger;
-
 import androidx.annotation.Nullable;
 
 @SuppressLint("AppCompatCustomView")
@@ -40,12 +38,10 @@ public class ChildView extends TextView {
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (viewDispatchSuper) {
             boolean b = super.dispatchTouchEvent(event);
-            println("super.dispatchTouchEvent() " + b);
             if (viewDispatchReturnSuper) {
                 viewDispatchReturn = b;
             }
         }
-        println("dispatchTouchEvent " + viewDispatchReturn);
         return viewDispatchReturn;
     }
 
@@ -53,20 +49,13 @@ public class ChildView extends TextView {
     public boolean onTouchEvent(MotionEvent event) {
         if (viewTouchSuper) {
             boolean b = super.onTouchEvent(event);
-            println("super.onTouchEvent() " + b);
             if (viewTouchReturnSuper) {
                 viewTouchReturn = b;
             }
         }
         requestLayout();
-        println("onTouchEvent " + viewTouchReturn);
         return viewTouchReturn;
     }
-
-    private void println(String s) {
-        Logger.e(getTag().toString(), s);
-    }
-
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

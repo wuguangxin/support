@@ -8,13 +8,13 @@ import android.view.ViewGroup
  * View的适配器
  * Created by wuguangxin on 2019/12/2.
  */
-class BaseViewAdapter(val list: List<View>?) : PagerAdapter() {
+class BaseViewAdapter(val list: MutableList<View>?) : PagerAdapter() {
     private val mData = mutableListOf<View>()
 
     init {
-        mData.clear()
+        this.mData.clear()
         list?.let {
-            mData.addAll(list)
+            this.mData.addAll(list)
         }
     }
 
@@ -23,20 +23,16 @@ class BaseViewAdapter(val list: List<View>?) : PagerAdapter() {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val view = getItem(position)
+        val view = mData[position]
         container.addView(view)
         return view
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView(getItem(position))
+        container.removeView(mData[position])
     }
 
     override fun getCount(): Int {
         return mData.size
-    }
-
-    fun getItem(position: Int): View {
-        return mData[position]
     }
 }

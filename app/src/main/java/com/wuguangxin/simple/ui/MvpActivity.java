@@ -3,14 +3,14 @@ package com.wuguangxin.simple.ui;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.wuguangxin.mvp.ui.XinMVPActivity;
+import com.wuguangxin.mvp.ui.BaseMVPActivity;
 import com.wuguangxin.simple.R;
 import com.wuguangxin.simple.bean.UserBean;
 import com.wuguangxin.simple.databinding.ActivityMvpBinding;
 import com.wuguangxin.simple.mvp.LoginContract;
 import com.wuguangxin.simple.mvp.LoginPresenter;
 
-public class MvpActivity extends XinMVPActivity<ActivityMvpBinding, LoginPresenter> implements LoginContract.View {
+public class MvpActivity extends BaseMVPActivity<ActivityMvpBinding, LoginPresenter> implements LoginContract.View {
     AppBarLayout.Behavior appBarLayoutBehavior;
 
     @Override
@@ -25,7 +25,7 @@ public class MvpActivity extends XinMVPActivity<ActivityMvpBinding, LoginPresent
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        getTitleBar().setBackVisibility(false);
+        setTitleLayout(R.id.titleLayout);
     }
 
     @Override

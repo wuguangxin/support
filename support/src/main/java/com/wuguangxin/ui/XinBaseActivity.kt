@@ -1,34 +1,35 @@
 package com.wuguangxin.ui
 
-import androidx.databinding.ViewDataBinding
-import androidx.appcompat.app.AppCompatActivity
-import com.wuguangxin.listener.BaseInterface
-import com.scwang.smart.refresh.layout.SmartRefreshLayout
-import com.wuguangxin.dialog.LoadingDialog
-import com.wuguangxin.dialog.XinDialog
-import android.os.Bundle
-import com.wuguangxin.support.R
-import androidx.databinding.DataBindingUtil
-import android.view.LayoutInflater
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import com.wuguangxin.base.TitleBar
-import com.wuguangxin.base.LoadingStatus
+import android.graphics.Color
+import android.os.Build
+import android.os.Bundle
+import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.annotation.ColorInt
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.wuguangxin.base.FragmentTask
-import com.wuguangxin.base.LayoutManager
+import com.wuguangxin.base.LoadingStatus
+import com.wuguangxin.dialog.LoadingDialog
+import com.wuguangxin.dialog.XinDialog
+import com.wuguangxin.listener.BaseInterface
 import com.wuguangxin.utils.*
+import com.wuguangxin.view.titlebar.TitleLayout
 
 /**
  * Activity基类
  * Created by wuguangxin on 2015/4/1
  */
 abstract class XinBaseActivity<B : ViewDataBinding> : AppCompatActivity(), BaseInterface {
-    open lateinit var layoutManager: LayoutManager
-    open lateinit var titleBar: TitleBar
+    protected var titleLayout: TitleLayout? = null
 
-    open var TAG: String? = null
+    open var TAG: String? = ""
     open var loadingDialog: LoadingDialog? = null
     open var mDialog: XinDialog? = null
     lateinit var binding: B
@@ -37,37 +38,18 @@ abstract class XinBaseActivity<B : ViewDataBinding> : AppCompatActivity(), BaseI
     private var slidingFinish = false
     private var mSlidingFinishHelper: SlidingFinishHelper? = null
 
-    fun getContext(): Context = super.getBaseContext()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        TAG = this::class.simpleName
+        binding = DataBindingUtil.setContentView(this, getLayoutId())
         loadingDialog = LoadingDialog(this) // 加载对话框
         mSlidingFinishHelper = SlidingFinishHelper(this)
+        TAG = this::javaClass.name
 
+        //SoftHideKeyBoardUtil.assistActivity(this)
 
-
-
-        layoutManager = LayoutManager(this, R.layout.activity_base) // 布局管理器
-        layoutManager.setErrorLayoutListener { onClickErrorLayout() }
-        //layoutManager.setContentView(getLayoutId())
-
-        binding = DataBindingUtil.inflate(LayoutInflater.from(this), getLayoutId(), layoutManager.bodyLayout, false)!!
-        layoutManager.setContentView(binding.root)
-
-        titleBar = layoutManager.titleBar
-        titleBar.setTitle(TAG)
-
-        val rootView = layoutManager.bodyLayout.getChildAt(0)
-        if (rootView != null) {
-            binding = DataBindingUtil.bind(rootView)!!
-        }
-        setContentView(layoutManager.rootLayout)
-
-        SoftHideKeyBoardUtil.assistActivity(this)
-        setImmersionStatusBar(this)
         initArguments(intent)
         initView(savedInstanceState)
+        setImmersionStatusBar();
         initListener()
     }
 
@@ -76,12 +58,54 @@ abstract class XinBaseActivity<B : ViewDataBinding> : AppCompatActivity(), BaseI
      *
      * @param activity
      */
-    open fun setImmersionStatusBar(activity: Activity?) {
-        StatusBarUtils.setImmersionStatusBar(
-            activity,
-            resources.getColor(R.color.xin_titlebar_background)
-        )
-        StatusBarUtils.setStatusBarFontColor(activity, false)
+    fun setImmersionStatusBar(view: ViewGroup? = null) {
+        val titleBar = view ?: titleLayout
+        val barColor = titleLayout?.normalTheme?.backgroundColor?: Color.TRANSPARENT
+        val isDark = titleLayout?.normalTheme?.isStatusBarDark?: true
+        setImmersionStatusBar(this, titleBar, barColor, isDark)
+        StatusBarUtils.setStatusBarFontColor(this, isDark)
+    }
+
+    open fun setImmersionStatusBar(
+        activity: Activity,
+        titleBarLayout: ViewGroup?,
+        @ColorInt statusBarColor: Int,
+        isDarkText: Boolean
+    ) {
+        if (titleBarLayout == null) {
+            return
+        }
+        // >=19
+        if (Build.VERSION.SDK_INT >= 19) {
+            // 透明状态栏
+            activity.window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            // 透明导航栏。注意华为和HTC等有虚拟HOME键盘的，如果不设置下面这段代码，虚拟键盘将覆盖APP底部界面，无法操作底部TAB
+            activity.window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+            if (Build.VERSION.SDK_INT >= 21) {
+                activity.window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                activity.window.statusBarColor = statusBarColor
+                titleBarLayout.setPadding(0, StatusBarUtils.getStatusBarHeight(activity), 0, 0)
+            } else {
+                /* <21
+                android:fitsSystemWindows=""，
+                false：布局不受StatusBar的影响，可以完全的展示在StatusBar的下面。
+                true：布局不受StatusBar的影响，不会被StatusBar遮住，
+                android:clipToPadding="false"
+                false：布局不受Padding的影响，可以展示在Padding的区域。其实fitsSystemWindows就是设置一个Padding使View不会展示在StatusBar的下方，
+                设置系统是否需要考虑 StatusBar 占据的区域来显示
+                */
+                titleBarLayout.fitsSystemWindows = false
+                titleBarLayout.clipToPadding = true
+            }
+        }
+        StatusBarUtils.setStatusBarFontColor(activity, isDarkText)
+    }
+
+    /**
+     * 取消透明状态栏样式
+     */
+    fun clearImmersionStatusBar() {
+        AndroidUtils.clearImmersionStatusBar(this)
     }
 
     /**
@@ -95,23 +119,18 @@ abstract class XinBaseActivity<B : ViewDataBinding> : AppCompatActivity(), BaseI
      * 初始化传参
      */
     fun initArguments(intent: Intent) {
-
     }
+
+    fun getContext(): Context = this
 
     override fun onStart() {
         super.onStart()
-        try {
-            initData()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        initData()
     }
 
     override fun onDestroy() {
-        // 关闭所有对话框dismiss
-        titleBar.setLoadAnimVisible(false)
-        dismissDialog()
         super.onDestroy()
+        dismissDialog()
     }
 
     override fun finish() {
@@ -119,68 +138,32 @@ abstract class XinBaseActivity<B : ViewDataBinding> : AppCompatActivity(), BaseI
         AnimUtil.animClose(this)
     }
 
-    /**
-     * 当点击错误界面时执行的方法。
-     * （使用场景：某个界面第一次请求数据并发生网络异常时，显示错误界面，点击错误界面时，执行该方法，例如重新请求数据。）
-     */
-    open fun onClickErrorLayout() {
-        initData()
+    open fun setTitleLayout(@IdRes id: Int): TitleLayout {
+        val view = binding.root.findViewById<TitleLayout>(id).bind(this)
+        this.titleLayout = view
+        return view
     }
 
-    /**
-     * 获取当前使用的 SmartRefreshLayout
-     */
-    private val refreshLayout: SmartRefreshLayout?
-        get() {
-            return LayoutInflater.from(this)
-                .inflate(R.layout.xin_def_refresh_layout, null) as SmartRefreshLayout
-        }
-
-    /**
-     * 取消透明状态栏样式
-     */
-    fun clearImmersionStatusBar() {
-        AndroidUtils.clearImmersionStatusBar(this)
-    }
-
-    /**
-     * 该方法会将传入的layoutRes布局放入到SmartRefreshLayout里，实现下拉刷新，这只是少写一层代码而已。
-     *
-     * @param layoutRes
-     */
-    fun setContentViewOnRefreshLayout(layoutRes: Int) {
-        val view = LayoutInflater.from(this).inflate(layoutRes, refreshLayout)
-        setContentView(view)
-    }
-
-    override fun setTitle(title: CharSequence) {
+    override fun setTitle(title: CharSequence?) {
         super.setTitle(title)
-        titleBar.setTitle(title)
+        titleLayout?.title = title
     }
 
-    override fun setTitle(title: Int) {
-        super.setTitle(title)
-        titleBar.setTitle(title)
+    override fun setTitle(titleId: Int) {
+        super.setTitle(titleId)
+        titleLayout?.setTitle(titleId)
     }
 
-    override fun setTitleColor(color: Int) {
-        titleBar.getTitleView().setTextColor(color)
+    override fun log(text: String) {
+        Logger.i(TAG, text)
     }
 
-    protected fun setTitleBarVisibility(visibility: Boolean) {
-        titleBar.setVisibility(visibility)
-    }
-
-    protected fun setBodyVisibility(visibility: Boolean) {
-        layoutManager.setBodyVisibility(visibility)
+    fun loge(text: String) {
+        Logger.e(TAG, text)
     }
 
     override fun showToast(text: String) {
-        ToastUtils.showToast(baseContext, text)
-    }
-
-    override fun printLogI(text: String) {
-        Logger.i(baseContext, text)
+        ToastUtils.showToast(getContext(), text)
     }
 
     override fun openActivity(clazz: Class<out Activity>) {
@@ -188,65 +171,32 @@ abstract class XinBaseActivity<B : ViewDataBinding> : AppCompatActivity(), BaseI
     }
 
     override fun openActivity(clazz: Class<out Activity>, bundle: Bundle?) {
-        val intent = Intent(baseContext, clazz)
+        val intent = Intent(getContext(), clazz)
         intent.putExtra("bundle", bundle)
         startActivity(intent)
     }
 
     override fun startActivity(intent: Intent) {
-        // super.startActivity(intent);
         // 换成startActivityForResult打开的Activity切换动画比较好看，并且requestCode=0
         super.startActivityForResult(intent, 0)
     }
 
-    override fun setLoadingStatus(loadingStatus: Int, isPull: Boolean, isCached: Boolean) {
-        when (loadingStatus) {
-            LoadingStatus.START -> {
-                if (isPull && isCached) {
-                    setTitleLoadingProgressVisible(true)
-                } else {
-                    setLoadingDialogVisible(true)
-                }
+    fun setLoadingStatus(loadingStatus: Int, isPull: Boolean, isCached: Boolean) {
+        if (loadingStatus == LoadingStatus.START) {
+            if (isPull && isCached) {
+                loadingDialog?.setVisible(true)
             }
-            LoadingStatus.SUCCESS,
-            LoadingStatus.FAILURE -> {
-                // 是获取数据时，且没有缓存数据，且网获取失败，则可显示网络错误界面
-                if (isPull && !isCached && loadingStatus == LoadingStatus.FAILURE) {
-                    layoutManager.setErrorLayoutVisible(true)
-                }
-                if (isCached) {
-                    setTitleLoadingProgressVisible(false)
-                } else {
-                    setLoadingDialogVisible(false)
-                }
-            }
-            LoadingStatus.CANCEL,
-            LoadingStatus.FINISH -> {
-                setTitleLoadingProgressVisible(false)
-                setLoadingDialogVisible(false)
-            }
+        } else {
+            loadingDialog?.setVisible(false)
         }
     }
 
-    override fun setLoadingDialogVisible(visible: Boolean) {
-        loadingDialog?.setVisible(visible)
-    }
-
-    override fun setTitleLoadingProgressVisible(isStart: Boolean) {
-        titleBar.setLoadAnimVisible(isStart)
-    }
-
-    override fun dismissDialog() {
+    fun dismissDialog(vararg dialogs: Dialog?) {
         loadingDialog?.dismiss()
         loadingDialog = null
         mDialog?.dismiss()
         mDialog = null
-    }
-
-    override fun dismissDialog(vararg dialogs: Dialog) {
-        for (dialog in dialogs) {
-            dialog.dismiss()
-        }
+        dialogs.forEach { it?.dismiss() }
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

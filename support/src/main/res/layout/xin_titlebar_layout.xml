@@ -17,7 +17,7 @@
         <LinearLayout
             android:id="@+id/xin_titlebar_left_layout"
             android:layout_width="wrap_content"
-            android:layout_height="0dip"
+            android:layout_height="0dp"
             android:minWidth="@dimen/xin_titlebar_menu_minWidth"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -79,8 +79,8 @@
             <!--界面在网络加载时的动画-->
             <ImageView
                 android:id="@+id/xin_titlebar_load_view"
-                android:layout_width="20dip"
-                android:layout_height="20dip"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:padding="2dp"
                 android:src="@drawable/xin_loading_anim"
                 android:visibility="gone"
@@ -112,7 +112,7 @@
         <LinearLayout
             android:id="@+id/xin_titlebar_right_layout"
             android:layout_width="wrap_content"
-            android:layout_height="0dip"
+            android:layout_height="0dp"
             android:gravity="right"
             android:orientation="horizontal"
             android:visibility="visible"
@@ -129,7 +129,7 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:minWidth="@dimen/xin_titlebar_menu_minWidth"
-                android:padding="10dip"
+                android:padding="10dp"
                 android:textColor="@color/xin_titlebar_setting_color"
                 android:textSize="@dimen/xin_titlebar_setting_size"
                 android:visibility="gone"
@@ -141,8 +141,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:minWidth="@dimen/xin_titlebar_menu_minWidth"
-                android:paddingLeft="10dip"
-                android:paddingRight="15dip"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/xin_titlebar_share_white"
                 android:visibility="gone" />
@@ -151,7 +151,7 @@
         <!--标题栏底部分割线-->
         <View
             android:id="@+id/xin_titlebar_divider"
-            android:layout_width="0dip"
+            android:layout_width="0dp"
             android:layout_height="@dimen/xin_titlebar_divider_size"
             android:background="@color/xin_titlebar_divider_color"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -162,8 +162,8 @@
         <ProgressBar
             android:id="@+id/xin_titlebar_progress_bar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dip"
-            android:layout_height="2dip"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
             android:max="100"
             android:progress="00"
             android:progressDrawable="@drawable/xin_web_progress_bg"

@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
-import com.wuguangxin.utils.Logger;
-
 import androidx.annotation.Nullable;
 
 public class GroupView1 extends LinearLayout {
@@ -30,14 +28,14 @@ public class GroupView1 extends LinearLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.e(TAG, "onMeasure(). getMeasuredWidth()="+getMeasuredWidth());
+        Log.i(TAG, "onMeasure(). getMeasuredWidth()="+getMeasuredWidth());
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        Log.e(TAG, "onLayout(). getMeasuredWidth()="+getMeasuredWidth());
-        Log.e(TAG, "onLayout(). getWidth()="+getWidth());
+        Log.i(TAG, "onLayout(). getMeasuredWidth()="+getMeasuredWidth());
+        Log.i(TAG, "onLayout(). getWidth()="+getWidth());
     }
 
     // ViewGroup
@@ -57,12 +55,10 @@ public class GroupView1 extends LinearLayout {
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (groupDispatchSuper) {
             boolean b = super.dispatchTouchEvent(event);
-            println("super.dispatchTouchEvent() " + b);
             if (groupDispatchReturnSuper) {
                 groupDispatchReturn = b;
             }
         }
-        println("dispatchTouchEvent " + groupDispatchReturn);
         return groupDispatchReturn;
     }
 
@@ -70,12 +66,10 @@ public class GroupView1 extends LinearLayout {
     public boolean onInterceptTouchEvent(MotionEvent event) {
         if (groupInterceptSuper) {
             boolean b = super.onInterceptTouchEvent(event);
-            println("super.onInterceptTouchEvent() " + b);
             if (groupInterceptReturnSuper) {
                 groupInterceptReturn = b;
             }
         }
-        println("onInterceptTouchEvent " + groupInterceptReturn);
         return groupInterceptReturn;
     }
 
@@ -83,16 +77,10 @@ public class GroupView1 extends LinearLayout {
     public boolean onTouchEvent(MotionEvent event) {
         if (groupTouchSuper) {
             boolean b = super.onTouchEvent(event);
-            println("super.onTouchEvent() " + b);
             if (groupTouchReturnSuper) {
                 groupTouchReturn = b;
             }
         }
-        println("onTouchEvent " + groupTouchReturn);
         return groupTouchReturn;
-    }
-
-    private void println(String s) {
-        Logger.e(getTag().toString(), s);
     }
 }

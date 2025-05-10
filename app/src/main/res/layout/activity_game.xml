@@ -11,14 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:orientation="vertical">
+
+        <com.wuguangxin.view.titlebar.TitleLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tl_theme="black"
+            app:tl_title="概率游戏" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:padding="15dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -58,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,9 +76,9 @@
                     android:id="@+id/result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="543"
                     android:textColor="#ff0000"
-                    android:textSize="30dp"  />
+                    android:textSize="30dp"
+                    tools:text="543" />
             </LinearLayout>
 
             <TextView
@@ -87,7 +94,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="15dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
@@ -102,15 +110,15 @@
                 android:id="@+id/game_over"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignLeft="@+id/recycler_view"
+                android:layout_alignTop="@+id/recycler_view"
+                android:layout_alignRight="@+id/recycler_view"
+                android:layout_alignBottom="@+id/recycler_view"
                 android:background="#99000000"
+                android:gravity="center"
                 android:text="游戏结束"
                 android:textColor="#ff0000"
-                android:gravity="center"
-                android:textSize="40dp"
-                android:layout_alignTop="@+id/recycler_view"
-                android:layout_alignBottom="@+id/recycler_view"
-                android:layout_alignLeft="@+id/recycler_view"
-                android:layout_alignRight="@+id/recycler_view"/>
+                android:textSize="40dp" />
 
         </RelativeLayout>
 

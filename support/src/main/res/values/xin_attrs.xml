@@ -561,4 +561,36 @@
         <attr name="singleLine" format="boolean|reference"/> <!--是否只显示一行-->
     </declare-styleable>
 
+    <declare-styleable name="TitleLayout">
+        <!--单个属性值会覆盖设置的theme内的值-->
+        <attr name="tl_theme" format="enum">
+            <enum name="white" value="0"/>
+            <enum name="black" value="1"/>
+            <enum name="white_transparent" value="2"/>
+            <enum name="black_transparent" value="3"/>
+        </attr>
+        <attr format="reference|enum" name="tl_themeScrollBy" />
+        <attr name="tl_themeScroll" format="enum">
+            <enum name="white" value="0"/>
+            <enum name="black" value="1"/>
+            <enum name="white_transparent" value="2"/>
+            <enum name="black_transparent" value="3"/>
+        </attr>
+        <attr name="tl_title" format="string"/>
+        <attr name="tl_titleColor" format="color"/>
+        <attr name="tl_titleSize" format="dimension"/>
+        <attr name="tl_titleMaxEms" format="integer"/>
+        <attr name="tl_titleIconStart" format="reference"/>
+        <attr name="tl_titleIconTop" format="reference"/>
+        <attr name="tl_titleIconEnd" format="reference"/>
+        <attr name="tl_titleIconBottom" format="reference"/>
+        <attr name="tl_titleIconPadding" format="dimension"/>
+        <attr name="tl_backIcon" format="reference"/>
+        <attr name="tl_menuIcon" format="reference"/>
+        <attr name="tl_showBack" format="boolean"/>
+        <attr name="tl_showMenu" format="boolean"/>
+        <attr name="tl_showDivider" format="boolean"/>
+        <attr name="tl_dividerColor" format="color"/>
+    </declare-styleable>
+
 </resources>
