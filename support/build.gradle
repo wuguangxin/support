@@ -33,21 +33,21 @@ android {
         options.addStringOption('encoding', 'UTF-8')
         options.addStringOption('charSet', 'UTF-8')
     }
-}
 
-// 自动打包
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.release
+    // 自动打包
+    afterEvaluate {
+        publishing {
+            publications {
+                // Creates a Maven publication called "release".
+                release(MavenPublication) {
+                    // Applies the component for the release build variant.
+                    from components.release
 
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.wuguangxin.support'
-                artifactId = 'final'
-                version = android.defaultConfig.versionCode
+                    // You can then customize attributes of the publication as shown below.
+                    groupId = 'com.wuguangxin.support'
+                    artifactId = 'support'
+                    version = android.defaultConfig.versionCode
+                }
             }
         }
     }
@@ -94,5 +94,7 @@ dependencies {
 
     //BaseAdapter
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7'
+
+    api 'org.jetbrains.kotlin:kotlin-stdlib:1.5.20'
 
 }
