@@ -3,6 +3,14 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        // 迁移镜像库
+        // 阿里云云效仓库：https://maven.aliyun.com/mvn/guide
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        // 华为开源镜像：https://mirrors.huaweicloud.com
+        maven { url 'https://repo.huaweicloud.com/repository/maven' }
+        // JitPack 远程仓库：https://www.jitpack.io
+        maven { url 'https://www.jitpack.io' }
     }
 
     dependencies {

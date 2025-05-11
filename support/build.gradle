@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-kapt'
     id 'maven-publish'
 }
-apply plugin: 'maven-publish'
 group = 'com.github.wuguangxin'
 
 android {
@@ -27,6 +26,12 @@ android {
     }
     dataBinding {
         enabled true
+    }
+
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
     }
 }
 
