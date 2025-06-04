@@ -7,6 +7,8 @@ plugins {
 group = 'com.github.wuguangxin'
 
 android {
+    publishNonDefault = true // 允许发布非默认构建变体（jitpack发布相关）
+
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -36,20 +38,102 @@ android {
 
     // 自动打包
     afterEvaluate {
-        publishing {
-            publications {
-                // Creates a Maven publication called "release".
-                release(MavenPublication) {
-                    // Applies the component for the release build variant.
-                    from components.release
+//        publishing {
+//            publications {
+//                // Creates a Maven publication called "release".
+//                release(MavenPublication) {
+//                    // Applies the component for the release build variant.
+//                    from components.release
+//
+//                    // You can then customize attributes of the publication as shown below.
+//                    groupId = 'com.wuguangxin.support'
+//                    artifactId = 'support'
+//                    version = android.defaultConfig.versionCode
+//                }
+//            }
+//        }
+    }
+}
 
-                    // You can then customize attributes of the publication as shown below.
-                    groupId = 'com.wuguangxin.support'
-                    artifactId = 'support'
-                    version = android.defaultConfig.versionCode
+publishing {
+    publications {
+        // Creates a Maven publication called "release".
+        release(MavenPublication) {
+            // Applies the component for the release build variant.
+//            from components.release
+
+            afterEvaluate {
+                from(components["release"])
+            }
+
+            // You can then customize attributes of the publication as shown below.
+            groupId = 'com.wuguangxin.support'
+            artifactId = 'support'
+            version = android.defaultConfig.versionCode
+
+            // 配置POM元数据（JitPack需要这些信息）
+            pom {
+                name.set("support")
+                description.set("android项目框架支持库")
+                url.set("https://github.com/wuguangxin/support")
+
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+
+                developers {
+                    developer {
+                        id.set("wuguangxin")
+                        name.set("吴光新")
+                        email.set("1585252390@qq.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/wuguangxin/support.git")
+                    developerConnection.set("scm:git:ssh://github.com:wuguangxin/support.git")
+                    url.set("https://github.com/wuguangxin/support")
                 }
             }
         }
+
+//        create("release") {
+//            // 发布release构建变体
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//
+//            // 配置POM元数据（JitPack需要这些信息）
+//            pom {
+//                name.set("support")
+//                description.set("android项目框架支持库")
+//                url.set("https://github.com/wuguangxin/support")
+//
+//                licenses {
+//                    license {
+//                        name.set("The Apache License, Version 2.0")
+//                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+//                    }
+//                }
+//
+//                developers {
+//                    developer {
+//                        id.set("wuguangxin")
+//                        name.set("吴光新")
+//                        email.set("1585252390@qq.com")
+//                    }
+//                }
+//
+//                scm {
+//                    connection.set("scm:git:git://github.com/wuguangxin/support.git")
+//                    developerConnection.set("scm:git:ssh://github.com:wuguangxin/support.git")
+//                    url.set("https://github.com/wuguangxin/support")
+//                }
+//            }
+//        }
     }
 }
 
