@@ -10,6 +10,6 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "support"
+rootProject.name = "support1"
 include ':app'
 include ':support'
